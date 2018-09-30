@@ -11,5 +11,9 @@ public class BicycleService {
         bicycle.setName(name);
 
         bicycles.add(bicycle);
+
+        for (Bicycle s : bicycles) {
+            System.out.println("value= " + s);
+        }
     }
 }
