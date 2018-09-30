@@ -21,6 +21,10 @@ public class BicycleService {
     }
 
     public void addBicyclePart(String bicycleName, String partCategory, String partName) {
+        //TODO napisac metodę, która będzie dodawała do konkretnego roweru, część.
+    }
 
+    public void printBicycles() {
+        //TODO wypełnić, tak, aby wypisać na ekranie wszystkie rowery wraz z częściami
     }
 }
