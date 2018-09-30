@@ -11,6 +11,5 @@ public class BicycleService {
         bicycle.setName(name);
 
         bicycles.add(bicycle);
-
     }
 }
