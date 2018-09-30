@@ -16,6 +16,9 @@ public class Main {
         service.addBicycle("Kross Trans Siberian 2015");
 
 
+        service.addBicyclePart("SCOTT Sportster 2017", "korba", "Deore");
+
+
     }
 
 }
