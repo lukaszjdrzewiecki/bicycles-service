@@ -7,13 +7,16 @@ public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
 
     public void addBicycle(String name) {
-        Bicycle bicycle = new Bicycle();
-        bicycle.setName(name);
+        Bicycle newBicycle = new Bicycle();
+        newBicycle.setName(name);
 
-        bicycles.add(bicycle);
-
-        for (Bicycle s : bicycles) {
-            System.out.println("value= " + s);
+        for (Bicycle bicycle : bicycles) {
+            if(bicycle.getName().equals(name)) {
+                System.out.println("Nie mozna dodac dwoch rowerow o tej samej nazwie");
+                return;
+            }
         }
+
+        bicycles.add(newBicycle);
     }
 }
