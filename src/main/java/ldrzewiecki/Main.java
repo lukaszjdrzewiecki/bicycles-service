@@ -13,7 +13,7 @@ public class Main {
         service.addBicycle("SCOTT Sportster 2017");
         service.addBicycle("Accent Tormenta Lady");
         service.addBicycle("Scott Scale Unique");
-        servica.addBicycle("Kross Trans Siberian 2015");
+        service.addBicycle("Kross Trans Siberian 2015");
 
 
     }
