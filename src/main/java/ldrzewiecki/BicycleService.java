@@ -19,4 +19,8 @@ public class BicycleService {
 
         bicycles.add(newBicycle);
     }
+
+    public void addBicyclePart(String bicycleName, String partCategory, String partName) {
+
+    }
 }
