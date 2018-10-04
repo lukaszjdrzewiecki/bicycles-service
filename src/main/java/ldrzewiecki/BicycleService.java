@@ -6,6 +6,7 @@ import java.util.List;
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
 
+
     public void addBicycle(String name) {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
@@ -21,10 +22,26 @@ public class BicycleService {
     }
 
     public void addBicyclePart(String bicycleName, String partCategory, String partName) {
-        //TODO napisac metodę, która będzie dodawała do konkretnego roweru, część.
+        Bicycle newBicyclePart = new Bicycle();
+
+        for (Bicycle bicycle : bicycles) {
+            if(bicycle.getName().equals(bicycleName)) {
+                newBicyclePart.setName(partCategory);
+                newBicyclePart.setName(partName);
+            } else {
+                return;
+            }
+        }
+
+
+
+        bicycles.add(newBicyclePart);
     }
 
     public void printBicycles() {
-        //TODO wypełnić, tak, aby wypisać na ekranie wszystkie rowery wraz z częściami
+        for (Bicycle bicycle : bicycles) {
+            System.out.println(bicycles);
+            }
+        }
     }
 }
