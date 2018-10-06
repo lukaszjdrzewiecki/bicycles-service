@@ -28,6 +28,8 @@ public class BicycleService {
             if(bicycle.getName().equals(bicycleName)) {
                 newBicyclePart.setName(partCategory);
                 newBicyclePart.setName(partName);
+
+                // Tworzysz obiekt newBicyclePart,  ale nie dodajesz go do znalezionego roweru
             } else {
                 return;
             }
@@ -38,10 +40,11 @@ public class BicycleService {
         bicycles.add(newBicyclePart);
     }
 
+
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
-            System.out.println(bicycles);
-            }
+            System.out.println(bicycles); // zobacz, co tutaj zrobiłeś - robisz println na obiekcie, po ktorym iterujesz. Spróbuj to uruchomic - zobaczysz, ze tutaj nic normalnego się nie wydrukuje
+            } // zle formatowanie - zawsze się śći
         }
     }
-}
+}// blad kompilacji - jeden nawias za dużo - nie wolno wrzucać do repozytorium kodu, który się nawet nie kompiluje. Najgorszy możliwy grzech programisty.
