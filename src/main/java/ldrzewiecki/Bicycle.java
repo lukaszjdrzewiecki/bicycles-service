@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bicycle {
-    private String name;
-    private List<BicyclePart> parts = new ArrayList();
+    public String name;
+    public List<BicyclePart> parts = new ArrayList();
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
+    public void setName(String name) { this.name = name; }
 
     public List<BicyclePart> getParts() {
         return parts;

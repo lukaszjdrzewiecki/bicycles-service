@@ -11,7 +11,7 @@ public class BicycleService {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
 
-        for (Bicycle bicycle : bicycles) {
+       for (Bicycle bicycle : bicycles) {
             if(bicycle.getName().equals(name)) {
                 System.out.println("Nie mozna dodac dwoch rowerow o tej samej nazwie");
                 return;
@@ -22,29 +22,35 @@ public class BicycleService {
     }
 
     public void addBicyclePart(String bicycleName, String partCategory, String partName) {
-        Bicycle newBicyclePart = new Bicycle();
 
-        for (Bicycle bicycle : bicycles) {
-            if(bicycle.getName().equals(bicycleName)) {
-                newBicyclePart.setName(partCategory);
+
+
+        for (Bicycle x : bicycles) {
+            if(x.getName().equals(bicycleName)) {
+                BicyclePart newBicyclePart = new BicyclePart();
+                newBicyclePart.setCategory(partCategory);
                 newBicyclePart.setName(partName);
 
-                // Tworzysz obiekt newBicyclePart,  ale nie dodajesz go do znalezionego roweru
+                x.parts.add(newBicyclePart);
+
             } else {
-                return;
+                continue;
             }
         }
 
-
-
-        bicycles.add(newBicyclePart);
+      //  bicycles.add(newBicyclePart);
     }
 
 
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
-            System.out.println(bicycles); // zobacz, co tutaj zrobiłeś - robisz println na obiekcie, po ktorym iterujesz. Spróbuj to uruchomic - zobaczysz, ze tutaj nic normalnego się nie wydrukuje
-            } // zle formatowanie - zawsze się śći
+            System.out.println(bicycle.name);
+           // System.out.println(bicycle.parts.toString());
+            for (BicyclePart part : bicycle.parts ){
+                System.out.println(part.getCategory()+" --- "+part.getName());
+
+            }
+            System.out.println("-------");
+            }
         }
     }
-}// blad kompilacji - jeden nawias za dużo - nie wolno wrzucać do repozytorium kodu, który się nawet nie kompiluje. Najgorszy możliwy grzech programisty.

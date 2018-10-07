@@ -17,9 +17,14 @@ public class Main {
 
 
         service.addBicyclePart("SCOTT Sportster 2017", "korba", "Deore");
+        service.addBicyclePart("Accent Tormenta Lady", "korba", "Alivio");
+        service.addBicyclePart("SCOTT Sportster 2017", "Przerzutka", "Alivio");
+        service.addBicyclePart("Kross Trans Siberian 2015", "Hamulce", "Altus");
+        service.addBicyclePart("SCOTT Sportster 2017", "Wheels", "Deore XT");
 
 
 
+        service.printBicycles();
     }
 
 }
