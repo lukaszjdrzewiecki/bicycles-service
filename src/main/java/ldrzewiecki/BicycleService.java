@@ -6,6 +6,17 @@ import java.util.List;
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
 
+    public Bicycle findBicycle(String name) {
+        for (Bicycle bicycle : bicycles) {
+            if (bicycle.getName().equals(name)){
+                return bicycle;
+
+            }
+        }
+        return null;
+    }
+
+
 
     public void addBicycle(String name) {
         Bicycle newBicycle = new Bicycle();
@@ -17,7 +28,11 @@ public class BicycleService {
         Proces poprawiania jakości kodu nazywa się REFAKTORYZACJA - bardzo ważny termin - spróbuj zastąpić
         for (Bicycle bicycle : bicycles) metodoą findBicycleByName(), która zwraca rower, lub NULL w przypadku kiedy nie ma roweru o podanej nazwie.
          */
-       for (Bicycle bicycle : bicycles) {
+
+       BicycleService service = new BicycleService();
+       System.out.println(service.findBicycle(name));
+
+    /* for (Bicycle bicycle : bicycles) {
             if(bicycle.getName().equals(name)) {
                 //TODO - tak naprawde do takich rzeczy uzywa sie wyjatkow. Spróbuj zamienić ten pusty return na rzucienie wyjątku RuntimeException
                 // czyli zamiast dwóch ponizszych linii zrób throw new RuntimeException("Nie mozna ...") - daj znac czy rozumiesz
@@ -25,7 +40,7 @@ public class BicycleService {
                 return;
             }
         }
-
+*/
         bicycles.add(newBicycle);
     }
 
@@ -46,7 +61,6 @@ public class BicycleService {
             }
         }
 
-      //  bicycles.add(newBicyclePart);
     }
 
 
@@ -56,10 +70,8 @@ public class BicycleService {
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle.name);
-           // System.out.println(bicycle.parts.toString());
             for (BicyclePart part : bicycle.parts ){
                 System.out.println(part.getCategory()+" --- "+part.getName());
-
             }
             System.out.println("-------");
             }
