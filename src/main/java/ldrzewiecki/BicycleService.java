@@ -29,38 +29,26 @@ public class BicycleService {
         for (Bicycle bicycle : bicycles) metodoą findBicycleByName(), która zwraca rower, lub NULL w przypadku kiedy nie ma roweru o podanej nazwie.
          */
 
-       BicycleService service = new BicycleService();
-       System.out.println(service.findBicycle(name));
-
-    /* for (Bicycle bicycle : bicycles) {
-            if(bicycle.getName().equals(name)) {
-                //TODO - tak naprawde do takich rzeczy uzywa sie wyjatkow. Spróbuj zamienić ten pusty return na rzucienie wyjątku RuntimeException
-                // czyli zamiast dwóch ponizszych linii zrób throw new RuntimeException("Nie mozna ...") - daj znac czy rozumiesz
-                System.out.println("Nie mozna dodac dwoch rowerow o tej samej nazwie");
-                return;
-            }
-        }
-*/
+       Bicycle bicycle = findBicycle(name);
+       if(bicycle == null) {
+           //TODO - tak naprawde do takich rzeczy uzywa sie wyjatkow. Spróbuj zamienić ten pusty return na rzucienie wyjątku RuntimeException
+           // czyli zamiast dwóch ponizszych linii zrób throw new RuntimeException("Nie mozna ...") - daj znac czy rozumiesz
+           System.out.println("Nie mozna dodac dwoch rowerow o tej samej nazwie");
+           return;
+       }
         bicycles.add(newBicycle);
     }
 
     public void addBicyclePart(String bicycleName, String partCategory, String partName) {
 
+        Bicycle bicycle = findBicycle(bicycleName);
+        if(bicycle != null) {
+            BicyclePart newBicyclePart = new BicyclePart();
+            newBicyclePart.setCategory(partCategory);
+            newBicyclePart.setName(partName);
 
-
-        for (Bicycle x : bicycles) {
-            if(x.getName().equals(bicycleName)) {
-                BicyclePart newBicyclePart = new BicyclePart();
-                newBicyclePart.setCategory(partCategory);
-                newBicyclePart.setName(partName);
-
-                x.parts.add(newBicyclePart);
-
-            } else {
-                continue;
-            }
+            bicycle.parts.add(newBicyclePart);
         }
-
     }
 
 
