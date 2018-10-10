@@ -20,9 +20,10 @@ public class BicycleService {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
 
+
        Bicycle bicycle = findBicycle(name);
        if(bicycle != null) {
-           throw new RuntimeException(); //DOBRZE?
+           throw new RuntimeException("You"); //DOBRZE?
        }
 
         bicycles.add(newBicycle);
@@ -34,7 +35,7 @@ public class BicycleService {
     public void addBicyclePart(String bicycleName, String partCategory, String partName) {
 
         Bicycle bicycle = findBicycle(bicycleName);
-        if(bicycle == null) {
+        if(bicycle != null) {
             BicyclePart newBicyclePart = new BicyclePart();
             newBicyclePart.setCategory(partCategory);
             newBicyclePart.setName(partName);
