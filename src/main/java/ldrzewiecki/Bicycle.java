@@ -8,7 +8,9 @@ public class Bicycle {
     /* TODO - zmienić na prywatne i zastąpić setName oraz getParts().add
      HERMETYZACJA jedna z podstaw porgamowania obiektowego. Pola, muszą być prywatne, a dostęp do nich przez getEry i setery
      */
-    public String name;
+    private String name;
+    public String toString(){return String.format (getName(), name);}
+
     public List<BicyclePart> parts = new ArrayList();
 
     public String getName() {
@@ -22,7 +24,5 @@ public class Bicycle {
         return parts;
     }
 
-    public void setParts(List<BicyclePart> parts) {
-        this.parts = parts;
-    }
+    public void setParts(List<BicyclePart> parts) { this.parts = parts; }
 }

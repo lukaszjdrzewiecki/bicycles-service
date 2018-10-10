@@ -14,7 +14,7 @@ public class Main {
         service.addBicycle("Accent Tormenta Lady");
         service.addBicycle("Scott Scale Unique");
         service.addBicycle("Kross Trans Siberian 2015");
-        service.addBicycle("Kross Trans Siberian 2015");
+
 
 
         service.addBicyclePart("SCOTT Sportster 2017", "korba", "Deore");
