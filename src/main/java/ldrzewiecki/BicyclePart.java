@@ -2,6 +2,11 @@ package ldrzewiecki;
 
 public class BicyclePart {
 
+    /* TODO
+    category - jest to typ wyliczeniowy, czyli z góry wiesz jakie wartosci bedzie przyjmowal.
+    W JAVA do typow wyliczeniowych uzywa sie typu Enum - zastąp String z enum - zmień typ pola ze String, na typ, który sam utworzysz o nazwie
+    BicyclePartCategory, albo lepszej
+     */
     private String category;
     private String name;
 
