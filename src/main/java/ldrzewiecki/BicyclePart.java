@@ -11,6 +11,7 @@ public class BicyclePart {
     private String category;
     private String name;
 
+
    public BicyclePart(BicyclePartCategory category, String name){this.category = category; this.name = name;}
 
 
