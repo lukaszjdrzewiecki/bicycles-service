@@ -9,9 +9,7 @@ public class Bicycle {
      HERMETYZACJA jedna z podstaw porgamowania obiektowego. Pola, muszą być prywatne, a dostęp do nich przez getEry i setery
      */
     private String name;
-
-
-    public List<BicyclePart> parts = new ArrayList();
+    private List<BicyclePart> parts = new ArrayList();
 
     public String getName() { return name; }
 
@@ -29,5 +27,6 @@ public class Bicycle {
     // dodatkowo ten String.format jest tuaj zupelnie nie potrzebny - ta metoda sluzy do formatowania.
     // to powinno byc tak jak ponizej
     // zmien ta metode jeszcze w taki sposob, aby wydrukowala wszystkie czesci
-    public String toString(){return "Bicycle name: " + name; }
+    public String toString(){return "Bicycle name: " + name + " " + parts; }
+
 }

@@ -40,14 +40,14 @@ public class BicycleService {
             newBicyclePart.setCategory(partCategory);
             newBicyclePart.setName(partName);
 
-            bicycle.parts.add(newBicyclePart);
+            bicycle.getParts().add(newBicyclePart);
         }
     }
 
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
-            for (BicyclePart part : bicycle.parts ){
+            for (BicyclePart part : bicycle.getParts() ){
                 System.out.println(part);
             }
             System.out.println("-------");
