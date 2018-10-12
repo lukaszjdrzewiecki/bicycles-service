@@ -46,9 +46,9 @@ public class BicycleService {
 
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
-            System.out.println(bicycle.toString());
+            System.out.println(bicycle);
             for (BicyclePart part : bicycle.parts ){
-                System.out.println(part.toString());
+                System.out.println(part);
             }
             System.out.println("-------");
             }
