@@ -37,7 +37,7 @@ public class BicycleService {
         Bicycle bicycle = findBicycle(bicycleName);
         if(bicycle != null) {
             BicyclePart newBicyclePart = new BicyclePart();
-            newBicyclePart.setCategory(partCategory);
+            newBicyclePart.setCategory(BicyclePartCategory);
             newBicyclePart.setName(partName);
 
             bicycle.getParts().add(newBicyclePart);

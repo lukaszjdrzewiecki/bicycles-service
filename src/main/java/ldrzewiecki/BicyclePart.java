@@ -8,18 +8,18 @@ public class BicyclePart {
     BicyclePartCategory, albo lepszej
      */
 
-    private String category;
+    private BicyclePartCategory category;
     private String name;
 
 
    public BicyclePart(BicyclePartCategory category, String name){this.category = category; this.name = name;}
 
 
-    public String getCategory() {
+    public BicyclePartCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(BicyclePartCategory category) {
         this.category = category;
     }
 
