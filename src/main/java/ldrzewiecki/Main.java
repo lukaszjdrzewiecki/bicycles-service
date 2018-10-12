@@ -17,11 +17,11 @@ public class Main {
 
 
 
-        service.addBicyclePart("SCOTT Sportster 2017", "CRANK", "Deore");
-        service.addBicyclePart("ACCENT Tormenta Lady", "CRANK", "Alivio");
-        service.addBicyclePart("SCOTT Sportster 2017", "FRONTDERAILLEUR", "Alivio");
-        service.addBicyclePart("KROSS Trans Siberian 2015", "BRAKES", "Altus");
-        service.addBicyclePart("SCOTT Sportster 2017", "WHEELS", "Deore XT");
+        service.addBicyclePart("SCOTT Sportster 2017", BicyclePartCategory.CRANK, "Deore");
+        service.addBicyclePart("ACCENT Tormenta Lady", BicyclePartCategory.CRANK, "Alivio");
+        service.addBicyclePart("SCOTT Sportster 2017", BicyclePartCategory.FRONTDERAILLEUR, "Alivio");
+        service.addBicyclePart("KROSS Trans Siberian 2015", BicyclePartCategory.BRAKES, "Altus");
+        service.addBicyclePart("SCOTT Sportster 2017", BicyclePartCategory.WHEELS, "Deore XT");
 
 
 

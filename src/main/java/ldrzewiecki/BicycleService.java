@@ -32,14 +32,11 @@ public class BicycleService {
 
 
 
-    public void addBicyclePart(String bicycleName, String partCategory, String partName) {
+    public void addBicyclePart(String bicycleName, BicyclePartCategory partCategory, String partName) {
 
         Bicycle bicycle = findBicycle(bicycleName);
         if(bicycle != null) {
-            BicyclePart newBicyclePart = new BicyclePart();
-            newBicyclePart.setCategory(BicyclePartCategory);
-            newBicyclePart.setName(partName);
-
+            BicyclePart newBicyclePart = new BicyclePart(partCategory, partName);
             bicycle.getParts().add(newBicyclePart);
         }
     }
