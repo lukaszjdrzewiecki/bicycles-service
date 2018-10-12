@@ -25,7 +25,6 @@ public class BicycleService {
        if(bicycle != null) {
            throw new RuntimeException("You"); //DOBRZE?
        }
-
         bicycles.add(newBicycle);
     }
 
@@ -44,10 +43,6 @@ public class BicycleService {
         }
     }
 
-
-    /* TODO
-      zamień to na toString w obiekcie Bicycle i BicyclePart - kazdy obiekt w JAVA zawiera metode toString(), ktora domyslnie drukuje referencje
-     */
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle.toString());

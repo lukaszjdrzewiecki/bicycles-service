@@ -11,17 +11,17 @@ public class Main {
 
         BicycleService service = new BicycleService();
         service.addBicycle("SCOTT Sportster 2017");
-        service.addBicycle("Accent Tormenta Lady");
-        service.addBicycle("Scott Scale Unique");
-        service.addBicycle("Kross Trans Siberian 2015");
+        service.addBicycle("ACCENT Tormenta Lady");
+        service.addBicycle("SCOTT Scale Unique");
+        service.addBicycle("KROSS Trans Siberian 2015");
 
 
 
-        service.addBicyclePart("SCOTT Sportster 2017", "korba", "Deore");
-        service.addBicyclePart("Accent Tormenta Lady", "korba", "Alivio");
-        service.addBicyclePart("SCOTT Sportster 2017", "Przerzutka", "Alivio");
-        service.addBicyclePart("Kross Trans Siberian 2015", "Hamulce", "Altus");
-        service.addBicyclePart("SCOTT Sportster 2017", "Wheels", "Deore XT");
+        service.addBicyclePart("SCOTT Sportster 2017", "CRANK", "Deore");
+        service.addBicyclePart("ACCENT Tormenta Lady", "CRANK", "Alivio");
+        service.addBicyclePart("SCOTT Sportster 2017", "FRONTDERAILLEUR", "Alivio");
+        service.addBicyclePart("KROSS Trans Siberian 2015", "BRAKES", "Altus");
+        service.addBicyclePart("SCOTT Sportster 2017", "WHEELS", "Deore XT");
 
 
 

@@ -31,7 +31,5 @@ public class Bicycle {
     // dodatkowo ten String.format jest tuaj zupelnie nie potrzebny - ta metoda sluzy do formatowania.
     // to powinno byc tak jak ponizej
     // zmien ta metode jeszcze w taki sposob, aby wydrukowala wszystkie czesci
-    public String toString(){
-        return "Bicycle name: " + name;
-    }
+    public String toString(){return "Bicycle name: " + name; }
 }
