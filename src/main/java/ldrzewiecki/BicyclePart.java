@@ -7,13 +7,11 @@ public class BicyclePart {
     W JAVA do typow wyliczeniowych uzywa sie typu Enum - zastąp String z enum - zmień typ pola ze String, na typ, który sam utworzysz o nazwie
     BicyclePartCategory, albo lepszej
      */
-    public enum BicyclePartCategory {CRANK, REARDERAILLEUR, FRONTDERAILLEUR, WHEELS, BRAKES}
-
-    private BicyclePartCategory category;
+    //public enum BicyclePartCategory {CRANK, REARDERAILLEUR, FRONTDERAILLEUR, WHEELS, BRAKES}
+    private String category;
     private String name;
 
-    public BicyclePart(BicyclePartCategory category, String name){this.category = category; this.name = name;}
-
+   // public BicyclePart(BicyclePartCategory category, String name){this.category = category; this.name = name;}
 
 
     public String getCategory() {
@@ -31,4 +29,6 @@ public class BicyclePart {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String toString(){return "Bicycle part: " + category + " " + name;}
 }

@@ -23,8 +23,9 @@ public class BicycleService {
 
        Bicycle bicycle = findBicycle(name);
        if(bicycle != null) {
-           throw new RuntimeException("You"); //DOBRZE?
+           throw new RuntimeException("You");
        }
+
         bicycles.add(newBicycle);
     }
 
@@ -47,7 +48,7 @@ public class BicycleService {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle.toString());
             for (BicyclePart part : bicycle.parts ){
-                System.out.println(part.getCategory()+" --- "+part.getName());
+                System.out.println(part.toString());
             }
             System.out.println("-------");
             }
