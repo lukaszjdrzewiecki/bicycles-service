@@ -40,6 +40,7 @@ public class BicycleService {
         }
     }
 
+
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
