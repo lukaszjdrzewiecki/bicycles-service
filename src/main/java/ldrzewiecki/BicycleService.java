@@ -25,7 +25,6 @@ public class BicycleService {
        if(bicycle != null) {
            throw new RuntimeException("You");
        }
-
         bicycles.add(newBicycle);
     }
 
@@ -44,9 +43,6 @@ public class BicycleService {
     public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
-            for (BicyclePart part : bicycle.getParts() ){
-                System.out.println(part);
-            }
             System.out.println("-------");
             }
         }

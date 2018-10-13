@@ -12,7 +12,7 @@ public class BicyclePart {
     private String name;
 
 
-   public BicyclePart(BicyclePartCategory category, String name){this.category = category; this.name = name;}
+    public BicyclePart(BicyclePartCategory category, String name){this.category = category; this.name = name;}
 
 
     public BicyclePartCategory getCategory() {
@@ -30,4 +30,7 @@ public class BicyclePart {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String toString(){return "part: " + category + " " + name;}
+
 }
