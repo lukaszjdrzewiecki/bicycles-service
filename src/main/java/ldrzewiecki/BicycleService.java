@@ -40,20 +40,18 @@ public class BicycleService {
      */
     public void addBicyclePart(String bicycleName, BicyclePartCategory partCategory, String partName) {
         Bicycle bicycle = findBicycle(bicycleName);
-
         if (bicycle != null) {
             BicyclePart newBicyclePart = new BicyclePart(partCategory, partName);
-            bicycle.getParts().add(newBicyclePart);
-    /*        for (Bicycle rower : bicycles) {
-                for (BicyclePart part : rower.getParts()) {
-                    if (part.getCategory().equals(partCategory)) {
-                        System.out.println(partCategory);
-                    }
+            bicycle.getParts().put(partCategory, newBicyclePart);
+            if (bicycle.getParts().containsKey(partCategory)) {
+                throw new RuntimeException("Map already contains");
+            }
 
-                }
-            }*/
         }
+
     }
+
+
 
     public void saveBicycles(String filename) throws IOException{
         File file = new File (filename,"rower.txt");

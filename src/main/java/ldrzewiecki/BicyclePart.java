@@ -26,6 +26,6 @@ public class BicyclePart {
         this.name = name;
     }
 
-    public String toString(){return "part: " + category + " " + name;}
+    public String toString(){return name;}
 
 }

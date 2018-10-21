@@ -22,9 +22,12 @@ public class Main {
         service.addBicyclePart("KROSS Trans Siberian 2015", BicyclePartCategory.BRAKES, "Altus");
         service.addBicyclePart("SCOTT Sportster 2017", BicyclePartCategory.WHEELS, "Deore XT");
         service.addBicyclePart("ACCENT Tormenta Lady", BicyclePartCategory.CRANK, "Deore");
+        service.addBicyclePart("ACCENT Tormenta Lady", BicyclePartCategory.CRANK, "blablalba");
+
 
 
         service.printBicycles();
+
     }
 
 }
