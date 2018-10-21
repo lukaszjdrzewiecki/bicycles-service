@@ -43,7 +43,7 @@ public class BicycleService {
         if (bicycle != null) {
             BicyclePart newBicyclePart = new BicyclePart(partCategory, partName);
             bicycle.getParts().put(partCategory, newBicyclePart);
-            if (bicycle.getParts().containsKey(partCategory)) {
+            if (bicycle.getParts().containsKey(partCategory)) { //tę linijkę chcę dodać jako warunek przy dodawaniu cześci. mogę to jakiś zrobić?
                 throw new RuntimeException("Map already contains");
             }
 
