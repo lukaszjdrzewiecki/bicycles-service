@@ -34,6 +34,7 @@ public class BicycleService {
     }
 
 
+
     /*
      TODO - rower nie moze miec np.: 2 KORB. Zabezpiecz sie przed dodawaniem dóch korb do roweru.
      */
