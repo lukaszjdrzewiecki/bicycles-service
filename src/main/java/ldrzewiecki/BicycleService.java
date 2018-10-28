@@ -9,6 +9,7 @@ import java.util.List;
 import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.*;
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
@@ -43,9 +44,7 @@ public class BicycleService {
         if (bicycle != null) {
             BicyclePart newBicyclePart = new BicyclePart(partCategory, partName);
             if (!bicycle.getParts().containsKey(partCategory)){
-                do {
                     bicycle.getParts().put(partCategory, newBicyclePart);
-                } while (!bicycle.getParts().containsKey(partCategory)) ;
                 } else {throw new RuntimeException("duplikat");}
         }
     }
@@ -53,7 +52,7 @@ public class BicycleService {
 
 
     public void saveBicycles(String filename) throws IOException{
-        File file = new File (filename,"rower.txt");
+        File file = new File (filename);
         BufferedWriter out = new BufferedWriter(new FileWriter(file));
         for(Bicycle bicycle : bicycles) {
             out.write(bicycle.toString());
@@ -62,19 +61,24 @@ public class BicycleService {
 
     }
 
-    public void loadBicycles(String filename) throws IOException{
-        Path path = Paths.get("rower.txt");
-        byte[] data = Files.readAllBytes(path);
-        System.out.println(new String(data, 0));
+    public void loadBicycles(String filename) throws IOException {
+        File file = new File (filename);
+        Scanner sc = new Scanner(file);
+        System.out.println(sc.nextLine());
+        System.out.println("-------------");
+        System.out.println(sc.nextLine());
+        System.out.println("-------------");
+        System.out.println(sc.nextLine());
+        System.out.println("-------------");
     }
 
 
-    public void printBicycles() {
+   /* public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
             System.out.println("-------");
             }
-        }
+        }*/
 
     }
 

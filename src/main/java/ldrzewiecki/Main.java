@@ -26,8 +26,10 @@ public class Main {
 
 
 
-        service.printBicycles();
+        //service.printBicycles();
 
+        service.saveBicycles("rower.txt");
+        service.loadBicycles("rower.txt");
     }
 
 }
