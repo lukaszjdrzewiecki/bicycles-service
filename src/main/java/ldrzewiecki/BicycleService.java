@@ -62,8 +62,11 @@ public class BicycleService {
     }
 
     public void loadBicycles(String filename) throws IOException {
+        Bicycle bicycle = new Bicycle();
         File file = new File (filename);
         Scanner sc = new Scanner(file);
+        System.out.println(sc.nextLine());
+        System.out.println("-------------");
         System.out.println(sc.nextLine());
         System.out.println("-------------");
         System.out.println(sc.nextLine());
