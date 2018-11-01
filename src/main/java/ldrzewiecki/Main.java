@@ -26,10 +26,15 @@ public class Main {
 
 
 
-        //service.printBicycles();
 
-        service.saveBicycles("rower.txt");
-        service.loadBicycles("rower.txt");
+
+
+
+        String fileName = "bicycles.txt";
+
+        service.saveBicycles(fileName);
+        service.loadBicycles(fileName);
+        service.printBicycles();
     }
 
 }

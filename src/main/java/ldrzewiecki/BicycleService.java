@@ -55,34 +55,32 @@ public class BicycleService {
         File file = new File (filename);
         BufferedWriter out = new BufferedWriter(new FileWriter(file));
         for(Bicycle bicycle : bicycles) {
-            out.write(bicycle.toString());
+            out.write(bicycle.getName() + "\n");
+            for(BicyclePartCategory partCategory : bicycle.getParts().keySet()) {
+
+
+            }
+            out.write("\n");
         }
         out.close();
 
     }
 
     public void loadBicycles(String filename) throws IOException {
-        Bicycle bicycle = new Bicycle();
-        File file = new File (filename);
+        File file = new File(filename);
         Scanner sc = new Scanner(file);
-        System.out.println(sc.nextLine());
-        System.out.println("-------------");
-        System.out.println(sc.nextLine());
-        System.out.println("-------------");
-        System.out.println(sc.nextLine());
-        System.out.println("-------------");
-        System.out.println(sc.nextLine());
-        System.out.println("-------------");
+        this.bicycles.clear();
+        while(sc.hasNextLine()) {
+            String bicycleInfo = sc.nextLine();
+            this.addBicycle(bicycleInfo);
+        }
     }
 
-
-   /* public void printBicycles() {
+    public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
-            System.out.println("-------");
-            }
-        }*/
-
+        }
     }
+}
 
 
