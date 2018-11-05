@@ -28,9 +28,9 @@ public class BicycleService {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
         Bicycle bicycle = findBicycle(name);
-        if (bicycle != null) {
+        /*if (bicycle != null) {
             throw new RuntimeException("You");
-        }
+        }*/
         bicycles.add(newBicycle);
     }
 
@@ -55,16 +55,20 @@ public class BicycleService {
         File file = new File (filename);
         BufferedWriter out = new BufferedWriter(new FileWriter(file));
         for(Bicycle bicycle : bicycles) {
-            out.write(bicycle.getName() + "\n");
-            for(BicyclePartCategory partCategory : bicycle.getParts().keySet()) {
-
-
+            out.write(bicycle.getName() +" " + bicycle.getParts () + " ");
+          /*  for(BicyclePartCategory partCategory : bicycle.getParts().keySet()) {
+                out.write( "BicyclePartCategory: " + partCategory + "\n");
             }
+
+            for(BicyclePart partName : bicycle.getParts().values()) {
+                out.write( "partName: " + partName + "\n");
+            }*/
+
             out.write("\n");
         }
         out.close();
-
     }
+
 
     public void loadBicycles(String filename) throws IOException {
         File file = new File(filename);
