@@ -53,17 +53,13 @@ public class BicycleService {
 
     public void saveBicycles(String filename) throws IOException{
         File file = new File (filename);
-        BufferedWriter out = new BufferedWriter(new FileWriter(file));
+        BufferedWriter out = new BufferedWriter(new FileWriter(file, false));
         for(Bicycle bicycle : bicycles) {
-            out.write(bicycle.getName() +" " + bicycle.getParts () + " ");
-          /*  for(BicyclePartCategory partCategory : bicycle.getParts().keySet()) {
-                out.write( "BicyclePartCategory: " + partCategory + "\n");
+            out.write(bicycle.getName() + "\t");
+            for(BicyclePartCategory partCategory : bicycle.getParts().keySet()) {
+                out.write( partCategory + "=" + bicycle.getParts().get(partCategory));
+                out.write(";");
             }
-
-            for(BicyclePart partName : bicycle.getParts().values()) {
-                out.write( "partName: " + partName + "\n");
-            }*/
-
             out.write("\n");
         }
         out.close();
@@ -75,8 +71,19 @@ public class BicycleService {
         Scanner sc = new Scanner(file);
         this.bicycles.clear();
         while(sc.hasNextLine()) {
-            String bicycleInfo = sc.nextLine();
-            this.addBicycle(bicycleInfo);
+            String[] bicycleInfo = sc.nextLine().split("\t");
+            String bicycleName = bicycleInfo[0];
+            this.addBicycle(bicycleName);
+            try {
+                String[] partsInfo = bicycleInfo[1].split(";");
+                for (String partInfo : partsInfo) {
+                    String[] part = partInfo.split("=");
+                    this.addBicyclePart(bicycleName, BicyclePartCategory.valueOf(part[0]), part[1]);
+                }
+            } catch (Exception e) {
+                //handling end of part list
+            }
+
         }
     }
 

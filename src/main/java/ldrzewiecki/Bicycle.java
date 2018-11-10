@@ -22,6 +22,6 @@ public class Bicycle {
     }
     public void setParts(Map<BicyclePartCategory, BicyclePart> parts) { this.parts = parts; }
 
-    public String toString(){return "Bicycle name: " + name + "Parts: " + parts;}
+    public String toString(){return "Bicycle name: " + name + " Parts: " + parts;}
 
 }
