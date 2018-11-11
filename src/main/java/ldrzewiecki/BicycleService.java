@@ -28,17 +28,14 @@ public class BicycleService {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
         Bicycle bicycle = findBicycle(name);
-        /*if (bicycle != null) {
+        if (bicycle != null) {
             throw new RuntimeException("You");
-        }*/
+        }
         bicycles.add(newBicycle);
     }
 
 
 
-    /*
-     TODO - rower nie moze miec np.: 2 KORB. Zabezpiecz sie przed dodawaniem dóch korb do roweru.
-     */
     public void addBicyclePart(String bicycleName, BicyclePartCategory partCategory, String partName) {
         Bicycle bicycle = findBicycle(bicycleName);
         if (bicycle != null) {
@@ -48,7 +45,6 @@ public class BicycleService {
                 } else {throw new RuntimeException("duplikat");}
         }
     }
-
 
 
     public void saveBicycles(String filename) throws IOException{

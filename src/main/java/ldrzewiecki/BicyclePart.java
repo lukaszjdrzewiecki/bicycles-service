@@ -2,11 +2,11 @@ package ldrzewiecki;
 
 public class BicyclePart {
 
-
     private BicyclePartCategory category;
     private String name;
 
 
+    public BicyclePart(){}
     public BicyclePart(BicyclePartCategory category, String name){this.category = category; this.name = name;}
 
 
