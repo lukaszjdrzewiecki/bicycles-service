@@ -7,11 +7,16 @@ import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.*;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
+
+    ObjectMapper mapper = new ObjectMapper();
 
     public Bicycle findBicycle(String name) {
         for (Bicycle bicycle : bicycles) {
@@ -48,45 +53,32 @@ public class BicycleService {
 
     public void saveBicycles(String filename) throws IOException{
         File file = new File (filename);
-        BufferedWriter out = new BufferedWriter(new FileWriter(file, false));
-        for(Bicycle bicycle : bicycles) {
-            out.write(bicycle.getName() + "\t");
-            for(BicyclePartCategory partCategory : bicycle.getParts().keySet()) {
-                out.write( partCategory + "=" + bicycle.getParts().get(partCategory));
-                out.write(";");
-            }
-            out.write("\n");
+        try {
+            mapper.writeValue(file, bicycles);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        out.close();
+
     }
 
 
-    public void loadBicycles(String filename) throws IOException {
+   /* public void loadBicycles(String filename) throws IOException {
         File file = new File(filename);
-        Scanner sc = new Scanner(file);
-        this.bicycles.clear();
-        while(sc.hasNextLine()) {
-            String[] bicycleInfo = sc.nextLine().split("\t");
-            String bicycleName = bicycleInfo[0];
-            this.addBicycle(bicycleName);
-            try {
-                String[] partsInfo = bicycleInfo[1].split(";");
-                for (String partInfo : partsInfo) {
-                    String[] part = partInfo.split("=");
-                    this.addBicyclePart(bicycleName, BicyclePartCategory.valueOf(part[0]), part[1]);
-                }
-            } catch (Exception e) {
-                //handling end of part list
-            }
 
+        try {
+            Bicycle bicycle = mapper.readValue(file, Bicycle.class);
+            System.out.println(bicycle);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
 
-    public void printBicycles() {
+    } */
+
+   /* public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
         }
-    }
+    } */
 }
 
 
