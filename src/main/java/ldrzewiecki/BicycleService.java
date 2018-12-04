@@ -67,7 +67,7 @@ public class BicycleService {
 
         try {
             Bicycle[] bicycle = mapper.readValue(file, Bicycle[].class);
-            System.out.println(bicycle);
+            System.out.println(Arrays.toString(bicycle));
         } catch (Exception e) {
             e.printStackTrace();
         }
