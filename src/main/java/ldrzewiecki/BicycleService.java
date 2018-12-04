@@ -62,17 +62,17 @@ public class BicycleService {
     }
 
 
-   /* public void loadBicycles(String filename) throws IOException {
+    public void loadBicycles(String filename) throws IOException {
         File file = new File(filename);
 
         try {
-            Bicycle bicycle = mapper.readValue(file, Bicycle.class);
+            Bicycle[] bicycle = mapper.readValue(file, Bicycle[].class);
             System.out.println(bicycle);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-    } */
+    }
 
    /* public void printBicycles() {
         for (Bicycle bicycle : bicycles) {

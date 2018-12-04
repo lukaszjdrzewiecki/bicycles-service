@@ -31,7 +31,7 @@ public class Main {
         String fileName = "bicycles.txt";
 
         service.saveBicycles(fileName);
-        //service.loadBicycles(fileName);
+        service.loadBicycles(fileName);
         //service.printBicycles();
     }
 
