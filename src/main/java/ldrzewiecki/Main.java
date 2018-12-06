@@ -32,7 +32,7 @@ public class Main {
 
         service.saveBicycles(fileName);
         service.loadBicycles(fileName);
-        //service.printBicycles();
+        service.printBicycles();
     }
 
 }

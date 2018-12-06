@@ -51,34 +51,33 @@ public class BicycleService {
     }
 
 
-    public void saveBicycles(String filename) throws IOException{
+    public void saveBicycles(String filename){
         File file = new File (filename);
         try {
             mapper.writeValue(file, bicycles);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
 
-    public void loadBicycles(String filename) throws IOException {
+    public void loadBicycles(String filename) {
         File file = new File(filename);
-
+        this.bicycles.clear();
         try {
             Bicycle[] bicycle = mapper.readValue(file, Bicycle[].class);
-            System.out.println(Arrays.toString(bicycle));
+            List<Bicycle> arrayList = new ArrayList<>(Arrays.asList(bicycle));
+            bicycles.addAll(arrayList);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-   /* public void printBicycles() {
+   public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
         }
-    } */
+    }
 }
 
 
