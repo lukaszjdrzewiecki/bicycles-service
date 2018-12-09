@@ -24,4 +24,7 @@ public class Bicycle {
 
     public String toString(){return "Bicycle name: " + name + " Parts: " + parts;}
 
+    //public int getNoOfParts() { return parts.size(); }
+
+
 }

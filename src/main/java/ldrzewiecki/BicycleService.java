@@ -79,9 +79,8 @@ public class BicycleService {
         }
     }
 
-    public int getNoOfBicycles() {
-        return bicycles.size();
-    }
+    public int getNoOfBicycles() { return bicycles.size(); }
+
 }
 
 
