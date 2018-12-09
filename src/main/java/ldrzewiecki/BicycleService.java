@@ -33,7 +33,7 @@ public class BicycleService {
         newBicycle.setName(name);
         Bicycle bicycle = findBicycle(name);
         if (bicycle != null) {
-            throw new RuntimeException("You");
+            throw new RuntimeException("You are trying to add the same name two times");
         }
         bicycles.add(newBicycle);
     }
@@ -77,6 +77,10 @@ public class BicycleService {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
         }
+    }
+
+    public int getNoOfBicycles() {
+        return bicycles.size();
     }
 }
 

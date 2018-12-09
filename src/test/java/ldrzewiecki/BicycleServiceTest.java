@@ -6,12 +6,20 @@ import static org.junit.Assert.*;
 
 public class BicycleServiceTest {
 
-/*
+
     @Test
-    public void findBicycle() {
-        BicycleService add = new BicycleService("SCOTT Sportster 2017");
-        assertArrayEquals("SCOTT Sportster 2017", add.addBicycle());
-    }*/
+    public void testAddBicycle() {
+        BicycleService service = new BicycleService();
+        service.addBicycle("a");
+        try {
+            service.addBicycle("a");
+            fail("Should throw exception because i am trying to add the same name two times");
+        } catch (Exception e) {
+            //OK
+        }
+
+        assertEquals(1, service.getNoOfBicycles());
+    }
 
     @Test
     public void addBicycle() throws Exception{
