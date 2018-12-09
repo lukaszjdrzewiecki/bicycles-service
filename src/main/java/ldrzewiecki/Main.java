@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.io.File;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -28,13 +25,7 @@ public class Main {
         // service.addBicyclePart("ACCENT Tormenta Lady", BicyclePartCategory.CRANK, "Deore");
 
 
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            mapper.writeValue(new File("result.json"), service.bicycles);//Plain JSON
-            //mapper.writerWithDefaultPrettyPrinter().writeValue(new File("result.json"), carFleet);//Prettified JSON
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
 
         String fileName = "bicycles.txt";
