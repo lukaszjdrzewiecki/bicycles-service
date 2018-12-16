@@ -10,6 +10,7 @@ import java.util.Set;
 public class Bicycle {
 
     private String name;
+    private Casette casette;
     private Map<BicyclePartCategory, BicyclePart> parts = new HashMap();
 
 
@@ -23,6 +24,14 @@ public class Bicycle {
     public void setParts(Map<BicyclePartCategory, BicyclePart> parts) { this.parts = parts; }
 
     public String toString(){return "Bicycle name: " + name + " Parts: " + parts;}
+
+    public void setCasette(Casette casette) {
+        this.casette = casette;
+    }
+    public Casette getCasette() {
+        return casette;
+    }
+
 
     //public int getNoOfParts() { return parts.size(); }
 
