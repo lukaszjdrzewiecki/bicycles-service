@@ -1,5 +1,10 @@
 package ldrzewiecki;
 
+import ldrzewiecki.dto.Brakes;
+import ldrzewiecki.dto.Crank;
+import ldrzewiecki.dto.FrontDerailleur;
+import ldrzewiecki.dto.Wheels;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,11 +21,11 @@ public class Main {
         service.addBicycle("KROSS Trans Siberian 2015");
 
 
-        service.addBicyclePart("SCOTT Sportster 2017", BicyclePartCategory.CASETTE, "Deore");
-        service.addBicyclePart("ACCENT Tormenta Lady", BicyclePartCategory.CRANK, "Alivio");
-        service.addBicyclePart("SCOTT Sportster 2017", BicyclePartCategory.FRONT_DERAILLEUR, "Alivio");
-        service.addBicyclePart("KROSS Trans Siberian 2015", BicyclePartCategory.BRAKES, "Altus");
-        service.addBicyclePart("SCOTT Sportster 2017", BicyclePartCategory.WHEELS, "Deore XT");
+        service.addBicyclePart("SCOTT Sportster 2017", new Crank("Deore"));
+        service.addBicyclePart("ACCENT Tormenta Lady", new Crank("Alivio"));
+        service.addBicyclePart("SCOTT Sportster 2017", new FrontDerailleur("Alivio"));
+        service.addBicyclePart("KROSS Trans Siberian 2015", new Brakes( "Altus"));
+        service.addBicyclePart("SCOTT Sportster 2017", new Wheels("XT"));
         // DUPLIKAT DO TESTU
         // service.addBicyclePart("ACCENT Tormenta Lady", BicyclePartCategory.CRANK, "Deore");
 

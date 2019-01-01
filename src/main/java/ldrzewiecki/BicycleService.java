@@ -3,14 +3,12 @@ package ldrzewiecki;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.*;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ldrzewiecki.dto.Bicycle;
+import ldrzewiecki.dto.BicyclePart;
+import ldrzewiecki.dto.Crank;
 
 
 public class BicycleService {
@@ -40,13 +38,12 @@ public class BicycleService {
 
 
 
-    public void addBicyclePart(String bicycleName, BicyclePartCategory partCategory, String partName) {
+    public void addBicyclePart(String bicycleName, BicyclePart part) {
         Bicycle bicycle = findBicycle(bicycleName);
         if (bicycle != null) {
-            BicyclePart newBicyclePart = new BicyclePart(partCategory, partName);
-            if (!bicycle.getParts().containsKey(partCategory)){
-                    bicycle.getParts().put(partCategory, newBicyclePart);
-                } else {throw new RuntimeException("duplikat");}
+            if(part instanceof Crank) {
+                bicycle.setCrank((Crank)part);
+            }
         }
     }
 
