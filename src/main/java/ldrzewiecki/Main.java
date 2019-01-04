@@ -30,6 +30,7 @@ public class Main {
         // service.addBicyclePart("ACCENT Tormenta Lady", BicyclePartCategory.CRANK, "Deore");
 
 
+        service.addCasette("Scott Scale Unique", BicyclePartCategory.CASETTE, "Deore", 11, 42, 10);
 
 
 
