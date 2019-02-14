@@ -13,8 +13,6 @@ public class Main {
 
         BicycleService service = new BicycleService();
 
-
-
         service.addBicycle("SCOTT Sportster 2017");
         service.addBicycle("ACCENT Tormenta Lady");
         service.addBicycle("SCOTT Scale Unique");
