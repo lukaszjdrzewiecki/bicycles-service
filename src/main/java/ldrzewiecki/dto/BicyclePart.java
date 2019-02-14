@@ -18,4 +18,9 @@ public abstract class BicyclePart {
 
     public String toString(){return name;}
 
+    public BicyclePart() {
+
+    }
+
+
 }

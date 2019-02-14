@@ -10,6 +10,10 @@ public class Crank extends BicyclePart {
     private int smallGear;
     private int speed;
 
+    public Crank() {
+        super();
+    }
+
     public Crank(String name) {
         super(name);
     }
