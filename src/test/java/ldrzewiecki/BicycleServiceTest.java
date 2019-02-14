@@ -1,4 +1,4 @@
-package ldrzewiecki;
+/* package ldrzewiecki;
 
 import org.junit.Test;
 
@@ -75,4 +75,6 @@ public class BicycleServiceTest {
         service.printBicycles();
 
     }
-}
+
+
+*/

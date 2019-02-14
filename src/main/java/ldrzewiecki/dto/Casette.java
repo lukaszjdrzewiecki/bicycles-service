@@ -8,6 +8,9 @@ public class Casette extends BicyclePart {
     private int maximum;
     private int speed;
 
+    public Casette(String name) {
+        super(name);
+    }
 
     public Casette(String name, int minimum, int maximum, int speed){
         super(name);

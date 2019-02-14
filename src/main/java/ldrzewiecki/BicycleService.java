@@ -10,8 +10,9 @@ import java.util.*;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-
+import ldrzewiecki.dto.Bicycle;
+import ldrzewiecki.dto.BicyclePart;
+import ldrzewiecki.dto.Crank;
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
@@ -39,26 +40,15 @@ public class BicycleService {
     }
 
 
-
-    public void addBicyclePart(String bicycleName, BicyclePartCategory partCategory, String partName) {
+    public void addBicyclePart(String bicycleName, BicyclePart part) {
         Bicycle bicycle = findBicycle(bicycleName);
         if (bicycle != null) {
-            BicyclePart newBicyclePart = new BicyclePart(partCategory, partName);
-            if (!bicycle.getParts().containsKey(partCategory)){
-                bicycle.getParts().put(partCategory, newBicyclePart);
-            } else {throw new RuntimeException("duplikat");}
+            if(part instanceof Crank) {
+                bicycle.setCrank((Crank)part);
+            }
         }
     }
 
-    public void addCasette(String bicycleName, BicyclePartCategory partCategory, String casetteName, int minimum, int maximum, int speed) {
-        Bicycle bicycle = findBicycle(bicycleName);
-        if (bicycle != null) {
-            Casette newCasette = new Casette(partCategory, casetteName, minimum, maximum, speed);
-            if (!bicycle.getParts().containsKey(partCategory)){
-                bicycle.getParts().put(partCategory, newCasette);
-            } else {throw new RuntimeException("duplikat");}
-        }
-    }
 
     public void saveBicycles(String filename){
         File file = new File (filename);
@@ -82,7 +72,7 @@ public class BicycleService {
         }
     }
 
-   public void printBicycles() {
+    public void printBicycles() {
         for (Bicycle bicycle : bicycles) {
             System.out.println(bicycle);
         }
