@@ -16,8 +16,16 @@ import ldrzewiecki.dto.Crank;
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
+    List<Bicycle> randomBicycles = new ArrayList<>();
 
     ObjectMapper mapper = new ObjectMapper();
+
+    public List addRandomBicycles(int number){
+        for (int i =0; i<number; i++){
+            this.randomBicycles.add(new Bicycle("Rower #" + (i+1)));
+        }
+        return randomBicycles;
+    }
 
     public Bicycle findBicycle(String name) {
         for (Bicycle bicycle : bicycles) {
@@ -78,7 +86,12 @@ public class BicycleService {
         }
     }
 
-    public int getNoOfBicycles() { return bicycles.size(); }
+    public void printBicycles(List list) {
+        for (Object bicycle : list) {
+            System.out.println(bicycle);
+        }
+    }
+
 
 }
 

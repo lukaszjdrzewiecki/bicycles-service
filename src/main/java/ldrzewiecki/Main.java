@@ -27,9 +27,11 @@ public class Main {
 
         String fileName = "bicycles.txt";
 
-        service.saveBicycles(fileName);
-        service.loadBicycles(fileName);
-        service.printBicycles();
+        //service.saveBicycles(fileName);
+        //service.loadBicycles(fileName);
+        //service.printBicycles();
+
+        service.printBicycles(service.addRandomBicycles(15));
 
     }
 

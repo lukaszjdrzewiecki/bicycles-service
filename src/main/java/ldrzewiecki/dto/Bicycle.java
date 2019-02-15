@@ -1,10 +1,12 @@
 package ldrzewiecki.dto;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bicycle {
 
+    private String manufacturer;
     private String name;
     private Crank crank;
     private Casette casette;
@@ -15,7 +17,14 @@ public class Bicycle {
 
     public String toString()
     {
-        return "Bicycle name: " + name;
+        return "Bicycle name: " + name + " " + (this.manufacturer = getBrand());
+    }
+
+    public Bicycle() {
+    }
+
+    public Bicycle(String name) {
+        this.name = name;
     }
 
     public Casette getCasette() {
@@ -70,7 +79,18 @@ public class Bicycle {
         this.crank = crank;
     }
 
-    //public int getNoOfParts() { return parts.size(); }
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
+    private String[] brand = {"Scott", "Kross", "Orbea", "Cube", "Fuji"};
+
+    private static int randomWithRange() {
+        return (int)(Math.random() * 4) + 1;
+    }
+
+    public String getBrand (){
+        return Arrays.asList(brand).get(randomWithRange());
+    }
 
 }
