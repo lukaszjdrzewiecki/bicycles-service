@@ -22,7 +22,7 @@ public class BicycleService {
 
     public List addRandomBicycles(int number){
         for (int i =0; i<number; i++){
-            this.randomBicycles.add(new Bicycle("Rower #" + (i+1)));
+            this.randomBicycles.add(new Bicycle("Rower #" + (i+1), "RANDOM"));
         }
         return randomBicycles;
     }
@@ -37,9 +37,10 @@ public class BicycleService {
     }
 
 
-    public void addBicycle(String name) {
+    public void addBicycle(String name, String brand) {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
+        newBicycle.setManufacturer(brand);
         Bicycle bicycle = findBicycle(name);
         if (bicycle != null) {
             throw new RuntimeException("You are trying to add the same name two times");

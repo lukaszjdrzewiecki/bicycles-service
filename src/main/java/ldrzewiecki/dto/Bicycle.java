@@ -17,14 +17,18 @@ public class Bicycle {
 
     public String toString()
     {
-        return "Bicycle name: " + name + " " + (this.manufacturer = getBrand());
+        return "Bicycle: " + manufacturer + " " + name;
     }
 
     public Bicycle() {
     }
 
-    public Bicycle(String name) {
+    public Bicycle(String name, String manufacturer) {
         this.name = name;
+        if(manufacturer.equals("RANDOM")){
+            manufacturer = getBrand();
+            this.manufacturer = manufacturer;
+        }
     }
 
     public Casette getCasette() {
@@ -67,6 +71,14 @@ public class Bicycle {
         this.wheels = wheels;
     }
 
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setBrand(String[] brand) {
+        this.brand = brand;
+    }
+
     public String getName() {
         return name; }
     public void setName(String name) { this.name = name; }
@@ -89,7 +101,7 @@ public class Bicycle {
         return (int)(Math.random() * 4) + 1;
     }
 
-    public String getBrand (){
+    private String getBrand (){
         return Arrays.asList(brand).get(randomWithRange());
     }
 
