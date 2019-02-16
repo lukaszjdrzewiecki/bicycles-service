@@ -7,4 +7,6 @@ public class Brakes extends BicyclePart {
     public Brakes (String name) {
         super(name);
     }
+
+
 }

@@ -37,6 +37,9 @@ public class Bicycle {
         }
     }
 
+
+
+
     public Casette getCasette() {
         return casette;
     }
@@ -103,6 +106,8 @@ public class Bicycle {
 
     private String[] brand = {"Scott", "Kross", "Orbea", "Cube", "Fuji"};
 
+    private String[] partSeries = {"Altus", "Alivio", "Deore", "XT", "XTR"};
+
     private static int randomWithRange() {
         return (int)(Math.random() * 4) + 1;
     }
@@ -110,6 +115,8 @@ public class Bicycle {
     private String getBrand (){
         return Arrays.asList(brand).get(randomWithRange());
     }
+
+    private String getPartSeries(){return Arrays.asList(partSeries).get(randomWithRange());}
 
 
 }

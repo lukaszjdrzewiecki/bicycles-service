@@ -10,9 +10,7 @@ import java.util.*;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ldrzewiecki.dto.Bicycle;
-import ldrzewiecki.dto.BicyclePart;
-import ldrzewiecki.dto.Crank;
+import ldrzewiecki.dto.*;
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
@@ -23,6 +21,18 @@ public class BicycleService {
     public List addRandomBicycles(int number){
         for (int i =0; i<number; i++){
             this.randomBicycles.add(new Bicycle("Rower #" + (i+1), "RANDOM"));
+        }
+        return randomBicycles;
+    }
+
+    public List addRandomParts(String name){
+        for (Bicycle bicycle : randomBicycles){
+            bicycle.setCrank( new Crank(name));
+            bicycle.setCasette( new Casette(name));
+            bicycle.setRearDerailleur( new RearDerailleur(name));
+            bicycle.setWheels( new Wheels(name));
+            bicycle.setBrakes( new Brakes(name));
+            bicycle.setFrontDerailleur( new FrontDerailleur(name));
         }
         return randomBicycles;
     }
