@@ -31,6 +31,8 @@ public class Main {
         service.loadBicycles(fileName);
         service.printBicycles();
 
+        System.out.println("---------------------------");
+
         service.printBicycles(service.addRandomBicycles(15));
 
     }

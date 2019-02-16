@@ -17,7 +17,13 @@ public class Bicycle {
 
     public String toString()
     {
-        return "Bicycle: " + manufacturer + " " + name;
+        return "Bicycle: " + manufacturer + " " + name + " with Parts: \n" +
+                "[CRANK] " + this.crank +
+                " [CASETTE] " + this.casette +
+                " [FRONT DERAILLEUR] " + this.frontDerailleur +
+                " [REAR DERAILLEUR] " + this.rearDerailleur +
+                " [BRAKES] " + this.brakes +
+                " [WHEELS] " + this.wheels;
     }
 
     public Bicycle() {
@@ -104,5 +110,6 @@ public class Bicycle {
     private String getBrand (){
         return Arrays.asList(brand).get(randomWithRange());
     }
+
 
 }
