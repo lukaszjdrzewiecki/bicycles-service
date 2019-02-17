@@ -1,4 +1,4 @@
-package ldrzewiecki.dto;
+package p76.bicycles.dto;
 
 import java.util.Arrays;
 

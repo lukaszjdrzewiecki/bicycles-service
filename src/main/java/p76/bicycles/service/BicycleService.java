@@ -1,16 +1,12 @@
-package ldrzewiecki;
+package p76.bicycles.service;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.*;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ldrzewiecki.dto.*;
+import p76.bicycles.dto.*;
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();

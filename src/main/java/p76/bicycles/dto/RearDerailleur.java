@@ -1,6 +1,4 @@
-package ldrzewiecki.dto;
-
-import ldrzewiecki.dto.BicyclePart;
+package p76.bicycles.dto;
 
 public class RearDerailleur extends BicyclePart {
     private int speed;

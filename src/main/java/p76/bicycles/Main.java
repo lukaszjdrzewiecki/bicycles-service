@@ -1,11 +1,9 @@
-package ldrzewiecki;
+package p76.bicycles;
 
-import ldrzewiecki.dto.*;
+import p76.bicycles.dto.*;
+import p76.bicycles.service.BicycleService;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.io.File;
 
 
 public class Main {
