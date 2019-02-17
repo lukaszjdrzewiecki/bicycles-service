@@ -10,28 +10,10 @@ import p76.bicycles.dto.*;
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
-    List<Bicycle> randomBicycles = new ArrayList<>();
+
 
     ObjectMapper mapper = new ObjectMapper();
 
-    public List addRandomBicycles(int number){
-        for (int i =0; i<number; i++){
-            this.randomBicycles.add(new Bicycle("Rower #" + (i+1), "RANDOM"));
-        }
-        return randomBicycles;
-    }
-
-    public List addRandomParts(String name){
-        for (Bicycle bicycle : randomBicycles){
-            bicycle.setCrank( new Crank(name));
-            bicycle.setCasette( new Casette(name));
-            bicycle.setRearDerailleur( new RearDerailleur(name));
-            bicycle.setWheels( new Wheels(name));
-            bicycle.setBrakes( new Brakes(name));
-            bicycle.setFrontDerailleur( new FrontDerailleur(name));
-        }
-        return randomBicycles;
-    }
 
     public Bicycle findBicycle(String name) {
         for (Bicycle bicycle : bicycles) {
@@ -93,11 +75,6 @@ public class BicycleService {
         }
     }
 
-    public void printBicycles(List list) {
-        for (Object bicycle : list) {
-            System.out.println(bicycle);
-        }
-    }
 
 
 }

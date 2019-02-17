@@ -1,6 +1,7 @@
 package p76.bicycles;
 
 import p76.bicycles.dto.*;
+import p76.bicycles.service.BicycleGenerator;
 import p76.bicycles.service.BicycleService;
 
 import java.io.*;
@@ -10,6 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         BicycleService service = new BicycleService();
+        BicycleGenerator random = new BicycleGenerator();
 
         service.addBicycle("Sportster 2017", "Scott");
         service.addBicycle("Tormenta Lady", "Accent");
@@ -30,8 +32,8 @@ public class Main {
         service.printBicycles();
 
         System.out.println("--------------------------- \n \n \n" );
-        service.addRandomBicycles(15);
-        service.printBicycles(service.addRandomParts("RANDOM"));
+        random.addRandomBicycles(15);
+        random.printBicycles(random.addRandomParts("RANDOM"));
 
     }
 
