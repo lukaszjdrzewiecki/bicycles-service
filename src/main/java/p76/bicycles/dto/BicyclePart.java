@@ -18,25 +18,8 @@ public abstract class BicyclePart {
         this.name = name;
     }
 
-    public String toString(){return randomName();}
 
     public BicyclePart() {
     }
-
-    private String[] partSeries = {"Altus", "Alivio", "Deore", "XT", "XTR"};
-
-    private static int randomWithRange() {
-        return (int)(Math.random() * 4) + 1;
-    }
-
-    private String getPartSeries(){return Arrays.asList(partSeries).get(randomWithRange());}
-
-    private String randomName(){
-        if(this.name.equals("RANDOM")){
-            return this.name = getPartSeries();
-        }
-        return this.name;
-    }
-
 
 }

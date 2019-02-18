@@ -1,5 +1,10 @@
 package p76.bicycles.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class RearDerailleur extends BicyclePart {
     private int speed;
     private String cage;

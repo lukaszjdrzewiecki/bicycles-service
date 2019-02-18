@@ -5,6 +5,7 @@ import p76.bicycles.service.BicycleGenerator;
 import p76.bicycles.service.BicycleService;
 
 import java.io.*;
+import java.util.List;
 
 
 public class Main {
@@ -25,15 +26,18 @@ public class Main {
         service.addBicyclePart("Sportster 2017", new Wheels("XT"));
         service.addBicyclePart("Sportster 2017", new Casette("M590", 11, 36, 10));
 
+        List<Bicycle> randomBicycles = random.generateRandomBicycles(15);
+        service.addBicycles(randomBicycles);
+
         String fileName = "bicycles.txt";
 
         service.saveBicycles(fileName);
         service.loadBicycles(fileName);
         service.printBicycles();
 
-        System.out.println("--------------------------- \n \n" );
-        random.addRandomBicycles(15);
-        random.printBicycles(random.addRandomParts("RANDOM"));
+        System.out.println("--------------------------- \n \n \n" );
+
+
 
     }
 
