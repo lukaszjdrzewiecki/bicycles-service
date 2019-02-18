@@ -12,8 +12,10 @@ public class BicycleCompatibility {
 
     public void rearDerailleurCompability (Bicycle bicycle){
         if (bicycle.getRearDerailleur().getCapacity() >= driveterrainCapacity(bicycle)){
-            System.out.println("is compatible");
+            System.out.println("driveterrain is compatible");
 
+        } else {
+            System.out.println("driveterrain is not compatible");
         }
 
     }

@@ -22,13 +22,9 @@ public class Main {
         service.addBicycle("Trans Siberian 2015", "Kross");
 
 
-        service.addBicyclePart("Sportster 2017", new RearDerailleur("M590", 11, "Long", 10));
-        service.addBicyclePart("Sportster 2017", new Crank("Deore", 3,44, 36, 22, 10));
-        service.addBicyclePart("Tormenta Lady", new Crank("Alivio"));
-        service.addBicyclePart("Sportster 2017", new FrontDerailleur("Alivio"));
-        service.addBicyclePart("Trans Siberian 2015", new Brakes( "Altus"));
-        service.addBicyclePart("Sportster 2017", new Wheels("XT"));
-        service.addBicyclePart("Sportster 2017", new Casette("M590", 11, 36, 10));
+        service.findBicycle("Sportster 2017").setCrank(new Crank("Deore", 3,44, 36, 22, 10));
+        service.findBicycle("Sportster 2017").setRearDerailleur(new RearDerailleur("RD-M8000", 11, "Long", 47));
+        service.findBicycle("Sportster 2017").setCasette(new Casette("M590", 11, 36, 10));
 
 
         List<Bicycle> randomBicycles = random.generateRandomBicycles(15);
@@ -38,12 +34,12 @@ public class Main {
 
         service.saveBicycles(fileName);
         service.loadBicycles(fileName);
-        service.printBicycles();
+        //service.printBicycles();
 
 
         System.out.println("--------------------------- \n \n \n" );
 
-        //compability.rearDerailleurCompability(service.findBicycle("Sportster 2017"));
+        compability.rearDerailleurCompability(service.findBicycle("Sportster 2017"));
 
 
 
