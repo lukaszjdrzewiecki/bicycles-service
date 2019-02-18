@@ -14,6 +14,9 @@ public class BicycleService {
 
     ObjectMapper mapper = new ObjectMapper();
 
+    public void addBicycles(List<Bicycle> bicycles) {
+        this.bicycles.addAll(bicycles);
+    }
 
     public Bicycle findBicycle(String name) {
         for (Bicycle bicycle : bicycles) {

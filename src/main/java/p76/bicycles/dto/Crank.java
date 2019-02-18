@@ -1,5 +1,10 @@
 package p76.bicycles.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class Crank extends BicyclePart {
     private int armLength;
     private int numberOfGears;
@@ -7,10 +12,6 @@ public class Crank extends BicyclePart {
     private int mediumGear;
     private int smallGear;
     private int speed;
-
-    public Crank() {
-        super();
-    }
 
     public Crank(String name) {
         super(name);
