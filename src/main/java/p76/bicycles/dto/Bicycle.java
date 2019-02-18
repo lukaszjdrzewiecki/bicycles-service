@@ -1,5 +1,4 @@
 package p76.bicycles.dto;
-
 import lombok.Data;
 
 import java.util.Arrays;
@@ -15,10 +14,12 @@ public class Bicycle {
     private RearDerailleur rearDerailleur;
     private Brakes brakes;
     private Wheels wheels;
+    private static int ID = 1;
 
     public String toString()
     {
-        return "Bicycle: " + manufacturer + " " + name + " with Parts: \n" +
+        return "Bicycle: " + manufacturer + " " + name + " [ID " + this.ID++ + "]" +
+                " with Parts: \n" +
                 "[CRANK] " + this.crank +
                 " [CASETTE] " + this.casette +
                 " [FRONT DERAILLEUR] " + this.frontDerailleur +
