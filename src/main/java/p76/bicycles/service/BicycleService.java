@@ -10,10 +10,7 @@ import p76.bicycles.dto.*;
 
 public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
-
-
     ObjectMapper mapper = new ObjectMapper();
-
 
     public Bicycle findBicycle(String name) {
         for (Bicycle bicycle : bicycles) {
@@ -23,7 +20,6 @@ public class BicycleService {
         }
         return null;
     }
-
 
     public void addBicycle(String name, String brand) {
         Bicycle newBicycle = new Bicycle();
@@ -36,7 +32,6 @@ public class BicycleService {
         bicycles.add(newBicycle);
     }
 
-
     public void addBicyclePart(String bicycleName, BicyclePart part) {
         Bicycle bicycle = findBicycle(bicycleName);
         if (bicycle != null) {
@@ -46,7 +41,6 @@ public class BicycleService {
         }
     }
 
-
     public void saveBicycles(String filename){
         File file = new File (filename);
         try {
@@ -55,7 +49,6 @@ public class BicycleService {
             e.printStackTrace();
         }
     }
-
 
     public void loadBicycles(String filename) {
         File file = new File(filename);

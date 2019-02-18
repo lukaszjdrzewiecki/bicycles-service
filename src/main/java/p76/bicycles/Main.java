@@ -31,7 +31,7 @@ public class Main {
         service.loadBicycles(fileName);
         service.printBicycles();
 
-        System.out.println("--------------------------- \n \n \n" );
+        System.out.println("--------------------------- \n \n" );
         random.addRandomBicycles(15);
         random.printBicycles(random.addRandomParts("RANDOM"));
 
