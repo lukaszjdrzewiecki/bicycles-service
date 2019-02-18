@@ -1,10 +1,16 @@
 package p76.bicycles.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class Casette extends BicyclePart {
 
     private int minimum;
     private int maximum;
     private int speed;
+
 
     public Casette(String name) {
         super(name);
