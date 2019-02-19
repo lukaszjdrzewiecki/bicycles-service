@@ -40,16 +40,6 @@ public class BicycleService {
     }
 
 
-    public void addBicyclePart(String bicycleName, BicyclePart part) {
-        Bicycle bicycle = findBicycle(bicycleName);
-        if (bicycle != null) {
-            if(part instanceof Crank) {
-                bicycle.setCrank((Crank)part);
-            }
-        }
-    }
-
-
     public void saveBicycles(String filename){
         File file = new File (filename);
         try {
@@ -58,7 +48,6 @@ public class BicycleService {
             e.printStackTrace();
         }
     }
-
 
     public void loadBicycles(String filename) {
         File file = new File(filename);
