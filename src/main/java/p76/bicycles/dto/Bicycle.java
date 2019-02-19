@@ -14,11 +14,12 @@ public class Bicycle {
     private RearDerailleur rearDerailleur;
     private Brakes brakes;
     private Wheels wheels;
-    private static int ID = 1;
+    private static int ID = 0;
+    private final int numberID;
 
     public String toString()
     {
-        return "Bicycle: " + manufacturer + " " + name + " [ID " + this.ID++ + "]" +
+        return "Bicycle: " + manufacturer + " " + name + " [ID " + numberID + "]" +
                 " with Parts: \n" +
                 "[CRANK] " + this.crank +
                 " [CASETTE] " + this.casette +
@@ -29,11 +30,15 @@ public class Bicycle {
     }
 
     public Bicycle() {
+        ID++;
+        this.numberID = ID;
     }
 
     public Bicycle(String name, String manufacturer) {
         this.name = name;
         this.manufacturer = manufacturer;
+        ID++;
+        this.numberID = ID;
     }
 
 }
