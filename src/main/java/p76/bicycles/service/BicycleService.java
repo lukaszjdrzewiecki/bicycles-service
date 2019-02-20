@@ -12,6 +12,7 @@ public class BicycleService {
     List<Bicycle> bicycles = new ArrayList();
 
 
+
     ObjectMapper mapper = new ObjectMapper();
 
     public void addBicycles(List<Bicycle> bicycles) {

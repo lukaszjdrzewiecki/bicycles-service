@@ -1,8 +1,6 @@
 package p76.bicycles.dto;
 import lombok.Data;
 
-import java.util.Arrays;
-
 @Data
 public class Bicycle {
 
@@ -14,12 +12,13 @@ public class Bicycle {
     private RearDerailleur rearDerailleur;
     private Brakes brakes;
     private Wheels wheels;
-    private static int ID = 0;
-    private final int numberID;
+    private final long ID;
+
+
 
     public String toString()
     {
-        return "Bicycle: " + manufacturer + " " + name + " [ID " + numberID + "]" +
+        return "Bicycle: " + manufacturer + " " + name + " [ID " + ID  + "]" +
                 " with Parts: \n" +
                 "[CRANK] " + this.crank +
                 " [CASETTE] " + this.casette +
@@ -30,15 +29,18 @@ public class Bicycle {
     }
 
     public Bicycle() {
-        ID++;
-        this.numberID = ID;
+        numberID id = new numberID();
+        this.ID = id.createID();
+
     }
 
     public Bicycle(String name, String manufacturer) {
         this.name = name;
         this.manufacturer = manufacturer;
-        ID++;
-        this.numberID = ID;
+        numberID id = new numberID();
+        this.ID = id.createID();
+
     }
+
 
 }

@@ -12,6 +12,8 @@ public class BicycleGenerator {
 
     private static final String[] partSeries = {"Altus", "Alivio", "Deore", "XT", "XTR"};
 
+
+
     public List generateRandomBicycles(int noOfBicycles) {
         List<Bicycle> randomBicycles = new ArrayList();
         for (int i =0; i < noOfBicycles; i++){
