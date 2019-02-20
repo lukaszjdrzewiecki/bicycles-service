@@ -28,7 +28,7 @@ public class Main {
 
 
         List<Bicycle> randomBicycles = random.generateRandomBicycles(15);
-        service.addBicycles(randomBicycles);
+        //service.addBicycles(randomBicycles);
 
         String fileName = "bicycles.txt";
 

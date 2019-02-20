@@ -12,7 +12,7 @@ public class Bicycle {
     private RearDerailleur rearDerailleur;
     private Brakes brakes;
     private Wheels wheels;
-    private final long ID;
+    private long ID;
 
 
 
@@ -29,17 +29,13 @@ public class Bicycle {
     }
 
     public Bicycle() {
-        numberID id = new numberID();
-        this.ID = id.createID();
-
+        this.ID = 0;
     }
 
     public Bicycle(String name, String manufacturer) {
         this.name = name;
         this.manufacturer = manufacturer;
-        numberID id = new numberID();
-        this.ID = id.createID();
-
+        this.ID = 0;
     }
 
 
