@@ -7,6 +7,7 @@ import java.util.List;
 
 public class GeneratorID {
     private long maxID = 1;
+    private BicycleService service;
 
     public synchronized Long createID()
     {
@@ -14,12 +15,13 @@ public class GeneratorID {
     }
 
     public long findMaxID(){
-        BicycleService service = new BicycleService();
-        for (Bicycle bicycle : service.bicycles) {
-            if ((bicycle.getID() < maxID)) {
+        service = new BicycleService();
+        for (Bicycle bicycle : service.getBicyclesList()) {
+            if (bicycle.getID() < maxID) {
                 return createID();
             }
         }
         return -1;
     }
+
 }

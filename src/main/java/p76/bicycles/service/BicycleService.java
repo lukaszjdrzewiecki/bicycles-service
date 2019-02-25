@@ -9,7 +9,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import p76.bicycles.dto.*;
 
 public class BicycleService {
-    public List<Bicycle> bicycles = new ArrayList();
+    private List<Bicycle> bicycles = new ArrayList();
+    public List<Bicycle> getBicyclesList(){
+        return bicycles;
+    }
+
     GeneratorID generator = new GeneratorID();
 
 
