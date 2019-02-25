@@ -15,6 +15,8 @@ public class Main {
         BicycleService service = new BicycleService();
         BicycleGenerator random = new BicycleGenerator();
         BicycleCompatibility compability = new BicycleCompatibility();
+        GeneratorID generator = new GeneratorID();
+
 
         service.addBicycle("Sportster 2017", "Scott");
         service.addBicycle("Tormenta Lady", "Accent");
