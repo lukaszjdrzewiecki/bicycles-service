@@ -9,7 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import p76.bicycles.dto.*;
 
 public class BicycleService {
-    List<Bicycle> bicycles = new ArrayList();
+    public List<Bicycle> bicycles = new ArrayList();
+    GeneratorID generator = new GeneratorID();
+
 
 
     ObjectMapper mapper = new ObjectMapper();
@@ -37,6 +39,7 @@ public class BicycleService {
             throw new RuntimeException("You are trying to add the same name two times");
         }
         bicycles.add(newBicycle);
+        newBicycle.setID(generator.findMaxID());
     }
 
 
