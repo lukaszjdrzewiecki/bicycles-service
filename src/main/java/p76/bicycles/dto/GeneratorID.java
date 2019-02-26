@@ -3,11 +3,9 @@ package p76.bicycles.dto;
 import p76.bicycles.service.BicycleService;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GeneratorID {
     private long maxID = 1;
-    private BicycleService service;
 
     public synchronized Long createID()
     {
@@ -15,9 +13,11 @@ public class GeneratorID {
     }
 
     public long findMaxID(){
-        service = new BicycleService();
-        for (Bicycle bicycle : service.getBicyclesList()) {
-            if (bicycle.getID() < maxID) {
+        BicycleService service = new BicycleService();
+        ArrayList<Bicycle> bicycles = new ArrayList<>();
+        service.loadBicycles("bicycles.txt", bicycles);
+        for (Bicycle bicycle : bicycles) {
+            if (bicycle.getId() < maxID) {
                 return createID();
             }
         }

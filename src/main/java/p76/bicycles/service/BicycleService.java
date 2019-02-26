@@ -11,12 +11,9 @@ import p76.bicycles.dto.*;
 public class BicycleService {
     private List<Bicycle> bicycles = new ArrayList();
     public List<Bicycle> getBicyclesList(){
-        return bicycles;
+        return this.bicycles;
     }
-
     GeneratorID generator = new GeneratorID();
-
-
 
     ObjectMapper mapper = new ObjectMapper();
 
@@ -43,7 +40,7 @@ public class BicycleService {
             throw new RuntimeException("You are trying to add the same name two times");
         }
         bicycles.add(newBicycle);
-        newBicycle.setID(generator.findMaxID());
+        newBicycle.setId(generator.findMaxID());
     }
 
 
@@ -63,6 +60,18 @@ public class BicycleService {
             Bicycle[] bicycle = mapper.readValue(file, Bicycle[].class);
             List<Bicycle> arrayList = new ArrayList<>(Arrays.asList(bicycle));
             bicycles.addAll(arrayList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadBicycles(String filename, List <Bicycle> list) {
+        File file = new File(filename);
+        list.clear();
+        try {
+            Bicycle[] bicycle = mapper.readValue(file, Bicycle[].class);
+            List<Bicycle> arrayList = new ArrayList<>(Arrays.asList(bicycle));
+            list.addAll(arrayList);
         } catch (Exception e) {
             e.printStackTrace();
         }
