@@ -14,7 +14,7 @@ public class Main {
 
         BicycleService service = new BicycleService();
         BicycleGenerator random = new BicycleGenerator();
-        BicycleCompatibility compability = new BicycleCompatibility();
+        BicycleCompatibility compatibility = new BicycleCompatibility();
         GeneratorID generator = new GeneratorID();
 
 
@@ -41,8 +41,7 @@ public class Main {
 
         System.out.println("--------------------------- \n \n \n" );
 
-        compability.rearDerailleurCompability(service.findBicycle("Sportster 2017"));
-
+        compatibility.rearDerailleurCompability(service.findBicycle("Sportster 2017"));
 
 
     }
