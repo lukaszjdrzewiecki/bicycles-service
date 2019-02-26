@@ -6,20 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GeneratorID {
-    private long maxID = 1;
+    List<Bicycle> bicycles;
 
-    public synchronized Long createID()
-    {
-        return Long.valueOf(maxID++);
+    public GeneratorID(List<Bicycle> bicycles) {
+        this.bicycles = bicycles;
     }
 
-    public long findMaxID(){
-        BicycleService service = new BicycleService();
-        for (Bicycle bicycle : service.bicycles) {
-            if ((bicycle.getID() < maxID)) {
-                return createID();
+    public long generateNewId(){
+        long maxId = 0;
+        for (Bicycle bicycle : bicycles) {
+            if ((bicycle.getId() > maxId)) {
+                maxId = bicycle.getId();
             }
         }
-        return -1;
+        return maxId + 1;
     }
 }

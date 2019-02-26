@@ -9,15 +9,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import p76.bicycles.dto.*;
 
 public class BicycleService {
-    public List<Bicycle> bicycles = new ArrayList();
-    GeneratorID generator = new GeneratorID();
-
-
-
     ObjectMapper mapper = new ObjectMapper();
+    public List<Bicycle> bicycles;
+    GeneratorID generator;
+
+
+    public BicycleService() {
+        init();
+    }
+
+
+    private void init() {
+        mapper = new ObjectMapper();
+        bicycles =  new ArrayList();
+        generator = new GeneratorID(bicycles);
+    }
 
     public void addBicycles(List<Bicycle> bicycles) {
-        this.bicycles.addAll(bicycles);
+        for(Bicycle bicycle : bicycles) {
+            addBicycle(bicycle);
+        }
     }
 
     public Bicycle findBicycle(String name) {
@@ -29,17 +40,17 @@ public class BicycleService {
         return null;
     }
 
+    public synchronized void addBicycle(Bicycle newBicycle) {
+        newBicycle.setId(generator.generateNewId());
+        bicycles.add(newBicycle);
+    }
 
-    public void addBicycle(String name, String brand) {
+    public synchronized void addBicycle(String name, String brand) {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
         newBicycle.setManufacturer(brand);
-        Bicycle bicycle = findBicycle(name);
-        if (bicycle != null) {
-            throw new RuntimeException("You are trying to add the same name two times");
-        }
+        newBicycle.setId(generator.generateNewId());
         bicycles.add(newBicycle);
-        newBicycle.setID(generator.findMaxID());
     }
 
 
@@ -53,8 +64,8 @@ public class BicycleService {
     }
 
     public void loadBicycles(String filename) {
+        init();
         File file = new File(filename);
-        this.bicycles.clear();
         try {
             Bicycle[] bicycle = mapper.readValue(file, Bicycle[].class);
             List<Bicycle> arrayList = new ArrayList<>(Arrays.asList(bicycle));
