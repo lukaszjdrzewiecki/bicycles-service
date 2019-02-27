@@ -12,8 +12,6 @@ public class BicycleGenerator {
 
     private static final String[] partSeries = {"Altus", "Alivio", "Deore", "XT", "XTR"};
 
-    GeneratorID generator = new GeneratorID();
-
 
 
     public List generateRandomBicycles(int noOfBicycles) {
@@ -32,7 +30,6 @@ public class BicycleGenerator {
         bicycle.setWheels( new Wheels(getRandomPartSeries()));
         bicycle.setBrakes( new Brakes(getRandomPartSeries()));
         bicycle.setFrontDerailleur( new FrontDerailleur(getRandomPartSeries()));
-        bicycle.setId(generator.findMaxID());
         return bicycle;
     }
 
