@@ -23,7 +23,7 @@ public class Main {
         service.addBicycle("Trans Siberian 2015", "Kross");
 
 
-        service.findBicycle("Sportster 2017").setCrank(new Crank("Deore", 3,42, 36, 22, 10));
+        service.findBicycle("Sportster 2017").setCrank(new Crank("Deore", 3, 42, 36, 22, 10));
         service.findBicycle("Sportster 2017").setRearDerailleur(new RearDerailleur("RD-M8000", 11, "Long", 47));
         service.findBicycle("Sportster 2017").setCasette(new Casette("M590", 11, 36, 10));
         service.findBicycle("Sportster 2017").setFrontWheel(new FrontWheel(
@@ -44,7 +44,7 @@ public class Main {
 
         compatibility.bicycleCheck(service.findBicycle("Sportster 2017"));
 
-        System.out.println("====================================\n\n\n" );
+        System.out.println("====================================\n\n\n");
         compatibility.changeCasette(service.findBicycle("Sportster 2017"), new Casette("M8000", 11, 46, 10));
     }
 

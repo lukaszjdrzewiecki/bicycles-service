@@ -15,7 +15,7 @@ public class BicycleCompatibilityTest {
         int d = 11;
         boolean actual = compatibility.allEqual(a, b, c);
         assertTrue(actual);
-        boolean actual2 = compatibility.allEqual(a,b,c,d);
+        boolean actual2 = compatibility.allEqual(a, b, c, d);
         assertFalse(actual2);
     }
 }

@@ -13,10 +13,9 @@ public class BicycleGenerator {
     private static final String[] partSeries = {"Altus", "Alivio", "Deore", "XT", "XTR"};
 
 
-
     public List generateRandomBicycles(int noOfBicycles) {
         List<Bicycle> randomBicycles = new ArrayList();
-        for (int i =0; i < noOfBicycles; i++){
+        for (int i = 0; i < noOfBicycles; i++) {
             randomBicycles.add(createRandomBicycle());
         }
         return randomBicycles;
@@ -24,13 +23,13 @@ public class BicycleGenerator {
 
     public Bicycle createRandomBicycle() {
         Bicycle bicycle = new Bicycle("Losowy Rower", getRandomManufacturer());
-        bicycle.setCrank( new Crank(getRandomPartSeries()));
-        bicycle.setCasette( new Casette(getRandomPartSeries()));
-        bicycle.setRearDerailleur( new RearDerailleur(getRandomPartSeries()));
-        bicycle.setFrontWheel( new FrontWheel(getRandomPartSeries()));
-        bicycle.setRearWheel( new RearWheel(getRandomPartSeries()));
-        bicycle.setBrakes( new Brakes(getRandomPartSeries()));
-        bicycle.setFrontDerailleur( new FrontDerailleur(getRandomPartSeries()));
+        bicycle.setCrank(new Crank(getRandomPartSeries()));
+        bicycle.setCasette(new Casette(getRandomPartSeries()));
+        bicycle.setRearDerailleur(new RearDerailleur(getRandomPartSeries()));
+        bicycle.setFrontWheel(new FrontWheel(getRandomPartSeries()));
+        bicycle.setRearWheel(new RearWheel(getRandomPartSeries()));
+        bicycle.setBrakes(new Brakes(getRandomPartSeries()));
+        bicycle.setFrontDerailleur(new FrontDerailleur(getRandomPartSeries()));
         return bicycle;
     }
 

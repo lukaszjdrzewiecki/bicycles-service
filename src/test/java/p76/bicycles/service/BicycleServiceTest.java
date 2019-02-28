@@ -15,7 +15,6 @@ public class BicycleServiceTest {
     private Bicycle bicycle;
     private Bicycle bicycle2;
 
-
     @Before
     public void setup(){
         service = new BicycleService();
@@ -52,7 +51,7 @@ public class BicycleServiceTest {
     }
 
     @Test
-    public void saveBicycles() {
+    public void saveBicycles_loadBicycles() {
         List <Bicycle> rowery = new ArrayList<>();
         rowery.add(bicycle);
         rowery.add(bicycle2);
