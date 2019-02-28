@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import p76.bicycles.dto.Bicycle;
 import p76.bicycles.service.BicycleService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class BicycleServiceTest {
     private Bicycle bicycle2;
 
     @Before
-    public void setup(){
+    public void setup() {
         service = new BicycleService();
         bicycle = new Bicycle("Sportster 2017", "SCOTT");
         bicycle2 = new Bicycle("Tormenda Lady", "ACCENT");
@@ -24,7 +25,7 @@ public class BicycleServiceTest {
 
     @Test
     public void addBicycles() {
-        List <Bicycle> rowery = new ArrayList<>();
+        List<Bicycle> rowery = new ArrayList<>();
         rowery.add(bicycle);
         rowery.add(bicycle2);
         service.addBicycles(rowery);
@@ -47,12 +48,12 @@ public class BicycleServiceTest {
     @Test //Creating object and adding to list
     public void addBicycle1() {
         service.addBicycle("Tormenta Lady", "ACCENT");
-        assertEquals(service.bicycles.get(0) , service.findBicycle("Tormenta Lady"));
+        assertEquals(service.bicycles.get(0), service.findBicycle("Tormenta Lady"));
     }
 
     @Test
     public void saveBicycles_loadBicycles() {
-        List <Bicycle> rowery = new ArrayList<>();
+        List<Bicycle> rowery = new ArrayList<>();
         rowery.add(bicycle);
         rowery.add(bicycle2);
         service.addBicycle(bicycle);
@@ -65,7 +66,7 @@ public class BicycleServiceTest {
 
     @Test
     public void loadBicycles() {
-        List <Bicycle> rowery = new ArrayList<>();
+        List<Bicycle> rowery = new ArrayList<>();
         rowery.add(bicycle);
         rowery.add(bicycle2);
         service.addBicycle(bicycle);
