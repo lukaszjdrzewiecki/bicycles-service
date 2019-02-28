@@ -27,7 +27,7 @@ public class BicycleGenerator {
         bicycle.setCrank( new Crank(getRandomPartSeries()));
         bicycle.setCasette( new Casette(getRandomPartSeries()));
         bicycle.setRearDerailleur( new RearDerailleur(getRandomPartSeries()));
-        bicycle.setWheels( new Wheels(getRandomPartSeries()));
+        bicycle.setFrontWheel( new FrontWheel(getRandomPartSeries()));
         bicycle.setBrakes( new Brakes(getRandomPartSeries()));
         bicycle.setFrontDerailleur( new FrontDerailleur(getRandomPartSeries()));
         return bicycle;

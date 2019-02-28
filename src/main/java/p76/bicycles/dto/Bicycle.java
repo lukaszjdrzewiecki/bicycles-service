@@ -11,7 +11,7 @@ public class Bicycle {
     private FrontDerailleur frontDerailleur;
     private RearDerailleur rearDerailleur;
     private Brakes brakes;
-    private Wheels wheels;
+    private FrontWheel frontWheel;
     private long id;
 
 
@@ -25,7 +25,7 @@ public class Bicycle {
                 " [FRONT DERAILLEUR] " + this.frontDerailleur +
                 " [REAR DERAILLEUR] " + this.rearDerailleur +
                 " [BRAKES] " + this.brakes +
-                " [WHEELS] " + this.wheels;
+                " [WHEELS] " + this.frontWheel;
     }
 
     public Bicycle() {
@@ -38,5 +38,8 @@ public class Bicycle {
         this.id = 0;
     }
 
+    public String FullName(){
+        return this.manufacturer + " " + this.name + " [ID " + this.id + "]";
+    }
 
 }
