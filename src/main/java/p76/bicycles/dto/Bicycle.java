@@ -40,7 +40,7 @@ public class Bicycle {
         this.id = 0;
     }
 
-    public String FullName(){
+    public String fullName(){
         return this.manufacturer + " " + this.name + " [ID " + this.id + "]";
     }
 

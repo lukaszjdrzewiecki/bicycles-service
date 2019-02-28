@@ -5,34 +5,45 @@ import p76.bicycles.dto.Casette;
 
 public class BicycleCompatibility {
 
-
     private int drivetrainCapacity(Bicycle bicycle) {
         return (bicycle.getCasette().getMaximum() - bicycle.getCasette().getMinimum())
                 + (bicycle.getCrank().getBigGear() - bicycle.getCrank().getSmallGear());
     }
 
-    public void drivetrainCheck(Bicycle bicycle) {
+    public boolean drivetrainCheck(Bicycle bicycle) {
         if (bicycle.getRearDerailleur().getCapacity() >= drivetrainCapacity(bicycle)) {
-            System.out.println("[DRIVETRAIN CHECK] : " + "Drivetrain of " + bicycle.FullName() + " is now compatible");
-
-        } else {
-            System.out.println("[DRIVETRAIN CHECK] : " + "Drivetrain of " + bicycle.FullName() + " is now not compatible");
-            System.out.println("[DRIVETRAIN CHECK] : " + "Biggest gear of casette that is acceptable in your bicycle is " + (bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCasette().getMaximum()));
+            return true;
         }
+        return false;
+    }
 
+    public void drivetrainCheckPrint(Bicycle bicycle) {
+        if (drivetrainCheck(bicycle)) {
+            System.out.println("[DRIVETRAIN CHECK] : all components compatible");
+        } else {
+            System.out.println("[DRIVETRAIN CHECK] : not compatible");
+            System.out.println("[DRIVETRAIN CHECK] : " + "Biggest possible gear of the casette in this bicycle is " + (bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCasette().getMaximum()));
+        }
     }
 
     public void changeCasette(Bicycle bicycle, Casette casette) {
         System.out.println("[CHANGING CASETTE]");
         bicycle.setCasette(casette);
-        drivetrainCheck(bicycle);
+        drivetrainCheckPrint(bicycle);
     }
 
-    public void speedCheck(Bicycle bicycle) {
+    boolean speedCheck(Bicycle bicycle) {
         if (allEqual(bicycle.getCasette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
-            System.out.println("[SPEED CHECK] : " + bicycle.FullName() + " has all the components designed for the same number of gears");
+            return true;
+        }
+        return false;
+    }
+
+    public void speedCheckPrint(Bicycle bicycle) {
+        if (speedCheck(bicycle)) {
+            System.out.println("[SPEED CHECK] : all components compatible");
         } else {
-            System.out.println("[SPEED CHECK] : " + bicycle.FullName() + " has some components that are not compatible in the aspect of number of gears");
+            System.out.println("[SPEED CHECK] : not compatible");
         }
     }
 
@@ -41,29 +52,42 @@ public class BicycleCompatibility {
         return true;
     }
 
-    public void wheelCheck(Bicycle bicycle) {
-        System.out.println("[WHEEL CHECK] : " + bicycle.FullName());
+    public boolean wheelDiameterCheck(Bicycle bicycle) {
         if (allEqual(bicycle.getFrontWheel().getRim().getDiameter(), bicycle.getFrontWheel().getTyre().getDiameter())) {
-            System.out.println("[DIAMETER] : correct");
-        } else {
-            System.out.println("[DIAMETER] : incorrect");
+            return true;
         }
-        if (allEqual(bicycle.getFrontWheel().getRim().getHoles(), bicycle.getFrontWheel().getHub().getHoles())) {
-            System.out.println("[NUMBER OF HOLES] : correct");
-        } else {
-            System.out.println("[NUMBER OF HOLES] : incorrect");
-        }
+        return false;
+    }
 
+    public boolean wheelHolesCheck(Bicycle bicycle) {
+        if (allEqual(bicycle.getFrontWheel().getRim().getHoles(), bicycle.getFrontWheel().getHub().getHoles())) {
+            return true;
+        }
+        return false;
+    }
+
+    public void wheelCheckPrint(Bicycle bicycle) {
+        System.out.println("[WHEEL CHECK]");
+        if(wheelDiameterCheck(bicycle)){
+            System.out.println("[DIAMETER] : all components compatible");
+        } else {
+            System.out.println("[DIAMETER] : not compatible");
+        }
+        if(wheelHolesCheck(bicycle)){
+            System.out.println("[NUMBER OF HOLES] : all components compatible");
+        } else {
+            System.out.println("[NUMBER OF HOLES] : not compatible. RIM: " + bicycle.getFrontWheel().getRim().getHoles() + ", HUB: " + bicycle.getFrontWheel().getHub().getHoles());
+        }
     }
 
     public void bicycleCheck(Bicycle bicycle) {
-        System.out.println("[GENERAL COMPATIBILITY CHECK]");
+        System.out.println("[GENERAL COMPATIBILITY CHECK] " + bicycle.fullName());
         System.out.println("-------------------");
-        drivetrainCheck(bicycle);
+        drivetrainCheckPrint(bicycle);
         System.out.println("-------------------");
-        speedCheck(bicycle);
+        speedCheckPrint(bicycle);
         System.out.println("-------------------");
-        wheelCheck(bicycle);
+        wheelCheckPrint(bicycle);
     }
 
 

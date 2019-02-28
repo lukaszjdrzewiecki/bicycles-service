@@ -24,7 +24,7 @@ public class Main {
 
 
         service.findBicycle("Sportster 2017").setCrank(new Crank("Deore", 3, 42, 36, 22, 10));
-        service.findBicycle("Sportster 2017").setRearDerailleur(new RearDerailleur("RD-M8000", 11, "Long", 47));
+        service.findBicycle("Sportster 2017").setRearDerailleur(new RearDerailleur("RD-M8000", 10, "Long", 47));
         service.findBicycle("Sportster 2017").setCasette(new Casette("M590", 11, 36, 10));
         service.findBicycle("Sportster 2017").setFrontWheel(new FrontWheel(
                 new Rim("Shimano HB900", 20, 22, 32, true, true, 622),

@@ -64,19 +64,6 @@ public class BicycleServiceTest {
         assertEquals(rowery, service.bicycles);
     }
 
-    @Test
-    public void loadBicycles() {
-        List<Bicycle> rowery = new ArrayList<>();
-        rowery.add(bicycle);
-        rowery.add(bicycle2);
-        service.addBicycle(bicycle);
-        service.addBicycle(bicycle2);
-        service.saveBicycles("TestBicycles");
-        service.loadBicycles("TestBicycles");
-
-        assertEquals(rowery, service.bicycles);
-    }
-
 }
 
 
