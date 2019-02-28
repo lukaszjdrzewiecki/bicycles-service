@@ -15,5 +15,9 @@ public class FrontWheel extends BicyclePart {
         super(name);
     }
 
-
+    public FrontWheel(Rim rim, Hub hub, Tyre tyre) {
+        this.rim = rim;
+        this.hub = hub;
+        this.tyre = tyre;
+    }
 }

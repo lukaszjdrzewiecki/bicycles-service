@@ -1,5 +1,11 @@
 package p76.bicycles.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+
 public class Hub {
 
     private String name;
@@ -9,15 +15,13 @@ public class Hub {
     private int axle;
     private int boost;
 
-    public Hub() {
-    }
 
-    public Hub(String name, int holes, int width, boolean disc, int axle, int boost) {
+
+    public Hub(String name, int holes, int width, boolean disc, int axle) {
         this.name = name;
         this.holes = holes;
         this.width = width;
         this.disc = disc;
         this.axle = axle;
-        this.boost = boost;
     }
 }

@@ -1,5 +1,11 @@
 package p76.bicycles.dto;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+
 public class Rim {
 
     private String name;
@@ -9,9 +15,6 @@ public class Rim {
     boolean disc;
     boolean tubeless;
     private int diameter;
-
-    public Rim() {
-    }
 
     public Rim(String name, int height, int innerWidth, int holes, boolean disc, boolean tubeless, int diameter) {
         this.name = name;

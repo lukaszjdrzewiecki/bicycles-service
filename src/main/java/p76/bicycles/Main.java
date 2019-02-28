@@ -26,6 +26,10 @@ public class Main {
         service.findBicycle("Sportster 2017").setCrank(new Crank("Deore", 3,42, 36, 22, 10));
         service.findBicycle("Sportster 2017").setRearDerailleur(new RearDerailleur("RD-M8000", 11, "Long", 47));
         service.findBicycle("Sportster 2017").setCasette(new Casette("M590", 11, 36, 10));
+        service.findBicycle("Sportster 2017").setFrontWheel(new FrontWheel(
+                new Rim("Shimano HB900", 20, 22, 32, true, true, 622),
+                new Hub("HOPE HB4", 28, 130, true, 15),
+                new Tyre("Continental Baron", 54, true, 622)));
 
 
         List<Bicycle> randomBicycles = random.generateRandomBicycles(15);
@@ -38,14 +42,10 @@ public class Main {
         // service.printBicycles();
 
 
-        System.out.println("---------------------------  \n" );
+        compatibility.bicycleCheck(service.findBicycle("Sportster 2017"));
 
-        compatibility.drivetrainCheck(service.findBicycle("Sportster 2017"));
-        System.out.println("--------------------------- " );
+        System.out.println("====================================\n\n\n" );
         compatibility.changeCasette(service.findBicycle("Sportster 2017"), new Casette("M8000", 11, 46, 10));
-
-        compatibility.speedCheck(service.findBicycle("Sportster 2017"));
-
     }
 
 }

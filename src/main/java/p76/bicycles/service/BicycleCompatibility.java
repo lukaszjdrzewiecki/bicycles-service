@@ -41,4 +41,31 @@ public class BicycleCompatibility {
         return true;
     }
 
+    public void wheelCheck (Bicycle bicycle){
+        System.out.println("[WHEEL CHECK] : " + bicycle.FullName());
+        if (allEqual(bicycle.getFrontWheel().getRim().getDiameter(), bicycle.getFrontWheel().getTyre().getDiameter())){
+            System.out.println("[DIAMETER] : correct");
+        } else {
+            System.out.println("[DIAMETER] : incorrect");
+        }
+        if (allEqual(bicycle.getFrontWheel().getRim().getHoles(), bicycle.getFrontWheel().getHub().getHoles())){
+            System.out.println("[NUMBER OF HOLES] : correct");
+        } else {
+            System.out.println("[NUMBER OF HOLES] : incorrect");
+        }
+
+    }
+
+    public void bicycleCheck (Bicycle bicycle){
+        System.out.println("[GENERAL COMPATIBILITY CHECK]");
+        System.out.println("-------------------");
+        drivetrainCheck(bicycle);
+        System.out.println("-------------------");
+        speedCheck(bicycle);
+        System.out.println("-------------------");
+        wheelCheck(bicycle);
+    }
+
+
+
 }

@@ -12,6 +12,7 @@ public class Bicycle {
     private RearDerailleur rearDerailleur;
     private Brakes brakes;
     private FrontWheel frontWheel;
+    private RearWheel rearWheel;
     private long id;
 
 
@@ -25,7 +26,8 @@ public class Bicycle {
                 " [FRONT DERAILLEUR] " + this.frontDerailleur +
                 " [REAR DERAILLEUR] " + this.rearDerailleur +
                 " [BRAKES] " + this.brakes +
-                " [WHEELS] " + this.frontWheel;
+                " [FRONT WHEEL] " + this.frontWheel +
+                " [REAR WHEEL] " + this.rearWheel;
     }
 
     public Bicycle() {
