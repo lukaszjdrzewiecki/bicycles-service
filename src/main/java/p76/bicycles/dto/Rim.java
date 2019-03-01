@@ -3,6 +3,9 @@ package p76.bicycles.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.lang.reflect.Array;
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 public class Rim {

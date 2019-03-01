@@ -2,6 +2,9 @@ package p76.bicycles.service;
 
 import p76.bicycles.dto.Bicycle;
 import p76.bicycles.dto.Casette;
+import p76.bicycles.dto.FrontWheel;
+
+import java.util.*;
 
 public class BicycleCompatibility {
 
@@ -91,8 +94,56 @@ public class BicycleCompatibility {
         System.out.println("-------------------");
         speedsCompatibilityCheckPrint(bicycle);
         System.out.println("-------------------");
+        rimTyreComatibilityCheckPrint(bicycle);
+        System.out.println("-------------------");
         wheelCheckPrint(bicycle);
     }
 
+    public void rimTyreComatibilityCheckPrint(Bicycle bicycle) {
+        int min = tyreRimRange(bicycle.getFrontWheel()).get(0);
+        int max = tyreRimRange(bicycle.getFrontWheel()).get(1);
+        if (rimTyreCompatibilityCheck(bicycle.getFrontWheel())) {
+            System.out.println("[RIM & TYRE WIDTH CHECK : compatible");
+        } else {
+            System.out.println("[RIM & TYRE WIDTH CHECK] : not compatible. Your rim width equals " + bicycle.getFrontWheel().getRim().getInnerWidth() + " mm and thus recommended size of a tyre is " + min + " - " + max + " mm");
+        }
+    }
 
+    public boolean rimTyreCompatibilityCheck(FrontWheel wheel) {
+        int tyre = wheel.getTyre().getWidth();
+        List<Integer> rangeList = tyreRimRange(wheel);
+        int min = rangeList.get(0);
+        int max = rangeList.get(1);
+        boolean flag = (tyre >= min && tyre <= max);
+        return flag;
+    }
+
+    public List<Integer> tyreRimRange(FrontWheel wheel) {
+        int rim = wheel.getRim().getInnerWidth();
+        int temp = 0;
+        for (int key : diameterMap().keySet()) {
+            if (rim == key) {
+                temp = key;
+            }
+        }
+        List<Integer> tempList = diameterMap().get(temp);
+        return tempList;
+    }
+
+    private Map<Integer, List<Integer>> diameterMap() {
+        Map<Integer, List<Integer>> diameters = new HashMap<>();
+        diameters.put(13, new ArrayList<>(Arrays.asList(18, 25)));
+        diameters.put(15, new ArrayList<>(Arrays.asList(23, 32)));
+        diameters.put(17, new ArrayList<>(Arrays.asList(25, 52)));
+        diameters.put(19, new ArrayList<>(Arrays.asList(28, 62)));
+        diameters.put(21, new ArrayList<>(Arrays.asList(35, 62)));
+        diameters.put(23, new ArrayList<>(Arrays.asList(37, 62)));
+        diameters.put(25, new ArrayList<>(Arrays.asList(42, 62)));
+        diameters.put(29, new ArrayList<>(Arrays.asList(47, 62)));
+        diameters.put(30, new ArrayList<>(Arrays.asList(52, 62)));
+        diameters.put(35, new ArrayList<>(Arrays.asList(60, 75)));
+        diameters.put(40, new ArrayList<>(Arrays.asList(65, 75)));
+        diameters.put(45, new ArrayList<>(Arrays.asList(70, 75)));
+        return diameters;
+    }
 }
