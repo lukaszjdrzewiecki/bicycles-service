@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-
 public class Hub {
 
     private String name;
@@ -14,8 +13,6 @@ public class Hub {
     private boolean disc;
     private int axle;
     private int boost;
-
-
 
     public Hub(String name, int holes, int width, boolean disc, int axle) {
         this.name = name;

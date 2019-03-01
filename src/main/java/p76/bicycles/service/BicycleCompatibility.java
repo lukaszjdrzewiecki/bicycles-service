@@ -32,15 +32,15 @@ public class BicycleCompatibility {
         drivetrainCheckPrint(bicycle);
     }
 
-    boolean speedCheck(Bicycle bicycle) {
+    boolean speedsCompatibilityCheck(Bicycle bicycle) {
         if (allEqual(bicycle.getCasette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
             return true;
         }
         return false;
     }
 
-    public void speedCheckPrint(Bicycle bicycle) {
-        if (speedCheck(bicycle)) {
+    public void speedsCompatibilityCheckPrint(Bicycle bicycle) {
+        if (speedsCompatibilityCheck(bicycle)) {
             System.out.println("[SPEED CHECK] : all components compatible");
         } else {
             System.out.println("[SPEED CHECK] : not compatible");
@@ -48,7 +48,11 @@ public class BicycleCompatibility {
     }
 
     boolean allEqual(int a, int... integers) {
-        for (int i : integers) if (!(i == a)) return false;
+        for (int i : integers) {
+            if (!(i == a)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -68,12 +72,12 @@ public class BicycleCompatibility {
 
     public void wheelCheckPrint(Bicycle bicycle) {
         System.out.println("[WHEEL CHECK]");
-        if(wheelDiameterCheck(bicycle)){
+        if (wheelDiameterCheck(bicycle)) {
             System.out.println("[DIAMETER] : all components compatible");
         } else {
             System.out.println("[DIAMETER] : not compatible");
         }
-        if(wheelHolesCheck(bicycle)){
+        if (wheelHolesCheck(bicycle)) {
             System.out.println("[NUMBER OF HOLES] : all components compatible");
         } else {
             System.out.println("[NUMBER OF HOLES] : not compatible. RIM: " + bicycle.getFrontWheel().getRim().getHoles() + ", HUB: " + bicycle.getFrontWheel().getHub().getHoles());
@@ -85,7 +89,7 @@ public class BicycleCompatibility {
         System.out.println("-------------------");
         drivetrainCheckPrint(bicycle);
         System.out.println("-------------------");
-        speedCheckPrint(bicycle);
+        speedsCompatibilityCheckPrint(bicycle);
         System.out.println("-------------------");
         wheelCheckPrint(bicycle);
     }

@@ -43,7 +43,6 @@ public class Crank extends BicyclePart {
         this.mediumGear = mediumGear;
     }
 
-
     public int getArmLength() {
         return armLength;
     }

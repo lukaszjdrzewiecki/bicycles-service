@@ -15,8 +15,6 @@ public class Bicycle {
     private RearWheel rearWheel;
     private long id;
 
-
-
     public String toString()
     {
         return "Bicycle: " + manufacturer + " " + name + " [ID " + id  + "]" +

@@ -11,7 +11,6 @@ public class RearWheel extends BicyclePart{
     private Hub hub;
     private Tyre tyre;
 
-
     public RearWheel(String name) {
         super(name);
     }
