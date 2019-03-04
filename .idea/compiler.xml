@@ -14,7 +14,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="bicycles-service" target="1.8" />
+      <module name="bicycles-service" target="11" />
       <module name="java-lessons" target="1.8" />
     </bytecodeTargetLevel>
   </component>

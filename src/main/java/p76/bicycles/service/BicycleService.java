@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
 import p76.bicycles.dto.*;
 
+@Data
 public class BicycleService {
     ObjectMapper mapper = new ObjectMapper();
     public List<Bicycle> bicycles;
