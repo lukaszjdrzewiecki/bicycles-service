@@ -29,7 +29,7 @@ public class BicycleServiceTest {
         rowery.add(bicycle);
         rowery.add(bicycle2);
         service.addBicycles(rowery);
-        assertEquals(rowery, service.bicycles);
+        assertEquals(rowery, service.getBicycles());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class BicycleServiceTest {
     @Test //Creating object and adding to list
     public void addBicycle1() {
         service.addBicycle("Tormenta Lady", "ACCENT");
-        assertEquals(service.bicycles.get(0), service.findBicycle("Tormenta Lady"));
+        assertEquals(service.getBicycles().get(0), service.findBicycle("Tormenta Lady"));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class BicycleServiceTest {
         service.saveBicycles("TestBicycles");
         service.loadBicycles("TestBicycles");
 
-        assertEquals(rowery, service.bicycles);
+        assertEquals(rowery, service.getBicycles());
     }
 
 }

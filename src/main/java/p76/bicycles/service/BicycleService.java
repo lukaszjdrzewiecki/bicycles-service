@@ -7,14 +7,15 @@ import java.util.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 import p76.bicycles.dto.*;
 
 @Data
+@Component
 public class BicycleService {
-    ObjectMapper mapper = new ObjectMapper();
-    public List<Bicycle> bicycles;
-    GeneratorID generator;
 
+    ObjectMapper mapper = new ObjectMapper();
+    private List<Bicycle> bicycles;
 
     public BicycleService() {
         init();
@@ -24,7 +25,6 @@ public class BicycleService {
     private void init() {
         mapper = new ObjectMapper();
         bicycles =  new ArrayList();
-        generator = new GeneratorID(bicycles);
     }
 
     public void addBicycles(List<Bicycle> bicycles) {
@@ -43,7 +43,6 @@ public class BicycleService {
     }
 
     public synchronized void addBicycle(Bicycle newBicycle) {
-        newBicycle.setId(generator.generateNewId());
         bicycles.add(newBicycle);
     }
 
@@ -51,7 +50,6 @@ public class BicycleService {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
         newBicycle.setManufacturer(brand);
-        newBicycle.setId(generator.generateNewId());
         bicycles.add(newBicycle);
     }
 
@@ -76,15 +74,6 @@ public class BicycleService {
             e.printStackTrace();
         }
     }
-
-    public void printBicycles() {
-        for (Bicycle bicycle : bicycles) {
-            System.out.println(bicycle);
-        }
-    }
-
-
-
 }
 
 

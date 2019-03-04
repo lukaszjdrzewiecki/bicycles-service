@@ -3,7 +3,6 @@ package p76.bicycles.service;
 import org.junit.Before;
 import org.junit.Test;
 import p76.bicycles.dto.Bicycle;
-import p76.bicycles.dto.GeneratorID;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class BicycleGeneratorTest {
     public void createRandomBicycle() {
         Bicycle bicycle = random.createRandomBicycle();
         service.addBicycle(bicycle);
-        assertEquals(bicycle ,service.bicycles.get(0));
+        assertEquals(bicycle, service.getBicycles().get(0));
     }
 
     @Test
