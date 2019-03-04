@@ -11,7 +11,6 @@ public class Casette extends BicyclePart {
     private int maximum;
     private int speed;
 
-
     public Casette(String name) {
         super(name);
     }

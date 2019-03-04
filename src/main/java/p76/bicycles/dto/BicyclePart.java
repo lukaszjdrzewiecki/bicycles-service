@@ -18,7 +18,6 @@ public abstract class BicyclePart {
         this.name = name;
     }
 
-
     public BicyclePart() {
     }
 

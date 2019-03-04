@@ -11,5 +11,4 @@ public class Brakes extends BicyclePart {
         super(name);
     }
 
-
 }
