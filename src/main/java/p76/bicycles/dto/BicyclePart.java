@@ -1,5 +1,6 @@
 package p76.bicycles.dto;
 
+import javax.persistence.Entity;
 import java.util.Arrays;
 
 public abstract class BicyclePart {

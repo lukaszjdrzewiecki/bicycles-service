@@ -1,4 +1,4 @@
-package p76.bicycles;
+package p76.bicycles.repository;
 
 
 import org.springframework.data.repository.CrudRepository;

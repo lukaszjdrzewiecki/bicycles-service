@@ -31,7 +31,7 @@ public class BicycleGeneratorTest {
     public void createRandomBicycle() {
         Bicycle bicycle = random.createRandomBicycle();
         service.addBicycle(bicycle);
-        assertEquals(bicycle, service.getBicycles().get(0));
+        assertEquals(bicycle, service.findAllBicycles().get(0));
     }
 
     @Test

@@ -7,25 +7,17 @@ import java.util.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.dto.*;
+import p76.bicycles.repository.BicycleRepository;
 
 @Data
 @Component
 public class BicycleService {
 
-    ObjectMapper mapper = new ObjectMapper();
-    private List<Bicycle> bicycles;
-
-    public BicycleService() {
-        init();
-    }
-
-
-    private void init() {
-        mapper = new ObjectMapper();
-        bicycles =  new ArrayList();
-    }
+    @Autowired
+    BicycleRepository repository;
 
     public void addBicycles(List<Bicycle> bicycles) {
         for(Bicycle bicycle : bicycles) {
@@ -34,45 +26,27 @@ public class BicycleService {
     }
 
     public Bicycle findBicycle(String name) {
-        for (Bicycle bicycle : bicycles) {
-            if (bicycle.getName().equals(name)) {
-                return bicycle;
-            }
-        }
-        return null;
+        return null; //TODO
     }
 
-    public synchronized void addBicycle(Bicycle newBicycle) {
-        bicycles.add(newBicycle);
+    public Bicycle addBicycle(Bicycle newBicycle) {
+        return repository.save(newBicycle);
     }
 
-    public synchronized void addBicycle(String name, String brand) {
+    public Bicycle addBicycle(String name, String brand) {
         Bicycle newBicycle = new Bicycle();
         newBicycle.setName(name);
         newBicycle.setManufacturer(brand);
-        bicycles.add(newBicycle);
+        return repository.save(newBicycle);
     }
 
-
-    public void saveBicycles(String filename){
-        File file = new File (filename);
-        try {
-            mapper.writeValue(file, bicycles);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public List<Bicycle> findAllBicycles() {
+        Iterable<Bicycle> iterable = repository.findAll();
+        List<Bicycle> bicycles = new ArrayList();
+        for(Bicycle bicycle : iterable) {
+            bicycles.add(bicycle);
         }
-    }
-
-    public void loadBicycles(String filename) {
-        init();
-        File file = new File(filename);
-        try {
-            Bicycle[] bicycle = mapper.readValue(file, Bicycle[].class);
-            List<Bicycle> arrayList = new ArrayList<>(Arrays.asList(bicycle));
-            bicycles.addAll(arrayList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        return bicycles;
     }
 }
 

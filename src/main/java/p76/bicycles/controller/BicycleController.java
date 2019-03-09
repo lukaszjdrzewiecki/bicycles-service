@@ -20,7 +20,7 @@ public class BicycleController {
 
     @GetMapping
     public List<Bicycle> getAllBicycles() {
-        return service.getBicycles();
+        return service.findAllBicycles();
     }
 
     @PostMapping(path= "/", consumes = "application/json", produces = "application/json")

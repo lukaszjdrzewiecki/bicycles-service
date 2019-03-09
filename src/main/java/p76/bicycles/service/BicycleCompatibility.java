@@ -88,7 +88,7 @@ public class BicycleCompatibility {
     }
 
     public void bicycleCheck(Bicycle bicycle) {
-        System.out.println("[GENERAL COMPATIBILITY CHECK] " + bicycle.fullName());
+        System.out.println("[GENERAL COMPATIBILITY CHECK] " + bicycle.getId() + " " + bicycle.getName());
         System.out.println("-------------------");
         drivetrainCheckPrint(bicycle);
         System.out.println("-------------------");

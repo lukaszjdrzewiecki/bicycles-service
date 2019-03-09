@@ -19,8 +19,15 @@ public class BicycleServiceTest {
     @Before
     public void setup() {
         service = new BicycleService();
-        bicycle = new Bicycle("Sportster 2017", "SCOTT");
-        bicycle2 = new Bicycle("Tormenda Lady", "ACCENT");
+        bicycle = createBicycle("Sportster 2017", "SCOTT");
+        bicycle2 = createBicycle("Tormenda Lady", "ACCENT");
+    }
+
+    private Bicycle createBicycle(String name, String manufacturer) {
+        Bicycle bicycle = new Bicycle();
+        bicycle.setName(name);
+        bicycle.setManufacturer(manufacturer);
+        return bicycle;
     }
 
     @Test
@@ -29,7 +36,7 @@ public class BicycleServiceTest {
         rowery.add(bicycle);
         rowery.add(bicycle2);
         service.addBicycles(rowery);
-        assertEquals(rowery, service.getBicycles());
+        assertEquals(rowery, service.findAllBicycles());
     }
 
     @Test
@@ -43,25 +50,6 @@ public class BicycleServiceTest {
     public void addBicycle() {
         service.addBicycle(bicycle);
         assertEquals(service.findBicycle("Sportster 2017"), bicycle);
-    }
-
-    @Test //Creating object and adding to list
-    public void addBicycle1() {
-        service.addBicycle("Tormenta Lady", "ACCENT");
-        assertEquals(service.getBicycles().get(0), service.findBicycle("Tormenta Lady"));
-    }
-
-    @Test
-    public void saveBicycles_loadBicycles() {
-        List<Bicycle> rowery = new ArrayList<>();
-        rowery.add(bicycle);
-        rowery.add(bicycle2);
-        service.addBicycle(bicycle);
-        service.addBicycle(bicycle2);
-        service.saveBicycles("TestBicycles");
-        service.loadBicycles("TestBicycles");
-
-        assertEquals(rowery, service.getBicycles());
     }
 
 }

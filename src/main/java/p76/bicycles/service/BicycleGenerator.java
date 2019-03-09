@@ -22,13 +22,15 @@ public class BicycleGenerator {
     }
 
     public Bicycle createRandomBicycle() {
-        Bicycle bicycle = new Bicycle("Losowy Rower", getRandomManufacturer());
+        Bicycle bicycle = new Bicycle();
+        bicycle.setName("Losowy Rower");
+        bicycle.setManufacturer(getRandomManufacturer());
         bicycle.setCrank(new Crank(getRandomPartSeries()));
         bicycle.setCasette(new Casette(getRandomPartSeries()));
         bicycle.setRearDerailleur(new RearDerailleur(getRandomPartSeries()));
         bicycle.setFrontWheel(new FrontWheel(getRandomPartSeries()));
         bicycle.setRearWheel(new RearWheel(getRandomPartSeries()));
-        bicycle.setBrakes(new Brakes(getRandomPartSeries()));
+        //bicycle.setBrakes(new Brakes(getRandomPartSeries()));
         bicycle.setFrontDerailleur(new FrontDerailleur(getRandomPartSeries()));
         return bicycle;
     }

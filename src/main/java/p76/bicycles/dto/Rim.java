@@ -3,12 +3,21 @@ package p76.bicycles.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.lang.reflect.Array;
 import java.util.Map;
 
+@Entity
 @Data
 @NoArgsConstructor
 public class Rim {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
 
     private String name;
     private int height;
