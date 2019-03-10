@@ -25,8 +25,8 @@ public class BicycleService {
         }
     }
 
-    public Bicycle findBicycle(String name) {
-        return null; //TODO
+    public List<Bicycle> findBicycle(String name) {
+        return repository.findByName(name);
     }
 
     public Bicycle addBicycle(Bicycle newBicycle) {

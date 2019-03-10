@@ -10,12 +10,10 @@ import static org.junit.Assert.*;
 
 public class BicycleGeneratorTest {
 
-    private BicycleService service;
     private BicycleGenerator random;
 
     @Before
     public void setup(){
-        service = new BicycleService();
         random = new BicycleGenerator();
     }
 
@@ -25,13 +23,6 @@ public class BicycleGeneratorTest {
         assertNotNull(randomBikes.get(0));
         assertNotNull(randomBikes.get(1));
         assertNotNull(randomBikes.get(2));
-    }
-
-    @Test
-    public void createRandomBicycle() {
-        Bicycle bicycle = random.createRandomBicycle();
-        service.addBicycle(bicycle);
-        assertEquals(bicycle, service.findAllBicycles().get(0));
     }
 
     @Test

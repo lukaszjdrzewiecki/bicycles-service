@@ -1,7 +1,13 @@
 package p76.bicycles.service;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import p76.bicycles.dto.Bicycle;
 import p76.bicycles.service.BicycleService;
 
@@ -10,15 +16,17 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+@Ignore
+@RunWith(SpringRunner.class)
 public class BicycleServiceTest {
 
+    @Autowired
     private BicycleService service;
     private Bicycle bicycle;
     private Bicycle bicycle2;
 
     @Before
     public void setup() {
-        service = new BicycleService();
         bicycle = createBicycle("Sportster 2017", "SCOTT");
         bicycle2 = createBicycle("Tormenda Lady", "ACCENT");
     }

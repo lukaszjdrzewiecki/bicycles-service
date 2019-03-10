@@ -24,10 +24,10 @@ public class Main {
         // service.printBicycles();
 
 
-        compatibility.bicycleCheck(service.findBicycle("Sportster 2017"));
+        //compatibility.bicycleCheck(service.findBicycle("Sportster 2017"));
 
         System.out.println("====================================\n\n\n");
-        compatibility.changeCasette(service.findBicycle("Sportster 2017"), new Casette("M8000", 11, 46, 10));
+        //compatibility.changeCasette(service.findBicycle("Sportster 2017"), new Casette("M8000", 11, 46, 10));
 
     }
 
