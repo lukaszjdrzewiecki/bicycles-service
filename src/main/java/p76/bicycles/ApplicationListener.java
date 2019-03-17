@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import p76.bicycles.dto.*;
+import p76.bicycles.db.entity.*;
 import p76.bicycles.service.BicycleService;
 
 @Component

@@ -1,7 +1,7 @@
 package p76.bicycles;
 
-import p76.bicycles.dto.*;
-import p76.bicycles.service.BicycleCompatibility;
+import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.service.CompatibilityService;
 import p76.bicycles.service.BicycleGenerator;
 import p76.bicycles.service.BicycleService;
 
@@ -13,7 +13,7 @@ public class Main {
 
         BicycleService service = new BicycleService();
         BicycleGenerator random = new BicycleGenerator();
-        BicycleCompatibility compatibility = new BicycleCompatibility();
+        CompatibilityService compatibility = new CompatibilityService();
 
 
         List<Bicycle> randomBicycles = random.generateRandomBicycles(15);

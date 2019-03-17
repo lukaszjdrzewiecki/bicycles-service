@@ -1,16 +1,13 @@
 package p76.bicycles.service;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import p76.bicycles.dto.*;
-import p76.bicycles.repository.BicycleRepository;
+import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.db.repository.BicycleRepository;
 
 @Data
 @Component

@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BicycleCompatibilityTest {
-    private BicycleCompatibility compatibility = new BicycleCompatibility();
+public class BicycleCompatibilityServiceTest {
+    private CompatibilityService compatibility = new CompatibilityService();
 
     @Test
     public void allEqual() {

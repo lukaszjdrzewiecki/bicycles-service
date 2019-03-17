@@ -1,6 +1,5 @@
-package p76.bicycles.dto;
+package p76.bicycles.db.entity;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 

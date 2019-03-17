@@ -1,4 +1,4 @@
-package p76.bicycles.entity;
+package p76.bicycles.db.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

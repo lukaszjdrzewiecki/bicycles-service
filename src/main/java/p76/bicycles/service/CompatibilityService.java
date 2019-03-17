@@ -1,12 +1,14 @@
 package p76.bicycles.service;
 
-import p76.bicycles.dto.Bicycle;
-import p76.bicycles.dto.Casette;
-import p76.bicycles.dto.FrontWheel;
+import org.springframework.stereotype.Component;
+import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.db.entity.Casette;
+import p76.bicycles.db.entity.FrontWheel;
 
 import java.util.*;
 
-public class BicycleCompatibility {
+@Component
+public class CompatibilityService {
 
     private int drivetrainCapacity(Bicycle bicycle) {
         return (bicycle.getCasette().getMaximum() - bicycle.getCasette().getMinimum())
@@ -87,16 +89,12 @@ public class BicycleCompatibility {
         }
     }
 
-    public void bicycleCheck(Bicycle bicycle) {
-        System.out.println("[GENERAL COMPATIBILITY CHECK] " + bicycle.getId() + " " + bicycle.getName());
-        System.out.println("-------------------");
-        drivetrainCheckPrint(bicycle);
-        System.out.println("-------------------");
-        speedsCompatibilityCheckPrint(bicycle);
-        System.out.println("-------------------");
-        rimTyreComatibilityCheckPrint(bicycle);
-        System.out.println("-------------------");
-        wheelCheckPrint(bicycle);
+    public List<CompatibilityResult> bicycleCheck(Bicycle bicycle) {
+        List<CompatibilityResult> result = new ArrayList();
+        result.add(new CompatibilityResult("drivetrainCheck", drivetrainCheck(bicycle)));
+        result.add(new CompatibilityResult("speedsCompatibilityCheck", speedsCompatibilityCheck(bicycle)));
+        //result.add(new CompatibilityResult("wheelCheck", wheelCheck(bicycle)));
+        return result;
     }
 
     public void rimTyreComatibilityCheckPrint(Bicycle bicycle) {

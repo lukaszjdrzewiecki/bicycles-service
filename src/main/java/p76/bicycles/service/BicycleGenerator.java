@@ -1,6 +1,6 @@
 package p76.bicycles.service;
 
-import p76.bicycles.dto.*;
+import p76.bicycles.db.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;

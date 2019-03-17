@@ -1,4 +1,4 @@
-package p76.bicycles.dto;
+package p76.bicycles.db.entity;
 
 import javax.persistence.Entity;
 import java.util.Arrays;

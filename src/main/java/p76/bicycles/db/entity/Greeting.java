@@ -1,4 +1,4 @@
-package p76.bicycles.entity;
+package p76.bicycles.db.entity;
 
 public class Greeting {
     private final long id;

@@ -1,8 +1,8 @@
-package p76.bicycles.repository;
+package p76.bicycles.db.repository;
 
 
 import org.springframework.data.repository.CrudRepository;
-import p76.bicycles.entity.Customer;
+import p76.bicycles.db.entity.Customer;
 
 import java.util.List;
 

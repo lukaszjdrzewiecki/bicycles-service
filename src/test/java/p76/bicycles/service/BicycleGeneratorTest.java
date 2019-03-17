@@ -2,7 +2,7 @@ package p76.bicycles.service;
 
 import org.junit.Before;
 import org.junit.Test;
-import p76.bicycles.dto.Bicycle;
+import p76.bicycles.db.entity.Bicycle;
 
 import java.util.List;
 

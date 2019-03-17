@@ -1,9 +1,9 @@
-package p76.bicycles.controller;
+package p76.bicycles.web.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import p76.bicycles.entity.Greeting;
+import p76.bicycles.db.entity.Greeting;
 
 import java.util.concurrent.atomic.AtomicLong;
 
