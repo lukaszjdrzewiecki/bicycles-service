@@ -1,6 +1,6 @@
 package p76.bicycles.service;
 
-public class Messages {
+class Messages {
 
     protected static final String BICYCLE_CHECK = "[BICYCLE CHECK]";
 
