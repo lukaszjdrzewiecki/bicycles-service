@@ -16,6 +16,7 @@ public class Casette extends BicyclePart {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
     private int minimum;
     private int maximum;
     private int speed;
