@@ -7,6 +7,8 @@ import p76.bicycles.db.entity.FrontWheel;
 
 import java.util.*;
 
+import static p76.bicycles.service.Messages.*;
+
 @Component
 public class CompatibilityService {
 
@@ -24,15 +26,15 @@ public class CompatibilityService {
 
     public void drivetrainCheckPrint(Bicycle bicycle) {
         if (drivetrainCheck(bicycle)) {
-            System.out.println("[DRIVETRAIN CHECK] : all components compatible");
+            System.out.println(DRIVETRAIN_CHECK + COMPATIBLE_ALL);
         } else {
-            System.out.println("[DRIVETRAIN CHECK] : not compatible");
-            System.out.println("[DRIVETRAIN CHECK] : " + "Biggest possible gear of the casette in this bicycle is " + (bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCasette().getMaximum()));
+            System.out.println(DRIVETRAIN_CHECK + COMPATIBLE_NOT);
+            System.out.println(DRIVETRAIN_CHECK + DRIVETRAIN_EXPLANATION + (bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCasette().getMaximum()));
         }
     }
 
     public void changeCasette(Bicycle bicycle, Casette casette) {
-        System.out.println("[CHANGING CASETTE]");
+        System.out.println(CHANGING_COMPONENT);
         bicycle.setCasette(casette);
         drivetrainCheckPrint(bicycle);
     }
@@ -46,9 +48,9 @@ public class CompatibilityService {
 
     public void speedsCompatibilityCheckPrint(Bicycle bicycle) {
         if (speedsCompatibilityCheck(bicycle)) {
-            System.out.println("[SPEED CHECK] : all components compatible");
+            System.out.println(NUMBER_SPEEDS_CHECK + COMPATIBLE_ALL);
         } else {
-            System.out.println("[SPEED CHECK] : not compatible");
+            System.out.println(NUMBER_SPEEDS_CHECK + COMPATIBLE_NOT);
         }
     }
 
@@ -76,16 +78,16 @@ public class CompatibilityService {
     }
 
     public void wheelCheckPrint(Bicycle bicycle) {
-        System.out.println("[WHEEL CHECK]");
+        System.out.println(WHEEL_CHECK);
         if (wheelDiameterCheck(bicycle)) {
-            System.out.println("[DIAMETER] : all components compatible");
+            System.out.println(DIAMETER + COMPATIBLE_ALL);
         } else {
-            System.out.println("[DIAMETER] : not compatible");
+            System.out.println(DIAMETER + COMPATIBLE_NOT);
         }
         if (wheelHolesCheck(bicycle)) {
-            System.out.println("[NUMBER OF HOLES] : all components compatible");
+            System.out.println(NUMBER_OF_HOLES + COMPATIBLE_ALL);
         } else {
-            System.out.println("[NUMBER OF HOLES] : not compatible. RIM: " + bicycle.getFrontWheel().getRim().getHoles() + ", HUB: " + bicycle.getFrontWheel().getHub().getHoles());
+            System.out.println(NUMBER_OF_HOLES + COMPATIBLE_NOT + ". RIM: " + bicycle.getFrontWheel().getRim().getHoles() + ", HUB: " + bicycle.getFrontWheel().getHub().getHoles());
         }
     }
 
@@ -101,9 +103,9 @@ public class CompatibilityService {
         int min = tyreRimRange(bicycle.getFrontWheel()).get(0);
         int max = tyreRimRange(bicycle.getFrontWheel()).get(1);
         if (rimTyreCompatibilityCheck(bicycle.getFrontWheel())) {
-            System.out.println("[RIM & TYRE WIDTH CHECK : compatible");
+            System.out.println(RIM_TYRE_CHECK + COMPATIBLE_ALL);
         } else {
-            System.out.println("[RIM & TYRE WIDTH CHECK] : not compatible. Your rim width equals " + bicycle.getFrontWheel().getRim().getInnerWidth() + " mm and thus recommended size of a tyre is " + min + " - " + max + " mm");
+            System.out.println(RIM_TYRE_CHECK + COMPATIBLE_NOT + ". Your rim width equals " + bicycle.getFrontWheel().getRim().getInnerWidth() + " mm and thus recommended size of a tyre is " + min + " - " + max + " mm");
         }
     }
 
