@@ -2,7 +2,7 @@ package p76.bicycles.service;
 
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.Casette;
+import p76.bicycles.db.entity.Cassette;
 import p76.bicycles.db.entity.FrontWheel;
 
 import java.util.*;
@@ -13,7 +13,7 @@ import static p76.bicycles.service.Messages.*;
 public class CompatibilityService {
 
     private int drivetrainCapacity(Bicycle bicycle) {
-        return (bicycle.getCasette().getMaximum() - bicycle.getCasette().getMinimum())
+        return (bicycle.getCassette().getMaximum() - bicycle.getCassette().getMinimum())
                 + (bicycle.getCrank().getBigGear() - bicycle.getCrank().getSmallGear());
     }
 
@@ -29,18 +29,18 @@ public class CompatibilityService {
             System.out.println(DRIVETRAIN_CHECK + COMPATIBLE_ALL);
         } else {
             System.out.println(DRIVETRAIN_CHECK + COMPATIBLE_NOT);
-            System.out.println(DRIVETRAIN_CHECK + DRIVETRAIN_EXPLANATION + (bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCasette().getMaximum()));
+            System.out.println(DRIVETRAIN_CHECK + DRIVETRAIN_EXPLANATION + (bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCassette().getMaximum()));
         }
     }
 
-    public void changeCasette(Bicycle bicycle, Casette casette) {
+    public void changeCasette(Bicycle bicycle, Cassette cassette) {
         System.out.println(CHANGING_COMPONENT);
-        bicycle.setCasette(casette);
+        bicycle.setCassette(cassette);
         drivetrainCheckPrint(bicycle);
     }
 
     boolean speedsCompatibilityCheck(Bicycle bicycle) {
-        if (allEqual(bicycle.getCasette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
+        if (allEqual(bicycle.getCassette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
             return true;
         }
         return false;

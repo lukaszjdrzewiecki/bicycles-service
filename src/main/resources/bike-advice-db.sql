@@ -6,9 +6,9 @@ use `bike-advice`;
 
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS `casette`;
+DROP TABLE IF EXISTS `cassette`;
 
-CREATE TABLE `casette` (
+CREATE TABLE `cassette` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `minimum` int(11) DEFAULT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `bicycle` (
   `casette_id` int(11) DEFAULT NULL,
   KEY `CS_idx` (`casette_id`),
   CONSTRAINT `CS` FOREIGN KEY (`casette_id`) 
-  REFERENCES `casette` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  REFERENCES `cassette` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   
   `crank_id` int(11) DEFAULT NULL,
   KEY `CR_idx` (`crank_id`),
@@ -54,7 +54,7 @@ CREATE TABLE `bicycle` (
 INSERT INTO `bicycle` VALUES 
 	(1,'Scott','Scale','1','1');
     
-INSERT INTO `casette` VALUES 
+INSERT INTO `cassette` VALUES
 (1,'shimano m770','11','42','11');
 
 INSERT INTO `crank` VALUES 
