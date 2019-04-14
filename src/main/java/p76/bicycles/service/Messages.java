@@ -5,7 +5,7 @@ class Messages {
     protected static final String BICYCLE_CHECK = "[BICYCLE CHECK]";
 
     protected static final String DRIVETRAIN_CHECK = "[DRIVETRAIN CHECK";
-    protected static final String DRIVETRAIN_EXPLANATION = " : Biggest possible gear of the casette in this bicycle is ";
+    protected static final String DRIVETRAIN_EXPLANATION = " : Biggest possible gear of the cassette in this bicycle is ";
 
     protected static final String CHANGING_COMPONENT = "[CHANGING COMPONENT]";
 
