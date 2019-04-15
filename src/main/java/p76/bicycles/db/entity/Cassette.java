@@ -11,20 +11,21 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class Casette extends BicyclePart {
+public class Cassette extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
     private int minimum;
     private int maximum;
     private int speed;
 
-    public Casette(String name) {
+    public Cassette(String name) {
         super(name);
     }
 
-    public Casette(String name, int minimum, int maximum, int speed){
+    public Cassette(String name, int minimum, int maximum, int speed){
         super(name);
         this.minimum = minimum;
         this.maximum = maximum;

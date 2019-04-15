@@ -19,7 +19,7 @@ public class Bicycle {
     private Crank crank;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Casette casette;
+    private Cassette cassette;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private FrontDerailleur frontDerailleur;
@@ -36,12 +36,15 @@ public class Bicycle {
     @ManyToOne(cascade = CascadeType.ALL)
     private RearWheel rearWheel;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Frame frame;
+
     public String toString()
     {
         return "Bicycle: " + manufacturer + " " + name + " [ID " + id  + "]" +
                 " with Parts: \n" +
                 "[CRANK] " + this.crank +
-                " [CASETTE] " + this.casette +
+                " [CASETTE] " + this.cassette +
                 " [FRONT DERAILLEUR] " + this.frontDerailleur +
                 " [REAR DERAILLEUR] " + this.rearDerailleur +
                 " [BRAKES] " + this.brakes +

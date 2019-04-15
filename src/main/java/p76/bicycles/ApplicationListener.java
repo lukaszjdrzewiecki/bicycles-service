@@ -25,7 +25,7 @@ public class ApplicationListener {
 
         bicycle.setCrank(new Crank("Deore", 3, 42, 36, 22, 10));
         bicycle.setRearDerailleur(new RearDerailleur("RD-M8000", 10, "Long", 47));
-        bicycle.setCasette(new Casette("M590", 11, 36, 10));
+        bicycle.setCassette(new Cassette("M590", 11, 36, 10));
         bicycle.setFrontWheel(new FrontWheel(
                 new Rim("Shimano HB900", 20, 25, 32, true, true, 622),
                 new Hub("HOPE HB4", 28, 130, true, 15),

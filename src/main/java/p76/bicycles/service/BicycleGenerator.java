@@ -26,7 +26,7 @@ public class BicycleGenerator {
         bicycle.setName("Losowy Rower");
         bicycle.setManufacturer(getRandomManufacturer());
         bicycle.setCrank(new Crank(getRandomPartSeries()));
-        bicycle.setCasette(new Casette(getRandomPartSeries()));
+        bicycle.setCassette(new Cassette(getRandomPartSeries()));
         bicycle.setRearDerailleur(new RearDerailleur(getRandomPartSeries()));
         bicycle.setFrontWheel(new FrontWheel(getRandomPartSeries()));
         bicycle.setRearWheel(new RearWheel(getRandomPartSeries()));
