@@ -34,9 +34,7 @@ public class CompatibilityController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        service.bicycleCheck(bicycle.get());
-
-        return ResponseEntity.ok(bicycle.get());
+        return ResponseEntity.ok(service.bicycleCheck(bicycle.get()));
     }
 
 }
