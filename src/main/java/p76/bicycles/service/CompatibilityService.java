@@ -17,11 +17,15 @@ public class CompatibilityService {
                 + (bicycle.getCrank().getBigGear() - bicycle.getCrank().getSmallGear());
     }
 
-    public boolean drivetrainCheck(Bicycle bicycle) {
-        if (bicycle.getRearDerailleur().getCapacity() >= drivetrainCapacity(bicycle)) {
-            return true;
+    public Boolean drivetrainCheck(Bicycle bicycle) {
+        try {
+            if (bicycle.getRearDerailleur().getCapacity() >= drivetrainCapacity(bicycle)) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
         }
-        return false;
     }
 
     public void drivetrainCheckPrint(Bicycle bicycle) {
@@ -39,11 +43,15 @@ public class CompatibilityService {
         drivetrainCheckPrint(bicycle);
     }
 
-    boolean speedsCompatibilityCheck(Bicycle bicycle) {
-        if (allEqual(bicycle.getCassette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
-            return true;
+    Boolean speedsCompatibilityCheck(Bicycle bicycle) {
+        try {
+            if (allEqual(bicycle.getCassette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
         }
-        return false;
     }
 
     public void speedsCompatibilityCheckPrint(Bicycle bicycle) {
