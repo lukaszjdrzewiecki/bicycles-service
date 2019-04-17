@@ -93,6 +93,17 @@ public class CompatibilityService {
         return false;
     }
 
+    public Boolean wheelCheck (Bicycle bicycle) {
+        try {
+            if (wheelDiameterCheck(bicycle) && wheelHolesCheck(bicycle)) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public void wheelCheckPrint(Bicycle bicycle) {
         System.out.println(WHEEL_CHECK);
         if (wheelDiameterCheck(bicycle)) {
@@ -111,7 +122,7 @@ public class CompatibilityService {
         List<CompatibilityResult> result = new ArrayList();
         result.add(new CompatibilityResult("drivetrainCheck", drivetrainCheck(bicycle)));
         result.add(new CompatibilityResult("speedsCompatibilityCheck", speedsCompatibilityCheck(bicycle)));
-        //result.add(new CompatibilityResult("wheelCheck", wheelCheck(bicycle)));
+        result.add(new CompatibilityResult("wheelCheck", wheelCheck(bicycle)));
         return result;
     }
 
