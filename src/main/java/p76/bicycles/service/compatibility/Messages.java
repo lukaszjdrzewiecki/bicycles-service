@@ -1,4 +1,4 @@
-package p76.bicycles.service;
+package p76.bicycles.service.compatibility;
 
 class Messages {
 

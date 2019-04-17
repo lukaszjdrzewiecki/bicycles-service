@@ -6,12 +6,16 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.*;
 import p76.bicycles.service.BicycleService;
+import p76.bicycles.service.compatibility.CompatibilityService;
 
 @Component
 public class ApplicationListener {
 
     @Autowired
     BicycleService service;
+
+    @Autowired
+    CompatibilityService compatibility;
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -34,6 +38,8 @@ public class ApplicationListener {
         service.addBicycle(bicycle);
 
         System.out.println(service.findAllBicycles());
+
+        System.out.println(compatibility.bicycleCheck(bicycle));
     }
 
     private Bicycle createBicycle(String name, String manufacturer) {

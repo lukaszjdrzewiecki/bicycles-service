@@ -1,7 +1,7 @@
 package p76.bicycles;
 
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.service.CompatibilityService;
+import p76.bicycles.service.compatibility.CompatibilityService;
 import p76.bicycles.service.BicycleGenerator;
 import p76.bicycles.service.BicycleService;
 
