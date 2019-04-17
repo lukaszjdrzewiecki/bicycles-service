@@ -5,11 +5,11 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class Common {
+public class DataService {
 
     boolean allEqual(int a, int... integers) {
         for (int i : integers) {
-            if (!(i == a)) {
+            if (i != a) {
                 return false;
             }
         }

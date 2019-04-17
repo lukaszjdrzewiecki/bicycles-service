@@ -12,7 +12,7 @@ import static p76.bicycles.service.compatibility.Messages.CHANGING_COMPONENT;
 public class DrivetrainCompatibilityService {
 
     @Autowired
-    Common common;
+    DataService dataService;
 
     private int drivetrainCapacity(Bicycle bicycle) {
         return (bicycle.getCassette().getMaximum() - bicycle.getCassette().getMinimum())
