@@ -1,9 +1,11 @@
 package p76.bicycles.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.entity.Cassette;
 import p76.bicycles.db.entity.FrontWheel;
+import p76.bicycles.db.repository.BicycleRepository;
 
 import java.util.*;
 
@@ -11,6 +13,12 @@ import static p76.bicycles.service.Messages.*;
 
 @Component
 public class CompatibilityService {
+
+    @Autowired
+    BicycleRepository repository;
+
+    @Autowired
+    BicycleService service;
 
     private int drivetrainCapacity(Bicycle bicycle) {
         return (bicycle.getCassette().getMaximum() - bicycle.getCassette().getMinimum())
@@ -104,6 +112,17 @@ public class CompatibilityService {
         result.add(new CompatibilityResult("drivetrainCheck", drivetrainCheck(bicycle)));
         result.add(new CompatibilityResult("speedsCompatibilityCheck", speedsCompatibilityCheck(bicycle)));
         //result.add(new CompatibilityResult("wheelCheck", wheelCheck(bicycle)));
+        return result;
+    }
+
+    public List<List<CompatibilityResult>> bicycleCheckAll(){
+        List<List<CompatibilityResult>> result = new ArrayList<>();
+
+        List <Bicycle> bicycles = service.findAllBicycles();
+        for (Bicycle bicycle : bicycles){
+            result.add(bicycleCheck(bicycle));
+        }
+
         return result;
     }
 
