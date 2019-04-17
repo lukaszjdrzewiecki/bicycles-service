@@ -1,5 +1,6 @@
 package p76.bicycles.db.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Frame {
 
     @Id
@@ -30,11 +32,11 @@ public class Frame {
     private boolean italianThread;
     private int rearWheelWidth;
     private int rearWheelAxleSize;
-    private int seatpostSize;
+    private double seatpostSize;
     private String discBrakeMount;
     private String brakeType;
 
-    public Frame(String brand, String name, double upperHeadSet, double lowerHeadSet, double headTubeWidth, double headLength, int bottomBracketLength, int bottomBracketSize, boolean pressFit, boolean threaded, boolean italianThread, int rearWheelWidth, int rearWheelAxleSize, int seatpostSize, String discBrakeMount, String brakeType) {
+    public Frame(String brand, String name, double upperHeadSet, double lowerHeadSet, double headTubeWidth, double headLength, int bottomBracketLength, int bottomBracketSize, boolean pressFit, boolean threaded, boolean italianThread, int rearWheelWidth, int rearWheelAxleSize, double seatpostSize, String discBrakeMount, String brakeType) {
         this.brand = brand;
         this.name = name;
         this.upperHeadSet = upperHeadSet;
