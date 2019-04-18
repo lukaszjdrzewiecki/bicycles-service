@@ -1,11 +1,12 @@
-package p76.bicycles.service;
+package p76.bicycles.service.compatibility;
 
 import org.junit.Test;
+import p76.bicycles.service.compatibility.CompatibilityService;
 
 import static org.junit.Assert.*;
 
 public class BicycleCompatibilityServiceTest {
-    private CompatibilityService compatibility = new CompatibilityService();
+    private Common common = new Common();
 
     @Test
     public void allEqual() {
@@ -13,9 +14,9 @@ public class BicycleCompatibilityServiceTest {
         int b = 10;
         int c = 10;
         int d = 11;
-        boolean actual = compatibility.allEqual(a, b, c);
+        boolean actual = common.allEqual(a, b, c);
         assertTrue(actual);
-        boolean actual2 = compatibility.allEqual(a, b, c, d);
+        boolean actual2 = common.allEqual(a, b, c, d);
         assertFalse(actual2);
     }
 }

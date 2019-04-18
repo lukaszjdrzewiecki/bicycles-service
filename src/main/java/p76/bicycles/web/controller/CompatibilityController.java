@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.repository.BicycleRepository;
-import p76.bicycles.service.CompatibilityService;
+import p76.bicycles.service.BicycleService;
+import p76.bicycles.service.compatibility.CompatibilityResult;
+import p76.bicycles.service.compatibility.CompatibilityService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,13 +21,17 @@ import java.util.Optional;
 public class CompatibilityController {
 
     @Autowired
-    private CompatibilityService service;
+    private CompatibilityService compatibility;
 
     @Autowired
     private BicycleRepository repository;
 
-    public void checkCompatibiltiy(Bicycle bicycle) {
-        service.bicycleCheck(bicycle);
+    @Autowired
+    BicycleService service;
+
+    @GetMapping
+    public List<List<CompatibilityResult>> getAllBicycles() {
+        return compatibility.bicycleCheckAll();
     }
 
     @GetMapping("{id}")
@@ -34,7 +41,7 @@ public class CompatibilityController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        return ResponseEntity.ok(service.bicycleCheck(bicycle.get()));
+        return ResponseEntity.ok(compatibility.bicycleCheck(bicycle.get()));
     }
 
 }
