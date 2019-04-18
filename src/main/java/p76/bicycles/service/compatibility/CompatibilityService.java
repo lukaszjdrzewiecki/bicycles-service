@@ -35,12 +35,15 @@ public class CompatibilityService {
     @Autowired
     FrameCompatibilityService frameCompatibilityService;
 
+    @Autowired
+    Messages messages;
+
     public List<CompatibilityResult> bicycleCheck(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList();
         result.add(new CompatibilityResult("drivetrainCheck", drivetrainCompatibilityService.drivetrainCheck(bicycle), "test"));
         result.add(new CompatibilityResult("speedsCompatibilityCheck", speedsCompatibilityService.speedsCompatibilityCheck(bicycle), "test"));
-        result.add(new CompatibilityResult(FRONT_WHEEL + CHECK, wheelCompatibilityService.frontWheelCheck(bicycle), compatibilityMessage(wheelCompatibilityService.frontWheelCheck(bicycle)), wheelCompatibilityService.frontWheelCheckFull(bicycle)));
-        result.add(new CompatibilityResult(REAR_WHEEL + CHECK, wheelCompatibilityService.rearWheelCheck(bicycle), compatibilityMessage(wheelCompatibilityService.rearWheelCheck(bicycle)), wheelCompatibilityService.rearWheelCheckFull(bicycle)));
+        result.add(new CompatibilityResult(FRONT_WHEEL + CHECK, wheelCompatibilityService.frontWheelCheck(bicycle), messages.compatibilityMessage(wheelCompatibilityService.frontWheelCheck(bicycle)), wheelCompatibilityService.frontWheelCheckFull(bicycle)));
+        result.add(new CompatibilityResult(REAR_WHEEL + CHECK, wheelCompatibilityService.rearWheelCheck(bicycle), messages.compatibilityMessage(wheelCompatibilityService.rearWheelCheck(bicycle)), wheelCompatibilityService.rearWheelCheckFull(bicycle)));
         result.add(new CompatibilityResult("rearHubWidthCheck", frameCompatibilityService.rearHubWidthCheck(bicycle), "test"));
         return result;
     }
@@ -55,17 +58,5 @@ public class CompatibilityService {
 
         return result;
     }
-
-    private String compatibilityMessage(Boolean compatible) {
-        try {
-            if (compatible) {
-                return COMPATIBLE_ALL;
-            }
-            return COMPATIBLE_NOT;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
 
 }
