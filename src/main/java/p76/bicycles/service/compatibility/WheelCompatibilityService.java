@@ -19,6 +19,9 @@ public class WheelCompatibilityService {
     @Autowired
     CompatibilityService compatibilityService;
 
+    @Autowired
+    Messages messages;
+
     public List<CompatibilityResult> frontWheelCheckFull(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList<>();
         Wheel wheel = bicycle.getFrontWheel();
@@ -34,9 +37,9 @@ public class WheelCompatibilityService {
     }
 
     private void wheelChecks(List<CompatibilityResult> result, Wheel wheel) {
-        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheck(wheel), compatibilityDiameterMessage(wheelDiameterCheck(wheel), wheel)));
-        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheck(wheel), compatibilityRimTyreMessage(rimTyreCompatibilityCheck(wheel), wheel)));
-        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheck((wheel)), compatibilityHolesMessage(wheelHolesCheck(wheel), wheel)));
+        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheck(wheel), messages.compatibilityDiameterMessage(wheelDiameterCheck(wheel), wheel)));
+        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheck(wheel), messages.compatibilityRimTyreMessage(rimTyreCompatibilityCheck(wheel), wheel)));
+        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheck((wheel)), messages.compatibilityHolesMessage(wheelHolesCheck(wheel), wheel)));
     }
 
 
@@ -113,44 +116,6 @@ public class WheelCompatibilityService {
         }
     }
 
-    private String compatibilityRimTyreMessage(Boolean compatible, Wheel wheel) {
-        try {
-            int min = tyreRimRange(wheel).get(0);
-            int max = tyreRimRange(wheel).get(1);
-            if (compatible) {
-                return COMPATIBLE_ALL;
-            }
-            return COMPATIBLE_NOT +
-                    ": your rim width equals " + wheel.getRim().getInnerWidth() +
-                    " mm and thus recommended size of a tyre is " + min + " - " + max + " mm";
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
-    private String compatibilityDiameterMessage(Boolean compatible, Wheel wheel) {
-        try {
-            if (compatible) {
-                return COMPATIBLE_ALL;
-            }
-            return COMPATIBLE_NOT +
-                    ": your rim diameter equals " + wheel.getRim().getDiameter() +
-                    " and your tyre diameter equals " + wheel.getTyre().getDiameter();
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
-    private String compatibilityHolesMessage(Boolean compatible, Wheel wheel) {
-        try {
-            if (compatible) {
-                return COMPATIBLE_ALL;
-            }
-            return COMPATIBLE_NOT +
-                    ": number of holes in your rim equals " + wheel.getRim().getHoles() +
-                    " and number of holes in your hub equals " + wheel.getHub().getHoles();
-        } catch (Exception e) {
-            return null;
-        }
-    }
 }

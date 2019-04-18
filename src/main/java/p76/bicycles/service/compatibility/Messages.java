@@ -1,6 +1,14 @@
 package p76.bicycles.service.compatibility;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import p76.bicycles.db.entity.Wheel;
+
+@Component
 class Messages {
+
+    @Autowired
+    WheelCompatibilityService wheelCompatibilityService;
 
     protected static final String BICYCLE_CHECK = "[BICYCLE CHECK]";
 
@@ -24,7 +32,57 @@ class Messages {
     protected static final String REAR_WHEEL = " REAR" + WHEEL;
     protected static final String SUMMARY = " SUMMARY";
 
+    String compatibilityRimTyreMessage(Boolean compatible, Wheel wheel) {
+        try {
+            int min = wheelCompatibilityService.tyreRimRange(wheel).get(0);
+            int max = wheelCompatibilityService.tyreRimRange(wheel).get(1);
+            if (compatible) {
+                return COMPATIBLE_ALL;
+            }
+            return COMPATIBLE_NOT +
+                    ": your rim width equals " + wheel.getRim().getInnerWidth() +
+                    " mm and thus recommended size of a tyre is " + min + " - " + max + " mm";
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
+    String compatibilityDiameterMessage(Boolean compatible, Wheel wheel) {
+        try {
+            if (compatible) {
+                return COMPATIBLE_ALL;
+            }
+            return COMPATIBLE_NOT +
+                    ": your rim diameter equals " + wheel.getRim().getDiameter() +
+                    " and your tyre diameter equals " + wheel.getTyre().getDiameter();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    String compatibilityHolesMessage(Boolean compatible, Wheel wheel) {
+        try {
+            if (compatible) {
+                return COMPATIBLE_ALL;
+            }
+            return COMPATIBLE_NOT +
+                    ": number of holes in your rim equals " + wheel.getRim().getHoles() +
+                    " and number of holes in your hub equals " + wheel.getHub().getHoles();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    String compatibilityMessage(Boolean compatible) {
+        try {
+            if (compatible) {
+                return COMPATIBLE_ALL;
+            }
+            return COMPATIBLE_NOT;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 
 
