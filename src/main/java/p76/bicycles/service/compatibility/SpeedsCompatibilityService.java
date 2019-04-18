@@ -10,11 +10,11 @@ import static p76.bicycles.service.compatibility.Messages.*;
 public class SpeedsCompatibilityService {
 
     @Autowired
-    Common common;
+    DataService dataService;
 
     Boolean speedsCompatibilityCheck(Bicycle bicycle) {
         try {
-            if (common.allEqual(bicycle.getCassette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
+            if (dataService.allEqual(bicycle.getCassette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
                 return true;
             }
             return false;

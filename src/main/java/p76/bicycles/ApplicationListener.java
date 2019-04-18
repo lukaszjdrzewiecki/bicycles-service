@@ -30,10 +30,27 @@ public class ApplicationListener {
         bicycle.setCrank(new Crank("Deore", 3, 42, 36, 22, 10));
         bicycle.setRearDerailleur(new RearDerailleur("RD-M8000", 10, "Long", 47));
         bicycle.setCassette(new Cassette("M590", 11, 36, 10));
-        bicycle.setFrontWheel(new FrontWheel(
+        bicycle.setRearWheel(new RearWheel(
                 new Rim("Shimano HB900", 20, 25, 32, true, true, 622),
-                new Hub("HOPE HB4", 28, 130, true, 15),
-                new Tyre("Continental Baron", 27, true, 622)));
+                new Hub("HOPE HB4", 32, 135, true, 15),
+                new Tyre("Continental Baron", 45, true, 622)));
+        bicycle.setFrame(new Frame(
+                "Scott",
+                "Sportster 2017",
+                28.6,
+                38.1,
+                28.6,
+                120,
+                68,
+                25,
+                true,
+                false,
+                false,
+                135,
+                9,
+                31.8,
+                "Mount",
+                "Disc"));
 
         service.addBicycle(bicycle);
 

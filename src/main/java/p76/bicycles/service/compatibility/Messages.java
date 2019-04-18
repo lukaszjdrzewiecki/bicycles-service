@@ -17,6 +17,7 @@ class Messages {
 
     protected static final String COMPATIBLE_NOT = " : all parts are compatible";
     protected static final String COMPATIBLE_ALL = " : not compatible";
+    protected static final String NON_SPECIFIED = "Parts not specified";
 
 
 }
