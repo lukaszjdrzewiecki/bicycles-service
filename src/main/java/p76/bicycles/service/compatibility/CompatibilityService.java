@@ -3,10 +3,13 @@ package p76.bicycles.service.compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.db.entity.Wheel;
 import p76.bicycles.db.repository.BicycleRepository;
 import p76.bicycles.service.BicycleService;
 
 import java.util.*;
+
+import static p76.bicycles.service.compatibility.Messages.*;
 
 @Component
 public class CompatibilityService {
@@ -34,10 +37,11 @@ public class CompatibilityService {
 
     public List<CompatibilityResult> bicycleCheck(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList();
-        result.add(new CompatibilityResult("drivetrainCheck", drivetrainCompatibilityService.drivetrainCheck(bicycle)));
-        result.add(new CompatibilityResult("speedsCompatibilityCheck", speedsCompatibilityService.speedsCompatibilityCheck(bicycle)));
-        result.add(new CompatibilityResult("wheelCheck", wheelCompatibilityService.rearWheelCheck(bicycle)));
-        result.add(new CompatibilityResult("rearHubWidthCheck", frameCompatibilityService.rearHubWidthCheck(bicycle)));
+        result.add(new CompatibilityResult("drivetrainCheck", drivetrainCompatibilityService.drivetrainCheck(bicycle), "test"));
+        result.add(new CompatibilityResult("speedsCompatibilityCheck", speedsCompatibilityService.speedsCompatibilityCheck(bicycle), "test"));
+        result.add(new CompatibilityResult(FRONT_WHEEL + CHECK, wheelCompatibilityService.frontWheelCheck(bicycle), compatibilityMessage(wheelCompatibilityService.frontWheelCheck(bicycle)), wheelCompatibilityService.frontWheelCheckFull(bicycle)));
+        result.add(new CompatibilityResult(REAR_WHEEL + CHECK, wheelCompatibilityService.rearWheelCheck(bicycle), compatibilityMessage(wheelCompatibilityService.rearWheelCheck(bicycle)), wheelCompatibilityService.rearWheelCheckFull(bicycle)));
+        result.add(new CompatibilityResult("rearHubWidthCheck", frameCompatibilityService.rearHubWidthCheck(bicycle), "test"));
         return result;
     }
 
@@ -51,5 +55,17 @@ public class CompatibilityService {
 
         return result;
     }
+
+    private String compatibilityMessage(Boolean compatible) {
+        try {
+            if (compatible) {
+                return COMPATIBLE_ALL;
+            }
+            return COMPATIBLE_NOT;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 
 }

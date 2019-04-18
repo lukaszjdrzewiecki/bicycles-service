@@ -31,9 +31,9 @@ public class ApplicationListener {
         bicycle.setRearDerailleur(new RearDerailleur("RD-M8000", 10, "Long", 47));
         bicycle.setCassette(new Cassette("M590", 11, 36, 10));
         bicycle.setRearWheel(new RearWheel(
-                new Rim("Shimano HB900", 20, 25, 32, true, true, 622),
+                new Rim("Shimano HB900", 20, 25, 28, true, true, 29),
                 new Hub("HOPE HB4", 32, 135, true, 15),
-                new Tyre("Continental Baron", 45, true, 622)));
+                new Tyre("Continental Baron", 22, true, 26)));
         bicycle.setFrame(new Frame(
                 "Scott",
                 "Sportster 2017",
