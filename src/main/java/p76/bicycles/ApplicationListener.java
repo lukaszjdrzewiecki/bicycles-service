@@ -37,10 +37,9 @@ public class ApplicationListener {
         bicycle.setFrame(new Frame(
                 "Scott",
                 "Sportster 2017",
-                28.6,
-                38.1,
-                28.6,
-                120,
+                2.10,
+                41.0,
+                49.7,
                 68,
                 25,
                 true,
@@ -50,7 +49,12 @@ public class ApplicationListener {
                 9,
                 31.8,
                 "Mount",
-                "Disc"));
+                "Disc",
+                true));
+
+        bicycle.setHeadSet(new HeadSet("FSA", "Headset Pro", 0.120, 28.6, 41.0, 49.7, 28.6, 38.1, true, "semi-integrated"));
+
+        bicycle.setFork(new Fork("Reba", "Rock Shox", 1.58, "2017", 100, 50.0, 28.6, true, "Air", "Oil/Coil", 100, 15, "Magnesium", "27,5''", "Disc"));
 
         service.addBicycle(bicycle);
 

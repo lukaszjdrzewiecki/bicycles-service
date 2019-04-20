@@ -39,6 +39,12 @@ public class Bicycle {
     @ManyToOne(cascade = CascadeType.ALL)
     private Frame frame;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private HeadSet headSet;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Fork fork;
+
     public String toString()
     {
         return "Bicycle: " + manufacturer + " " + name + " [ID " + id  + "]" +

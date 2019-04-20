@@ -16,6 +16,15 @@ public class DataService {
         return true;
     }
 
+    boolean allTrue(boolean a, boolean... booleans) {
+        for (boolean i : booleans) {
+            if (i != a) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     Map<Integer, List<Integer>> diameterMap() {
         Map<Integer, List<Integer>> diameters = new HashMap<>();
         diameters.put(13, new ArrayList<>(Arrays.asList(18, 25)));

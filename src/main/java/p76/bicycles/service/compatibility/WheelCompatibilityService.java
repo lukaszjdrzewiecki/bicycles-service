@@ -22,14 +22,14 @@ public class WheelCompatibilityService {
     @Autowired
     Messages messages;
 
-    public List<CompatibilityResult> frontWheelCheckFull(Bicycle bicycle) {
+    public List<CompatibilityResult> frontWheelCheckTests(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList<>();
         Wheel wheel = bicycle.getFrontWheel();
         wheelChecks(result, wheel);
         return result;
     }
 
-    public List<CompatibilityResult> rearWheelCheckFull(Bicycle bicycle) {
+    public List<CompatibilityResult> rearWheelCheckTests(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList<>();
         Wheel wheel = bicycle.getRearWheel();
         wheelChecks(result, wheel);
