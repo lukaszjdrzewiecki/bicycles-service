@@ -57,14 +57,7 @@ class Messages {
         }
     }
 
-    static final String forkHeadSetCheckMessage(Bicycle bicycle) {
-        try {
-            return ": headset top " + bicycle.getHeadSet().getTopHeadTubeDiameter() + " fork top " + bicycle.getFork().getHeadTubeTopDiameter() + " | " +
-                    " headset bottom " + bicycle.getHeadSet().getBottomHeadTubeDiameter() + " fork bottom " + bicycle.getFork().getHeadTubeBottomDiameter();
-        } catch (Exception e) {
-            return null;
-        }
-    }
+    //------------- WHEEL MESSAGES ---------------------
 
     static final String wheelHolesMessage(Wheel wheel) {
         try {
@@ -94,7 +87,53 @@ class Messages {
             return null;
         }
     }
+    //------------- WHEEL MESSAGES ---------------------
 
+    //------------- FRAME MESSAGES ---------------------
+    static public String rearHubWidthMessage (Bicycle bicycle) {
+        try {
+            return ": hub width " + bicycle.getRearWheel().getHub().getWidth() +
+                    " frame space " + bicycle.getFrame().getRearWheelWidth();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    static final String forkHeadSetCheckMessage(Bicycle bicycle) {
+        try {
+            return ": headset inner top " + bicycle.getHeadSet().getTopHeadTubeDiameter() + " fork top " + bicycle.getFork().getHeadTubeTopDiameter() + " | " +
+                    " headset inner bottom " + bicycle.getHeadSet().getBottomHeadTubeDiameter() + " fork bottom " + bicycle.getFork().getHeadTubeBottomDiameter();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    static public String frameHeadSetMessage (Bicycle bicycle) {
+        try {
+            return ": frame top " + bicycle.getFrame().getTopHeadSetDiameter() + " headset outer top " + bicycle.getHeadSet().getTopFrameDiameter() + " | " +
+                    "frame bottom " + (bicycle.getFrame().getBottomHeadSetDiameter() + " headset outer bottom "  + bicycle.getHeadSet().getBottomFrameDiameter());
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    static public String totalHeadSetMessage(Bicycle bicycle) {
+        try {
+            return ": must meet the requirements of every other headset test" ;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    static public String forkTaperMessage(Bicycle bicycle) {
+        try {
+            return ": frame tapered " + bicycle.getFrame().getTapered() + " | fork tapered " + bicycle.getFork().getTapered();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    //------------- FRAME MESSAGES -------------------
 
 
 }
