@@ -25,11 +25,19 @@ public class FrameCompatibilityService {
     }
 
     private void frameChecks(List<CompatibilityResult> result, Bicycle bicycle) {
-        result.add(new CompatibilityResult("REAR HUB SPACE" + CHECK, rearHubWidthCheck(bicycle), "message"));
-        result.add(new CompatibilityResult("HEADSET & FRAME DIAMETERS" + CHECK, frameHeadSetCheck(bicycle), "message"));
+        result.add(new CompatibilityResult("REAR HUB SPACE" + CHECK, rearHubWidthCheck(bicycle), messages.printMessage(rearHubWidthCheck(bicycle), messages.rearHubWidthMessage(bicycle))));
+        result.add(new CompatibilityResult("HEADSET & FRAME DIAMETERS" + CHECK, frameHeadSetCheck(bicycle), messages.printMessage(frameHeadSetCheck(bicycle), messages.frameHeadSetMessage(bicycle))));
         result.add(new CompatibilityResult("HEADSET & FORK DIAMETERS" + CHECK, forkHeadSetCheck(bicycle), messages.printMessage(forkHeadSetCheck(bicycle), messages.forkHeadSetCheckMessage(bicycle))));
-        result.add(new CompatibilityResult("TOTAL HEADSET" + CHECK, totalHeadSetCheck(bicycle), "message"));
-        result.add(new CompatibilityResult("TAPER" + CHECK, forkTaperCheck(bicycle), "message"));
+        result.add(new CompatibilityResult("TOTAL HEADSET" + CHECK, totalHeadSetCheck(bicycle), messages.printMessage(totalHeadSetCheck(bicycle), messages.totalHeadSetMessage(bicycle))));
+        result.add(new CompatibilityResult("TAPER" + CHECK, forkTaperCheck(bicycle), messages.printMessage(forkTaperCheck(bicycle), messages.forkTaperMessage(bicycle))));
+    }
+
+    public Boolean totalFrameCheck(Bicycle bicycle) {
+        try {
+        return dataService.allTrue(rearHubWidthCheck(bicycle), totalHeadSetCheck(bicycle), forkTaperCheck(bicycle));
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public Boolean rearHubWidthCheck(Bicycle bicycle) {
