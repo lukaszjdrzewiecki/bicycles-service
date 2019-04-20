@@ -13,18 +13,14 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Frame {
+public class Frame extends BicyclePart{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String brand;
-    private String name;
-    private double upperHeadSet;
-    private double lowerHeadSet;
-    private double headTubeWidth;
-    private double headLength;
+    private double topHeadSetDiameter;
+    private double bottomHeadSetDiameter;
     private int bottomBracketLength;
     private int bottomBracketSize;
     private boolean pressFit;
@@ -35,14 +31,12 @@ public class Frame {
     private double seatpostSize;
     private String discBrakeMount;
     private String brakeType;
+    private Boolean tapered;
 
-    public Frame(String brand, String name, double upperHeadSet, double lowerHeadSet, double headTubeWidth, double headLength, int bottomBracketLength, int bottomBracketSize, boolean pressFit, boolean threaded, boolean italianThread, int rearWheelWidth, int rearWheelAxleSize, double seatpostSize, String discBrakeMount, String brakeType) {
-        this.brand = brand;
-        this.name = name;
-        this.upperHeadSet = upperHeadSet;
-        this.lowerHeadSet = lowerHeadSet;
-        this.headTubeWidth = headTubeWidth;
-        this.headLength = headLength;
+    public Frame(String brand, String name, double weight, double topHeadSetDiameter, double bottomHeadSetDiameter, int bottomBracketLength, int bottomBracketSize, boolean pressFit, boolean threaded, boolean italianThread, int rearWheelWidth, int rearWheelAxleSize, double seatpostSize, String discBrakeMount, String brakeType, Boolean tapered) {
+        super(brand, name, weight);
+        this.topHeadSetDiameter = topHeadSetDiameter;
+        this.bottomHeadSetDiameter = bottomHeadSetDiameter;
         this.bottomBracketLength = bottomBracketLength;
         this.bottomBracketSize = bottomBracketSize;
         this.pressFit = pressFit;
@@ -53,5 +47,6 @@ public class Frame {
         this.seatpostSize = seatpostSize;
         this.discBrakeMount = discBrakeMount;
         this.brakeType = brakeType;
+        this.tapered = tapered;
     }
 }

@@ -30,7 +30,7 @@ class Messages {
     protected static final String WHEEL = " WHEEL";
     protected static final String FRONT_WHEEL = " FRONT" + WHEEL;
     protected static final String REAR_WHEEL = " REAR" + WHEEL;
-    protected static final String SUMMARY = " SUMMARY";
+    protected static final String FRAME = " FRAME";
 
     String compatibilityRimTyreMessage(Boolean compatible, Wheel wheel) {
         try {
@@ -83,7 +83,6 @@ class Messages {
             return null;
         }
     }
-
 
 
 }
