@@ -1,6 +1,5 @@
 package p76.bicycles.db.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,8 +19,9 @@ public class Fork extends BicyclePart{
 
     private String year;
     private int travel;
-    private double headTube;
-    private double headTubeRadius;
+    private double headTubeLength;
+    private double headTubeTopDiameter;
+    private double headTubeBottomDiameter;
     private Boolean tapered;
     private String leftChamber;
     private String rightChamber;
@@ -31,12 +31,13 @@ public class Fork extends BicyclePart{
     private String wheel;
     private String brake;
 
-    public Fork(String name, String brand, double weight, String year, int travel, double headTube, double headTubeRadius, Boolean tapered, String leftChamber, String rightChamber, int axleWidth, int axleRadius, String stanchions, String wheel, String brake) {
+    public Fork(String name, String brand, double weight, String year, int travel, double headTubeLength, double headTubeTopDiameter, double headTubeBottomDiameter, Boolean tapered, String leftChamber, String rightChamber, int axleWidth, int axleRadius, String stanchions, String wheel, String brake) {
         super(name, brand, weight);
         this.year = year;
         this.travel = travel;
-        this.headTube = headTube;
-        this.headTubeRadius = headTubeRadius;
+        this.headTubeLength = headTubeLength;
+        this.headTubeTopDiameter = headTubeTopDiameter;
+        this.headTubeBottomDiameter = headTubeTopDiameter;
         this.tapered = tapered;
         this.leftChamber = leftChamber;
         this.rightChamber = rightChamber;
