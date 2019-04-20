@@ -3,7 +3,6 @@ package p76.bicycles.service.compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.Frame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,9 @@ public class FrameCompatibilityService {
     @Autowired
     DataService dataService;
 
+    @Autowired
+    Messages messages;
+
     public List<CompatibilityResult> frameCheckTests(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList<>();
         frameChecks(result, bicycle);
@@ -25,7 +27,8 @@ public class FrameCompatibilityService {
     private void frameChecks(List<CompatibilityResult> result, Bicycle bicycle) {
         result.add(new CompatibilityResult("REAR HUB SPACE" + CHECK, rearHubWidthCheck(bicycle), "message"));
         result.add(new CompatibilityResult("HEADSET & FRAME DIAMETERS" + CHECK, frameHeadSetCheck(bicycle), "message"));
-        result.add(new CompatibilityResult("FRAME & FORK & HEADSET" + CHECK, forkHeadSetCheck(bicycle), "message"));
+        result.add(new CompatibilityResult("HEADSET & FORK DIAMETERS" + CHECK, forkHeadSetCheck(bicycle), messages.printMessage(forkHeadSetCheck(bicycle), messages.forkHeadSetCheckMessage(bicycle))));
+        result.add(new CompatibilityResult("TOTAL HEADSET" + CHECK, totalHeadSetCheck(bicycle), "message"));
         result.add(new CompatibilityResult("TAPER" + CHECK, forkTaperCheck(bicycle), "message"));
     }
 
@@ -54,9 +57,20 @@ public class FrameCompatibilityService {
 
     public Boolean forkHeadSetCheck(Bicycle bicycle) {
         try {
-            if (dataService.allTrue(bicycle.getFrame().getTapered(), bicycle.getFork().getTapered(), bicycle.getHeadSet().getTapered()) && frameHeadSetCheck(bicycle)) {
+            if ((bicycle.getHeadSet().getTopHeadTubeDiameter() == bicycle.getFork().getHeadTubeTopDiameter()) &&
+                    (bicycle.getHeadSet().getBottomHeadTubeDiameter() == bicycle.getFork().getHeadTubeBottomDiameter())) {
                 return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
+    public Boolean totalHeadSetCheck(Bicycle bicycle) {
+        try {
+            if (forkHeadSetCheck(bicycle) && frameHeadSetCheck(bicycle)) {
+                return true;
             }
             return false;
         } catch (Exception e) {

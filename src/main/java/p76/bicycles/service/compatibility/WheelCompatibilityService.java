@@ -37,9 +37,9 @@ public class WheelCompatibilityService {
     }
 
     private void wheelChecks(List<CompatibilityResult> result, Wheel wheel) {
-        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheck(wheel), messages.compatibilityDiameterMessage(wheelDiameterCheck(wheel), wheel)));
-        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheck(wheel), messages.compatibilityRimTyreMessage(rimTyreCompatibilityCheck(wheel), wheel)));
-        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheck((wheel)), messages.compatibilityHolesMessage(wheelHolesCheck(wheel), wheel)));
+        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheck(wheel), messages.printMessage(wheelDiameterCheck(wheel), wheelDiameterMessage(wheel))));
+        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheck(wheel), messages.printMessage(rimTyreCompatibilityCheck(wheel), messages.rimTyreMessage(wheel))));
+        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheck((wheel)), messages.printMessage(wheelHolesCheck(wheel), wheelHolesMessage(wheel))));
     }
 
 

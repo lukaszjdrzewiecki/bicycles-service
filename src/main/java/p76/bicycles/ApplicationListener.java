@@ -54,7 +54,7 @@ public class ApplicationListener {
 
         bicycle.setHeadSet(new HeadSet("FSA", "Headset Pro", 0.120, 28.6, 41.0, 49.7, 28.6, 38.1, true, "semi-integrated"));
 
-        bicycle.setFork(new Fork("Reba", "Rock Shox", 1.58, "2017", 100, 50.0, 28.6, true, "Air", "Oil/Coil", 100, 15, "Magnesium", "27,5''", "Disc"));
+        bicycle.setFork(new Fork("Reba", "Rock Shox", 1.58, "2017", 100, 50.0, 28.6, 38.1, true, "Air", "Oil/Coil", 100, 15, "Magnesium", "27,5''", "Disc"));
 
         service.addBicycle(bicycle);
 

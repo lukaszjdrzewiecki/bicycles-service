@@ -1,7 +1,9 @@
 package p76.bicycles.service.compatibility;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.entity.Wheel;
 
 @Component
@@ -32,48 +34,7 @@ class Messages {
     protected static final String REAR_WHEEL = " REAR" + WHEEL;
     protected static final String FRAME = " FRAME";
 
-    String compatibilityRimTyreMessage(Boolean compatible, Wheel wheel) {
-        try {
-            int min = wheelCompatibilityService.tyreRimRange(wheel).get(0);
-            int max = wheelCompatibilityService.tyreRimRange(wheel).get(1);
-            if (compatible) {
-                return COMPATIBLE_ALL;
-            }
-            return COMPATIBLE_NOT +
-                    ": your rim width equals " + wheel.getRim().getInnerWidth() +
-                    " mm and thus recommended size of a tyre is " + min + " - " + max + " mm";
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    String compatibilityDiameterMessage(Boolean compatible, Wheel wheel) {
-        try {
-            if (compatible) {
-                return COMPATIBLE_ALL;
-            }
-            return COMPATIBLE_NOT +
-                    ": your rim diameter equals " + wheel.getRim().getDiameter() +
-                    " and your tyre diameter equals " + wheel.getTyre().getDiameter();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    String compatibilityHolesMessage(Boolean compatible, Wheel wheel) {
-        try {
-            if (compatible) {
-                return COMPATIBLE_ALL;
-            }
-            return COMPATIBLE_NOT +
-                    ": number of holes in your rim equals " + wheel.getRim().getHoles() +
-                    " and number of holes in your hub equals " + wheel.getHub().getHoles();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    String compatibilityMessage(Boolean compatible) {
+    String printMessage(Boolean compatible) {
         try {
             if (compatible) {
                 return COMPATIBLE_ALL;
@@ -83,6 +44,57 @@ class Messages {
             return null;
         }
     }
+
+    String printMessage(Boolean compatible, String errorMessage) {
+        try {
+            if (compatible) {
+
+                return COMPATIBLE_ALL;
+            }
+            return COMPATIBLE_NOT + errorMessage;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    static final String forkHeadSetCheckMessage(Bicycle bicycle) {
+        try {
+            return ": headset top " + bicycle.getHeadSet().getTopHeadTubeDiameter() + " fork top " + bicycle.getFork().getHeadTubeTopDiameter() + " | " +
+                    " headset bottom " + bicycle.getHeadSet().getBottomHeadTubeDiameter() + " fork bottom " + bicycle.getFork().getHeadTubeBottomDiameter();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    static final String wheelHolesMessage(Wheel wheel) {
+        try {
+            return ": number of holes in your rim equals " + wheel.getRim().getHoles() +
+                    " and number of holes in your hub equals " + wheel.getHub().getHoles();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    static final String wheelDiameterMessage(Wheel wheel) {
+        try {
+            return ": your rim diameter equals " + wheel.getRim().getDiameter() +
+                    " and your tyre diameter equals " + wheel.getTyre().getDiameter();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    final String rimTyreMessage (Wheel wheel) {
+        try {
+            return ": your rim width equals " + wheel.getRim().getInnerWidth() +
+                    " mm and thus recommended size of a tyre is " +
+                    wheelCompatibilityService.tyreRimRange(wheel).get(0) + " - " +
+                    wheelCompatibilityService.tyreRimRange(wheel).get(1) + " mm";
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 
 
 }
