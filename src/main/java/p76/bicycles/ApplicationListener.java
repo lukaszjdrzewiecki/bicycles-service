@@ -5,6 +5,16 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.*;
+import p76.bicycles.db.entity.Drivetrain.Cassette;
+import p76.bicycles.db.entity.Drivetrain.Chainring;
+import p76.bicycles.db.entity.Drivetrain.Crank;
+import p76.bicycles.db.entity.Drivetrain.RearDerailleur;
+import p76.bicycles.db.entity.Suspension.Fork;
+import p76.bicycles.db.entity.Suspension.HeadSet;
+import p76.bicycles.db.entity.Wheels.Hub;
+import p76.bicycles.db.entity.Wheels.RearWheel;
+import p76.bicycles.db.entity.Wheels.Rim;
+import p76.bicycles.db.entity.Wheels.Tyre;
 import p76.bicycles.service.BicycleService;
 import p76.bicycles.service.compatibility.CompatibilityService;
 
@@ -27,7 +37,10 @@ public class ApplicationListener {
 
 
 
-        bicycle.setCrank(new Crank("Deore", 3, 42, 36, 22, 10));
+        bicycle.setCrank(new Crank("M610", "Shimano", 1.5, 104, 64, "4 symemtric", 175, 3, 10,
+                new Chainring("M610", "Shimano", 0.15, "Big chainring", "4 symmetric", 104, 44, 10),
+                new Chainring("M610", "Shimano", 0.11, "Medium chainring", "4 symmetric", 104, 36, 9),
+                new Chainring("M610", "Shimano", 0.08, "Small chainring", "4 symmetric", 64, 22, 8)));
         bicycle.setRearDerailleur(new RearDerailleur("RD-M8000", 10, "Long", 47));
         bicycle.setCassette(new Cassette("M590", 11, 36, 10));
         bicycle.setRearWheel(new RearWheel(

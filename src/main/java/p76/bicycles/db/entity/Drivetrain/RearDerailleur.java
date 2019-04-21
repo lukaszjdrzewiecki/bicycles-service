@@ -1,7 +1,8 @@
-package p76.bicycles.db.entity;
+package p76.bicycles.db.entity.Drivetrain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import p76.bicycles.db.entity.BicyclePart;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

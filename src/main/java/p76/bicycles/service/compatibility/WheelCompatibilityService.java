@@ -3,7 +3,7 @@ package p76.bicycles.service.compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.Wheel;
+import p76.bicycles.db.entity.Wheels.Wheel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,6 +115,8 @@ public class WheelCompatibilityService {
             return null;
         }
     }
+
+
 
 
 

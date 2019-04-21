@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity;
+package p76.bicycles.db.entity.Wheels;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
