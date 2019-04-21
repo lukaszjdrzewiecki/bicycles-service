@@ -38,7 +38,7 @@ public class ApplicationListener {
 
 
         bicycle.setCrank(new Crank("M610", "Shimano", 1.5, 104, 64, "4 symemtric", 175, 3, 10,
-                new Chainring("M610", "Shimano", 0.15, "Big chainring", "4 symmetric", 104, 44, 10),
+                new Chainring("M610", "Shimano", 0.15, "Big chainring", "4 symmetric", 104, 51, 10),
                 new Chainring("M610", "Shimano", 0.11, "Medium chainring", "4 symmetric", 104, 36, 9),
                 new Chainring("M610", "Shimano", 0.08, "Small chainring", "4 symmetric", 64, 22, 8)));
         bicycle.setRearDerailleur(new RearDerailleur("RD-M8000", 10, "Long", 47));
@@ -74,6 +74,7 @@ public class ApplicationListener {
         System.out.println(service.findAllBicycles());
 
         System.out.println(compatibility.bicycleCheck(bicycle));
+
     }
 
     private Bicycle createBicycle(String name, String manufacturer) {

@@ -1,6 +1,6 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
-import p76.bicycles.db.entity.Brakes.Brakes;
+import p76.bicycles.db.entity.Brakes.BrakeCaliper;
 import p76.bicycles.db.entity.Drivetrain.Cassette;
 import p76.bicycles.db.entity.Drivetrain.Crank;
 import p76.bicycles.db.entity.Drivetrain.FrontDerailleur;
@@ -37,7 +37,7 @@ public class Bicycle {
     private RearDerailleur rearDerailleur;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Brakes brakes;
+    private BrakeCaliper brakeCaliper;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private FrontWheel frontWheel;
@@ -62,7 +62,7 @@ public class Bicycle {
                 " [CASETTE] " + this.cassette +
                 " [FRONT DERAILLEUR] " + this.frontDerailleur +
                 " [REAR DERAILLEUR] " + this.rearDerailleur +
-                " [BRAKES] " + this.brakes +
+                " [BRAKES] " + this.brakeCaliper +
                 " [FRONT WHEEL] " + this.frontWheel +
                 " [REAR WHEEL] " + this.rearWheel;
     }
