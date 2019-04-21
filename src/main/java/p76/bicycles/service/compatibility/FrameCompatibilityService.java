@@ -32,14 +32,6 @@ public class FrameCompatibilityService {
         result.add(new CompatibilityResult("TAPER" + CHECK, forkTaperCheck(bicycle), messages.printMessage(forkTaperCheck(bicycle), messages.forkTaperMessage(bicycle))));
     }
 
-    public Boolean totalFrameCheck(Bicycle bicycle) {
-        try {
-        return dataService.allTrue(rearHubWidthCheck(bicycle), totalHeadSetCheck(bicycle), forkTaperCheck(bicycle));
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
     public Boolean rearHubWidthCheck(Bicycle bicycle) {
         try {
             if (bicycle.getRearWheel().getHub().getWidth() == bicycle.getFrame().getRearWheelWidth()) {
@@ -50,6 +42,15 @@ public class FrameCompatibilityService {
             return null;
         }
     }
+
+    public Boolean totalFrameCheck(Bicycle bicycle) {
+        try {
+        return dataService.allTrue(totalHeadSetCheck(bicycle), forkTaperCheck(bicycle));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 
     public Boolean frameHeadSetCheck(Bicycle bicycle) {
         try {

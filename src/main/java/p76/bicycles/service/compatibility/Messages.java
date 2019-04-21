@@ -1,10 +1,9 @@
 package p76.bicycles.service.compatibility;
 
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.Wheel;
+import p76.bicycles.db.entity.Wheels.Wheel;
 
 @Component
 class Messages {
@@ -87,9 +86,11 @@ class Messages {
             return null;
         }
     }
+
     //------------- WHEEL MESSAGES ---------------------
 
     //------------- FRAME MESSAGES ---------------------
+
     static public String rearHubWidthMessage (Bicycle bicycle) {
         try {
             return ": hub width " + bicycle.getRearWheel().getHub().getWidth() +

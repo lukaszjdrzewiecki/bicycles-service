@@ -1,6 +1,10 @@
 package p76.bicycles.service;
 
 import p76.bicycles.db.entity.*;
+import p76.bicycles.db.entity.Drivetrain.Cassette;
+import p76.bicycles.db.entity.Drivetrain.Crank;
+import p76.bicycles.db.entity.Drivetrain.FrontDerailleur;
+import p76.bicycles.db.entity.Drivetrain.RearDerailleur;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,7 @@ package p76.bicycles.service.compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.Cassette;
+import p76.bicycles.db.entity.Drivetrain.Cassette;
 
 import static p76.bicycles.service.compatibility.Messages.*;
 import static p76.bicycles.service.compatibility.Messages.CHANGING_COMPONENT;
@@ -16,8 +16,9 @@ public class DrivetrainCompatibilityService {
 
     private int drivetrainCapacity(Bicycle bicycle) {
         return (bicycle.getCassette().getMaximum() - bicycle.getCassette().getMinimum())
-                + (bicycle.getCrank().getBigGear() - bicycle.getCrank().getSmallGear());
+                + (bicycle.getCrank().getBigGear().getTeethNumber() - bicycle.getCrank().getSmallGear().getTeethNumber());
     }
+
 
     public Boolean drivetrainCheck(Bicycle bicycle) {
         try {

@@ -1,7 +1,8 @@
-package p76.bicycles.db.entity;
+package p76.bicycles.db.entity.Suspension;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import p76.bicycles.db.entity.BicyclePart;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @Data
-public class HeadSet extends BicyclePart{
+public class HeadSet extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

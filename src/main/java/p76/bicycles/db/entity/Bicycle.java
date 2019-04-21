@@ -1,5 +1,14 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
+import p76.bicycles.db.entity.Brakes.Brakes;
+import p76.bicycles.db.entity.Drivetrain.Cassette;
+import p76.bicycles.db.entity.Drivetrain.Crank;
+import p76.bicycles.db.entity.Drivetrain.FrontDerailleur;
+import p76.bicycles.db.entity.Drivetrain.RearDerailleur;
+import p76.bicycles.db.entity.Suspension.Fork;
+import p76.bicycles.db.entity.Suspension.HeadSet;
+import p76.bicycles.db.entity.Wheels.FrontWheel;
+import p76.bicycles.db.entity.Wheels.RearWheel;
 
 import javax.persistence.*;
 
