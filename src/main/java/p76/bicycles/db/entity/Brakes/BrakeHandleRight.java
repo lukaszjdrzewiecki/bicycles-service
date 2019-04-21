@@ -3,10 +3,7 @@ package p76.bicycles.db.entity.Brakes;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -17,7 +14,11 @@ public class BrakeHandleRight extends BrakeHandle {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    public BrakeHandleRight(String name, String brand, double weight, boolean hydraulic, boolean road, boolean mountain, String oil) {
+    @ManyToOne(cascade = CascadeType.ALL)
+    private BrakeCaliper brakeCaliper;
+
+    public BrakeHandleRight(String name, String brand, double weight, boolean hydraulic, boolean road, boolean mountain, String oil, BrakeCaliper brakeCaliper) {
         super(name, brand, weight, hydraulic, road, mountain, oil);
+        this.brakeCaliper = brakeCaliper;
     }
 }

@@ -11,9 +11,12 @@ class Messages {
     @Autowired
     WheelCompatibilityService wheelCompatibilityService;
 
+    @Autowired
+    DrivetrainCompatibilityService drivetrainCompatibilityService;
+
     protected static final String BICYCLE_CHECK = "[BICYCLE CHECK]";
 
-    protected static final String DRIVETRAIN_CHECK = "[DRIVETRAIN CHECK";
+    protected static final String DRIVETRAIN = "DRIVETRAIN";
     protected static final String DRIVETRAIN_EXPLANATION = " : Biggest possible gear of the cassette in this bicycle is ";
 
     protected static final String CHANGING_COMPONENT = "[CHANGING COMPONENT]";
@@ -76,7 +79,7 @@ class Messages {
         }
     }
 
-    final String rimTyreMessage (Wheel wheel) {
+    final String rimTyreMessage(Wheel wheel) {
         try {
             return ": your rim width equals " + wheel.getRim().getInnerWidth() +
                     " mm and thus recommended size of a tyre is " +
@@ -91,7 +94,7 @@ class Messages {
 
     //------------- FRAME MESSAGES ---------------------
 
-    static public String rearHubWidthMessage (Bicycle bicycle) {
+    static public String rearHubWidthMessage(Bicycle bicycle) {
         try {
             return ": hub width " + bicycle.getRearWheel().getHub().getWidth() +
                     " frame space " + bicycle.getFrame().getRearWheelWidth();
@@ -109,10 +112,10 @@ class Messages {
         }
     }
 
-    static public String frameHeadSetMessage (Bicycle bicycle) {
+    static public String frameHeadSetMessage(Bicycle bicycle) {
         try {
             return ": frame top " + bicycle.getFrame().getTopHeadSetDiameter() + " headset outer top " + bicycle.getHeadSet().getTopFrameDiameter() + " | " +
-                    "frame bottom " + (bicycle.getFrame().getBottomHeadSetDiameter() + " headset outer bottom "  + bicycle.getHeadSet().getBottomFrameDiameter());
+                    "frame bottom " + (bicycle.getFrame().getBottomHeadSetDiameter() + " headset outer bottom " + bicycle.getHeadSet().getBottomFrameDiameter());
         } catch (Exception e) {
             return null;
         }
@@ -120,7 +123,7 @@ class Messages {
 
     static public String totalHeadSetMessage(Bicycle bicycle) {
         try {
-            return ": must meet the requirements of every other headset test" ;
+            return ": must meet the requirements of every other headset test";
         } catch (Exception e) {
             return null;
         }
@@ -135,6 +138,27 @@ class Messages {
     }
 
     //------------- FRAME MESSAGES -------------------
+
+    //------------- DRIVETRAIN MESSAGES ----------------
+
+    final public String maxCassetteMessage(Bicycle bicycle) {
+        try {
+            return " Biggest possible gear in your bicycle is " + ((bicycle.getRearDerailleur().getCapacity() - drivetrainCompatibilityService.drivetrainCapacity(bicycle) + bicycle.getCassette().getMaximum()));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    final public String drivetrainCapacityMessage(Bicycle bicycle) {
+        try {
+            return " Rear derailleur capacity: " + ((bicycle.getRearDerailleur().getCapacity() +
+                    " | Drivetrain requires: " + drivetrainCompatibilityService.drivetrainCapacity(bicycle)));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    //------------- DRIVETRAIN MESSAGES ----------------
 
 
 }
