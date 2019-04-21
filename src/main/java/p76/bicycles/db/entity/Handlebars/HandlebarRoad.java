@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity.Handlebar;
+package p76.bicycles.db.entity.Handlebars;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

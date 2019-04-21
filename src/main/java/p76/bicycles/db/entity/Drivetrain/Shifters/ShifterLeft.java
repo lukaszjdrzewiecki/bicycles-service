@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity.Drivetrain;
+package p76.bicycles.db.entity.Drivetrain.Shifters;
 
 
 import lombok.Data;

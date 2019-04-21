@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity.Handlebar;
+package p76.bicycles.db.entity.Handlebars;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,7 @@ public class Handlebar extends BicyclePart {
     private Long id;
 
     private double diameter;
-    private int offset;
+    private double offsetBack;
     private int width;
     private int rise;
     private String material;
@@ -31,10 +31,10 @@ public class Handlebar extends BicyclePart {
         this.material = material;
     }
 
-    public Handlebar(String name, String brand, double weight, double diameter, int offset, int width, int rise, String material) {
+    public Handlebar(String name, String brand, double weight, double diameter, double offsetBack, int width, int rise, String material) {
         super(name, brand, weight);
         this.diameter = diameter;
-        this.offset = offset;
+        this.offsetBack = offsetBack;
         this.width = width;
         this.rise = rise;
         this.material = material;
