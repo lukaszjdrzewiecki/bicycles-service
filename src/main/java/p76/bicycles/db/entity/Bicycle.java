@@ -5,6 +5,8 @@ import p76.bicycles.db.entity.Drivetrain.Cassette;
 import p76.bicycles.db.entity.Drivetrain.Crank;
 import p76.bicycles.db.entity.Drivetrain.FrontDerailleur;
 import p76.bicycles.db.entity.Drivetrain.RearDerailleur;
+import p76.bicycles.db.entity.Drivetrain.Shifters.ShifterLeft;
+import p76.bicycles.db.entity.Drivetrain.Shifters.ShifterRight;
 import p76.bicycles.db.entity.Suspension.Fork;
 import p76.bicycles.db.entity.Suspension.HeadSet;
 import p76.bicycles.db.entity.Wheels.FrontWheel;
@@ -53,6 +55,12 @@ public class Bicycle {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Fork fork;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ShifterRight shifterRight;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ShifterLeft shifterLeft;
 
     public String toString()
     {

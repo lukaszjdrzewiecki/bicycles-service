@@ -158,6 +158,17 @@ class Messages {
         }
     }
 
+    static final public String speedsMessage(Bicycle bicycle) {
+        try {
+            return " Cassette speeds: " + bicycle.getCassette().getSpeed() +
+                    " | Rear Derailleur speeds: " + bicycle.getRearDerailleur().getSpeed() +
+                    " | Crank Speeds " + bicycle.getCrank().getSpeed() +
+                    " | Front Derailleur speeds " + bicycle.getFrontDerailleur().getSpeed();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     //------------- DRIVETRAIN MESSAGES ----------------
 
 
