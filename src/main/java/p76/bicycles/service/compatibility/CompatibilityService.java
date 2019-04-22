@@ -25,10 +25,7 @@ public class CompatibilityService {
 
     @Autowired
     DrivetrainCompatibilityService drivetrainCompatibilityService;
-
-    @Autowired
-    SpeedsCompatibilityService speedsCompatibilityService;
-
+    
     @Autowired
     FrameCompatibilityService frameCompatibilityService;
 
@@ -38,7 +35,6 @@ public class CompatibilityService {
     public List<CompatibilityResult> bicycleCheck(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList();
         result.add(new CompatibilityResult(DRIVETRAIN + CHECK, drivetrainCompatibilityService.drivetrainCapacityCheck(bicycle), "test", drivetrainCompatibilityService.drivetrainCheckTests(bicycle)));
-        result.add(new CompatibilityResult("speedsCompatibilityCheck", speedsCompatibilityService.speedsCompatibilityCheck(bicycle), "test"));
         result.add(new CompatibilityResult(FRONT_WHEEL + CHECK, wheelCompatibilityService.frontWheelCheck(bicycle), messages.printMessage(wheelCompatibilityService.frontWheelCheck(bicycle)), wheelCompatibilityService.frontWheelCheckTests(bicycle)));
         result.add(new CompatibilityResult(REAR_WHEEL + CHECK, wheelCompatibilityService.rearWheelCheck(bicycle), messages.printMessage(wheelCompatibilityService.rearWheelCheck(bicycle)), wheelCompatibilityService.rearWheelCheckTests(bicycle)));
         result.add(new CompatibilityResult(FRAME + CHECK, frameCompatibilityService.totalFrameCheck(bicycle), "All must be true", frameCompatibilityService.frameCheckTests(bicycle)));

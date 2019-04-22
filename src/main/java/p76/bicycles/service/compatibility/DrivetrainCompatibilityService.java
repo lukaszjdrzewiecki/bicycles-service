@@ -27,6 +27,7 @@ public class DrivetrainCompatibilityService {
     private void drivetrainChecks(List<CompatibilityResult> result, Bicycle bicycle) {
         result.add(new CompatibilityResult("Max Cassette" + CHECK, drivetrainCapacityCheck(bicycle), messages.printMessage(drivetrainCapacityCheck(bicycle), messages.maxCassetteMessage(bicycle))));
         result.add(new CompatibilityResult("Capacity" + CHECK, drivetrainCapacityCheck(bicycle), messages.printMessage(drivetrainCapacityCheck(bicycle), messages.drivetrainCapacityMessage(bicycle))));
+        result.add(new CompatibilityResult("Speeds number" + CHECK, speedsCompatibilityCheck(bicycle), messages.printMessage(speedsCompatibilityCheck(bicycle), speedsMessage(bicycle))));
     }
 
     protected int drivetrainCapacity(Bicycle bicycle) {
@@ -42,6 +43,17 @@ public class DrivetrainCompatibilityService {
     public Boolean drivetrainCapacityCheck(Bicycle bicycle) {
         try {
             if (bicycle.getRearDerailleur().getCapacity() >= drivetrainCapacity(bicycle)) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    Boolean speedsCompatibilityCheck(Bicycle bicycle) {
+        try {
+            if (dataService.allEqual(bicycle.getCassette().getSpeed(), bicycle.getRearDerailleur().getSpeed(), bicycle.getCrank().getSpeed())) {
                 return true;
             }
             return false;
