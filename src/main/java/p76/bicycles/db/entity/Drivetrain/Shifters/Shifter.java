@@ -12,16 +12,13 @@ import javax.persistence.*;
 public abstract class Shifter extends BicyclePart {
 
     private int speeds;
-    private String series;
 
-    public Shifter(String name, String brand, double weight, int speeds, String series) {
+    public Shifter(String name, String brand, double weight, int speeds) {
         super(name, brand, weight);
         this.speeds = speeds;
-        this.series = series;
     }
 
-    public Shifter(int speeds, String series) {
+    public Shifter(int speeds) {
         this.speeds = speeds;
-        this.series = series;
     }
 }

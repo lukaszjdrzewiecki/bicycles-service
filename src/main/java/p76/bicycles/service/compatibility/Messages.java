@@ -143,7 +143,7 @@ class Messages {
 
     final public String maxCassetteMessage(Bicycle bicycle) {
         try {
-            return " Biggest possible gear in your bicycle is " + ((bicycle.getRearDerailleur().getCapacity() - drivetrainCompatibilityService.drivetrainCapacity(bicycle) + bicycle.getCassette().getMaximum()));
+            return " Biggest possible gear in your cassette is " + ((bicycle.getRearDerailleur().getCapacity() - drivetrainCompatibilityService.drivetrainCapacity(bicycle) + bicycle.getCassette().getMaximum()));
         } catch (Exception e) {
             return null;
         }

@@ -18,7 +18,10 @@ public class RearDerailleur extends BicyclePart {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    private int speed;
+    private int minLowGearCassette;
+    private int maxLowGearCassette;
+    private String dedicatedNumberGears;
+    private int speeds;
     private String cage;
     private int capacity;
 
@@ -26,9 +29,12 @@ public class RearDerailleur extends BicyclePart {
         super(name);
     }
 
-    public RearDerailleur(String name, int speed, String cage, int capacity) {
-        super(name);
-        this.speed = speed;
+    public RearDerailleur(String name, String brand, double weight, int minLowGearCassette, int maxLowGearCassette, String dedicatedNumberGears, int speeds, String cage, int capacity) {
+        super(name, brand, weight);
+        this.minLowGearCassette = minLowGearCassette;
+        this.maxLowGearCassette = maxLowGearCassette;
+        this.dedicatedNumberGears = dedicatedNumberGears;
+        this.speeds = speeds;
         this.cage = cage;
         this.capacity = capacity;
     }

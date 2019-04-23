@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity.Handlebars;
+package p76.bicycles.db.entity.Steering;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

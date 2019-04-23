@@ -20,40 +20,16 @@ public class Cassette extends BicyclePart {
 
     private int minimum;
     private int maximum;
-    private int speed;
+    private int speeds;
 
     public Cassette(String name) {
         super(name);
     }
 
-    public Cassette(String name, int minimum, int maximum, int speed){
-        super(name);
+    public Cassette(String name, String brand, double weight, int minimum, int maximum, int speeds) {
+        super(name, brand, weight);
         this.minimum = minimum;
         this.maximum = maximum;
-        this.speed = speed;
-    }
-
-    public int getMinimum() {
-        return minimum;
-    }
-
-    public void setMinimum(int minimum) {
-        this.minimum = minimum;
-    }
-
-    public int getMaximum() {
-        return maximum;
-    }
-
-    public void setMaximum(int maximum) {
-        this.maximum = maximum;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
+        this.speeds = speeds;
     }
 }
