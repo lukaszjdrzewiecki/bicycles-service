@@ -160,10 +160,10 @@ class Messages {
 
     static final public String speedsMessage(Bicycle bicycle) {
         try {
-            return " Cassette speeds: " + bicycle.getCassette().getSpeed() +
-                    " | Rear Derailleur speeds: " + bicycle.getRearDerailleur().getSpeed() +
+            return " Cassette speeds: " + bicycle.getCassette().getSpeeds() +
+                    " | Rear Derailleur speeds: " + bicycle.getRearDerailleur().getSpeeds() +
                     " | Crank Speeds " + bicycle.getCrank().getSpeed() +
-                    " | Front Derailleur speeds " + bicycle.getFrontDerailleur().getSpeed();
+                    " | Front Derailleur speeds " + bicycle.getFrontDerailleur().getSpeeds();
         } catch (Exception e) {
             return null;
         }

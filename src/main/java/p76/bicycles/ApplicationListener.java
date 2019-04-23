@@ -72,15 +72,11 @@ public class ApplicationListener {
         bicycle.setShifterRight(new ShifterRight("M8000", "Shimano", 0.249, 11));
 
         bicycle.setStem(new Stem("Rapid", "FSA", 0.210, 70, 6, 28.6, 31.6));
-
         bicycle.setHandlebar(new Handlebar("Koryak", "PRO", 0.310, 31.5, 720, "Carbon"));
-
         bicycle.setGrips(new Grips("Chunky", "ESI Grips", 0.122, false));
 
         bicycle.setSeatpost(new Seatpost("Koryak", "PRO", 0.310, 320, 31.6, "Aluminium"));
-
         bicycle.setSeatPostClamp(new SeatPostClamp("Regular Clamp", "PRO", 0.080, 31.7, 34.9));
-
         bicycle.setSaddle(new Saddle("Volt", "WTB", 0.356, 210, 300, "Chromoly"));
 
         bicycle.setBrakeHandleLeft(new BrakeHandleLeft("M7000", "Shimano", 0.410, true, false, true, "Mineral", new BrakeCaliper("M7000", "Shimano", 0.203, true, false, false)));
