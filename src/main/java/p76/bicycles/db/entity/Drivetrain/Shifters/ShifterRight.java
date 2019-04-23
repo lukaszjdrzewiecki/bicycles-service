@@ -1,5 +1,6 @@
 package p76.bicycles.db.entity.Drivetrain.Shifters;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,11 +18,11 @@ public class ShifterRight extends Shifter {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public ShifterRight(String name, String brand, double weight, int speeds, String series) {
-        super(name, brand, weight, speeds, series);
+    public ShifterRight(String name, String brand, double weight, int speeds) {
+        super(name, brand, weight, speeds);
     }
 
-    public ShifterRight(int speeds, String series) {
-        super(speeds, series);
+    public ShifterRight(int speeds) {
+        super(speeds);
     }
 }
