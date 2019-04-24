@@ -14,12 +14,14 @@ public class Crank extends BicyclePart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+
     private int pcdBig;
     private int pcdSmall;
     private String armsAndType;
     private int armLength;
     private int numberOfGears;
-    private int speed;
+    private int speeds;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Chainring bigGear;
@@ -36,7 +38,7 @@ public class Crank extends BicyclePart {
     }
 
     // 3 GEARS
-    public Crank(String name, String brand, double weight, int pcdBig, int pcdSmall, String armsAndType, int armLength, int numberOfGears, int speed, Chainring bigGear, Chainring mediumGear, Chainring smallGear) {
+    public Crank(String name, String brand, double weight, int pcdBig, int pcdSmall, String armsAndType, int armLength, int numberOfGears, int speeds, Chainring bigGear, Chainring mediumGear, Chainring smallGear) {
         super(name, brand, weight);
         this.pcdBig = pcdBig;
         this.pcdSmall = pcdSmall;
@@ -46,11 +48,11 @@ public class Crank extends BicyclePart {
         this.bigGear = bigGear;
         this.mediumGear = mediumGear;
         this.smallGear = smallGear;
-        this.speed = speed;
+        this.speeds = speeds;
     }
 
     // 2 GEARS
-    public Crank(String name, String brand, double weight, int pcdBig, int pcdSmall, String armsAndType, int armLength, int numberOfGears, int speed, Chainring bigGear, Chainring smallGear) {
+    public Crank(String name, String brand, double weight, int pcdBig, int pcdSmall, String armsAndType, int armLength, int numberOfGears, int speeds, Chainring bigGear, Chainring smallGear) {
         super(name, brand, weight);
         this.pcdBig = pcdBig;
         this.pcdSmall = pcdSmall;
@@ -59,17 +61,17 @@ public class Crank extends BicyclePart {
         this.numberOfGears = numberOfGears;
         this.bigGear = bigGear;
         this.smallGear = smallGear;
-        this.speed = speed;
+        this.speeds = speeds;
     }
 
     // 1 GEAR
-    public Crank(String name, String brand, double weight, int pcdBig, String armsAndType, int armLength, int numberOfGears, int speed, Chainring bigGear) {
+    public Crank(String name, String brand, double weight, int pcdBig, String armsAndType, int armLength, int numberOfGears, int speeds, Chainring bigGear) {
         super(name, brand, weight);
         this.pcdBig = pcdBig;
         this.armsAndType = armsAndType;
         this.armLength = armLength;
         this.numberOfGears = numberOfGears;
         this.bigGear = bigGear;
-        this.speed = speed;
+        this.speeds = speeds;
     }
 }

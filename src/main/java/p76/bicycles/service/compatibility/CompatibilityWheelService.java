@@ -11,7 +11,7 @@ import java.util.List;
 import static p76.bicycles.service.compatibility.Messages.*;
 
 @Component
-public class WheelCompatibilityService {
+public class CompatibilityWheelService {
 
     @Autowired
     DataService dataService;

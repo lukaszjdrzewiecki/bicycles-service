@@ -19,6 +19,7 @@ public class Frame extends BicyclePart{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    private String type;
     private double topHeadSetDiameter;
     private double bottomHeadSetDiameter;
     private int bottomBracketLength;
@@ -34,8 +35,9 @@ public class Frame extends BicyclePart{
     private String brakeType;
     private Boolean tapered;
 
-    public Frame(String brand, String name, double weight, double topHeadSetDiameter, double bottomHeadSetDiameter, int bottomBracketLength, int bottomBracketSize, boolean pressFit, boolean threaded, boolean italianThread, int rearWheelWidth, int rearWheelAxleSize, double seatpostSize, double seatpostCaliperDiameter, String discBrakeMount, String brakeType, Boolean tapered) {
+    public Frame(String brand, String name, double weight, String type, double topHeadSetDiameter, double bottomHeadSetDiameter, int bottomBracketLength, int bottomBracketSize, boolean pressFit, boolean threaded, boolean italianThread, int rearWheelWidth, int rearWheelAxleSize, double seatpostSize, double seatpostCaliperDiameter, String discBrakeMount, String brakeType, Boolean tapered) {
         super(brand, name, weight);
+        this.type = type;
         this.topHeadSetDiameter = topHeadSetDiameter;
         this.bottomHeadSetDiameter = bottomHeadSetDiameter;
         this.bottomBracketLength = bottomBracketLength;

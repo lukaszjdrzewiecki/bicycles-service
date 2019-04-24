@@ -10,7 +10,7 @@ import java.util.List;
 import static p76.bicycles.service.compatibility.Messages.CHECK;
 
 @Component
-public class FrameCompatibilityService {
+public class CompatibilityFrameService {
 
     @Autowired
     DataService dataService;

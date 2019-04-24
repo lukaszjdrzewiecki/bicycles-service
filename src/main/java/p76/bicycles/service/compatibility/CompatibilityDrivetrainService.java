@@ -10,7 +10,7 @@ import java.util.List;
 import static p76.bicycles.service.compatibility.Messages.*;
 
 @Component
-public class DrivetrainCompatibilityService {
+public class CompatibilityDrivetrainService {
 
     @Autowired
     DataService dataService;
@@ -53,7 +53,7 @@ public class DrivetrainCompatibilityService {
 
     Boolean speedsCompatibilityCheck(Bicycle bicycle) {
         try {
-            if (dataService.allEqual(bicycle.getCassette().getSpeeds(), bicycle.getRearDerailleur().getSpeeds(), bicycle.getCrank().getSpeed())) {
+            if (dataService.allEqual(bicycle.getCassette().getSpeeds(), bicycle.getRearDerailleur().getSpeeds(), bicycle.getCrank().getSpeeds())) {
                 return true;
             }
             return false;

@@ -19,10 +19,7 @@ import p76.bicycles.db.entity.Steering.Handlebar;
 import p76.bicycles.db.entity.Steering.Stem;
 import p76.bicycles.db.entity.Suspension.Fork;
 import p76.bicycles.db.entity.Steering.HeadSet;
-import p76.bicycles.db.entity.Wheels.Hub;
-import p76.bicycles.db.entity.Wheels.RearWheel;
-import p76.bicycles.db.entity.Wheels.Rim;
-import p76.bicycles.db.entity.Wheels.Tyre;
+import p76.bicycles.db.entity.Wheels.*;
 import p76.bicycles.service.BicycleService;
 import p76.bicycles.service.compatibility.CompatibilityService;
 
@@ -54,11 +51,16 @@ public class ApplicationListener {
         bicycle.setFrontDerailleur(new FrontDerailleur("M590", "Shimano", 0.430, 48, 44, 26, 3, 9));
         bicycle.setRearWheel(new RearWheel(
                 new Rim("Shimano HB900", 20, 25, 28, true, true, 29),
-                new Hub("HOPE HB4", 32, 135, true, 15),
+                new Hub("HOPE HB4", 32, 135, true, 12),
+                new Tyre("Continental Baron", 22, true, 26)));
+        bicycle.setFrontWheel(new FrontWheel(
+                new Rim("Shimano HB900", 20, 25, 28, true, true, 29),
+                new Hub("HOPE HB4", 32, 100, true, 15),
                 new Tyre("Continental Baron", 22, true, 26)));
         bicycle.setFrame(new Frame(
                 "Scott", "Sportster 2017",
                 2.10,
+                "mountain",
                 40.0, 48.7,
                 68, 25, true, false, false,
                 142, 9,
