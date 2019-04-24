@@ -9,10 +9,10 @@ import p76.bicycles.db.entity.Wheels.Wheel;
 class Messages {
 
     @Autowired
-    WheelCompatibilityService wheelCompatibilityService;
+    CompatibilityWheelService compatibilityWheelService;
 
     @Autowired
-    DrivetrainCompatibilityService drivetrainCompatibilityService;
+    CompatibilityDrivetrainService compatibilityDrivetrainService;
 
     protected static final String BICYCLE_CHECK = "[BICYCLE CHECK]";
 
@@ -83,8 +83,8 @@ class Messages {
         try {
             return ": your rim width equals " + wheel.getRim().getInnerWidth() +
                     " mm and thus recommended size of a tyre is " +
-                    wheelCompatibilityService.tyreRimRange(wheel).get(0) + " - " +
-                    wheelCompatibilityService.tyreRimRange(wheel).get(1) + " mm";
+                    compatibilityWheelService.tyreRimRange(wheel).get(0) + " - " +
+                    compatibilityWheelService.tyreRimRange(wheel).get(1) + " mm";
         } catch (Exception e) {
             return null;
         }
@@ -143,7 +143,7 @@ class Messages {
 
     final public String maxCassetteMessage(Bicycle bicycle) {
         try {
-            return " Biggest possible gear in your cassette is " + ((bicycle.getRearDerailleur().getCapacity() - drivetrainCompatibilityService.drivetrainCapacity(bicycle) + bicycle.getCassette().getMaximum()));
+            return " Biggest possible gear in your cassette is " + ((bicycle.getRearDerailleur().getCapacity() - compatibilityDrivetrainService.drivetrainCapacity(bicycle) + bicycle.getCassette().getMaximum()));
         } catch (Exception e) {
             return null;
         }
@@ -152,7 +152,7 @@ class Messages {
     final public String drivetrainCapacityMessage(Bicycle bicycle) {
         try {
             return " Rear derailleur capacity: " + ((bicycle.getRearDerailleur().getCapacity() +
-                    " | Drivetrain requires: " + drivetrainCompatibilityService.drivetrainCapacity(bicycle)));
+                    " | Drivetrain requires: " + compatibilityDrivetrainService.drivetrainCapacity(bicycle)));
         } catch (Exception e) {
             return null;
         }
@@ -162,7 +162,7 @@ class Messages {
         try {
             return " Cassette speeds: " + bicycle.getCassette().getSpeeds() +
                     " | Rear Derailleur speeds: " + bicycle.getRearDerailleur().getSpeeds() +
-                    " | Crank Speeds " + bicycle.getCrank().getSpeed() +
+                    " | Crank Speeds " + bicycle.getCrank().getSpeeds() +
                     " | Front Derailleur speeds " + bicycle.getFrontDerailleur().getSpeeds();
         } catch (Exception e) {
             return null;
