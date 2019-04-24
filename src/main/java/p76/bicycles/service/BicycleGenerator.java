@@ -1,6 +1,10 @@
 package p76.bicycles.service;
 
 import p76.bicycles.db.entity.*;
+import p76.bicycles.db.entity.Drivetrain.Cassette;
+import p76.bicycles.db.entity.Drivetrain.Crank;
+import p76.bicycles.db.entity.Drivetrain.FrontDerailleur;
+import p76.bicycles.db.entity.Drivetrain.RearDerailleur;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +32,7 @@ public class BicycleGenerator {
         bicycle.setCrank(new Crank(getRandomPartSeries()));
         bicycle.setCassette(new Cassette(getRandomPartSeries()));
         bicycle.setRearDerailleur(new RearDerailleur(getRandomPartSeries()));
-        //bicycle.setBrakes(new Brakes(getRandomPartSeries()));
+        //bicycle.setBrakeCaliper(new BrakeCaliper(getRandomPartSeries()));
         bicycle.setFrontDerailleur(new FrontDerailleur(getRandomPartSeries()));
         return bicycle;
     }

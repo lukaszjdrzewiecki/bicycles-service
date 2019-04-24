@@ -1,7 +1,8 @@
-package p76.bicycles.db.entity;
+package p76.bicycles.db.entity.Wheels;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import p76.bicycles.db.entity.BicyclePart;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
@@ -10,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 @NoArgsConstructor
 @Data
 @MappedSuperclass
-public abstract class Wheel extends BicyclePart{
+public abstract class Wheel extends BicyclePart {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Rim rim;

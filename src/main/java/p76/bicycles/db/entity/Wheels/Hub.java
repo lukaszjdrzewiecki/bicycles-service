@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity;
+package p76.bicycles.db.entity.Wheels;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,26 +7,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Map;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class Tyre {
+public class Hub {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     private String name;
+    private int holes;
     private int width;
-    private boolean tubeless;
-    private int diameter;
+    private boolean disc;
+    private int axle;
+    private int boost;
 
-    public Tyre(String name, int width, boolean tubeless, int diameter) {
+    public Hub(String name, int holes, int width, boolean disc, int axle) {
         this.name = name;
+        this.holes = holes;
         this.width = width;
-        this.tubeless = tubeless;
-        this.diameter = diameter;
+        this.disc = disc;
+        this.axle = axle;
     }
 }

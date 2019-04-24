@@ -1,7 +1,8 @@
-package p76.bicycles.db.entity;
+package p76.bicycles.db.entity.Drivetrain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import p76.bicycles.db.entity.BicyclePart;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,22 +17,22 @@ public class FrontDerailleur extends BicyclePart {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private int maxGear;
-    private int minGear;
+    private int maxBigGear;
+    private int minBigGear;
     private int capacity;
     private int gears;
-    private int speed;
+    private int speeds;
 
     public FrontDerailleur(String name) {
         super(name);
     }
 
-    public FrontDerailleur(String name, int maxGear, int minGear, int capacity, int gears, int speed) {
-        super(name);
-        this.maxGear = maxGear;
-        this.minGear = minGear;
+    public FrontDerailleur(String name, String brand, double weight, int maxBigGear, int minBigGear, int capacity, int gears, int speeds) {
+        super(name, brand, weight);
+        this.maxBigGear = maxBigGear;
+        this.minBigGear = minBigGear;
         this.capacity = capacity;
         this.gears = gears;
-        this.speed = speed;
+        this.speeds = speeds;
     }
 }
