@@ -3,7 +3,7 @@ package p76.bicycles.service.compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.Wheels.Wheel;
+import p76.bicycles.db.entity.wheels.Wheel;
 
 @Component
 class Messages {
@@ -152,7 +152,7 @@ class Messages {
     final public String drivetrainCapacityMessage(Bicycle bicycle) {
         try {
             return " Rear derailleur capacity: " + ((bicycle.getRearDerailleur().getCapacity() +
-                    " | Drivetrain requires: " + compatibilityDrivetrainService.drivetrainCapacity(bicycle)));
+                    " | drivetrain requires: " + compatibilityDrivetrainService.drivetrainCapacity(bicycle)));
         } catch (Exception e) {
             return null;
         }
