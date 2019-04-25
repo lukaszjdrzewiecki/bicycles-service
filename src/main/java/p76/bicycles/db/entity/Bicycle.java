@@ -1,23 +1,23 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
-import p76.bicycles.db.entity.Brakes.BrakeHandleLeft;
-import p76.bicycles.db.entity.Brakes.BrakeHandleRight;
-import p76.bicycles.db.entity.Drivetrain.Cassette;
-import p76.bicycles.db.entity.Drivetrain.Crank;
-import p76.bicycles.db.entity.Drivetrain.FrontDerailleur;
-import p76.bicycles.db.entity.Drivetrain.RearDerailleur;
-import p76.bicycles.db.entity.Drivetrain.Shifters.ShifterRight;
-import p76.bicycles.db.entity.Drivetrain.Shifters.ShifterLeft;
-import p76.bicycles.db.entity.Seatpost.Saddle;
-import p76.bicycles.db.entity.Seatpost.SeatPostClamp;
-import p76.bicycles.db.entity.Seatpost.Seatpost;
-import p76.bicycles.db.entity.Steering.Grips;
-import p76.bicycles.db.entity.Steering.Handlebar;
-import p76.bicycles.db.entity.Steering.Stem;
-import p76.bicycles.db.entity.Suspension.Fork;
-import p76.bicycles.db.entity.Steering.HeadSet;
-import p76.bicycles.db.entity.Wheels.FrontWheel;
-import p76.bicycles.db.entity.Wheels.RearWheel;
+import p76.bicycles.db.entity.brakes.BrakeHandleLeft;
+import p76.bicycles.db.entity.brakes.BrakeHandleRight;
+import p76.bicycles.db.entity.drivetrain.Cassette;
+import p76.bicycles.db.entity.drivetrain.Crank;
+import p76.bicycles.db.entity.drivetrain.FrontDerailleur;
+import p76.bicycles.db.entity.drivetrain.RearDerailleur;
+import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
+import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
+import p76.bicycles.db.entity.seatpost.Saddle;
+import p76.bicycles.db.entity.seatpost.SeatPostClamp;
+import p76.bicycles.db.entity.seatpost.Seatpost;
+import p76.bicycles.db.entity.steering.Grips;
+import p76.bicycles.db.entity.steering.Handlebar;
+import p76.bicycles.db.entity.steering.Stem;
+import p76.bicycles.db.entity.suspension.Fork;
+import p76.bicycles.db.entity.steering.HeadSet;
+import p76.bicycles.db.entity.wheels.FrontWheel;
+import p76.bicycles.db.entity.wheels.RearWheel;
 
 import javax.persistence.*;
 
@@ -33,15 +33,15 @@ public class Bicycle {
     @Column
     private String name;
 
-    // ------ Brakes -------
+    // ------ brakes -------
     @ManyToOne(cascade = CascadeType.ALL)
     private BrakeHandleRight brakeHandleRight;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private BrakeHandleLeft brakeHandleLeft;
-    // ------ Brakes -------
+    // ------ brakes -------
 
-    // ------- Drivetrain --------
+    // ------- drivetrain --------
     @ManyToOne(cascade = CascadeType.ALL)
     private Crank crank;
 
@@ -59,9 +59,9 @@ public class Bicycle {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private ShifterRight shifterRight;
-    // ------- Drivetrain --------
+    // ------- drivetrain --------
 
-    //--------- Seatpost ------------
+    //--------- seatpost ------------
     @ManyToOne(cascade = CascadeType.ALL)
     private Seatpost seatpost;
 
@@ -70,9 +70,9 @@ public class Bicycle {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private SeatPostClamp seatPostClamp;
-    //--------- Seatpost ------------
+    //--------- seatpost ------------
 
-    // -------- Steering ---------
+    // -------- steering ---------
     @ManyToOne(cascade = CascadeType.ALL)
     private HeadSet headSet;
 
@@ -84,20 +84,20 @@ public class Bicycle {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Grips grips;
-    // -------- Steering ---------
+    // -------- steering ---------
 
-    // --------- Suspension ---------
+    // --------- suspension ---------
     @ManyToOne(cascade = CascadeType.ALL)
     private Fork fork;
-    // --------- Suspension ---------
+    // --------- suspension ---------
 
-    //---------- Wheels ----------
+    //---------- wheels ----------
     @ManyToOne(cascade = CascadeType.ALL)
     private FrontWheel frontWheel;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private RearWheel rearWheel;
-    //---------- Wheels ----------
+    //---------- wheels ----------
 
 
     @ManyToOne(cascade = CascadeType.ALL)
