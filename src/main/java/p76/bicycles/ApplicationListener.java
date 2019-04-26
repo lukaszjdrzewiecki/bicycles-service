@@ -67,17 +67,17 @@ public class ApplicationListener {
                 new Chainring("M610", "Shimano", 0.15, "Big chainring", "4 symmetric", 104, 51, 10),
                 new Chainring("M610", "Shimano", 0.11, "Medium chainring", "4 symmetric", 104, 36, 9),
                 new Chainring("M610", "Shimano", 0.08, "Small chainring", "4 symmetric", 64, 22, 8)));
-        bicycle.setRearDerailleur(new RearDerailleur("RD-M8000", "Shimano", 0.923, 46, 40, "3/2/1", 10, "Long", 47));
+        bicycle.setRearDerailleur(new RearDerailleur("RD-M8000", "Shimano", 0.923, 46, 40, 3, 10, "Long", 47));
         bicycle.setCassette(new Cassette("M590", "Shimano", 0.746, 11, 36, 10));
         bicycle.setFrontDerailleur(new FrontDerailleur("M590", "Shimano", 0.430, 48, 44, 26, 3, 9));
         bicycle.setRearWheel(new RearWheel(
-                new Rim("Shimano HB900", 20, 25, 28, true, true, 29),
-                new Hub("HOPE HB4", 32, 135, true, 12),
-                new Tyre("Continental Baron", 22, true, 26)));
+                new Rim("HB900", "Shimano", "XT", "Mountain", 0.412, 22.0, 21.0, 24.0, 20, "Disc", false, 622, 590, "Aluminium"),
+                new RearHub("HB4", "HOPE", "4", "Trail", 0.350, 20, 148, "148x12", "E-Thru", "6 bolts", 11, 31.8),
+                new Tyre("Baron", "Continental", "Premium", "XC", 0.800, 54, true, 559)));
         bicycle.setFrontWheel(new FrontWheel(
-                new Rim("Shimano HB900", 20, 25, 28, true, true, 29),
-                new Hub("HOPE HB4", 32, 100, true, 15),
-                new Tyre("Continental Baron", 22, true, 26)));
+                new Rim("HB900", "Shimano", "XT", "Mountain", 0.412, 22.0, 21.0, 24.0, 20, "Disc", false, 622, 590, "Aluminium"),
+                new FrontHub("HB4", "HOPE", "4", "Trail", 0.350, 20, 148, "148x12", "E-Thru", "6 bolts"),
+                new Tyre("Baron", "Continental", "Premium", "XC", 0.800, 54, true, 559)));
         bicycle.setFrame(new Frame(
                 "Scott", "Sportster 2017",
                 2.10,

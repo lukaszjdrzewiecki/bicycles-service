@@ -28,6 +28,7 @@ public abstract class Wheel extends BicyclePart {
         this.tyre = tyre;
     }
 
+
     public Wheel(String name) {
         super(name);
     }

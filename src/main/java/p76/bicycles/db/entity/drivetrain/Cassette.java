@@ -18,18 +18,27 @@ public class Cassette extends BicyclePart {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    private int minimum;
-    private int maximum;
+    private int smallest;
+    private int biggest;
     private int speeds;
+    private String freewheelBody;
 
     public Cassette(String name) {
         super(name);
     }
 
-    public Cassette(String name, String brand, double weight, int minimum, int maximum, int speeds) {
+    public Cassette(String name, String brand, double weight, int smallest, int biggest, int speeds) {
         super(name, brand, weight);
-        this.minimum = minimum;
-        this.maximum = maximum;
+        this.smallest = smallest;
+        this.biggest = biggest;
         this.speeds = speeds;
+    }
+
+    public Cassette(String name, String brand, String productClass, String purpose, double weight, int smallest, int biggest, int speeds, String freewheelBody) {
+        super(name, brand, productClass, purpose, weight);
+        this.smallest = smallest;
+        this.biggest = biggest;
+        this.speeds = speeds;
+        this.freewheelBody = freewheelBody;
     }
 }

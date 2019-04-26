@@ -18,14 +18,10 @@ public class RearDerailleur extends BicyclePart {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    private String product;
-    private String signature;
-    private String series;
-    private String purpose;
     private String maxFrontDifferenceGear;
     private int minLowGearCassette;
     private int maxLowGearCassette;
-    private String dedicatedNumberGears; //dedicatedNumberGears // maxGears
+    private int maxGears; //maxGears // maxGears
     private int speeds;
     private String cage;
     private int capacity;
@@ -34,11 +30,22 @@ public class RearDerailleur extends BicyclePart {
         super(name);
     }
 
-    public RearDerailleur(String name, String brand, double weight, int minLowGearCassette, int maxLowGearCassette, String dedicatedNumberGears, int speeds, String cage, int capacity) {
+    public RearDerailleur(String name, String brand, double weight, int minLowGearCassette, int maxLowGearCassette, int maxGears, int speeds, String cage, int capacity) {
         super(name, brand, weight);
         this.minLowGearCassette = minLowGearCassette;
         this.maxLowGearCassette = maxLowGearCassette;
-        this.dedicatedNumberGears = dedicatedNumberGears;
+        this.maxGears = maxGears;
+        this.speeds = speeds;
+        this.cage = cage;
+        this.capacity = capacity;
+    }
+
+    public RearDerailleur(String name, String brand, String productClass, String purpose, double weight, String maxFrontDifferenceGear, int minLowGearCassette, int maxLowGearCassette, int maxGears, int speeds, String cage, int capacity) {
+        super(name, brand, productClass, purpose, weight);
+        this.maxFrontDifferenceGear = maxFrontDifferenceGear;
+        this.minLowGearCassette = minLowGearCassette;
+        this.maxLowGearCassette = maxLowGearCassette;
+        this.maxGears = maxGears;
         this.speeds = speeds;
         this.cage = cage;
         this.capacity = capacity;

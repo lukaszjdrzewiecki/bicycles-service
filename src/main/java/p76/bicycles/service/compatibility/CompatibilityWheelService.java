@@ -102,9 +102,9 @@ public class CompatibilityWheelService {
 
     public List<Integer> tyreRimRange(Wheel wheel) {
         try {
-            int rim = wheel.getRim().getInnerWidth();
-            int temp = 0;
-            for (int key : dataService.diameterMap().keySet()) {
+            double rim = wheel.getRim().getInnerWidth();
+            double temp = 0;
+            for (double key : dataService.diameterMap().keySet()) {
                 if (rim == key) {
                     temp = key;
                 }

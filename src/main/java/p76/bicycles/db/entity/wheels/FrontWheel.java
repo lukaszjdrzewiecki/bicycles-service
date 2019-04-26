@@ -14,7 +14,7 @@ public class FrontWheel extends Wheel {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    public FrontWheel(Rim rim, Hub hub, Tyre tyre) {
+    public FrontWheel(Rim rim, FrontHub hub, Tyre tyre) {
         super(rim, hub, tyre);
     }
 }
