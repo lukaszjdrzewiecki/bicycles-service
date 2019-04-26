@@ -20,8 +20,6 @@ public class RearDerailleur extends BicyclePart {
 
     private String product;
     private String signature;
-    private String series;
-    private String purpose;
     private String maxFrontDifferenceGear;
     private int minLowGearCassette;
     private int maxLowGearCassette;

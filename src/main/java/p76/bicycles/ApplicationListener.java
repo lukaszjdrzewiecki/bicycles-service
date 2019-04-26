@@ -50,10 +50,7 @@ public class ApplicationListener {
     @Transactional
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        List<RearDerailleur> rearDerailleurs = loadObjectList(RearDerailleur.class);
-        for(RearDerailleur part : rearDerailleurs) {
-            em.persist(part);
-        }
+        insertTestDataToDatabase(RearDerailleur.class);
 
         service.addBicycle("Tormenta Lady", "Accent");
         service.addBicycle("Scale Unique", "Scott");
@@ -118,6 +115,13 @@ public class ApplicationListener {
         bicycle.setName(name);
         bicycle.setManufacturer(manufacturer);
         return bicycle;
+    }
+
+    public <T> void insertTestDataToDatabase(Class<T> type) {
+        List<T> list = loadObjectList(type);
+        for(T entity : list) {
+            em.persist(entity);
+        }
     }
 
     public <T> List<T> loadObjectList(Class<T> type) {

@@ -14,6 +14,8 @@ public abstract class BicyclePart {
 
     private String name;
     private String brand;
+    private String series;
+    private String purpose;
     private double weight;
 
     public BicyclePart(String name) {
