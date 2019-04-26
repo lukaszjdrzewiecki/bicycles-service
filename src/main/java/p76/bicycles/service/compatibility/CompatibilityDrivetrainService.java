@@ -32,7 +32,7 @@ public class CompatibilityDrivetrainService {
 
     protected int drivetrainCapacity(Bicycle bicycle) {
         try {
-            return (bicycle.getCassette().getMaximum() - bicycle.getCassette().getMinimum())
+            return (bicycle.getCassette().getBiggest() - bicycle.getCassette().getSmallest())
                     + (bicycle.getCrank().getBigGear().getTeethNumber() - bicycle.getCrank().getSmallGear().getTeethNumber());
         } catch (Exception e) {
             return -1;

@@ -14,6 +14,8 @@ public abstract class BicyclePart {
 
     private String name;
     private String brand;
+    private String productClass;
+    private String purpose;
     private double weight;
 
     public BicyclePart(String name) {
@@ -28,6 +30,14 @@ public abstract class BicyclePart {
     public BicyclePart(String name, String brand, double weight) {
         this.name = name;
         this.brand = brand;
+        this.weight = weight;
+    }
+
+    public BicyclePart(String name, String brand, String productClass, String purpose, double weight) {
+        this.name = name;
+        this.brand = brand;
+        this.productClass = productClass;
+        this.purpose = purpose;
         this.weight = weight;
     }
 }

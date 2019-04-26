@@ -15,7 +15,7 @@ public class RearWheel extends Wheel {
     private Long id;
 
 
-    public RearWheel(Rim rim, Hub hub, Tyre tyre) {
+    public RearWheel(Rim rim, RearHub hub, Tyre tyre) {
         super(rim, hub, tyre);
     }
 }
