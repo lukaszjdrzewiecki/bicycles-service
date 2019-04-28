@@ -1,4 +1,4 @@
-product;brand;signature;series;purpose;dedicatedNumberGears;speeds;maxLowGearCassette;minLowGearCassette;maxFrontDifferenceGear;cage;capacity;weight
+product;brand;name;productClass;purpose;maxGears;speeds;maxLowGearCassette;minLowGearCassette;maxFrontDifferenceGear;cage;capacity;weight
 Rear-deraileur;Shimano;RD-M8000-SGS;XT;Mountain;3;11;46;40;18;Long;47;275
 Rear-deraileur;Shimano;RD-M8000-GS;XT;Mountain;2;11;46;40;10;Medium;39;271
 Rear-deraileur;Shimano;RD-M6000-SGS;Deore;Mountain;3;10;36;32;22;Long;43;null

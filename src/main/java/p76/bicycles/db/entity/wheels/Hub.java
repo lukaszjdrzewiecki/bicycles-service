@@ -8,7 +8,6 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@MappedSuperclass
 public abstract class Hub extends BicyclePart {
 
     @Id

@@ -12,6 +12,7 @@ import java.util.Arrays;
 @NoArgsConstructor
 public abstract class BicyclePart {
 
+    private String product;
     private String name;
     private String brand;
     private String productClass;

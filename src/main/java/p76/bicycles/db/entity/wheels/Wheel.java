@@ -10,13 +10,11 @@ import javax.persistence.MappedSuperclass;
 
 @NoArgsConstructor
 @Data
-@MappedSuperclass
 public abstract class Wheel extends BicyclePart {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Rim rim;
 
-    @ManyToOne(cascade = CascadeType.ALL)
     private Hub hub;
 
     @ManyToOne(cascade = CascadeType.ALL)
