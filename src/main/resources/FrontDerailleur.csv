@@ -1,0 +1,4 @@
+product;brand;name;productClass;purpose;gears;speeds;cableRouteType;minBigGear;maxBigGear;gearMaxDifference;cage;capacity;weight;mount;chainLine;chainstayAngle;
+Front-deraileur;Shimano;FD-M8025-L;XT;Mountain;2;11;Down-Pull exclusive;34;38;null;Top-Swing;10;0.131;28.6/31.8/34.9;48.8;66-69;
+Front-deraileur;Shimano;FD-M8000-D;XT;Mountain;3;11;Front-Pull;40;40;10;Side-Swing;18;0.136;Direct Mount;50;66-69;
+Front-deraileur;Shimano;FD-M8025-H;XT;Mountain;2;11;"Dual-Pull, Top-Pull exclusive";34;38;null;Down-Swing;10;0.149;28.6/31.8/34.9;48.8;66-69;
