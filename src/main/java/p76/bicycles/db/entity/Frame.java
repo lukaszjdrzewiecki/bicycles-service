@@ -20,6 +20,7 @@ public class Frame extends BicyclePart{
     private Long id;
 
     private String type;
+    private int year;
     private double topHeadSetDiameter;
     private double bottomHeadSetDiameter;
     private int bottomBracketLength;
@@ -35,22 +36,4 @@ public class Frame extends BicyclePart{
     private String brakeType;
     private Boolean tapered;
 
-    public Frame(String brand, String name, double weight, String type, double topHeadSetDiameter, double bottomHeadSetDiameter, int bottomBracketLength, int bottomBracketSize, boolean pressFit, boolean threaded, boolean italianThread, int rearWheelWidth, int rearWheelAxleSize, double seatpostSize, double seatpostCaliperDiameter, String discBrakeMount, String brakeType, Boolean tapered) {
-        super(brand, name, weight);
-        this.type = type;
-        this.topHeadSetDiameter = topHeadSetDiameter;
-        this.bottomHeadSetDiameter = bottomHeadSetDiameter;
-        this.bottomBracketLength = bottomBracketLength;
-        this.bottomBracketSize = bottomBracketSize;
-        this.pressFit = pressFit;
-        this.threaded = threaded;
-        this.italianThread = italianThread;
-        this.rearWheelWidth = rearWheelWidth;
-        this.rearWheelAxleSize = rearWheelAxleSize;
-        this.seatpostSize = seatpostSize;
-        this.seatpostCaliperDiameter = seatpostCaliperDiameter;
-        this.discBrakeMount = discBrakeMount;
-        this.brakeType = brakeType;
-        this.tapered = tapered;
-    }
 }

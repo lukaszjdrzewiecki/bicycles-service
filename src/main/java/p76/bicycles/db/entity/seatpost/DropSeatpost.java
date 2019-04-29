@@ -20,9 +20,4 @@ public class DropSeatpost extends Seatpost{
     private int travel;
     private boolean innerCable;
 
-    public DropSeatpost(String name, String brand, double weight, double length, double diameter, String material, int travel, boolean innerCable) {
-        super(name, brand, weight, length, diameter, material);
-        this.travel = travel;
-        this.innerCable = innerCable;
-    }
 }

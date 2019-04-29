@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity.wheels;
+package p76.bicycles.db.entity.brakes;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,19 +9,18 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class RearWheel {
+public class BrakeFront extends BicyclePart {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Rim rim;
+    private BrakeLever brakeLever;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private RearHub rearHub;
+    private BrakeCaliper brakeCaliper;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Tyre tyre;
-
+    private boolean hydraulic;
+    private String oilType;
 }

@@ -23,13 +23,4 @@ public class Chainring extends BicyclePart {
     private int pcd;
     private int teethNumber;
     private int speeds;
-
-    public Chainring(String name, String brand, double weight, String type, String armsAndType, int pcd, int teethNumber, int speeds) {
-        super(name, brand, weight);
-        this.type = type;
-        this.armsAndType = armsAndType;
-        this.pcd = pcd;
-        this.teethNumber = teethNumber;
-        this.speeds = speeds;
-    }
 }

@@ -20,10 +20,5 @@ public class HandlebarRoad extends Handlebar {
     private int drop;
     private int reach;
 
-    public HandlebarRoad(String name, String brand, double weight, double diameter, int width, String material, int drop, int reach) {
-        super(name, brand, weight, diameter, width, material);
-        this.drop = drop;
-        this.reach = reach;
-    }
 
 }

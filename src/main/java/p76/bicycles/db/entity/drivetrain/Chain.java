@@ -22,10 +22,4 @@ public class Chain extends BicyclePart {
     private String material;
     private int speeds;
 
-    public Chain(String name, String brand, double weight, String series, String material, int speeds) {
-        super(name, brand, weight);
-        this.series = series;
-        this.material = material;
-        this.speeds = speeds;
-    }
 }

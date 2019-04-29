@@ -2,19 +2,26 @@ package p76.bicycles.db.entity.wheels;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import p76.bicycles.db.entity.BicyclePart;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class FrontWheel extends Wheel {
+public class FrontWheel {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    public FrontWheel(Rim rim, FrontHub hub, Tyre tyre) {
-        super(rim, hub, tyre);
-    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Rim rim;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private FrontHub frontHub;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Tyre tyre;
+
 }

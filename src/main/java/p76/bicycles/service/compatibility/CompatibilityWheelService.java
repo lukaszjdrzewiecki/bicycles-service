@@ -3,7 +3,8 @@ package p76.bicycles.service.compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.wheels.Wheel;
+import p76.bicycles.db.entity.wheels.FrontWheel;
+import p76.bicycles.db.entity.wheels.RearWheel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,28 +25,27 @@ public class CompatibilityWheelService {
 
     public List<CompatibilityResult> frontWheelCheckTests(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList<>();
-        Wheel wheel = bicycle.getFrontWheel();
-        wheelChecks(result, wheel);
+        FrontWheel frontWheel = bicycle.getFrontWheel();
+        frontWheelChecks(result, frontWheel);
         return result;
     }
 
     public List<CompatibilityResult> rearWheelCheckTests(Bicycle bicycle) {
         List<CompatibilityResult> result = new ArrayList<>();
-        Wheel wheel = bicycle.getRearWheel();
-        wheelChecks(result, wheel);
+        RearWheel rearWheel = bicycle.getRearWheel();
+        rearWheelChecks(result, rearWheel);
         return result;
     }
 
-    private void wheelChecks(List<CompatibilityResult> result, Wheel wheel) {
-        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheck(wheel), messages.printMessage(wheelDiameterCheck(wheel), wheelDiameterMessage(wheel))));
-        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheck(wheel), messages.printMessage(rimTyreCompatibilityCheck(wheel), messages.rimTyreMessage(wheel))));
-        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheck((wheel)), messages.printMessage(wheelHolesCheck(wheel), wheelHolesMessage(wheel))));
+    private void frontWheelChecks(List<CompatibilityResult> result, FrontWheel frontWheel) {
+        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheck(frontWheel), messages.printMessage(wheelDiameterCheck(frontWheel), wheelDiameterMessage(frontWheel))));
+        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheck(frontWheel), messages.printMessage(rimTyreCompatibilityCheck(frontWheel), messages.rimTyreMessage(frontWheel))));
+        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheck((frontWheel)), messages.printMessage(wheelHolesCheck(frontWheel), wheelHolesMessage(frontWheel))));
     }
 
-
-    Boolean wheelDiameterCheck(Wheel wheel) {
+    Boolean wheelDiameterCheck(FrontWheel frontWheel) {
         try {
-            if (dataService.allEqual(wheel.getRim().getDiameter(), wheel.getTyre().getDiameter())) {
+            if (dataService.allEqual(frontWheel.getRim().getDiameter(), frontWheel.getTyre().getDiameter())) {
                 return true;
             }
             return false;
@@ -54,9 +54,9 @@ public class CompatibilityWheelService {
         }
     }
 
-    Boolean wheelHolesCheck(Wheel wheel) {
+    Boolean wheelHolesCheck(FrontWheel frontWheel) {
         try {
-            if (dataService.allEqual(wheel.getRim().getHoles(), wheel.getHub().getHoles())) {
+            if (dataService.allEqual(frontWheel.getRim().getHoles(), frontWheel.getFrontHub().getHoles())) {
                 return true;
             }
             return false;
@@ -76,21 +76,10 @@ public class CompatibilityWheelService {
         }
     }
 
-    public Boolean rearWheelCheck(Bicycle bicycle) {
+    Boolean rimTyreCompatibilityCheck(FrontWheel frontWheel) {
         try {
-            if (wheelDiameterCheck(bicycle.getRearWheel()) && wheelHolesCheck(bicycle.getRearWheel())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    Boolean rimTyreCompatibilityCheck(Wheel wheel) {
-        try {
-            int tyre = wheel.getTyre().getWidth();
-            List<Integer> rangeList = tyreRimRange(wheel);
+            int tyre = frontWheel.getTyre().getWidth();
+            List<Integer> rangeList = tyreRimRange(frontWheel);
             int min = rangeList.get(0);
             int max = rangeList.get(1);
             boolean flag = (tyre >= min && tyre <= max);
@@ -100,9 +89,9 @@ public class CompatibilityWheelService {
         }
     }
 
-    public List<Integer> tyreRimRange(Wheel wheel) {
+    public List<Integer> tyreRimRange(FrontWheel frontWheel) {
         try {
-            double rim = wheel.getRim().getInnerWidth();
+            double rim = frontWheel.getRim().getInnerWidth();
             double temp = 0;
             for (double key : dataService.diameterMap().keySet()) {
                 if (rim == key) {
@@ -117,6 +106,78 @@ public class CompatibilityWheelService {
     }
 
 
+    // FRONT WHEEL
+    //----------------------
+    // REAR WHEEL
+
+
+    private void rearWheelChecks(List<CompatibilityResult> result, RearWheel rearWheel) {
+        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheck(rearWheel), messages.printMessage(wheelDiameterCheck(rearWheel), wheelDiameterMessage(rearWheel))));
+        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheck(rearWheel), messages.printMessage(rimTyreCompatibilityCheck(rearWheel), messages.rimTyreMessage(rearWheel))));
+        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheck((rearWheel)), messages.printMessage(wheelHolesCheck(rearWheel), wheelHolesMessage(rearWheel))));
+    }
+
+    Boolean wheelDiameterCheck(RearWheel rearWheel) {
+        try {
+            if (dataService.allEqual(rearWheel.getRim().getDiameter(), rearWheel.getTyre().getDiameter())) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    Boolean wheelHolesCheck(RearWheel rearWheel) {
+        try {
+            if (dataService.allEqual(rearWheel.getRim().getHoles(), rearWheel.getRearHub().getHoles())) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Boolean rearWheelCheck(Bicycle bicycle) {
+        try {
+            if (wheelDiameterCheck(bicycle.getRearWheel()) && wheelHolesCheck(bicycle.getRearWheel())) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    Boolean rimTyreCompatibilityCheck(RearWheel rearWheel) {
+        try {
+            int tyre = rearWheel.getTyre().getWidth();
+            List<Integer> rangeList = tyreRimRange(rearWheel);
+            int min = rangeList.get(0);
+            int max = rangeList.get(1);
+            boolean flag = (tyre >= min && tyre <= max);
+            return flag;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public List<Integer> tyreRimRange(RearWheel rearWheel) {
+        try {
+            double rim = rearWheel.getRim().getInnerWidth();
+            double temp = 0;
+            for (double key : dataService.diameterMap().keySet()) {
+                if (rim == key) {
+                    temp = key;
+                }
+            }
+            List<Integer> tempList = dataService.diameterMap().get(temp);
+            return tempList;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 
 

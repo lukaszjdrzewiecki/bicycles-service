@@ -28,16 +28,4 @@ public class Rim extends BicyclePart {
     private int ERD;
     private String material;
 
-    public Rim(String name, String brand, String productClass, String purpose, double weight, double height, double innerWidth, double outerWidth, int holes, String brakeType, boolean tubeless, int diameter, int ERD, String material) {
-        super(name, brand, productClass, purpose, weight);
-        this.height = height;
-        this.innerWidth = innerWidth;
-        this.outerWidth = outerWidth;
-        this.holes = holes;
-        this.brakeType = brakeType;
-        this.tubeless = tubeless;
-        this.diameter = diameter;
-        this.ERD = ERD;
-        this.material = material;
-    }
 }

@@ -24,19 +24,4 @@ public class Handlebar extends BicyclePart {
     private int rise;
     private String material;
 
-    public Handlebar(String name, String brand, double weight, double diameter, int width, String material) {
-        super(name, brand, weight);
-        this.diameter = diameter;
-        this.width = width;
-        this.material = material;
-    }
-
-    public Handlebar(String name, String brand, double weight, double diameter, double offsetBack, int width, int rise, String material) {
-        super(name, brand, weight);
-        this.diameter = diameter;
-        this.offsetBack = offsetBack;
-        this.width = width;
-        this.rise = rise;
-        this.material = material;
-    }
 }

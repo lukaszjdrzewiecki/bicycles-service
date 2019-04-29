@@ -22,10 +22,4 @@ public class Tyre extends BicyclePart {
     private boolean tubeless;
     private int diameter;
 
-    public Tyre(String name, String brand, String productClass, String purpose, double weight, int width, boolean tubeless, int diameter) {
-        super(name, brand, productClass, purpose, weight);
-        this.width = width;
-        this.tubeless = tubeless;
-        this.diameter = diameter;
-    }
 }
