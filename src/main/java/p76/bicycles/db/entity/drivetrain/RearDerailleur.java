@@ -18,7 +18,6 @@ public class RearDerailleur extends BicyclePart {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    private String maxFrontDifferenceGear;
     private int minLowGearCassette;
     private int maxLowGearCassette;
     private int maxGears; //maxGears // maxGears

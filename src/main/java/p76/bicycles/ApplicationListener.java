@@ -37,6 +37,8 @@ public class ApplicationListener {
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
         insertTestDataToDatabase(RearDerailleur.class);
+        insertTestDataToDatabase(FrontDerailleur.class);
+        insertTestDataToDatabase(Cassette.class);
 
         service.addBicycle("Tormenta Lady", "Accent");
         service.addBicycle("Scale Unique", "Scott");
