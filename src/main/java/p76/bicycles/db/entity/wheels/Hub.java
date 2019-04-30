@@ -10,10 +10,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 public abstract class Hub extends BicyclePart {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-
     protected int holes;
     protected String axleDiameters;
     protected String axleType;
