@@ -1,4 +1,4 @@
-productID;product;brand;name;series;purpose;speeds;biggest;smallest;freewheelBody;weight
+productId;product;brand;name;series;purpose;speeds;biggest;smallest;freewheelBody;weight
 CS-M8000-bs;Cassette;Shimano;XT;M8000;Mountain;11;40;11;Shimano;0.411
 CS-M8000-bt;Cassette;Shimano;XT;M8000;Mountain;11;42;11;Shimano;0.434
 CS-M8000-bu;Cassette;Shimano;XT;M8000;Mountain;11;46;11;Shimano;0.437

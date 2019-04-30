@@ -25,7 +25,7 @@ public class Rim extends BicyclePart {
     private String brakeType;
     private boolean tubeless;
     private int diameter;
-    private int ERD;
+    private int erd;
     private String material;
 
 }

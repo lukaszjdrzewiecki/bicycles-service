@@ -8,7 +8,7 @@ import p76.bicycles.db.entity.drivetrain.Cassette;
 import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "cassette", path = "cassette")
-public interface CassetteRepository extends PagingAndSortingRepository<Cassette, Long> {
+public interface CassetteRestRepository extends PagingAndSortingRepository<Cassette, Long> {
 
     List<Cassette> findByFreewheelBody(@Param("freewheelBody") String freewheelBody);
 }

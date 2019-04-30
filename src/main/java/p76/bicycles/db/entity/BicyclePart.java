@@ -12,13 +12,14 @@ import java.util.Arrays;
 @NoArgsConstructor
 public abstract class BicyclePart {
 
-    protected String productID;
+    protected String productId;
     protected String product;
     protected String brand;
     protected String name;
     protected String series;
     protected String purpose;
     protected double weight;
+    protected String comment;
 
 
 }

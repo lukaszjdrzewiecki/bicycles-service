@@ -18,8 +18,7 @@ public class RearHub extends Hub{
     private Long id;
 
     private int speeds;
-    private double freeWheelWidth;
-    private String freeWheelType;
-    private boolean hubDerailleurIntegrated;
+    private double freewheelWidth;
+    private String freewheelType;
 
 }

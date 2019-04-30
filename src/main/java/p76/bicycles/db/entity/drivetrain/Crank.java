@@ -16,7 +16,8 @@ public class Crank extends BicyclePart {
     private Long id;
 
 
-    private String defaultChainRings;
+    private String defaultChainrings;
+    private String defaultChainringsId;
     private int pcdBig;
     private int pcdSmall;
     private String armsAndType;

@@ -15,13 +15,12 @@ public abstract class Hub extends BicyclePart {
     private Long id;
 
     protected int holes;
-    protected int width;
     protected String axleDiameters;
     protected String axleType;
     protected String discType;
-    protected double flangeDiameterLeft;
-    protected double flangeDistanceRight;
-    protected double offset;
+    protected int width;
+    protected double offsetLeft;
+    protected double offsetRight;
     protected double pcdLeft;
     protected double pcdRight;
 

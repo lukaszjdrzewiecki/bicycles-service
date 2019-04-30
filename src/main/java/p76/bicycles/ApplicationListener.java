@@ -12,6 +12,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import p76.bicycles.db.entity.*;
 import p76.bicycles.db.entity.drivetrain.*;
+import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
+import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
+import p76.bicycles.db.entity.wheels.FrontHub;
+import p76.bicycles.db.entity.wheels.RearHub;
+import p76.bicycles.db.entity.wheels.Rim;
+import p76.bicycles.db.entity.wheels.Tyre;
 import p76.bicycles.service.BicycleService;
 import p76.bicycles.service.compatibility.CompatibilityService;
 
@@ -38,7 +44,14 @@ public class ApplicationListener {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         insertTestDataToDatabase(RearDerailleur.class);
         insertTestDataToDatabase(FrontDerailleur.class);
-        insertTestDataToDatabase(Cassette.class);
+        insertTestDataToDatabase(Chainring.class);
+        insertTestDataToDatabase(FrontHub.class);
+        insertTestDataToDatabase(RearHub.class);
+        insertTestDataToDatabase(Rim.class);
+        insertTestDataToDatabase(ShifterLeft.class);
+        insertTestDataToDatabase(ShifterRight.class);
+        insertTestDataToDatabase(Tyre.class);
+
 
         service.addBicycle("Tormenta Lady", "Accent");
         service.addBicycle("Scale Unique", "Scott");

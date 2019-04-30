@@ -1,0 +1,5 @@
+productId;product;brand;name;series;purpose;weight;brakeType;holes;height;innerWidth;outerWidth;erd;diameter;tubeless;material;comment
+RIM-DT-XR331-27;Rim;DT-Swiss;XR 331;DT Swiss XC;XC;0.335;Disc;32;0.0;20.0;23.5;568;584;true;aluminium;also 28 holes
+RIM-DT-XR331-29;Rim;DT-Swiss;XR 331;DT Swiss XC;XC;0.380;Disc;32;0.0;20.0;23.5;606;622;true;aluminium;also 28 holes
+RIM-DT-XM401-27;Rim;DT-Swiss;XM 401;DT Swiss AllMountain;AllMountain;0.430;Disc;32;0.0;22.5;27.0;565;584;true;aluminium;also 28 holes
+RIM-DT-XM401-29;Rim;DT-Swiss;XM 401;DT Swiss AllMountain;AllMountain;0.460;Disc;32;0.0;22.5;27.0;603;622;true;aluminium;also 28 holes
