@@ -51,7 +51,7 @@ public class ApplicationListener {
         insertTestDataToDatabase(ShifterLeft.class);
         insertTestDataToDatabase(ShifterRight.class);
         insertTestDataToDatabase(Tyre.class);
-
+        insertTestDataToDatabase(Crank.class);
 
         service.addBicycle("Tormenta Lady", "Accent");
         service.addBicycle("Scale Unique", "Scott");

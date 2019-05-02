@@ -21,7 +21,7 @@ public class Crank extends BicyclePart {
     private int pcdBig;
     private int pcdSmall;
     private String armsAndType;
-    private int armLength;
+    private String armLength;
     private int numberOfGears;
     private int speeds;
     private int qfactor;
