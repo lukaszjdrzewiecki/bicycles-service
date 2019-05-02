@@ -26,14 +26,4 @@ public class HeadSet extends BicyclePart {
     private Boolean tapered;
     private String type;
 
-    public HeadSet(String name, String brand, double weight, double stereerDiameter, double topFrameDiameter, double bottomFrameDiameter, double topHeadTubeDiameter, double bottomHeadTubeDiameter, Boolean tapered, String type) {
-        super(name, brand, weight);
-        this.stereerDiameter = stereerDiameter;
-        this.topFrameDiameter = topFrameDiameter;
-        this.bottomFrameDiameter = bottomFrameDiameter;
-        this.topHeadTubeDiameter = topHeadTubeDiameter;
-        this.bottomHeadTubeDiameter = bottomHeadTubeDiameter;
-        this.tapered = tapered;
-        this.type = type;
-    }
 }

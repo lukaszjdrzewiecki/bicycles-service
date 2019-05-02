@@ -23,11 +23,4 @@ public class Stem extends BicyclePart {
     private double headtubeDiameter;
     private double handlebarDiameter;
 
-    public Stem(String name, String brand, double weight, int length, int angle, double headtubeDiameter, double handlebarDiameter) {
-        super(name, brand, weight);
-        this.length = length;
-        this.angle = angle;
-        this.headtubeDiameter = headtubeDiameter;
-        this.handlebarDiameter = handlebarDiameter;
-    }
 }

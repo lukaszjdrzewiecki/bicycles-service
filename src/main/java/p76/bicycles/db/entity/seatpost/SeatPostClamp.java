@@ -21,9 +21,4 @@ public class SeatPostClamp extends BicyclePart {
     private double setapostDiameter;
     private double frameDiameter;
 
-    public SeatPostClamp(String name, String brand, double weight, double setapostDiameter, double frameDiameter) {
-        super(name, brand, weight);
-        this.setapostDiameter = setapostDiameter;
-        this.frameDiameter = frameDiameter;
-    }
 }

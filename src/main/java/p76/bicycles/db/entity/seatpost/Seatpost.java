@@ -23,18 +23,4 @@ public class Seatpost extends BicyclePart {
     private String material;
     private boolean suspension;
 
-    public Seatpost(String name, String brand, double weight, double length, double diameter, String material) {
-        super(name, brand, weight);
-        this.length = length;
-        this.diameter = diameter;
-        this.material = material;
-    }
-
-    public Seatpost(String name, String brand, double weight, double length, double diameter, String material, boolean suspension) {
-        super(name, brand, weight);
-        this.length = length;
-        this.diameter = diameter;
-        this.material = material;
-        this.suspension = suspension;
-    }
 }

@@ -22,10 +22,4 @@ public class Damper extends BicyclePart {
     private int eyeToEyeLength;
     private int bodyLength;
 
-    public Damper(String name, String brand, double weight, int stroke, int eyeToEyeLength, int bodyLength) {
-        super(name, brand, weight);
-        this.stroke = stroke;
-        this.eyeToEyeLength = eyeToEyeLength;
-        this.bodyLength = bodyLength;
-    }
 }

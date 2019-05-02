@@ -1,7 +1,8 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
-import p76.bicycles.db.entity.brakes.BrakeHandleLeft;
-import p76.bicycles.db.entity.brakes.BrakeHandleRight;
+import p76.bicycles.db.entity.brakes.BrakeFront;
+import p76.bicycles.db.entity.brakes.BrakeLever;
+import p76.bicycles.db.entity.brakes.BrakeRear;
 import p76.bicycles.db.entity.drivetrain.Cassette;
 import p76.bicycles.db.entity.drivetrain.Crank;
 import p76.bicycles.db.entity.drivetrain.FrontDerailleur;
@@ -35,10 +36,10 @@ public class Bicycle {
 
     // ------ brakes -------
     @ManyToOne(cascade = CascadeType.ALL)
-    private BrakeHandleRight brakeHandleRight;
+    private BrakeFront brakeFront;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private BrakeHandleLeft brakeHandleLeft;
+    private BrakeRear brakeRear;
     // ------ brakes -------
 
     // ------- drivetrain --------
@@ -99,20 +100,8 @@ public class Bicycle {
     private RearWheel rearWheel;
     //---------- wheels ----------
 
-
+    //----------- frame -----------
     @ManyToOne(cascade = CascadeType.ALL)
     private Frame frame;
-
-    public String toString()
-    {
-        return "Bicycle: " + manufacturer + " " + name + " [ID " + id  + "]" +
-                " with Parts: \n" +
-                "[CRANK] " + this.crank +
-                " [CASETTE] " + this.cassette +
-                " [FRONT DERAILLEUR] " + this.frontDerailleur +
-                " [REAR DERAILLEUR] " + this.rearDerailleur +
-                " [FRONT WHEEL] " + this.frontWheel +
-                " [REAR WHEEL] " + this.rearWheel;
-    }
-
+    //----------- frame -----------
 }

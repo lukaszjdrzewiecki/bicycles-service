@@ -32,20 +32,4 @@ public class Fork extends BicyclePart {
     private String wheel;
     private String brake;
 
-    public Fork(String name, String brand, double weight, String year, int travel, double headTubeLength, double headTubeTopDiameter, double headTubeBottomDiameter, Boolean tapered, String leftChamber, String rightChamber, int axleWidth, int axleRadius, String stanchions, String wheel, String brake) {
-        super(name, brand, weight);
-        this.year = year;
-        this.travel = travel;
-        this.headTubeLength = headTubeLength;
-        this.headTubeTopDiameter = headTubeTopDiameter;
-        this.headTubeBottomDiameter = headTubeTopDiameter;
-        this.tapered = tapered;
-        this.leftChamber = leftChamber;
-        this.rightChamber = rightChamber;
-        this.axleWidth = axleWidth;
-        this.axleRadius = axleRadius;
-        this.stanchions = stanchions;
-        this.wheel = wheel;
-        this.brake = brake;
-    }
 }

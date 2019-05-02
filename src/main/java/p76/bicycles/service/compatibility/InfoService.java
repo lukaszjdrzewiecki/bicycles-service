@@ -21,7 +21,7 @@ public class InfoService {
             weight += bicycle.getFork().getWeight();
             weight += bicycle.getRearDerailleur().getWeight();
             weight += bicycle.getFrontDerailleur().getWeight();
-            weight += bicycle.getBrakeHandleRight().getWeight();
+            weight += bicycle.getBrakeFront().getWeight();
             weight += bicycle.getHandlebar().getWeight();
             return weight;
         } catch (Exception e) {

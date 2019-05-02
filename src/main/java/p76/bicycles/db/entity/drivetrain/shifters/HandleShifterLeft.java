@@ -3,7 +3,8 @@ package p76.bicycles.db.entity.drivetrain.shifters;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
-import p76.bicycles.db.entity.brakes.BrakeHandleLeft;
+import p76.bicycles.db.entity.brakes.BrakeFront;
+import p76.bicycles.db.entity.brakes.BrakeLever;
 
 import javax.persistence.*;
 
@@ -20,11 +21,6 @@ public class HandleShifterLeft extends BicyclePart {
     ShifterLeft shifterLeft;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    BrakeHandleLeft brakeHandleLeft;
+    BrakeFront brakeFront;
 
-    public HandleShifterLeft(String name, String brand, double weight, ShifterLeft shifterLeft, BrakeHandleLeft brakeHandleLeft) {
-        super(name, brand, weight);
-        this.shifterLeft = shifterLeft;
-        this.brakeHandleLeft = brakeHandleLeft;
-    }
 }

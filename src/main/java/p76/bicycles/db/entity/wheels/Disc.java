@@ -20,8 +20,4 @@ public class Disc extends BicyclePart {
 
     private int diameter;
 
-    public Disc(String name, String brand, double weight, int diameter) {
-        super(name, brand, weight);
-        this.diameter = diameter;
-    }
 }

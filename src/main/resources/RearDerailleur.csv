@@ -1,7 +1,9 @@
-product;brand;name;productClass;purpose;maxGears;speeds;maxLowGearCassette;minLowGearCassette;maxFrontDifferenceGear;cage;capacity;weight
-Rear-deraileur;Shimano;RD-M8000-SGS;XT;Mountain;3;11;46;40;18;Long;47;275
-Rear-deraileur;Shimano;RD-M8000-GS;XT;Mountain;2;11;46;40;10;Medium;39;271
-Rear-deraileur;Shimano;RD-M6000-SGS;Deore;Mountain;3;10;36;32;22;Long;43;null
-Rear-deraileur;Shimano;RD-M6000-GS;Deore;Mountain;1;10;42;42;10;Medium;41;null
-Rear-deraileur;Shimano;RD-M4000;Alivio;Mountain;3;9;36;32;22;Long;45;null
-Rear-deraileur;Shimano;RD-M310;Altus;Mountain;3;8;34;null;null;Long;43;326
+productId;product;brand;name;series;purpose;maxGears;speeds;maxLowGearCassette;minLowGearCassette;cage;capacity;weight
+RD-M8000-SGS;rear derailleur;Shimano;XT;M8000;Mountain;3;11;46;40;Long;47;0.275
+RD-M8000-GS;rear derailleur;Shimano;XT;M8000;Mountain;2;11;46;40;Medium;39;0.271
+RD-M6000-SGS;rear derailleur;Shimano;Deore;M6000;Mountain;3;10;36;32;Long;43;null
+RD-M6000-GS;rear derailleur;Shimano;Deore;M6000;Mountain;1;10;42;42;Medium;41;null
+RD-M4000;rear derailleur;Shimano;Alivio;M4000;Mountain;3;9;36;32;Long;45;null
+RD-M310;rear derailleur;Shimano;Altus;M310;Mountain;3;8;34;null;Long;43;0.326
+RD-NX-12;rear derailleur;Sram;NX EAGLE;NX;Mountain;1;12;null;50;Long;null;0.339
+RD-GX-12;rear derailleur;Sram;NX EAGLE;GX;Mountain;1;12;null;50;Long;null;0.290

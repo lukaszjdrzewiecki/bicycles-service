@@ -7,7 +7,7 @@ import java.util.*;
 @Component
 public class DataService {
 
-    boolean allEqual(int a, int... integers) {
+    public boolean allEqual(int a, int... integers) {
         for (int i : integers) {
             if (i != a) {
                 return false;

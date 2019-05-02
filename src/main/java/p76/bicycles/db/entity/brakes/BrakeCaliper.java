@@ -22,10 +22,4 @@ public class BrakeCaliper extends BicyclePart {
     private boolean road;
     private boolean vBrake;
 
-    public BrakeCaliper(String name, String brand, double weight, boolean disc, boolean road, boolean vBrake) {
-        super(name, brand, weight);
-        this.disc = disc;
-        this.road = road;
-        this.vBrake = vBrake;
-    }
 }

@@ -20,8 +20,4 @@ public class Grips extends BicyclePart {
 
     private boolean tape;
 
-    public Grips(String name, String brand, double weight, boolean tape) {
-        super(name, brand, weight);
-        this.tape = tape;
-    }
 }
