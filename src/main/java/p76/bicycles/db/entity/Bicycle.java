@@ -1,7 +1,6 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
 import p76.bicycles.db.entity.brakes.BrakeFront;
-import p76.bicycles.db.entity.brakes.BrakeLever;
 import p76.bicycles.db.entity.brakes.BrakeRear;
 import p76.bicycles.db.entity.drivetrain.Cassette;
 import p76.bicycles.db.entity.drivetrain.Crank;
@@ -10,13 +9,13 @@ import p76.bicycles.db.entity.drivetrain.RearDerailleur;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.seatpost.Saddle;
-import p76.bicycles.db.entity.seatpost.SeatPostClamp;
+import p76.bicycles.db.entity.seatpost.SeatpostClamp;
 import p76.bicycles.db.entity.seatpost.Seatpost;
-import p76.bicycles.db.entity.steering.Grips;
-import p76.bicycles.db.entity.steering.Handlebar;
-import p76.bicycles.db.entity.steering.Stem;
+import p76.bicycles.db.entity.cockpit.Grips;
+import p76.bicycles.db.entity.cockpit.Handlebar;
+import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.suspension.Fork;
-import p76.bicycles.db.entity.steering.HeadSet;
+import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.wheels.FrontWheel;
 import p76.bicycles.db.entity.wheels.RearWheel;
 
@@ -70,10 +69,10 @@ public class Bicycle {
     private Saddle saddle;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private SeatPostClamp seatPostClamp;
+    private SeatpostClamp seatPostClamp;
     //--------- seatpost ------------
 
-    // -------- steering ---------
+    // -------- cockpit ---------
     @ManyToOne(cascade = CascadeType.ALL)
     private HeadSet headSet;
 
@@ -85,7 +84,7 @@ public class Bicycle {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Grips grips;
-    // -------- steering ---------
+    // -------- cockpit ---------
 
     // --------- suspension ---------
     @ManyToOne(cascade = CascadeType.ALL)

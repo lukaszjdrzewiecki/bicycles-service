@@ -129,8 +129,8 @@ class Messages {
 
     static public String rearHubWidthMessage(Bicycle bicycle) {
         try {
-            return ": hub width " + bicycle.getRearWheel().getRearHub().getWidth() +
-                    " frame space " + bicycle.getFrame().getRearWheelWidth();
+            return ": hub width " + bicycle.getRearWheel().getRearHub().getAxleDiameter() +
+                    " frame space " + bicycle.getFrame().getRearWheelAxleSize();
         } catch (Exception e) {
             return null;
         }

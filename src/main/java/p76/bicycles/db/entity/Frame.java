@@ -19,17 +19,12 @@ public class Frame extends BicyclePart{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String type;
     private int year;
     private double topHeadSetDiameter;
     private double bottomHeadSetDiameter;
-    private int bottomBracketLength;
-    private int bottomBracketSize;
-    private boolean pressFit;
-    private boolean threaded;
-    private boolean italianThread;
-    private int rearWheelWidth;
-    private int rearWheelAxleSize;
+    private String bottomBracketSize;
+    private String bottomBracketType;
+    private String rearWheelAxleSize;
     private double seatpostSize;
     private double seatpostCaliperDiameter;
     private String discBrakeMount;

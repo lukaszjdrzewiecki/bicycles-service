@@ -17,7 +17,6 @@ public class Saddle extends BicyclePart {
     private Long id;
 
     private int width;
-    private int length;
     private String material;
 
 }

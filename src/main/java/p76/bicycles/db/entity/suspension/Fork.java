@@ -18,18 +18,15 @@ public class Fork extends BicyclePart {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String year;
-    private int travel;
-    private double headTubeLength;
-    private double headTubeTopDiameter;
-    private double headTubeBottomDiameter;
-    private Boolean tapered;
-    private String leftChamber;
-    private String rightChamber;
-    private int axleWidth;
-    private int axleRadius;
-    private String stanchions;
-    private String wheel;
-    private String brake;
+    protected String year;
+    protected double headTubeLength;
+    protected double headTubeTopDiameter;
+    protected double headTubeBottomDiameter;
+    protected Boolean tapered;
+    protected String axleSize;
+    private String material;
+    protected String wheel;
+    protected String brakeType;
+    protected String discMount;
 
 }

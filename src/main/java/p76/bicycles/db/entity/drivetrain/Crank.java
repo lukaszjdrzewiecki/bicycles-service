@@ -26,6 +26,7 @@ public class Crank extends BicyclePart {
     private int speeds;
     private int qfactor;
     private double chainline;
+    private double axleDiameter;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Chainring bigGear;
