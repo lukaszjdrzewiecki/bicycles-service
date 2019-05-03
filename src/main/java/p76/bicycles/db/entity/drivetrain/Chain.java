@@ -18,7 +18,6 @@ public class Chain extends BicyclePart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String series;
     private String material;
     private int speeds;
 

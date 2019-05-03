@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity.steering;
+package p76.bicycles.db.entity.seatpost;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,12 +12,15 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class Grips extends BicyclePart {
+public class DropperSeatpost extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private boolean tape;
+    private int travel;
+    private boolean innerCable;
+    private double length;
+    private double diameter;
 
 }

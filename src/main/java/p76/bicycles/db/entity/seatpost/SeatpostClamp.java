@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class SeatPostClamp extends BicyclePart {
+public class SeatpostClamp extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

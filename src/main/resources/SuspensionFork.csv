@@ -1,0 +1,4 @@
+productId;product;brand;name;series;purpose;weight;year;travel;remoteLockout;headTubeLength;headTubeTopDiameter;headTubeBottomDiameter;tapered;leftChamber;rightChamber;axleSize;uppersSize;wheel;brakeType;discMount;comment
+FK-RS-RB-RL-29-100-110-2018;suspension fork;Rock Shox;Reba RL;Reba;XC;1.662;2018;100;false;400;28.6;31.8;true;Solo Air;Motion Control;110x15;32;29;disc;post;null
+FK-RS-RB-RL-27-80-2018;suspension fork;Rock Shox;Reba RL;Reba;XC;1.662;2018;80;false;400;28.6;31.8;true;Solo Air;Motion Control;100x15;32;27.5;disc;post;null
+FK-RS-RB-RL-26-120-2018;suspension fork;Rock Shox;Reba RL;Reba;XC;1.586;2018;120;false;400;28.6;31.8;true;Solo Air;Motion Control;100x15;32;26;disc;post;null

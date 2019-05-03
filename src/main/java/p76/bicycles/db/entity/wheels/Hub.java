@@ -11,10 +11,9 @@ import javax.persistence.*;
 public abstract class Hub extends BicyclePart {
 
     protected int holes;
-    protected String axleDiameters;
+    protected String axleDiameter;
     protected String axleType;
     protected String discType;
-    protected int width;
     protected double offsetLeft;
     protected double offsetRight;
     protected double pcdLeft;
