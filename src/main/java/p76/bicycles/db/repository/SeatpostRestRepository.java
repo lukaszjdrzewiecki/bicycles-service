@@ -12,4 +12,5 @@ import java.util.List;
 public interface SeatpostRestRepository extends PagingAndSortingRepository<Seatpost, Long> {
 
     List<Seatpost> findByName(@Param("name") String name);
+    public Seatpost findOneByName(String name);
 }
