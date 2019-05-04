@@ -23,15 +23,12 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Bicycle {
+public class Bicycle extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String manufacturer;
-
-    @Column
-    private String name;
 
     // ------ brakes -------
     @ManyToOne(cascade = CascadeType.ALL)
@@ -89,6 +86,7 @@ public class Bicycle {
     // --------- suspension ---------
     @ManyToOne(cascade = CascadeType.ALL)
     private Fork fork;
+
     // --------- suspension ---------
 
     //---------- wheels ----------
@@ -103,4 +101,11 @@ public class Bicycle {
     @ManyToOne(cascade = CascadeType.ALL)
     private Frame frame;
     //----------- frame -----------
+
+    @Column
+    private String forkInfo;
+    @Column
+    private String frontDerailleurInfo;
+    @Column
+    private String rearDerailleurInfo;
 }

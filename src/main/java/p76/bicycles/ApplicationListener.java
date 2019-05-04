@@ -23,7 +23,7 @@ import p76.bicycles.db.entity.cockpit.Grips;
 import p76.bicycles.db.entity.seatpost.Saddle;
 import p76.bicycles.db.entity.seatpost.Seatpost;
 import p76.bicycles.db.entity.seatpost.SeatpostClamp;
-import p76.bicycles.db.entity.suspension.SuspensionFork;
+import p76.bicycles.db.entity.suspension.Fork;
 import p76.bicycles.db.entity.wheels.FrontHub;
 import p76.bicycles.db.entity.wheels.RearHub;
 import p76.bicycles.db.entity.wheels.Rim;
@@ -73,7 +73,8 @@ public class ApplicationListener {
         insertTestDataToDatabase(Seatpost.class);
         insertTestDataToDatabase(SeatpostClamp.class);
         insertTestDataToDatabase(Stem.class);
-        insertTestDataToDatabase(SuspensionFork.class);
+        insertTestDataToDatabase(Fork.class);
+        loadBicycles();
 
         service.addBicycle("Tormenta Lady", "Accent");
         service.addBicycle("Scale Unique", "Scott");
@@ -92,6 +93,14 @@ public class ApplicationListener {
         return bicycle;
     }
 
+
+    public void loadBicycles() {
+        List<Bicycle> list = loadObjectList(Bicycle.class);
+        for(Bicycle bicycle : list) {
+            service.addBicycle(bicycle);
+        }
+    }
+
     public <T> void insertTestDataToDatabase(Class<T> type) {
         List<T> list = loadObjectList(type);
         for(T entity : list) {
@@ -104,6 +113,7 @@ public class ApplicationListener {
         try {
             CsvSchema bootstrapSchema = CsvSchema.emptySchema().withHeader().withColumnSeparator(';');
             CsvMapper mapper = new CsvMapper();
+
             File file = new ClassPathResource(fileName).getFile();
             MappingIterator<T> readValues =
                     mapper.readerFor(type).with(bootstrapSchema).readValues(file);

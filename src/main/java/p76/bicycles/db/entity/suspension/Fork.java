@@ -18,7 +18,6 @@ public class Fork extends BicyclePart {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    protected String year;
     protected double headTubeLength;
     protected double headTubeTopDiameter;
     protected double headTubeBottomDiameter;
@@ -28,5 +27,12 @@ public class Fork extends BicyclePart {
     protected String wheel;
     protected String brakeType;
     protected String discMount;
+
+    //to suspensionFork
+    private int travel;
+    private String leftChamber;
+    private String rightChamber;
+    private String uppersSize;
+    private Boolean remoteLockout;
 
 }

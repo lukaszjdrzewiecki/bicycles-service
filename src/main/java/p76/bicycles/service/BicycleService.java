@@ -7,7 +7,9 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.db.entity.drivetrain.RearDerailleur;
 import p76.bicycles.db.repository.BicycleRepository;
+import p76.bicycles.db.repository.RearDerailleurRestRepository;
 
 @Data
 @Component
@@ -16,17 +18,16 @@ public class BicycleService {
     @Autowired
     BicycleRepository repository;
 
-    public void addBicycles(List<Bicycle> bicycles) {
-        for(Bicycle bicycle : bicycles) {
-            addBicycle(bicycle);
-        }
-    }
+    @Autowired
+    BicyclePartsService partsService;
+
 
     public List<Bicycle> findBicycle(String name) {
         return repository.findByName(name);
     }
 
     public Bicycle addBicycle(Bicycle newBicycle) {
+        newBicycle.setRearDerailleur(partsService.findByInfo(newBicycle.getRearDerailleurInfo()));
         return repository.save(newBicycle);
     }
 
