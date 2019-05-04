@@ -14,10 +14,11 @@ public class BicyclePartsService {
     @Autowired
     EntityManager em;
 
-    public RearDerailleur findByInfo(String info) {
-        TypedQuery<RearDerailleur> q = em.createQuery("select x from RearDerailleur x where x.productId=:info", RearDerailleur.class);
+    public <T> T findByProductId(Class<T> type, String info) {
+        String queryString = "select x from " + type.getSimpleName() + "  x where x.productId=:info";
+        TypedQuery<T> q = em.createQuery(queryString, type);
         q.setParameter("info", info);
-        List<RearDerailleur> result = q.getResultList();
+        List<T> result = q.getResultList();
         if(result.size() == 1) {
             return result.get(0);
         }

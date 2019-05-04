@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.entity.drivetrain.RearDerailleur;
 import p76.bicycles.db.repository.BicycleRepository;
-import p76.bicycles.db.repository.RearDerailleurRestRepository;
 
 @Data
 @Component
@@ -27,7 +26,9 @@ public class BicycleService {
     }
 
     public Bicycle addBicycle(Bicycle newBicycle) {
-        newBicycle.setRearDerailleur(partsService.findByInfo(newBicycle.getRearDerailleurInfo()));
+        newBicycle.setRearDerailleur(
+                partsService.findByProductId(RearDerailleur.class, newBicycle.getRearDerailleurInfo())
+        );
         return repository.save(newBicycle);
     }
 
