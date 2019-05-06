@@ -1,7 +1,6 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
-import p76.bicycles.db.entity.brakes.BrakeFront;
-import p76.bicycles.db.entity.brakes.BrakeRear;
+import p76.bicycles.db.entity.brakes.Brake;
 import p76.bicycles.db.entity.drivetrain.Cassette;
 import p76.bicycles.db.entity.drivetrain.Crank;
 import p76.bicycles.db.entity.drivetrain.FrontDerailleur;
@@ -16,8 +15,7 @@ import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.suspension.Fork;
 import p76.bicycles.db.entity.cockpit.HeadSet;
-import p76.bicycles.db.entity.wheels.FrontWheel;
-import p76.bicycles.db.entity.wheels.RearWheel;
+import p76.bicycles.db.entity.wheels.*;
 
 import javax.persistence.*;
 
@@ -32,10 +30,10 @@ public class Bicycle extends BicyclePart {
 
     // ------ brakes -------
     @ManyToOne(cascade = CascadeType.ALL)
-    private BrakeFront brakeFront;
+    private Brake brakeFront;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private BrakeRear brakeRear;
+    private Brake brakeRear;
     // ------ brakes -------
 
     // ------- drivetrain --------
@@ -91,10 +89,29 @@ public class Bicycle extends BicyclePart {
 
     //---------- wheels ----------
     @ManyToOne(cascade = CascadeType.ALL)
-    private FrontWheel frontWheel;
+    private Tyre tyreFront;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private RearWheel rearWheel;
+    private Disc discFront;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Rim rimFront;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Hub hubFront;
+    //--Front--
+    //--Rear--
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Rim rimRear;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Disc discRear;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Hub hubRear;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Tyre tyreRear;
     //---------- wheels ----------
 
     //----------- frame -----------
@@ -102,10 +119,102 @@ public class Bicycle extends BicyclePart {
     private Frame frame;
     //----------- frame -----------
 
+
+
+
+    // ------ brakes -------
     @Column
-    private String forkInfo;
+    private String brakeFrontInfo;
+
+    @Column
+    private String brakeRearInfo;
+    // ------ brakes -------
+
+    // ------- drivetrain --------
     @Column
     private String frontDerailleurInfo;
+
     @Column
     private String rearDerailleurInfo;
+
+    @Column
+    private String casetteInfo;
+
+    @Column
+    private String chainInfo;
+
+    @Column
+    private String crankInfo;
+
+    @Column
+    private String shifterLeftInfo;
+
+    @Column
+    private String shifterRightInfo;
+    // ------- drivetrain --------
+
+    //--------- seatpost ------------
+    @Column
+    private String seatpostInfo;
+
+    @Column
+    private String seatpostClampInfo;
+
+    @Column
+    private String saddleInfo;
+    //--------- seatpost ------------
+
+    // -------- cockpit ---------
+    @Column
+    private String handlebarInfo;
+
+    @Column
+    private String stemInfo;
+
+    @Column
+    private String gripsInfo;
+
+    @Column
+    private String headSetInfo;
+    // -------- cockpit ---------
+
+    // --------- suspension ---------
+    @Column
+    private String forkInfo;
+    // --------- suspension ---------
+
+    //---------- wheels ----------
+    @Column
+    private String tyreFrontInfo;
+
+    @Column
+    private String discFrontInfo;
+
+    @Column
+    private String rimFrontInfo;
+
+    @Column
+    private String hubFrontInfo;
+    //--Front--
+    //--Rear--
+    @Column
+    private String rimRearInfo;
+
+    @Column
+    private String discRearInfo;
+
+    @Column
+    private String hubRearInfo;
+
+    @Column
+    private String tyreRearInfo;
+    //---------- wheels ----------
+
+    //----------- frame -----------
+    @Column
+    private String frameInfo;
+    //----------- frame -----------
+
+
+
 }

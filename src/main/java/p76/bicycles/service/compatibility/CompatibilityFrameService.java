@@ -34,7 +34,7 @@ public class CompatibilityFrameService {
 
     public Boolean rearHubWidthCheck(Bicycle bicycle) {
         try {
-            if (bicycle.getRearWheel().getRearHub().getAxleDiameter().equals(bicycle.getFrame().getRearWheelAxleSize())) {
+            if (bicycle.getHubRear().getAxleDiameter().equals(bicycle.getFrame().getRearWheelAxleSize())) {
                 return true;
             }
             return false;

@@ -24,8 +24,7 @@ import p76.bicycles.db.entity.seatpost.Saddle;
 import p76.bicycles.db.entity.seatpost.Seatpost;
 import p76.bicycles.db.entity.seatpost.SeatpostClamp;
 import p76.bicycles.db.entity.suspension.Fork;
-import p76.bicycles.db.entity.wheels.FrontHub;
-import p76.bicycles.db.entity.wheels.RearHub;
+import p76.bicycles.db.entity.wheels.Hub;
 import p76.bicycles.db.entity.wheels.Rim;
 import p76.bicycles.db.entity.wheels.Tyre;
 import p76.bicycles.service.BicycleService;
@@ -55,8 +54,7 @@ public class ApplicationListener {
         insertTestDataToDatabase(RearDerailleur.class);
         insertTestDataToDatabase(FrontDerailleur.class);
         insertTestDataToDatabase(Chainring.class);
-        insertTestDataToDatabase(FrontHub.class);
-        insertTestDataToDatabase(RearHub.class);
+        insertTestDataToDatabase(Hub.class);
         insertTestDataToDatabase(Rim.class);
         insertTestDataToDatabase(ShifterLeft.class);
         insertTestDataToDatabase(ShifterRight.class);
@@ -75,6 +73,7 @@ public class ApplicationListener {
         insertTestDataToDatabase(Stem.class);
         insertTestDataToDatabase(Fork.class);
         loadBicycles();
+        loadParts();
 
         service.addBicycle("Tormenta Lady", "Accent");
         service.addBicycle("Scale Unique", "Scott");
@@ -98,6 +97,13 @@ public class ApplicationListener {
         List<Bicycle> list = loadObjectList(Bicycle.class);
         for(Bicycle bicycle : list) {
             service.addBicycle(bicycle);
+        }
+    }
+
+    public void loadParts() {
+        List<Crank> list = loadObjectList(Crank.class);
+        for(Crank part : list) {
+            service.addCrank(part);
         }
     }
 
