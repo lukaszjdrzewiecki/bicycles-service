@@ -6,17 +6,27 @@ import p76.bicycles.db.entity.BicyclePart;
 
 import javax.persistence.*;
 
+@Entity
 @Data
 @NoArgsConstructor
-public abstract class Hub extends BicyclePart {
+public class Hub extends BicyclePart {
 
-    protected int holes;
-    protected String axleDiameter;
-    protected String axleType;
-    protected String discType;
-    protected double offsetLeft;
-    protected double offsetRight;
-    protected double pcdLeft;
-    protected double pcdRight;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
+    private int holes;
+    private String axleDiameter;
+    private String axleType;
+    private String discType;
+    private double offsetLeft;
+    private double offsetRight;
+    private double pcdLeft;
+    private double pcdRight;
+    private String hubType;
+
+    private int speeds;
+    private double freewheelWidth;
+    private String freewheelType;
 
 }

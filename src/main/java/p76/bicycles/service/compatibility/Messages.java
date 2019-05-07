@@ -3,8 +3,6 @@ package p76.bicycles.service.compatibility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.wheels.FrontWheel;
-import p76.bicycles.db.entity.wheels.RearWheel;
 
 @Component
 class Messages {
@@ -62,30 +60,30 @@ class Messages {
 
     //------------- FRONT WHEEL MESSAGES ---------------------
 
-    static final String wheelHolesMessage(FrontWheel frontWheel) {
+    static final String wheelHolesMessageFront(Bicycle bicycle) {
         try {
-            return ": number of holes in your rim equals " + frontWheel.getRim().getHoles() +
-                    " and number of holes in your hub equals " + frontWheel.getFrontHub().getHoles();
+            return ": number of holes in your rim equals " + bicycle.getRimFront().getHoles() +
+                    " and number of holes in your hub equals " + bicycle.getHubFront().getHoles();
         } catch (Exception e) {
             return null;
         }
     }
 
-    static final String wheelDiameterMessage(FrontWheel frontWheel) {
+    static final String wheelDiameterMessageFront(Bicycle bicycle) {
         try {
-            return ": your rim diameter equals " + frontWheel.getRim().getDiameter() +
-                    " and your tyre diameter equals " + frontWheel.getTyre().getDiameter();
+            return ": your rim diameter equals " + bicycle.getRimFront().getDiameter() +
+                    " and your tyre diameter equals " + bicycle.getTyreFront().getDiameter();
         } catch (Exception e) {
             return null;
         }
     }
 
-    final String rimTyreMessage(FrontWheel frontWheel) {
+    final String rimTyreMessageFront(Bicycle bicycle) {
         try {
-            return ": your rim width equals " + frontWheel.getRim().getInnerWidth() +
+            return ": your rim width equals " + bicycle.getRimFront().getInnerWidth() +
                     " mm and thus recommended size of a tyre is " +
-                    compatibilityWheelService.tyreRimRange(frontWheel).get(0) + " - " +
-                    compatibilityWheelService.tyreRimRange(frontWheel).get(1) + " mm";
+                    compatibilityWheelService.tyreRimRangeFront(bicycle).get(0) + " - " +
+                    compatibilityWheelService.tyreRimRangeFront(bicycle).get(1) + " mm";
         } catch (Exception e) {
             return null;
         }
@@ -95,41 +93,42 @@ class Messages {
 
     //-------------- REAR WHEEL MESSAGES ---------------------
 
-    static final String wheelHolesMessage(RearWheel rearWheel) {
+    static final String wheelHolesMessageRear(Bicycle bicycle) {
         try {
-            return ": number of holes in your rim equals " + rearWheel.getRim().getHoles() +
-                    " and number of holes in your hub equals " + rearWheel.getRearHub().getHoles();
+            return ": number of holes in your rim equals " + bicycle.getRimRear().getHoles() +
+                    " and number of holes in your hub equals " + bicycle.getHubRear().getHoles();
         } catch (Exception e) {
             return null;
         }
     }
 
-    static final String wheelDiameterMessage(RearWheel rearWheel) {
+    static final String wheelDiameterMessageRear(Bicycle bicycle) {
         try {
-            return ": your rim diameter equals " + rearWheel.getRim().getDiameter() +
-                    " and your tyre diameter equals " + rearWheel.getTyre().getDiameter();
+            return ": your rim diameter equals " + bicycle.getRimRear().getDiameter() +
+                    " and your tyre diameter equals " + bicycle.getTyreRear().getDiameter();
         } catch (Exception e) {
             return null;
         }
     }
 
-    final String rimTyreMessage(RearWheel rearWheel) {
+    final String rimTyreMessageRear(Bicycle bicycle) {
         try {
-            return ": your rim width equals " + rearWheel.getRim().getInnerWidth() +
+            return ": your rim width equals " + bicycle.getRimRear().getInnerWidth() +
                     " mm and thus recommended size of a tyre is " +
-                    compatibilityWheelService.tyreRimRange(rearWheel).get(0) + " - " +
-                    compatibilityWheelService.tyreRimRange(rearWheel).get(1) + " mm";
+                    compatibilityWheelService.tyreRimRangeFront(bicycle).get(0) + " - " +
+                    compatibilityWheelService.tyreRimRangeFront(bicycle).get(1) + " mm";
         } catch (Exception e) {
             return null;
         }
     }
+
 
     // ------------------ REAR WHEEL MESSAGES -------------------------------
     //------------- FRAME MESSAGES ---------------------
 
     static public String rearHubWidthMessage(Bicycle bicycle) {
         try {
-            return ": hub width " + bicycle.getRearWheel().getRearHub().getAxleDiameter() +
+            return ": hub width " + bicycle.getHubRear().getAxleDiameter() +
                     " frame space " + bicycle.getFrame().getRearWheelAxleSize();
         } catch (Exception e) {
             return null;

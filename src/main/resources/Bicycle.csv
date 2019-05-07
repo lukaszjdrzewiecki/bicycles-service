@@ -1,4 +1,4 @@
-manufacturer;name;year;forkInfo;frontDerailleurInfo;rearDerailleurInfo
-Scott;Scale 970;2017;;Deore;Deore
-Specialized;Chisel Expert;2019;FK-RS-RB-RL-29-100-110-2018;;RD-NX-12
-Scott;Sportster x20;2014;;Deore;Deore
+manufacturer;name;year;forkInfo;frontDerailleurInfo;rearDerailleurInfo;crankInfo
+Scott;Scale 970;2017;;Deore;Deore;FC-M8000-1
+Specialized;Chisel Expert;2019;FK-RS-RB-RL-29-100-110-2018;;RD-NX-12;
+Scott;Sportster x20;2014;;Deore;Deore;
