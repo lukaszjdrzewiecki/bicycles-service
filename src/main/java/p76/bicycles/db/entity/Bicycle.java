@@ -23,7 +23,6 @@ import javax.persistence.*;
 @Data
 public class Bicycle {
 
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
