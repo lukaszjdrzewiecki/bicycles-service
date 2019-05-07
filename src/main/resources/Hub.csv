@@ -1,0 +1,7 @@
+productId;product;brand;name;series;purpose;axleDiameter;axleType;speeds;freewheelType;freewheelWidth;discType;offsetLeft;offsetRight;pcdLeft;pcdRight;holes;weight;hubType;comment
+FH-M8010;RearHub;Shimano;XT;M8000;Mountain;142x12;E-THRU;11;Shimano;34.95;Center-Lock;null;null;44.0;45.0;32;0.359;rear;also 36
+FH-M8000;RearHub;Shimano;XT;M8000;Mountain;135x9;Quick release;11;Shimano;34.95;Center-Lock;null;null;44.0;45.0;32;0.331;rear;null
+FH-HOPE-PRO4-135-9;RearHub;Hope;Pro 4;Pro ;Mountain;135x9;Quick release;11;Shimano/SRAM;34.95;6 bolts;33.0;19.0;57.0;57.0;36;0.311;rear;also 24/28/32
+FH-HOPE-PRO4-142-12;RearHub;Hope;Pro 4;Pro ;Mountain;142x12;E-THRU;11;Shimano/SRAM;34.95;6 bolts;33.0;19.0;57.0;57.0;36;0.300;rear;also 24/28/32
+HB-M8010;FrontHub;Shimano;XT;M8000;Mountain;100x15;E-THRU;null;null;null;Center-Lock;null;null;44.0;44.0;36;0.148;front;also 32
+HB-M8000;FrontHub;Shimano;XT;M8000;Mountain;100x9;Quick release;null;null;null;Center-Lock;null;null;44.0;41.0;32;0.167;front;null
