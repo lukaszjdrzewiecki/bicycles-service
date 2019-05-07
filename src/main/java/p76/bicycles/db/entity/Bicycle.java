@@ -1,10 +1,7 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
 import p76.bicycles.db.entity.brakes.Brake;
-import p76.bicycles.db.entity.drivetrain.Cassette;
-import p76.bicycles.db.entity.drivetrain.Crank;
-import p76.bicycles.db.entity.drivetrain.FrontDerailleur;
-import p76.bicycles.db.entity.drivetrain.RearDerailleur;
+import p76.bicycles.db.entity.drivetrain.*;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.seatpost.Saddle;
@@ -54,6 +51,9 @@ public class Bicycle extends BicyclePart {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private ShifterRight shifterRight;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Chain chain;
     // ------- drivetrain --------
 
     //--------- seatpost ------------
@@ -138,7 +138,7 @@ public class Bicycle extends BicyclePart {
     private String rearDerailleurInfo;
 
     @Column
-    private String casetteInfo;
+    private String cassetteInfo;
 
     @Column
     private String chainInfo;

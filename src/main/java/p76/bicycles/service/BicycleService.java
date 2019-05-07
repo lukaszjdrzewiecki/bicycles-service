@@ -7,10 +7,22 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.drivetrain.Chainring;
-import p76.bicycles.db.entity.drivetrain.Crank;
-import p76.bicycles.db.entity.drivetrain.RearDerailleur;
+import p76.bicycles.db.entity.Frame;
+import p76.bicycles.db.entity.cockpit.Grips;
+import p76.bicycles.db.entity.cockpit.Handlebar;
+import p76.bicycles.db.entity.cockpit.HeadSet;
+import p76.bicycles.db.entity.cockpit.Stem;
+import p76.bicycles.db.entity.drivetrain.*;
+import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
+import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
+import p76.bicycles.db.entity.seatpost.Saddle;
+import p76.bicycles.db.entity.seatpost.Seatpost;
+import p76.bicycles.db.entity.seatpost.SeatpostClamp;
 import p76.bicycles.db.entity.suspension.Fork;
+import p76.bicycles.db.entity.wheels.Disc;
+import p76.bicycles.db.entity.wheels.Hub;
+import p76.bicycles.db.entity.wheels.Rim;
+import p76.bicycles.db.entity.wheels.Tyre;
 import p76.bicycles.db.repository.BicycleRepository;
 import p76.bicycles.db.repository.CrankRepository;
 import p76.bicycles.db.repository.CrankRestRepository;
@@ -34,15 +46,83 @@ public class BicycleService {
     }
 
     public Bicycle addBicycle(Bicycle newBicycle) {
-        newBicycle.setRearDerailleur(
-                partsService.findByProductId(RearDerailleur.class, newBicycle.getRearDerailleurInfo())
-        );
         newBicycle.setFork(
                 partsService.findByProductId(Fork.class, newBicycle.getForkInfo())
         );
+        newBicycle.setFrame(
+                partsService.findByProductId(Frame.class, newBicycle.getFrameInfo())
+        );
+        //drivetrain
         newBicycle.setCrank(
                 partsService.findByProductId(Crank.class, newBicycle.getCrankInfo())
         );
+        newBicycle.setCassette(
+                partsService.findByProductId(Cassette.class, newBicycle.getCassetteInfo())
+        );
+        newBicycle.setChain(
+                partsService.findByProductId(Chain.class, newBicycle.getChainInfo())
+        );
+        newBicycle.setShifterRight(
+                partsService.findByProductId(ShifterRight.class, newBicycle.getShifterRightInfo())
+        );
+        newBicycle.setShifterLeft(
+                partsService.findByProductId(ShifterLeft.class, newBicycle.getShifterLeftInfo())
+        );
+        newBicycle.setRearDerailleur(
+                partsService.findByProductId(RearDerailleur.class, newBicycle.getRearDerailleurInfo())
+        );
+        newBicycle.setFrontDerailleur(
+                partsService.findByProductId(FrontDerailleur.class, newBicycle.getFrontDerailleurInfo())
+        );
+        // drivetrain
+        // cockpit
+        newBicycle.setStem(
+                partsService.findByProductId(Stem.class, newBicycle.getStemInfo())
+        );
+        newBicycle.setHandlebar(
+                partsService.findByProductId(Handlebar.class, newBicycle.getHandlebarInfo())
+        );
+        newBicycle.setHeadSet(
+                partsService.findByProductId(HeadSet.class, newBicycle.getHeadSetInfo())
+        );
+        newBicycle.setGrips(
+                partsService.findByProductId(Grips.class, newBicycle.getGripsInfo())
+        );
+        // cockpit
+        // seatpost
+        newBicycle.setSeatpost(
+                partsService.findByProductId(Seatpost.class, newBicycle.getSeatpostInfo())
+        );
+        newBicycle.setSaddle(
+                partsService.findByProductId(Saddle.class, newBicycle.getSaddleInfo())
+        );
+        newBicycle.setSeatPostClamp(
+                partsService.findByProductId(SeatpostClamp.class, newBicycle.getSeatpostClampInfo())
+        );
+        // front wheel
+        newBicycle.setHubFront(
+                partsService.findByProductId(Hub.class, newBicycle.getHubFrontInfo())
+        );
+        newBicycle.setTyreFront(
+                partsService.findByProductId(Tyre.class, newBicycle.getTyreFrontInfo())
+        );
+        newBicycle.setRimFront(
+                partsService.findByProductId(Rim.class, newBicycle.getRimFrontInfo())
+        );
+        // front wheel - rear wheel
+        newBicycle.setHubRear(
+                partsService.findByProductId(Hub.class, newBicycle.getHubRearInfo())
+        );
+        newBicycle.setTyreRear(
+                partsService.findByProductId(Tyre.class, newBicycle.getTyreRearInfo())
+        );
+        newBicycle.setRimRear(
+                partsService.findByProductId(Rim.class, newBicycle.getRimRearInfo())
+        );
+        // rear wheel
+        // brakes
+
+        // brakes
         return repository.save(newBicycle);
     }
 

@@ -1,4 +1,2 @@
-manufacturer;name;year;forkInfo;frontDerailleurInfo;rearDerailleurInfo;crankInfo
-Scott;Scale 970;2017;;Deore;Deore;FC-M8000-1
-Specialized;Chisel Expert;2019;FK-RS-RB-RL-29-100-110-2018;;RD-NX-12;
-Scott;Sportster x20;2014;;Deore;Deore;
+manufacturer;name;year;forkInfo;frameInfo;frontDerailleurInfo;rearDerailleurInfo;crankInfo;chainInfo;cassetteInfo;shifterLeftInfo;shifterRightInfo;handlebarInfo;stemInfo;gripsInfo;headSetInfo;seatpostInfo;seatpostClampInfo;saddleInfo;hubFrontInfo;tyreFrontInfo;rimFrontInfo;hubRearInfo;tyreRearInfo;rimRearInfo
+Specialized;Chisel Expert;2019;FK-RS-RB-RL-29-100-110-2018;FR-SPEC-CHISEL-2019;;RD-NX-12;FC-M8000-1;CN-SR-NX-12;GX-XG-1150;;SL-NX-12-R;PR-PRHA0324;ST-PRO-KYK-60-6;GR-ESI-CHUNKY;HS-CC-28-49-1;2812-3048;PR-AC0064;27217-2303;HB-M8010;TR-SCHW-SMS-65-622-BL;RIM-DT-XR331-29;FH-M8010;TR-SCHW-SMS-65-622-BL;RIM-DT-XR331-29
