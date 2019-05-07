@@ -1,7 +1,9 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import p76.bicycles.db.entity.brakes.Brake;
 import p76.bicycles.db.entity.drivetrain.*;
+import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.seatpost.Saddle;
@@ -13,17 +15,20 @@ import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.suspension.Fork;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.wheels.*;
+import p76.bicycles.service.compatibility.InfoService;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-public class Bicycle extends BicyclePart {
+public class Bicycle {
+
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private String manufacturer;
+
+    private String name;
 
     // ------ brakes -------
     @ManyToOne(cascade = CascadeType.ALL)
@@ -54,6 +59,9 @@ public class Bicycle extends BicyclePart {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Chain chain;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private BottomBracketIntegrated bottomBracketIntegrated;
     // ------- drivetrain --------
 
     //--------- seatpost ------------
@@ -151,6 +159,9 @@ public class Bicycle extends BicyclePart {
 
     @Column
     private String shifterRightInfo;
+
+    @Column
+    private String bottomBracketIntegratedInfo;
     // ------- drivetrain --------
 
     //--------- seatpost ------------

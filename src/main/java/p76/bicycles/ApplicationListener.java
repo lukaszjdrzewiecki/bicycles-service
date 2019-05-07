@@ -24,6 +24,7 @@ import p76.bicycles.db.entity.seatpost.Saddle;
 import p76.bicycles.db.entity.seatpost.Seatpost;
 import p76.bicycles.db.entity.seatpost.SeatpostClamp;
 import p76.bicycles.db.entity.suspension.Fork;
+import p76.bicycles.db.entity.wheels.Disc;
 import p76.bicycles.db.entity.wheels.Hub;
 import p76.bicycles.db.entity.wheels.Rim;
 import p76.bicycles.db.entity.wheels.Tyre;
@@ -72,6 +73,9 @@ public class ApplicationListener {
         insertTestDataToDatabase(SeatpostClamp.class);
         insertTestDataToDatabase(Stem.class);
         insertTestDataToDatabase(Fork.class);
+        insertTestDataToDatabase(Disc.class);
+        insertTestDataToDatabase(Cassette.class);
+        insertTestDataToDatabase(BottomBracketIntegrated.class);
         loadBicycles();
         loadParts();
 
@@ -87,8 +91,6 @@ public class ApplicationListener {
 
     private Bicycle createBicycle(String name, String manufacturer) {
         Bicycle bicycle = new Bicycle();
-        bicycle.setName(name);
-        bicycle.setManufacturer(manufacturer);
         return bicycle;
     }
 

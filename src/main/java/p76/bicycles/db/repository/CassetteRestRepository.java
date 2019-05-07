@@ -10,5 +10,5 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "cassette", path = "cassette")
 public interface CassetteRestRepository extends PagingAndSortingRepository<Cassette, Long> {
 
-    List<Cassette> findByFreewheelBody(@Param("freewheelBody") String freewheelBody);
+    List<Cassette> findByName(@Param("name") String name);
 }

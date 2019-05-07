@@ -16,7 +16,6 @@ public abstract class BicyclePart {
     protected String product;
     protected String brand;
     protected String name;
-    protected String year;
     protected String series;
     protected String purpose;
     protected double weight;

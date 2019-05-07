@@ -21,6 +21,7 @@ public class Fork extends BicyclePart {
     protected double headTubeLength;
     protected double headTubeTopDiameter;
     protected double headTubeBottomDiameter;
+    private String year;
     protected Boolean tapered;
     protected String axleSize;
     private String material;

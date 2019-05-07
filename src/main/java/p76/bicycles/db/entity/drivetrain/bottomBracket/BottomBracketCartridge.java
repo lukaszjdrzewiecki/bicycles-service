@@ -20,6 +20,6 @@ public class BottomBracketCartridge extends BicyclePart {
 
     private String type;
     private double totalLength;
-    private double sheelLength;
+    private double shellLength;
 
 }

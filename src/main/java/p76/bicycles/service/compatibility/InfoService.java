@@ -32,7 +32,7 @@ public class InfoService {
     public InfoResult getInfoResult(Bicycle bicycle) {
         try {
             InfoResult info = new InfoResult(
-                    bicycle.getName(),
+                    bicycle.getFrame().getName(),
                     bicycle.getFrame().getPurpose(),
                     bicycleWeight(bicycle),
                     bicycle.getRearDerailleur().getSpeeds(),

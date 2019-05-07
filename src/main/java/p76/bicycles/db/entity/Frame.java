@@ -29,5 +29,6 @@ public class Frame extends BicyclePart{
     private String discBrakeMount;
     private String brakeType;
     private Boolean tapered;
+    private String year;
 
 }

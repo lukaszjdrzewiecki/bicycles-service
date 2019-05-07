@@ -13,6 +13,7 @@ import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.drivetrain.*;
+import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.seatpost.Saddle;
@@ -74,6 +75,9 @@ public class BicycleService {
         newBicycle.setFrontDerailleur(
                 partsService.findByProductId(FrontDerailleur.class, newBicycle.getFrontDerailleurInfo())
         );
+        newBicycle.setBottomBracketIntegrated(
+                partsService.findByProductId(BottomBracketIntegrated.class, newBicycle.getBottomBracketIntegratedInfo())
+        );
         // drivetrain
         // cockpit
         newBicycle.setStem(
@@ -103,6 +107,9 @@ public class BicycleService {
         newBicycle.setHubFront(
                 partsService.findByProductId(Hub.class, newBicycle.getHubFrontInfo())
         );
+        newBicycle.setDiscFront(
+                partsService.findByProductId(Disc.class, newBicycle.getDiscFrontInfo())
+        );
         newBicycle.setTyreFront(
                 partsService.findByProductId(Tyre.class, newBicycle.getTyreFrontInfo())
         );
@@ -112,6 +119,9 @@ public class BicycleService {
         // front wheel - rear wheel
         newBicycle.setHubRear(
                 partsService.findByProductId(Hub.class, newBicycle.getHubRearInfo())
+        );
+        newBicycle.setDiscRear(
+                partsService.findByProductId(Disc.class, newBicycle.getDiscRearInfo())
         );
         newBicycle.setTyreRear(
                 partsService.findByProductId(Tyre.class, newBicycle.getTyreRearInfo())
@@ -135,8 +145,6 @@ public class BicycleService {
 
     public Bicycle addBicycle(String name, String brand) {
         Bicycle newBicycle = new Bicycle();
-        newBicycle.setName(name);
-        newBicycle.setManufacturer(brand);
         return repository.save(newBicycle);
     }
 
