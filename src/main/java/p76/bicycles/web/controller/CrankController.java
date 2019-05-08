@@ -3,6 +3,7 @@ package p76.bicycles.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.entity.drivetrain.Crank;
@@ -14,37 +15,34 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/bicycle")
-public class BicycleController {
+@RequestMapping(path = "/cranks")
+public class CrankController {
 
     @Autowired
     BicycleService service;
 
     @Autowired
-    BicycleRepository repository;
-
-    @Autowired
     CrankRestRepository crankRepository;
 
     @GetMapping
-    public List<Bicycle> getAllBicycles() {
-        return service.findAllBicycles();
+    public List<Crank> getAllCranks() {
+        return service.findAllCranks();
     }
 
     @PostMapping(path= "/", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Bicycle> addEmployee(@RequestBody Bicycle bicycle)
+    public ResponseEntity<Crank> addCrank(@RequestBody Crank crank)
     {
-        service.addBicycle(bicycle);
-        return ResponseEntity.ok(bicycle);
+        service.addCrank(crank);
+        return ResponseEntity.ok(crank);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity findBicycle(@PathVariable("id") Long id) {
-        Optional<Bicycle> bicycle = repository.findById(id);
-        if (!bicycle.isPresent()) {
+    public ResponseEntity findCrank(@PathVariable("id") Long id) {
+        Optional<Crank> crank = crankRepository.findById(id);
+        if (!crank.isPresent()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        return ResponseEntity.ok(bicycle.get());
+        return ResponseEntity.ok(crank.get());
     }
 }

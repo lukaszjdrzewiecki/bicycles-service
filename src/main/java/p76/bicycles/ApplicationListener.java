@@ -78,15 +78,6 @@ public class ApplicationListener {
         insertTestDataToDatabase(BottomBracketIntegrated.class);
         loadBicycles();
         loadParts();
-
-        service.addBicycle("Tormenta Lady", "Accent");
-        service.addBicycle("Scale Unique", "Scott");
-        service.addBicycle("Trans Siberian 2015", "Kross");
-
-        Bicycle bicycle = createBicycle("Sportster 2017", "Scott");
-
-        service.addBicycle(bicycle);
-
     }
 
     private Bicycle createBicycle(String name, String manufacturer) {

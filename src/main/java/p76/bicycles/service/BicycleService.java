@@ -25,7 +25,6 @@ import p76.bicycles.db.entity.wheels.Hub;
 import p76.bicycles.db.entity.wheels.Rim;
 import p76.bicycles.db.entity.wheels.Tyre;
 import p76.bicycles.db.repository.BicycleRepository;
-import p76.bicycles.db.repository.CrankRepository;
 import p76.bicycles.db.repository.CrankRestRepository;
 
 @Data
@@ -36,7 +35,7 @@ public class BicycleService {
     BicycleRepository repository;
 
     @Autowired
-    CrankRepository crankRepository;
+    CrankRestRepository crankRepository;
 
     @Autowired
     BicyclePartsService partsService;
@@ -153,8 +152,20 @@ public class BicycleService {
         List<Bicycle> bicycles = new ArrayList();
         for(Bicycle bicycle : iterable) {
             bicycles.add(bicycle);
+            for (Crank crank : findAllCranks()) {
+                bicycle.setCrank(crank);
+            }
         }
         return bicycles;
+    }
+
+    public List<Crank> findAllCranks() {
+        Iterable<Crank> iterable = crankRepository.findAll();
+        List<Crank> cranks = new ArrayList();
+        for(Crank crank : iterable) {
+            cranks.add(crank);
+        }
+        return cranks;
     }
 }
 
