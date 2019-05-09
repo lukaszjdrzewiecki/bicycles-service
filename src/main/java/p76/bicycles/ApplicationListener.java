@@ -60,7 +60,6 @@ public class ApplicationListener {
         insertTestDataToDatabase(ShifterLeft.class);
         insertTestDataToDatabase(ShifterRight.class);
         insertTestDataToDatabase(Tyre.class);
-        insertTestDataToDatabase(Crank.class);
         insertTestDataToDatabase(BottomBracketIntegrated.class);
         insertTestDataToDatabase(Chain.class);
         insertTestDataToDatabase(DropperSeatpost.class);
@@ -76,8 +75,9 @@ public class ApplicationListener {
         insertTestDataToDatabase(Disc.class);
         insertTestDataToDatabase(Cassette.class);
         insertTestDataToDatabase(BottomBracketIntegrated.class);
-        loadBicycles();
         loadParts();
+        loadBicycles();
+
     }
 
     private Bicycle createBicycle(String name, String manufacturer) {
