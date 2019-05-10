@@ -1,0 +1,5 @@
+productId;product;brand;name;series;purpose;weight;side;hoseType;brakePads;oilType;comment
+BR-M8000-L;hydraulic brake;Shimano;XT;M-8000;mountain;0.402;front;SM-BH90-SBM;"G04S, J04C, J02A, G02A";mineral;I-SPEC 2
+BR-M8000-R;hydraulic brake;Shimano;XT;M-8000;mountain;0.402;rear;SM-BH90-SBM;"G04S, J04C, J02A, G02A";mineral;I-SPEC 2
+BR-M8020-L;hydraulic brake;Shimano;XT;M-8000;mountain;0.442;front;SM-BH90-SBLS;"D01S, H01A, H03C";;I-SPEC 2
+BR-M8020-R;hydraulic brake;Shimano;XT;M-8000;mountain;0.442;rear;SM-BH90-SBLS;"D01S, H01A, H03C";;I-SPEC 2

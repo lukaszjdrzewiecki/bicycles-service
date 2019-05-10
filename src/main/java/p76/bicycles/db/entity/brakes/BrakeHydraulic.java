@@ -9,18 +9,15 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class Brake extends BicyclePart {
+public class BrakeHydraulic extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private BrakeLever brakeLever;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    private BrakeCaliper brakeCaliper;
-
-    private boolean hydraulic;
     private String oilType;
+    private String brakePads;
+    private String side;
+    private String hoseType;
+
 }
