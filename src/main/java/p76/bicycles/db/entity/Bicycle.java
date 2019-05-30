@@ -1,7 +1,6 @@
 package p76.bicycles.db.entity;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
-import p76.bicycles.db.entity.brakes.Brake;
+import p76.bicycles.db.entity.brakes.BrakeHydraulic;
 import p76.bicycles.db.entity.drivetrain.*;
 import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
@@ -15,7 +14,6 @@ import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.suspension.Fork;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.wheels.*;
-import p76.bicycles.service.compatibility.InfoService;
 
 import javax.persistence.*;
 
@@ -31,10 +29,10 @@ public class Bicycle {
 
     // ------ brakes -------
     @ManyToOne(cascade = CascadeType.ALL)
-    private Brake brakeFront;
+    private BrakeHydraulic brakeHydraulicFront;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Brake brakeRear;
+    private BrakeHydraulic brakeHydraulicRear;
     // ------ brakes -------
 
     // ------- drivetrain --------

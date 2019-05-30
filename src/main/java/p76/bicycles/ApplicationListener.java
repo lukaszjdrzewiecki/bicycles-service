@@ -11,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import p76.bicycles.db.entity.*;
+import p76.bicycles.db.entity.brakes.BrakeHydraulic;
 import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.cockpit.Stem;
@@ -74,7 +75,7 @@ public class ApplicationListener {
         insertTestDataToDatabase(Fork.class);
         insertTestDataToDatabase(Disc.class);
         insertTestDataToDatabase(Cassette.class);
-        insertTestDataToDatabase(BottomBracketIntegrated.class);
+        insertTestDataToDatabase(BrakeHydraulic.class);
         loadParts();
         loadBicycles();
 

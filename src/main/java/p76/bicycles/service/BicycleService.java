@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.entity.Frame;
+import p76.bicycles.db.entity.brakes.BrakeHydraulic;
 import p76.bicycles.db.entity.cockpit.Grips;
 import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.HeadSet;
@@ -53,6 +54,9 @@ public class BicycleService {
                 partsService.findByProductId(Frame.class, newBicycle.getFrameInfo())
         );
         //drivetrain
+        newBicycle.setBottomBracketIntegrated(
+                partsService.findByProductId(BottomBracketIntegrated.class, newBicycle.getBottomBracketIntegratedInfo())
+        );
         newBicycle.setCrank(
                 partsService.findByProductId(Crank.class, newBicycle.getCrankInfo())
         );
@@ -73,9 +77,6 @@ public class BicycleService {
         );
         newBicycle.setFrontDerailleur(
                 partsService.findByProductId(FrontDerailleur.class, newBicycle.getFrontDerailleurInfo())
-        );
-        newBicycle.setBottomBracketIntegrated(
-                partsService.findByProductId(BottomBracketIntegrated.class, newBicycle.getBottomBracketIntegratedInfo())
         );
         // drivetrain
         // cockpit
@@ -130,6 +131,12 @@ public class BicycleService {
         );
         // rear wheel
         // brakes
+        newBicycle.setBrakeHydraulicFront(
+                partsService.findByProductId(BrakeHydraulic.class, newBicycle.getBrakeFrontInfo())
+        );
+        newBicycle.setBrakeHydraulicRear(
+                partsService.findByProductId(BrakeHydraulic.class, newBicycle.getBrakeRearInfo())
+        );
 
         // brakes
         return repository.save(newBicycle);
@@ -152,21 +159,10 @@ public class BicycleService {
         List<Bicycle> bicycles = new ArrayList();
         for(Bicycle bicycle : iterable) {
             bicycles.add(bicycle);
-            for (Crank crank : findAllCranks()) {
-                bicycle.setCrank(crank);
-            }
         }
         return bicycles;
     }
 
-    public List<Crank> findAllCranks() {
-        Iterable<Crank> iterable = crankRepository.findAll();
-        List<Crank> cranks = new ArrayList();
-        for(Crank crank : iterable) {
-            cranks.add(crank);
-        }
-        return cranks;
-    }
 }
 
 

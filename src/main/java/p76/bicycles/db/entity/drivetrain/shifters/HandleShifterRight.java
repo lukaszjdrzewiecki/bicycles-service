@@ -3,7 +3,7 @@ package p76.bicycles.db.entity.drivetrain.shifters;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
-import p76.bicycles.db.entity.brakes.Brake;
+import p76.bicycles.db.entity.brakes.BrakeHydraulic;
 
 import javax.persistence.*;
 
@@ -20,6 +20,6 @@ public class HandleShifterRight extends BicyclePart {
     ShifterRight shifterRight;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    Brake brakeRear;
+    BrakeHydraulic brakeRear;
 
 }
