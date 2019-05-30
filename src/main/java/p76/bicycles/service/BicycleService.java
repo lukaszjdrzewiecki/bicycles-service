@@ -38,7 +38,7 @@ public class BicycleService {
     CrankRestRepository crankRepository;
 
     @Autowired
-    BicyclePartsService partsService;
+    PartsService partsService;
 
 
     public List<Bicycle> findBicycle(String name) {
