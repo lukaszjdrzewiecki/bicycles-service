@@ -12,11 +12,20 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class DropperSeatpost extends BicyclePart {
+public class DropperSeatpost {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+
+    private String productId;
+    private String product;
+    private String brand;
+    private String name;
+    private String series;
+    private String purpose;
+    private double weight;
+    private String comment;
 
     private int travel;
     private boolean innerCable;

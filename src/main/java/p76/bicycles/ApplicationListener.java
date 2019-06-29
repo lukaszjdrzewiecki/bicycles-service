@@ -101,7 +101,7 @@ public class ApplicationListener {
         }
     }
 
-    public <T extends BicyclePart> void insertTestDataToDatabase(Class<T> type) {
+    public <T> void insertTestDataToDatabase(Class<T> type) {
         List<T> list = loadObjectList(type);
         for(T entity : list) {
             em.persist(entity);
