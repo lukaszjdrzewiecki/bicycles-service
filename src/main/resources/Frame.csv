@@ -1,3 +1,3 @@
-productId;product;brand;name;series;purpose;weight;year;topHeadSetDiameter;bottomHeadSetDiameter;bottomBracketSize;bottomBracketType;rearWheelAxleSize;seatpostSize;seatpostCaliperDiameter;discBrakeMount;brakeType;tapered;comment
-FR-SPEC-CHISEL-2019;frame;specialized;Chisel Expert;XC;XC hardtail;2.200;2019;41.8;49.7;68x33.6;BSA;148x12;27.2;30.8;post;disc;true;null
-FR-SCOTT-SCALE-2015;frame;scott;Scale;XC;XC hardtail;2.300;2019;41.8;49.7;86.5x41.0;Press-fit;135x9;31.6;34.9;post;disc;true;null
+productId;product;brand;name;series;purpose;weight;year;topHeadSetDiameter;bottomHeadSetDiameter;bottomBracketSize;bottomBracketType;rearWheelAxleSize;seatpostSize;seatpostCaliperDiameter;discBrakeMount;brakeType;forkTubeType;comment
+FR-SPEC-CHISEL-2019;frame;specialized;Chisel Expert;XC;XC hardtail;2.200;2019;41.8;49.7;68x33.6;BSA;148x12;27.2;30.8;post;disc;TAPERED;null
+FR-SCOTT-SCALE-2015;frame;scott;Scale;XC;XC hardtail;2.300;2019;41.8;49.7;86.5x41.0;Press-fit;135x9;31.6;34.9;post;disc;TAPERED;null

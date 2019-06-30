@@ -1,2 +1,2 @@
-productId;product;brand;name;series;purpose;weight;tape;comment
-GR-ESI-CHUNKY;grips;ESI;Chunky;Chunky;Mountain;0.060;false;null
+productId;product;brand;name;series;purpose;weight;gripType;comment
+GR-ESI-CHUNKY;grips;ESI;Chunky;Chunky;Mountain;0.060;GRIPS;null

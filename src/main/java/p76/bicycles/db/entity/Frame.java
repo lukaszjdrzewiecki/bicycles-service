@@ -3,11 +3,9 @@ package p76.bicycles.db.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import p76.bicycles.enums.ForkTubeType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -28,7 +26,10 @@ public class Frame extends BicyclePart{
     private double seatpostCaliperDiameter;
     private String discBrakeMount;
     private String brakeType;
-    private Boolean tapered;
+
+    @Enumerated(value = EnumType.STRING)
+    private ForkTubeType forkTubeType;
+
     private String year;
 
 }

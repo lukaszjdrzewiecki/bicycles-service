@@ -3,11 +3,9 @@ package p76.bicycles.db.entity.suspension;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
+import p76.bicycles.enums.ForkTubeType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -31,7 +29,10 @@ public class Fork {
     protected double headTubeTopDiameter;
     protected double headTubeBottomDiameter;
     private String year;
-    protected Boolean tapered;
+
+    @Enumerated(value = EnumType.STRING)
+    private ForkTubeType forkTubeType;
+
     protected String axleSize;
     private String material;
     protected String wheel;

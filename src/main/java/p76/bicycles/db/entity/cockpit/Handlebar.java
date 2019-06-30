@@ -2,12 +2,10 @@ package p76.bicycles.db.entity.cockpit;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import p76.bicycles.db.entity.BicyclePart;
+import p76.bicycles.enums.MaterialType;
+import p76.bicycles.enums.PartType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -27,10 +25,22 @@ public class Handlebar {
     private double weight;
     private String comment;
 
+    //mountain
     private double diameter;
     private double offsetBack;
     private int width;
     private int rise;
-    private String material;
+    //mountain
+
+    //road
+    private int drop;
+    private int reach;
+    //road
+
+    @Enumerated(value = EnumType.STRING)
+    private MaterialType material;
+
+    @Enumerated(value = EnumType.STRING)
+    private PartType partType;
 
 }

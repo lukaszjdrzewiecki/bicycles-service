@@ -89,7 +89,7 @@ public class CompatibilityFrameService {
 
     public Boolean forkTaperCheck(Bicycle bicycle) {
         try {
-            if (bicycle.getFrame().getTapered() && bicycle.getFork().getTapered()) {
+            if (bicycle.getFrame().getForkTubeType().equals(bicycle.getFork().getForkTubeType())) {
                 return true;
             }
             return false;

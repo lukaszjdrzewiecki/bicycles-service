@@ -3,6 +3,7 @@ package p76.bicycles.db.entity.brakes;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
+import p76.bicycles.enums.Side;
 
 import javax.persistence.*;
 
@@ -24,5 +25,6 @@ public class BrakeLever {
     private double weight;
     private String comment;
 
-    private boolean left;
+    @Enumerated(value = EnumType.STRING)
+    private Side side;
 }

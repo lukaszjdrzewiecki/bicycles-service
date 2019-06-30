@@ -163,7 +163,7 @@ class Messages {
 
     static public String forkTaperMessage(Bicycle bicycle) {
         try {
-            return ": frame tapered " + bicycle.getFrame().getTapered() + " | fork tapered " + bicycle.getFork().getTapered();
+            return ": frame tapered " + bicycle.getFrame().getForkTubeType() + " | fork tapered " + bicycle.getFork().getForkTubeType();
         } catch (Exception e) {
             return null;
         }
