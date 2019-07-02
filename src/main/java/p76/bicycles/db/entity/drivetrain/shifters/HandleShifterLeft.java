@@ -16,10 +16,9 @@ public class HandleShifterLeft extends BicyclePart {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    ShifterLeft shifterLeft;
+    private int gears;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    BrakeHydraulic brakeFront;
+    //Cable, Hydraulic
+    private String type;
 
 }
