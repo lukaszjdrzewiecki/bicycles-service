@@ -16,7 +16,7 @@ import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.drivetrain.*;
-import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
+import p76.bicycles.db.entity.drivetrain.BottomBracket;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.seatpost.DropperSeatpost;
@@ -61,7 +61,7 @@ public class ApplicationListener {
         insertTestDataToDatabase(ShifterLeft.class);
         insertTestDataToDatabase(ShifterRight.class);
         insertTestDataToDatabase(Tyre.class);
-        insertTestDataToDatabase(BottomBracketIntegrated.class);
+        insertTestDataToDatabase(BottomBracket.class);
         insertTestDataToDatabase(Chain.class);
         insertTestDataToDatabase(DropperSeatpost.class);
         insertTestDataToDatabase(Frame.class);

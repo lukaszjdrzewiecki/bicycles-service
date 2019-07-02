@@ -10,21 +10,12 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class BrakeLever {
+public class BrakeLever extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
-
-    @Enumerated(value = EnumType.STRING)
-    private Side side;
+    //Front, Rear, Left, Right
+    private String side;
 }

@@ -11,22 +11,13 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class Grips {
+public class Grips extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
-
-    @Enumerated(value = EnumType.STRING)
-    private GripType gripType;
+    //Regular Grips, Road Tape
+    private String gripType;
 
 }

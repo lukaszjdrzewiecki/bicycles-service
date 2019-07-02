@@ -23,7 +23,7 @@ public class InfoService {
 
             weight += bicycle.getCrank().getWeight();
             weight += bicycle.getCrank().getBigGear().getWeight();
-            weight += bicycle.getBottomBracketIntegrated().getWeight();
+            weight += bicycle.getBottomBracket().getWeight();
             weight += bicycle.getRearDerailleur().getWeight();
             try {
             weight += bicycle.getFrontDerailleur().getWeight();

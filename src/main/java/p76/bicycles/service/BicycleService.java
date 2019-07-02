@@ -14,7 +14,7 @@ import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.drivetrain.*;
-import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
+import p76.bicycles.db.entity.drivetrain.BottomBracket;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.seatpost.Saddle;
@@ -54,8 +54,8 @@ public class BicycleService {
                 partsService.findByProductId(Frame.class, newBicycle.getFrameInfo())
         );
         //drivetrain
-        newBicycle.setBottomBracketIntegrated(
-                partsService.findByProductId(BottomBracketIntegrated.class, newBicycle.getBottomBracketIntegratedInfo())
+        newBicycle.setBottomBracket(
+                partsService.findByProductId(BottomBracket.class, newBicycle.getBottomBracketIntegratedInfo())
         );
         newBicycle.setCrank(
                 partsService.findByProductId(Crank.class, newBicycle.getCrankInfo())

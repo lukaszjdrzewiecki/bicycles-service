@@ -1,4 +1,4 @@
-package p76.bicycles.db.entity.drivetrain.bottomBracket;
+package p76.bicycles.db.entity.drivetrain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,23 +12,26 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class BottomBracketIntegrated {
+public class BottomBracket extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
-
+    //Integrated, Cartridge
     private String type;
+
+    //Threaded(BSA), Press-fit
+    private String insertType;
+
+    //Integrated
     private String bottomBracketShellDiameter;
     private double axleDiameter;
+    //Integrated
+
+    //Cartridge
+    private double axleLength;
+    private double shellLength;
+    //Cartridge
 
 }

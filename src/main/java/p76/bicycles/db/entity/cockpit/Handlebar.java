@@ -2,6 +2,7 @@ package p76.bicycles.db.entity.cockpit;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import p76.bicycles.db.entity.BicyclePart;
 import p76.bicycles.enums.MaterialType;
 import p76.bicycles.enums.PartType;
 
@@ -10,20 +11,11 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class Handlebar {
+public class Handlebar extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
 
     //mountain
     private double diameter;
@@ -37,10 +29,10 @@ public class Handlebar {
     private int reach;
     //road
 
-    @Enumerated(value = EnumType.STRING)
-    private MaterialType material;
+    //Carbon, Aluminium, Steel, Magnesium, Titanium
+    private String material;
 
-    @Enumerated(value = EnumType.STRING)
-    private PartType partType;
+    //mountain, road, trekking
+    private String partType;
 
 }

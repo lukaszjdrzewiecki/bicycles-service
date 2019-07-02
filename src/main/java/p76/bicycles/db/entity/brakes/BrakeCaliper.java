@@ -3,28 +3,19 @@ package p76.bicycles.db.entity.brakes;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
-import p76.bicycles.enums.BrakeCaliperType;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class BrakeCaliper {
+public class BrakeCaliper extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
+    //DISC, ROAD, V-BRAKE
+    private String brakeCaliperType;
 
-    @Enumerated(value = EnumType.STRING)
-    private BrakeCaliperType brakeCaliperType;
 }

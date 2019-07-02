@@ -11,20 +11,11 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Data
-public class HeadSet {
+public class HeadSet extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
 
     private double stereerDiameter;
     private double topFrameDiameter;
@@ -32,10 +23,10 @@ public class HeadSet {
     private double topHeadTubeDiameter;
     private double bottomHeadTubeDiameter;
 
-    @Enumerated(value = EnumType.STRING)
-    private ForkTubeType forkTubeType;
+    //Regular, Tapered
+    private String forkTubeType;
 
-    @Enumerated(value = EnumType.STRING)
-    private InsertType insertType;
+    //Threaded, Press-fit
+    private String insertType;
 
 }

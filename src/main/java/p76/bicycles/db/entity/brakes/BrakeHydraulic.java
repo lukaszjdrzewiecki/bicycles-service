@@ -3,40 +3,29 @@ package p76.bicycles.db.entity.brakes;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
-import p76.bicycles.enums.BrakeCaliperType;
 import p76.bicycles.enums.HoseType;
 import p76.bicycles.enums.OilType;
-import p76.bicycles.enums.Side;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
-public class BrakeHydraulic {
+public class BrakeHydraulic extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
-
-    @Enumerated(value = EnumType.STRING)
-    private OilType oilType;
+    //Mineral, DOT
+    private String oilType;
 
     private String brakePads;
 
-    @Enumerated(value = EnumType.STRING)
-    private Side side;
+    //Front, Rear, Left, Right
+    private String side;
 
-    @Enumerated(value = EnumType.STRING)
-    private HoseType hoseType;
+    //SM-BH90-SBM, SM-BH90-SBLS
+    private String hoseType;
 
 }
