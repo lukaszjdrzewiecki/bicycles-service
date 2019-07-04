@@ -3,8 +3,6 @@ package p76.bicycles.db.entity.cockpit;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
-import p76.bicycles.enums.ForkTubeType;
-import p76.bicycles.enums.InsertType;
 
 import javax.persistence.*;
 

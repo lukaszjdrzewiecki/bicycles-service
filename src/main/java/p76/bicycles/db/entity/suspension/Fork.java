@@ -3,7 +3,6 @@ package p76.bicycles.db.entity.suspension;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
-import p76.bicycles.enums.ForkTubeType;
 
 import javax.persistence.*;
 
@@ -21,8 +20,7 @@ public class Fork extends BicyclePart {
     protected double headTubeBottomDiameter;
     private String year;
 
-    @Enumerated(value = EnumType.STRING)
-    private ForkTubeType forkTubeType;
+    private String forkTubeType;
 
     protected String axleSize;
     private String material;

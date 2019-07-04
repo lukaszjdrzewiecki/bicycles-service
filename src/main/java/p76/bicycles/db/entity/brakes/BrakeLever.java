@@ -3,7 +3,6 @@ package p76.bicycles.db.entity.brakes;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
-import p76.bicycles.enums.Side;
 
 import javax.persistence.*;
 

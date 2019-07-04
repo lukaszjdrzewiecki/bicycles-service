@@ -20,8 +20,10 @@ public class RearDerailleur extends BicyclePart {
 
     private int minLowGearCassette;
     private int maxLowGearCassette;
-    private int maxGears; //maxGears // maxGears
+    private int maxGears;
     private int speeds;
+
+    //short, medium, long
     private String cage;
     private int capacity;
 

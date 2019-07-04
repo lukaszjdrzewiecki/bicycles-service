@@ -3,7 +3,6 @@ package p76.bicycles.db.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import p76.bicycles.enums.ForkTubeType;
 
 import javax.persistence.*;
 
@@ -27,8 +26,7 @@ public class Frame extends BicyclePart{
     private String discBrakeMount;
     private String brakeType;
 
-    @Enumerated(value = EnumType.STRING)
-    private ForkTubeType forkTubeType;
+    private String forkTubeType;
 
     private String year;
 
