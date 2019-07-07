@@ -9,20 +9,11 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class Hub {
+public class Hub extends BicyclePart{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-
-    private String productId;
-    private String product;
-    private String brand;
-    private String name;
-    private String series;
-    private String purpose;
-    private double weight;
-    private String comment;
 
     private int holes;
     private String axleDiameter;

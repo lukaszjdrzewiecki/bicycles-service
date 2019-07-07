@@ -16,6 +16,7 @@ public class Frame extends BicyclePart{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    private String size;
     private double topHeadSetDiameter;
     private double bottomHeadSetDiameter;
     private String bottomBracketSize;

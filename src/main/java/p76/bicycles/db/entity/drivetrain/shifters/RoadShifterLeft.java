@@ -10,14 +10,15 @@ import javax.persistence.*;
 @Entity
 @Data
 @NoArgsConstructor
-public class HandleShifterRight extends BicyclePart {
+public class RoadShifterLeft extends BicyclePart {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private int speeds;
+    private int gears;
 
     //Cable, Hydraulic
-    private String type;
+    private String brakeType;
+
 }

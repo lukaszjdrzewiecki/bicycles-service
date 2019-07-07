@@ -74,6 +74,7 @@ public class ApplicationListener {
         insertTestDataToDatabase(Disc.class);
         insertTestDataToDatabase(Cassette.class);
         insertTestDataToDatabase(BrakeHydraulic.class);
+        insertTestDataToDatabase(Pedals.class);
         loadParts();
         loadBicycles();
 

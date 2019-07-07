@@ -12,10 +12,6 @@ import java.util.Arrays;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class BicyclePart {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    protected Long id;
-
     protected String productId;
     protected String product;
     protected String brand;

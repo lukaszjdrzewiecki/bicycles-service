@@ -124,7 +124,10 @@ public class Bicycle {
     private Frame frame;
     //----------- frame -----------
 
-
+    //----------- frame -----------
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Pedals pedals;
+    //----------- frame -----------
 
 
     // ------ brakes -------
@@ -223,6 +226,10 @@ public class Bicycle {
     private String frameInfo;
     //----------- frame -----------
 
+    //----------- pedals -----------
+    @Column
+    private String pedalsInfo;
+    //----------- pedals -----------
 
 
 }

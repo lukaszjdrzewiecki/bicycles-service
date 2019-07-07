@@ -19,7 +19,7 @@ public class Crank extends BicyclePart {
     private String defaultChainringsId;
 
     //integrated or cartridge
-    //private String type;
+    //private String brakeType;
 
     //usually 96 or 104
     private int pcdBig;

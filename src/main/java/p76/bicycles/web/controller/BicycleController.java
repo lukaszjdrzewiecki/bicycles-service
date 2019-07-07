@@ -18,13 +18,13 @@ import java.util.Optional;
 public class BicycleController {
 
     @Autowired
-    BicycleService service;
+    private BicycleService service;
 
     @Autowired
-    BicycleRepository repository;
+    private BicycleRepository repository;
 
     @Autowired
-    CrankRestRepository crankRepository;
+    private CrankRestRepository crankRepository;
 
     @GetMapping
     public List<Bicycle> getAllBicycles() {
