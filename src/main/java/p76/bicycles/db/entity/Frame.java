@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -19,6 +16,7 @@ public class Frame extends BicyclePart{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    private String size;
     private double topHeadSetDiameter;
     private double bottomHeadSetDiameter;
     private String bottomBracketSize;
@@ -28,7 +26,9 @@ public class Frame extends BicyclePart{
     private double seatpostCaliperDiameter;
     private String discBrakeMount;
     private String brakeType;
-    private Boolean tapered;
+
+    private String forkTubeType;
+
     private String year;
 
 }

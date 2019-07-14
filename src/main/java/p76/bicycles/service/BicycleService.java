@@ -8,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.entity.Frame;
+import p76.bicycles.db.entity.Pedals;
 import p76.bicycles.db.entity.brakes.BrakeHydraulic;
 import p76.bicycles.db.entity.cockpit.Grips;
 import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.drivetrain.*;
-import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
+import p76.bicycles.db.entity.drivetrain.BottomBracket;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.seatpost.Saddle;
@@ -54,8 +55,8 @@ public class BicycleService {
                 partsService.findByProductId(Frame.class, newBicycle.getFrameInfo())
         );
         //drivetrain
-        newBicycle.setBottomBracketIntegrated(
-                partsService.findByProductId(BottomBracketIntegrated.class, newBicycle.getBottomBracketIntegratedInfo())
+        newBicycle.setBottomBracket(
+                partsService.findByProductId(BottomBracket.class, newBicycle.getBottomBracketIntegratedInfo())
         );
         newBicycle.setCrank(
                 partsService.findByProductId(Crank.class, newBicycle.getCrankInfo())
@@ -137,8 +138,14 @@ public class BicycleService {
         newBicycle.setBrakeHydraulicRear(
                 partsService.findByProductId(BrakeHydraulic.class, newBicycle.getBrakeRearInfo())
         );
-
         // brakes
+
+        // pedals
+        newBicycle.setPedals(
+                partsService.findByProductId(Pedals.class, newBicycle.getPedalsInfo())
+        );
+        // pedals
+
         return repository.save(newBicycle);
     }
 

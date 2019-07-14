@@ -15,5 +15,6 @@ public class BrakeLever extends BicyclePart {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private boolean left;
+    //Front, Rear, Left, Right
+    private String side;
 }

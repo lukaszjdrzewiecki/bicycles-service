@@ -1,0 +1,3 @@
+productId;product;type;insertType;brand;name;series;purpose;weight;axleLength;shellLength;bottomBracketShellDiameter;axleDiameter;comment
+BB-I-SR-DUB;bottom bracket;integrated;BSA;Sram;DUB;DUB;Mountain;0.076;;;68/73;28.99;
+BB-MT800;bottom bracket;integrated;BSA;Shimano;MT800;M8000;Mountain;0.081;;;68/73;24;

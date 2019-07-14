@@ -2,7 +2,7 @@ package p76.bicycles.db.entity;
 import lombok.Data;
 import p76.bicycles.db.entity.brakes.BrakeHydraulic;
 import p76.bicycles.db.entity.drivetrain.*;
-import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
+import p76.bicycles.db.entity.drivetrain.BottomBracket;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.seatpost.Saddle;
@@ -58,7 +58,7 @@ public class Bicycle {
     private Chain chain;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private BottomBracketIntegrated bottomBracketIntegrated;
+    private BottomBracket bottomBracket;
     // ------- drivetrain --------
 
     //--------- seatpost ------------
@@ -124,7 +124,10 @@ public class Bicycle {
     private Frame frame;
     //----------- frame -----------
 
-
+    //----------- frame -----------
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Pedals pedals;
+    //----------- frame -----------
 
 
     // ------ brakes -------
@@ -223,6 +226,10 @@ public class Bicycle {
     private String frameInfo;
     //----------- frame -----------
 
+    //----------- pedals -----------
+    @Column
+    private String pedalsInfo;
+    //----------- pedals -----------
 
 
 }

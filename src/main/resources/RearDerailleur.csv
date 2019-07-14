@@ -1,9 +1,15 @@
-productId;product;brand;name;series;purpose;maxGears;speeds;maxLowGearCassette;minLowGearCassette;cage;capacity;weight
-RD-M8000-SGS;rear derailleur;Shimano;XT;M8000;Mountain;3;11;46;40;Long;47;0.275
-RD-M8000-GS;rear derailleur;Shimano;XT;M8000;Mountain;2;11;46;40;Medium;39;0.271
-RD-M6000-SGS;rear derailleur;Shimano;Deore;M6000;Mountain;3;10;36;32;Long;43;null
-RD-M6000-GS;rear derailleur;Shimano;Deore;M6000;Mountain;1;10;42;42;Medium;41;null
-RD-M4000;rear derailleur;Shimano;Alivio;M4000;Mountain;3;9;36;32;Long;45;null
-RD-M310;rear derailleur;Shimano;Altus;M310;Mountain;3;8;34;null;Long;43;0.326
-RD-NX-12;rear derailleur;Sram;NX EAGLE;NX;Mountain;1;12;null;50;Long;null;0.339
-RD-GX-12;rear derailleur;Sram;NX EAGLE;GX;Mountain;1;12;null;50;Long;null;0.290
+productId;product;brand;name;series;purpose;maxGears;speeds;maxLowGearCassette;minLowGearCassette;cage;capacity;weight;comment
+RD-M8000-SGS;rear derailleur;Shimano;XT;M8000;Mountain;3;11;46;40;long;47;0.275;
+RD-M8000-GS;rear derailleur;Shimano;XT;M8000;Mountain;2;11;46;40;medium;39;0.271;
+RD-M6000-SGS;rear derailleur;Shimano;Deore;M6000;Mountain;3;10;36;32;long;43;null;
+RD-M6000-GS;rear derailleur;Shimano;Deore;M6000;Mountain;1;10;42;42;medium;41;null;
+RD-M4000;rear derailleur;Shimano;Alivio;M4000;Mountain;3;9;36;32;long;45;null;
+RD-M310;rear derailleur;Shimano;Altus;M310;Mountain;3;8;34;null;long;43;0.326;
+RD-NX-12;rear derailleur;Sram;NX EAGLE;NX;Mountain;1;12;null;50;long;null;0.339;
+RD-GX-12;rear derailleur;Sram;NX EAGLE;GX;Mountain;1;12;null;50;long;null;0.29;
+RD-4601-GS;rear derailleur;Shimano;Tiagra;R4600;Road;3;10;30;25;medium;40;0.271;
+RD-4601-SS;rear derailleur;Shimano;Tiagra;R4600;Road;2;10;30;25;short;34;0.251;weight estimated
+RD-4700-GS;rear derailleur;Shimano;Tiagra;R4700;Road;3;10;34;28;medium;41;0.278;
+RD-4700-SS;rear derailleur;Shimano;Tiagra;R4700;Road;2;10;28;25;short;33;0.258;
+RD-R9000-GS;rear derailleur;Shimano;Ultegra;R9000;Road;2;11;34;28;medium;39;0.21;
+RD-R9000-SS;rear derailleur;Shimano;Ultegra;R9000;Road;2;11;30;25;short;35;0.2;

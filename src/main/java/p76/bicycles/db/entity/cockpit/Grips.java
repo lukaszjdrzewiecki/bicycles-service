@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -18,6 +15,7 @@ public class Grips extends BicyclePart {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private boolean tape;
+    //Regular Grips, Road Tape
+    private String gripType;
 
 }

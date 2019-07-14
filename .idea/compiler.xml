@@ -9,17 +9,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bicycles-service" />
         <module name="java-lessons" />
+        <module name="bicycles-service" />
+        <module name="bicycle-workshop" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bicycle-workshop" target="11" />
       <module name="bicycles-service" target="11" />
       <module name="java-lessons" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="bicycle-workshop" options="-parameters" />
       <module name="bicycles-service" options="-parameters" />
     </option>
   </component>

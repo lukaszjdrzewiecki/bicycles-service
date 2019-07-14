@@ -18,9 +18,15 @@ public class Cassette extends BicyclePart {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    //smallest cog - usually 10 or 11 teeth
     private int smallest;
+
+    //biggest cog - i.e. 42
     private int biggest;
+
     private int speeds;
+
+    //Shimano, Sram, Campagnolo
     private String freewheelBody;
 
 }

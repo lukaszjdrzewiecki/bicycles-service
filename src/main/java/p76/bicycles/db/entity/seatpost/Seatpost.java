@@ -23,4 +23,10 @@ public class Seatpost extends BicyclePart {
     private String material;
     private boolean suspension;
 
+    //dropper seatPost section
+    private int travel;
+    //inner, outer
+    private String cableRouteType;
+    //dropper seatPost section
+
 }

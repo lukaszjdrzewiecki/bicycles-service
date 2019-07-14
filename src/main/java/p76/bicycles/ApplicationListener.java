@@ -16,10 +16,9 @@ import p76.bicycles.db.entity.cockpit.Handlebar;
 import p76.bicycles.db.entity.cockpit.HeadSet;
 import p76.bicycles.db.entity.cockpit.Stem;
 import p76.bicycles.db.entity.drivetrain.*;
-import p76.bicycles.db.entity.drivetrain.bottomBracket.BottomBracketIntegrated;
+import p76.bicycles.db.entity.drivetrain.BottomBracket;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterLeft;
 import p76.bicycles.db.entity.drivetrain.shifters.ShifterRight;
-import p76.bicycles.db.entity.seatpost.DropperSeatpost;
 import p76.bicycles.db.entity.cockpit.Grips;
 import p76.bicycles.db.entity.seatpost.Saddle;
 import p76.bicycles.db.entity.seatpost.Seatpost;
@@ -61,9 +60,8 @@ public class ApplicationListener {
         insertTestDataToDatabase(ShifterLeft.class);
         insertTestDataToDatabase(ShifterRight.class);
         insertTestDataToDatabase(Tyre.class);
-        insertTestDataToDatabase(BottomBracketIntegrated.class);
+        insertTestDataToDatabase(BottomBracket.class);
         insertTestDataToDatabase(Chain.class);
-        insertTestDataToDatabase(DropperSeatpost.class);
         insertTestDataToDatabase(Frame.class);
         insertTestDataToDatabase(Grips.class);
         insertTestDataToDatabase(Handlebar.class);
@@ -76,6 +74,7 @@ public class ApplicationListener {
         insertTestDataToDatabase(Disc.class);
         insertTestDataToDatabase(Cassette.class);
         insertTestDataToDatabase(BrakeHydraulic.class);
+        insertTestDataToDatabase(Pedals.class);
         loadParts();
         loadBicycles();
 
@@ -101,7 +100,7 @@ public class ApplicationListener {
         }
     }
 
-    public <T extends BicyclePart> void insertTestDataToDatabase(Class<T> type) {
+    public <T> void insertTestDataToDatabase(Class<T> type) {
         List<T> list = loadObjectList(type);
         for(T entity : list) {
             em.persist(entity);

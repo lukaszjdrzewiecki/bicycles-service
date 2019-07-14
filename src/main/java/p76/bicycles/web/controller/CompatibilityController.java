@@ -27,7 +27,7 @@ public class CompatibilityController {
     private BicycleRepository repository;
 
     @Autowired
-    BicycleService service;
+    private BicycleService service;
 
     @GetMapping
     public List<List<CompatibilityResult>> getAllBicycles() {

@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -18,10 +15,22 @@ public class Handlebar extends BicyclePart {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    //mountain
     private double diameter;
     private double offsetBack;
     private int width;
     private int rise;
+    //mountain
+
+    //road
+    private int drop;
+    private int reach;
+    //road
+
+    //Carbon, Aluminium, Steel, Magnesium, Titanium
     private String material;
+
+    //mountain, road, trekking
+    private String partType;
 
 }

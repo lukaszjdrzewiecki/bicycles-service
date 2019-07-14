@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import p76.bicycles.db.entity.BicyclePart;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -15,14 +12,16 @@ import javax.persistence.Id;
 public class Fork extends BicyclePart {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     protected double headTubeLength;
     protected double headTubeTopDiameter;
     protected double headTubeBottomDiameter;
     private String year;
-    protected Boolean tapered;
+
+    private String forkTubeType;
+
     protected String axleSize;
     private String material;
     protected String wheel;

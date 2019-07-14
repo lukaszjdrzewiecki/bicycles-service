@@ -1,2 +1,2 @@
-productId;product;brand;name;series;purpose;weight;diameter;offsetBack;width;rise;material;comment
-PR-PRHA0324;handlebar;Pro;koryak;koryak;Mountain;0.225;31.8;0;720;0;aluminium;null
+productId;product;brand;name;series;purpose;weight;diameter;offsetBack;width;rise;material;partType;drop;reach;comment
+PR-PRHA0324;handlebar;Pro;koryak;koryak;Mountain;0.225;31.8;0;720;0;ALUMINIUM;MOUNTAIN;;;null
