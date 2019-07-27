@@ -1,39 +1,21 @@
 package p76.bicycles.service.compatibility;
 
-import lombok.Builder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.repository.BicycleRepository;
-import p76.bicycles.service.BicycleService;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.*;
 
-@Builder
-@Component
+@Service
+@RequiredArgsConstructor
 public class CompatibilityService {
 
-    @Autowired
-    BicycleRepository repository;
-
-    @Autowired
-    BicycleService service;
-
-    @Autowired
-    DataService dataService;
-
-    @Autowired
-    CompatibilityWheelService compatibilityWheelService;
-
-    @Autowired
-    CompatibilityDrivetrainService compatibilityDrivetrainService;
-
-    @Autowired
-    CompatibilityFrameService compatibilityFrameService;
-
-    @Autowired
-    Messages messages;
+    private final BicycleRepository repository;
+    private final CompatibilityWheelService compatibilityWheelService;
+    private final CompatibilityDrivetrainService compatibilityDrivetrainService;
+    private final CompatibilityFrameService compatibilityFrameService;
 
     public Map<String, Boolean> isBicycleCompatible(Long bicycleId) {
         Bicycle bicycle = repository.findById(bicycleId).orElseThrow(EntityNotFoundException::new);

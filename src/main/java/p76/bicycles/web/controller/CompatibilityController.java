@@ -1,6 +1,6 @@
 package p76.bicycles.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +10,10 @@ import p76.bicycles.service.compatibility.CompatibilityService;
 
 @RestController
 @RequestMapping(path = "/compatibility")
+@RequiredArgsConstructor
 public class CompatibilityController {
 
-    @Autowired
-    private CompatibilityService compatibility;
+    private final CompatibilityService compatibility;
 
     @GetMapping("{id}")
     public ResponseEntity getBicycleFullCompatibility(@PathVariable("id") Long id) {
