@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface  BicycleRepository extends CrudRepository<Bicycle, Long> {
 
-    public List<Bicycle> findByName(String name);
+    List<Bicycle> findByName(String name);
+
+    Bicycle findBicycleById(Long id);
 }

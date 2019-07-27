@@ -16,9 +16,6 @@ public class CompatibilityWheelService {
     DataService dataService;
 
     @Autowired
-    CompatibilityService compatibilityService;
-
-    @Autowired
     Messages messages;
 
     public List<CompatibilityResult> frontWheelCheckTests(Bicycle bicycle) {
