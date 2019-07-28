@@ -126,7 +126,7 @@ class Messages {
     // ------------------ REAR WHEEL MESSAGES -------------------------------
     //------------- FRAME MESSAGES ---------------------
 
-    static public String rearHubWidthMessage(Bicycle bicycle) {
+    public String rearHubWidthMessage(Bicycle bicycle) {
         try {
             return ": hub width " + bicycle.getHubRear().getAxleDiameter() +
                     " frame space " + bicycle.getFrame().getRearWheelAxleSize();

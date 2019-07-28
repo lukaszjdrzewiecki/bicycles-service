@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static p76.bicycles.service.compatibility.Messages.*;
 
@@ -76,12 +75,12 @@ public class CompatibilityWheelService {
         try {
             double rim = bicycle.getRimFront().getInnerWidth();
             double temp = 0;
-            for (double key : dataService.diameterMap().keySet()) {
+            for (double key : DIAMETERS_MAP.keySet()) {
                 if (rim == key) {
                     temp = key;
                 }
             }
-            List<Integer> tempList = dataService.diameterMap().get(temp);
+            List<Integer> tempList = DIAMETERS_MAP.get(temp);
             return tempList;
         } catch (Exception e) {
             return null;
@@ -150,12 +149,12 @@ public class CompatibilityWheelService {
         try {
             double rim = bicycle.getRimRear().getInnerWidth();
             double temp = 0;
-            for (double key : dataService.diameterMap().keySet()) {
+            for (double key : DIAMETERS_MAP.keySet()) {
                 if (rim == key) {
                     temp = key;
                 }
             }
-            List<Integer> tempList = dataService.diameterMap().get(temp);
+            List<Integer> tempList = DIAMETERS_MAP.get(temp);
             return tempList;
         } catch (Exception e) {
             return null;
@@ -172,5 +171,21 @@ public class CompatibilityWheelService {
             return null;
         }
     }
+
+    private static final Map<Double, List<Integer>> DIAMETERS_MAP = Collections.unmodifiableMap(Map.ofEntries(
+            Map.entry(13.0, List.of(18, 25)),
+            Map.entry(15.0, List.of(23, 32)),
+            Map.entry(17.0, List.of(25, 52)),
+            Map.entry(19.0, List.of(28, 62)),
+            Map.entry(20.0, List.of(28, 62)),
+            Map.entry(21.0, List.of(35, 62)),
+            Map.entry(23.0, List.of(37, 62)),
+            Map.entry(25.0, List.of(42, 62)),
+            Map.entry(29.0, List.of(47, 62)),
+            Map.entry(30.0, List.of(52, 62)),
+            Map.entry(35.0, List.of(60, 75)),
+            Map.entry(40.0, List.of(65, 75)),
+            Map.entry(45.0, List.of(70, 75))
+    ));
 
 }

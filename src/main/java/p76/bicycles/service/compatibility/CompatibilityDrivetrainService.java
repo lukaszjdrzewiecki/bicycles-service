@@ -53,7 +53,12 @@ public class CompatibilityDrivetrainService {
 
     Boolean speedsCompatibilityCheck(Bicycle bicycle) {
         try {
-            if (dataService.allEqual(bicycle.getCassette().getSpeeds(), bicycle.getRearDerailleur().getSpeeds(), bicycle.getCrank().getSpeeds())) {
+            if (dataService.allEqual(
+                    bicycle.getCassette().getSpeeds(),
+                    bicycle.getRearDerailleur().getSpeeds(),
+                    bicycle.getChain().getSpeeds(),
+                    bicycle.getCrank().getSpeeds()
+            )) {
                 return true;
             }
             return false;

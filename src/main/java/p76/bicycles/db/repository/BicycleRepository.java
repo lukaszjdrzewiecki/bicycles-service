@@ -8,6 +8,4 @@ import java.util.List;
 public interface  BicycleRepository extends CrudRepository<Bicycle, Long> {
 
     List<Bicycle> findByName(String name);
-
-    Bicycle findBicycleById(Long id);
 }

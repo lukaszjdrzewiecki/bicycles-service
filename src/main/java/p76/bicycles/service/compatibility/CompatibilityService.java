@@ -65,6 +65,6 @@ public class CompatibilityService {
     }
 
     private boolean isFrameCompatible(Bicycle bicycle) {
-        return compatibilityFrameService.totalFrameCheck(bicycle);
+        return compatibilityFrameService.isFrameCompatible(bicycle);
     }
 }
