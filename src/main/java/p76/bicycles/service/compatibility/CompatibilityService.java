@@ -53,11 +53,11 @@ public class CompatibilityService {
 
 
     private boolean isFrontWheelCompatible(Bicycle bicycle) {
-        return compatibilityWheelService.frontWheelCheck(bicycle);
+        return compatibilityWheelService.isFrontWheelCompatible(bicycle);
     }
 
     private boolean isRearWheelCompatible(Bicycle bicycle) {
-        return compatibilityWheelService.rearWheelCheck(bicycle);
+        return compatibilityWheelService.isRearWheelCompatible(bicycle);
     }
 
     private boolean isDrivetrainCompatible(Bicycle bicycle) {

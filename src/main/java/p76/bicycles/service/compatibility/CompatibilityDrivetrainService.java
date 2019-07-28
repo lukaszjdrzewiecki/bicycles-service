@@ -25,8 +25,8 @@ public class CompatibilityDrivetrainService {
     }
 
     private void drivetrainChecks(List<CompatibilityResult> result, Bicycle bicycle) {
-        result.add(new CompatibilityResult("Max Cassette" + CHECK, drivetrainCapacityCheck(bicycle), messages.printMessage(drivetrainCapacityCheck(bicycle), messages.maxCassetteMessage(bicycle))));
-        result.add(new CompatibilityResult("Capacity" + CHECK, drivetrainCapacityCheck(bicycle), messages.printMessage(drivetrainCapacityCheck(bicycle), messages.drivetrainCapacityMessage(bicycle))));
+        result.add(new CompatibilityResult("Max Cassette" + CHECK, drivetrainCapacityCheck(bicycle), messages.printMessage(drivetrainCapacityCheck(bicycle), maxCassetteMessage(bicycle))));
+        result.add(new CompatibilityResult("Capacity" + CHECK, drivetrainCapacityCheck(bicycle), messages.printMessage(drivetrainCapacityCheck(bicycle), drivetrainCapacityMessage(bicycle))));
         result.add(new CompatibilityResult("Speeds number" + CHECK, speedsCompatibilityCheck(bicycle), messages.printMessage(speedsCompatibilityCheck(bicycle), speedsMessage(bicycle))));
     }
 
@@ -62,6 +62,25 @@ public class CompatibilityDrivetrainService {
                 return true;
             }
             return false;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    //messages
+
+    final public String maxCassetteMessage(Bicycle bicycle) {
+        try {
+            return " Biggest possible gear in your cassette is " + ((bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCassette().getBiggest()));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    final public String drivetrainCapacityMessage(Bicycle bicycle) {
+        try {
+            return " Rear derailleur capacity: " + ((bicycle.getRearDerailleur().getCapacity() +
+                    " | drivetrain requires: " + drivetrainCapacity(bicycle)));
         } catch (Exception e) {
             return null;
         }
