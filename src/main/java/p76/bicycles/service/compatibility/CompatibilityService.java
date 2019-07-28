@@ -61,7 +61,7 @@ public class CompatibilityService {
     }
 
     private boolean isDrivetrainCompatible(Bicycle bicycle) {
-        return compatibilityDrivetrainService.drivetrainCapacityCheck(bicycle);
+        return compatibilityDrivetrainService.isDrivetrainCapacityCompatible(bicycle);
     }
 
     private boolean isFrameCompatible(Bicycle bicycle) {
