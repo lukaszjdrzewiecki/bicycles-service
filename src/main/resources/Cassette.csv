@@ -1,6 +1,10 @@
 productId;product;brand;name;series;purpose;speeds;biggest;smallest;freewheelBody;weight
-CS-M8000-bs;Cassette;Shimano;XT;M8000;Mountain;11;40;11;Shimano;0.411
-CS-M8000-bt;Cassette;Shimano;XT;M8000;Mountain;11;42;11;Shimano;0.434
-CS-M8000-bu;Cassette;Shimano;XT;M8000;Mountain;11;46;11;Shimano;0.437
-GX-XG-1150;Cassette;Sram;GX;GX11;Mountain;11;42;10;Sram XD;0.394
-NX-PG-1130;Cassette;Sram;NX;NX11;Mountain;11;42;11;Shimano;0.538
+CS-M8000-bs;casette;Shimano;XT;M8000;mountain;11;40;11;Shimano;0.411
+CS-M8000-bt;casette;Shimano;XT;M8000;mountain;11;42;11;Shimano;0.434
+CS-M8000-bu;casette;Shimano;XT;M8000;mountain;11;46;11;Shimano;0.437
+GX-XG-1150;casette;Sram;GX;GX11;mountain;11;42;10;Sram XD;0.394
+NX-PG-1130;casette;Sram;NX;NX11;mountain;11;42;11;Shimano;0.538
+CS-R5700-32;casette;Shimano;105';R5700;road;11;32;11;Shimano;0.32
+CS-R5700-28;casette;Shimano;105';R5700;road;11;28;11;Shimano;0.284
+CS-R5700-30;casette;Shimano;105';R5700;road;11;30;11;Shimano;0.304
+CS-R5700-25;casette;Shimano;105';R5700;road;11;25;11;Shimano;0.269

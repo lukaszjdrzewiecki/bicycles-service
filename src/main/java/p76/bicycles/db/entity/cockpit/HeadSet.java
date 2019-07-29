@@ -21,10 +21,10 @@ public class HeadSet extends BicyclePart {
     private double topHeadTubeDiameter;
     private double bottomHeadTubeDiameter;
 
+    //a-head, semi-integrated, integrated
+    private String type;
+
     //Regular, Tapered
     private String forkTubeType;
-
-    //Threaded, Press-fit
-    private String insertType;
 
 }

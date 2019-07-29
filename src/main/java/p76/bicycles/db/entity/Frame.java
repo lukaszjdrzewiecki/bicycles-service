@@ -27,6 +27,8 @@ public class Frame extends BicyclePart{
     private String discBrakeMount;
     private String brakeType;
 
+    private String headsetType;
+    
     private String forkTubeType;
 
     private String year;
