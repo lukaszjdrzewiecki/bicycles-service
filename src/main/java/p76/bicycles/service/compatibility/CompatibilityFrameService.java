@@ -1,100 +1,99 @@
 package p76.bicycles.service.compatibility;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static p76.bicycles.service.compatibility.Messages.CHECK;
-
 @Component
+@RequiredArgsConstructor
 public class CompatibilityFrameService {
 
-    @Autowired
-    DataService dataService;
+    private final DataService dataService;
+    private final Messages messages;
 
-    @Autowired
-    Messages messages;
+    private static Boolean isFrameHeadsetCompatible(Bicycle bicycle) {
+        return (bicycle.getFrame().getTopHeadSetDiameter() == bicycle.getHeadSet().getTopFrameDiameter()) &&
+                (bicycle.getFrame().getBottomHeadSetDiameter() == bicycle.getHeadSet().getBottomFrameDiameter());
+    }
+
+    private static Boolean isForkHeadsetCompatible(Bicycle bicycle) {
+        return ((bicycle.getHeadSet().getTopHeadTubeDiameter() == bicycle.getFork().getHeadTubeTopDiameter()) &&
+                (bicycle.getHeadSet().getBottomHeadTubeDiameter() == bicycle.getFork().getHeadTubeBottomDiameter()));
+    }
+
+    private static Boolean isHeadsetCompatible(Bicycle bicycle) {
+        return isForkHeadsetCompatible(bicycle) & isFrameHeadsetCompatible(bicycle);
+    }
+
+    private static Boolean isTapered(Bicycle bicycle) {
+        return bicycle.getFrame().getForkTubeType().equals(bicycle.getFork().getForkTubeType());
+    }
+
 
     public List<CompatibilityResult> frameCheckTests(Bicycle bicycle) {
-        List<CompatibilityResult> result = new ArrayList<>();
-        frameChecks(result, bicycle);
-        return result;
+        return List.of(
+                rearHubWithCheck(bicycle),
+                frameHeadsetCheck(bicycle),
+                forkHeadSetCheck(bicycle),
+                totalHeadSetCheck(bicycle),
+                forkTaperCheck(bicycle)
+        );
     }
 
-    private void frameChecks(List<CompatibilityResult> result, Bicycle bicycle) {
-        result.add(new CompatibilityResult("REAR HUB SPACE" + CHECK, rearHubWidthCheck(bicycle), messages.printMessage(rearHubWidthCheck(bicycle), messages.rearHubWidthMessage(bicycle))));
-        result.add(new CompatibilityResult("HEADSET & FRAME DIAMETERS" + CHECK, frameHeadSetCheck(bicycle), messages.printMessage(frameHeadSetCheck(bicycle), messages.frameHeadSetMessage(bicycle))));
-        result.add(new CompatibilityResult("HEADSET & FORK DIAMETERS" + CHECK, forkHeadSetCheck(bicycle), messages.printMessage(forkHeadSetCheck(bicycle), messages.forkHeadSetCheckMessage(bicycle))));
-        result.add(new CompatibilityResult("TOTAL HEADSET" + CHECK, totalHeadSetCheck(bicycle), messages.printMessage(totalHeadSetCheck(bicycle), messages.totalHeadSetMessage(bicycle))));
-        result.add(new CompatibilityResult("TAPER" + CHECK, forkTaperCheck(bicycle), messages.printMessage(forkTaperCheck(bicycle), messages.forkTaperMessage(bicycle))));
+    Boolean isFrameCompatible(Bicycle bicycle) {
+        return dataService.allTrue(isHeadsetCompatible(bicycle), isTapered(bicycle));
     }
 
-    public Boolean rearHubWidthCheck(Bicycle bicycle) {
-        try {
-            if (bicycle.getHubRear().getAxleDiameter().equals(bicycle.getFrame().getRearWheelAxleSize())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
+    private CompatibilityResult rearHubWithCheck(Bicycle bicycle) {
+        boolean isCompatible = bicycle.getHubRear().getAxleDiameter()
+                .equals(bicycle.getFrame().getRearWheelAxleSize());
+
+        return CompatibilityResult.builder()
+                .name("Rear hub space check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.rearHubWidthMessage(bicycle)))
+                .build();
     }
 
-    public Boolean totalFrameCheck(Bicycle bicycle) {
-        try {
-        return dataService.allTrue(totalHeadSetCheck(bicycle), forkTaperCheck(bicycle));
-        } catch (Exception e) {
-            return null;
-        }
+    private CompatibilityResult frameHeadsetCheck(Bicycle bicycle) {
+        boolean isCompatible = isFrameCompatible(bicycle);
+
+        return CompatibilityResult.builder()
+                .name("Headset & frame diameters")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.frameHeadSetMessage(bicycle)))
+                .build();
     }
 
+    private CompatibilityResult forkHeadSetCheck(Bicycle bicycle) {
+        boolean isCompatible = isForkHeadsetCompatible(bicycle);
 
-    public Boolean frameHeadSetCheck(Bicycle bicycle) {
-        try {
-            if ((bicycle.getFrame().getTopHeadSetDiameter() == bicycle.getHeadSet().getTopFrameDiameter()) &&
-                    (bicycle.getFrame().getBottomHeadSetDiameter() == bicycle.getHeadSet().getBottomFrameDiameter())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
+        return CompatibilityResult.builder()
+                .name("Headset & frame diameters")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.forkHeadSetCheckMessage(bicycle)))
+                .build();
     }
 
-    public Boolean forkHeadSetCheck(Bicycle bicycle) {
-        try {
-            if ((bicycle.getHeadSet().getTopHeadTubeDiameter() == bicycle.getFork().getHeadTubeTopDiameter()) &&
-                    (bicycle.getHeadSet().getBottomHeadTubeDiameter() == bicycle.getFork().getHeadTubeBottomDiameter())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
+    private CompatibilityResult totalHeadSetCheck(Bicycle bicycle) {
+        boolean isCompatible = isHeadsetCompatible(bicycle);
+
+        return CompatibilityResult.builder()
+                .name("Headset check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.totalHeadSetMessage(bicycle)))
+                .build();
     }
 
-    public Boolean totalHeadSetCheck(Bicycle bicycle) {
-        try {
-            if (forkHeadSetCheck(bicycle) && frameHeadSetCheck(bicycle)) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
-    }
+    private CompatibilityResult forkTaperCheck(Bicycle bicycle) {
+        boolean isCompatible = isTapered(bicycle);
 
-    public Boolean forkTaperCheck(Bicycle bicycle) {
-        try {
-            if (bicycle.getFrame().getForkTubeType().equals(bicycle.getFork().getForkTubeType())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
+        return CompatibilityResult.builder()
+                .name("Tapered check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.forkTaperMessage(bicycle)))
+                .build();
     }
 }

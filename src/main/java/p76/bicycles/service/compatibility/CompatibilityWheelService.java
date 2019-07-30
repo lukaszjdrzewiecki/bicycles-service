@@ -1,176 +1,186 @@
 package p76.bicycles.service.compatibility;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import p76.bicycles.db.entity.Bicycle;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static p76.bicycles.service.compatibility.Messages.*;
+import java.util.*;
 
 @Component
+@RequiredArgsConstructor
 public class CompatibilityWheelService {
 
-    @Autowired
-    DataService dataService;
+    private final Messages messages;
 
-    @Autowired
-    CompatibilityService compatibilityService;
-
-    @Autowired
-    Messages messages;
-
-    public List<CompatibilityResult> frontWheelCheckTests(Bicycle bicycle) {
-        List<CompatibilityResult> result = new ArrayList<>();
-        frontWheelChecks(result, bicycle);
-        return result;
+    private static Boolean isFrontRimToTyreDiameterCompatible(Bicycle bicycle) {
+        return bicycle.getRimFront().getDiameter() == bicycle.getTyreFront().getDiameter();
     }
 
-    public List<CompatibilityResult> rearWheelCheckTests(Bicycle bicycle) {
-        List<CompatibilityResult> result = new ArrayList<>();
-        rearWheelChecks(result, bicycle);
-        return result;
+    private static Boolean isFrontNumberOfHolesCompatible(Bicycle bicycle) {
+        return bicycle.getRimFront().getHoles() == bicycle.getHubFront().getHoles();
     }
 
-    private void frontWheelChecks(List<CompatibilityResult> result, Bicycle bicycle) {
-        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheckFront(bicycle), messages.printMessage(wheelDiameterCheckFront(bicycle), wheelDiameterMessageFront(bicycle))));
-        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheckFront(bicycle), messages.printMessage(rimTyreCompatibilityCheckFront(bicycle), messages.rimTyreMessageFront(bicycle))));
-        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheckFront((bicycle)), messages.printMessage(wheelHolesCheckFront(bicycle), wheelHolesMessageFront(bicycle))));
+    List<CompatibilityResult> frontWheelCheckTests(Bicycle bicycle) {
+        return List.of(
+                frontWheelDiameterCheck(bicycle),
+                frontWheelRimToTyreSizeCheck(bicycle),
+                frontWheelHolesCheck(bicycle)
+        );
     }
 
-    Boolean wheelDiameterCheckFront(Bicycle bicycle) {
-        try {
-            if (dataService.allEqual(bicycle.getRimFront().getDiameter(), bicycle.getTyreFront().getDiameter())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
+    Boolean isFrontWheelCompatible(Bicycle bicycle) {
+        return isFrontRimToTyreDiameterCompatible(bicycle) && isFrontNumberOfHolesCompatible(bicycle);
     }
 
-    Boolean wheelHolesCheckFront(Bicycle bicycle) {
-        try {
-            if (dataService.allEqual(bicycle.getRimFront().getHoles(), bicycle.getHubFront().getHoles())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
+    private CompatibilityResult frontWheelDiameterCheck(Bicycle bicycle) {
+        boolean isCompatible = isFrontRimToTyreDiameterCompatible(bicycle);
+
+        return CompatibilityResult.builder()
+                .name("Front wheel rim and tyre diameter check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.wheelDiameterMessageFront(bicycle)))
+                .build();
     }
 
+    private CompatibilityResult frontWheelRimToTyreSizeCheck(Bicycle bicycle) {
+        boolean isCompatible = isRimToTyreWidthCompatible(
+                bicycle.getTyreFront().getWidth(),
+                bicycle.getRimFront().getInnerWidth());
 
-    Boolean rimTyreCompatibilityCheckFront(Bicycle bicycle) {
-        try {
-            int tyre = bicycle.getTyreFront().getWidth();
-            List<Integer> rangeList = tyreRimRangeFront(bicycle);
-            int min = rangeList.get(0);
-            int max = rangeList.get(1);
-            boolean flag = (tyre >= min && tyre <= max);
-            return flag;
-        } catch (Exception e) {
-            return null;
-        }
+        return CompatibilityResult.builder()
+                .name("Front wheel rim and tyre width check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, rimTyreMessageFront(bicycle)))
+                .build();
     }
 
-    public List<Integer> tyreRimRangeFront(Bicycle bicycle) {
-        try {
-            double rim = bicycle.getRimFront().getInnerWidth();
-            double temp = 0;
-            for (double key : dataService.diameterMap().keySet()) {
-                if (rim == key) {
-                    temp = key;
-                }
-            }
-            List<Integer> tempList = dataService.diameterMap().get(temp);
-            return tempList;
-        } catch (Exception e) {
-            return null;
-        }
-    }
+    private CompatibilityResult frontWheelHolesCheck(Bicycle bicycle) {
+        boolean isCompatible = isFrontNumberOfHolesCompatible(bicycle);
 
-    public Boolean frontWheelCheck(Bicycle bicycle) {
-        try {
-            if (wheelDiameterCheckFront(bicycle) && wheelHolesCheckFront(bicycle)) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
+        return CompatibilityResult.builder()
+                .name("Front wheel number of holes check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.wheelHolesMessageFront(bicycle)))
+                .build();
     }
 
     // FRONT WHEEL
     //----------------------
     // REAR WHEEL
 
-
-    private void rearWheelChecks(List<CompatibilityResult> result, Bicycle bicycle) {
-        result.add(new CompatibilityResult("DIAMETER" + CHECK, wheelDiameterCheckRear(bicycle), messages.printMessage(wheelDiameterCheckRear(bicycle), wheelDiameterMessageRear(bicycle))));
-        result.add(new CompatibilityResult("RIM AND TYRE SIZES" + CHECK, rimTyreCompatibilityCheckRear(bicycle), messages.printMessage(rimTyreCompatibilityCheckRear(bicycle), messages.rimTyreMessageRear(bicycle))));
-        result.add(new CompatibilityResult("SPOKE HOLES" + CHECK, wheelHolesCheckRear((bicycle)), messages.printMessage(wheelHolesCheckRear(bicycle), wheelHolesMessageRear(bicycle))));
+    private static Boolean isRearRimToTyreDiameterCompatible(Bicycle bicycle) {
+        return bicycle.getRimRear().getDiameter() == bicycle.getTyreRear().getDiameter();
     }
 
-    Boolean wheelDiameterCheckRear(Bicycle bicycle) {
-        try {
-            if (dataService.allEqual(bicycle.getRimRear().getDiameter(), bicycle.getTyreRear().getDiameter())) {
-                return true;
+    private static Boolean isRearNumberOfHolesCompatible(Bicycle bicycle) {
+        return bicycle.getRimRear().getHoles() == bicycle.getHubRear().getHoles();
+    }
+
+    List<CompatibilityResult> rearWheelCheckTests(Bicycle bicycle) {
+        return List.of(
+                rearWheelDiameterCheck(bicycle),
+                rearWheelRimToTyreSizeCheck(bicycle),
+                rearWheelHolesCheck(bicycle)
+        );
+    }
+
+    Boolean isRearWheelCompatible(Bicycle bicycle) {
+        return isRearRimToTyreDiameterCompatible(bicycle) && isRearNumberOfHolesCompatible(bicycle);
+    }
+
+    private CompatibilityResult rearWheelDiameterCheck(Bicycle bicycle) {
+        boolean isCompatible = isRearRimToTyreDiameterCompatible(bicycle);
+
+        return CompatibilityResult.builder()
+                .name("Rear wheel rim and tyre diameter check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.wheelDiameterMessageRear(bicycle)))
+                .build();
+    }
+
+    private CompatibilityResult rearWheelRimToTyreSizeCheck(Bicycle bicycle) {
+        boolean isCompatible = isRimToTyreWidthCompatible(
+                bicycle.getTyreFront().getWidth(),
+                bicycle.getRimFront().getInnerWidth());
+
+        return CompatibilityResult.builder()
+                .name("Rear wheel rim and tyre width check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, rimTyreMessageRear(bicycle)))
+                .build();
+    }
+
+    private CompatibilityResult rearWheelHolesCheck(Bicycle bicycle) {
+        boolean isCompatible = isRearNumberOfHolesCompatible(bicycle);
+
+        return CompatibilityResult.builder()
+                .name("Rear wheel number of holes check")
+                .value(isCompatible)
+                .message(messages.printMessage(isCompatible, messages.wheelHolesMessageRear(bicycle)))
+                .build();
+    }
+
+    // Utilities
+
+    private static Boolean isRimToTyreWidthCompatible(int tyreWidth, double rimWidth) {
+        int tyre = tyreWidth;
+        List<Integer> rangeList = tyreRimRangeFront(rimWidth);
+        int min = rangeList.get(0);
+        int max = rangeList.get(1);
+        return (tyre >= min && tyre <= max);
+    }
+
+    public static List<Integer> tyreRimRangeFront(double rimWidth) {
+        double rim = rimWidth;
+        double temp = 0;
+        for (double key : DIAMETERS_MAP.keySet()) {
+            if (rim == key) {
+                temp = key;
             }
-            return false;
+        }
+        return DIAMETERS_MAP.get(temp);
+
+    }
+
+    private static final Map<Double, List<Integer>> DIAMETERS_MAP = Collections.unmodifiableMap(Map.ofEntries(
+            Map.entry(13.0, List.of(18, 25)),
+            Map.entry(15.0, List.of(23, 32)),
+            Map.entry(17.0, List.of(25, 52)),
+            Map.entry(19.0, List.of(28, 62)),
+            Map.entry(20.0, List.of(28, 62)),
+            Map.entry(21.0, List.of(35, 62)),
+            Map.entry(23.0, List.of(37, 62)),
+            Map.entry(25.0, List.of(42, 62)),
+            Map.entry(29.0, List.of(47, 62)),
+            Map.entry(30.0, List.of(52, 62)),
+            Map.entry(35.0, List.of(60, 75)),
+            Map.entry(40.0, List.of(65, 75)),
+            Map.entry(45.0, List.of(70, 75))
+    ));
+
+    //messages
+
+    final String rimTyreMessageRear(Bicycle bicycle) {
+        double width = bicycle.getRimRear().getInnerWidth();
+
+        try {
+            return ": your rim width equals " + width +
+                    " mm and thus recommended size of a tyre is " +
+                    tyreRimRangeFront(width).get(0) + " - " +
+                    tyreRimRangeFront(width).get(1) + " mm";
         } catch (Exception e) {
             return null;
         }
     }
 
-    Boolean wheelHolesCheckRear(Bicycle bicycle) {
-        try {
-            if (dataService.allEqual(bicycle.getRimRear().getHoles(), bicycle.getHubRear().getHoles())) {
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            return null;
-        }
-    }
+    final String rimTyreMessageFront(Bicycle bicycle) {
+        double width = bicycle.getRimFront().getInnerWidth();
 
-
-    Boolean rimTyreCompatibilityCheckRear(Bicycle bicycle) {
         try {
-            int tyre = bicycle.getTyreRear().getWidth();
-            List<Integer> rangeList = tyreRimRangeRear(bicycle);
-            int min = rangeList.get(0);
-            int max = rangeList.get(1);
-            boolean flag = (tyre >= min && tyre <= max);
-            return flag;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public List<Integer> tyreRimRangeRear(Bicycle bicycle) {
-        try {
-            double rim = bicycle.getRimRear().getInnerWidth();
-            double temp = 0;
-            for (double key : dataService.diameterMap().keySet()) {
-                if (rim == key) {
-                    temp = key;
-                }
-            }
-            List<Integer> tempList = dataService.diameterMap().get(temp);
-            return tempList;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public Boolean rearWheelCheck(Bicycle bicycle) {
-        try {
-            if (wheelDiameterCheckRear(bicycle) && wheelHolesCheckRear(bicycle)) {
-                return true;
-            }
-            return false;
+            return ": your rim width equals " + width +
+                    " mm and thus recommended size of a tyre is " +
+                    tyreRimRangeFront(width).get(0) + " - " +
+                    tyreRimRangeFront(width).get(1) + " mm";
         } catch (Exception e) {
             return null;
         }
