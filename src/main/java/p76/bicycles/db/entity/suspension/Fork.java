@@ -33,6 +33,4 @@ public class Fork extends BicyclePart {
     private String leftChamber;
     private String rightChamber;
     private String uppersSize;
-    private Boolean remoteLockout;
-
 }

@@ -1,2 +1,9 @@
-productId;product;brand;name;series;purpose;weight;stereerDiameter;topFrameDiameter;bottomFrameDiameter;topHeadTubeDiameter;bottomHeadTubeDiameter;forkTubeType;insertType;comment
-HS-CC-28-49-1;headset;Cane Creek;headset 40 ZS49/28.6 | EC49/40;40;Mountain;0.133;28.6;41.8;49.7;28.6;31.8;TAPERED;PRESS_FIT;null
+productId;product;brand;name;series;purpose;weight;stereerDiameter;topFrameDiameter;bottomFrameDiameter;topHeadTubeDiameter;bottomHeadTubeDiameter;forkTubeType;type;comment
+HS-CC-28-49-1;headset;Cane Creek;headset 40 ZS49/28.6 | EC49/40;40;all;0.133;28.6;44;49.7;28.6;38.1;tapered;semi-integrated;null
+610-13-220_ACC;headset;Accent;HSI-basic;HSI;all;0.101;28.6;44;44;28.6;28.6;regular;semi-integrated;ZS 44, balls
+610-13-230_ACC;headset;Accent;HSI-basic taper;HSI;all;0.127;28.6;44;56;28.6;38.1;tapered;semi-integrated;ZS 44/ZS 56, balls
+610-13-120_ACC;headset;Accent;HSI-air;HSI;all;0.086;28.6;44;44;28.6;28.6;regular;semi-integrated;ZS 44, regular bearings
+610-13-130_ACC;headset;Accent;HSI-air taper;HSI;all;0.1;28.6;44;56;28.6;38.1;tapered;semi-integrated;ZS 44/ZS 56, regular bearings
+610-10-691_ACC;headset;Accent;HI-S01;HI;all;0.069;28.6;41.8;41.8;28.6;28.6;regular;integrated;IS42/IS42
+610-13-110_ACC;headset;Accent;HI-air taper;HI;all;0.071;28.6;41.8;51;28.6;38.1;tapered;integrated;IS42/IS52
+HS-FSA-ORBIT-C-33-ACB;headset;FSA;Orbit C-33;ACB;all;null;28.6;41.8;47;28.6;31.8;tapered road;integrated;for carbon fiber
