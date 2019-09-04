@@ -2,16 +2,23 @@ package p76.bicycles.service.compatibility;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import p76.bicycles.db.dto.CompatibilityResult;
 import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.db.utils.Utils;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class CompatibilityFrameService {
 
-    private final DataService dataService;
-    private final Messages messages;
+    private static final String HUB_WIDTH_MESSAGE = ": hub width ";
+    private static final String FRAME_SPACE_MESSAGE = " frame space ";
+
+    private static final String TOTAL_HEADSET_MESSAGE = ": must meet the requirements of every other headset test";
+
+    private final Utils utils;
 
     private static Boolean isFrameHeadsetCompatible(Bicycle bicycle) {
         return (bicycle.getFrame().getTopHeadSetDiameter() == bicycle.getHeadSet().getTopFrameDiameter()) &&
@@ -43,7 +50,12 @@ public class CompatibilityFrameService {
     }
 
     Boolean isFrameCompatible(Bicycle bicycle) {
-        return dataService.allTrue(isHeadsetCompatible(bicycle), isTapered(bicycle));
+        return allTrue(isHeadsetCompatible(bicycle), isTapered(bicycle));
+    }
+
+    private boolean allTrue(Boolean... booleans) {
+        return Arrays.stream(booleans).allMatch(val -> val);
+
     }
 
     private CompatibilityResult rearHubWithCheck(Bicycle bicycle) {
@@ -53,7 +65,9 @@ public class CompatibilityFrameService {
         return CompatibilityResult.builder()
                 .name("Rear hub space check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.rearHubWidthMessage(bicycle)))
+                .message(utils.printMessage(isCompatible,
+                        HUB_WIDTH_MESSAGE + bicycle.getHubRear().getAxleDiameter() +
+                                FRAME_SPACE_MESSAGE + bicycle.getFrame().getRearWheelAxleSize()))
                 .build();
     }
 
@@ -63,7 +77,7 @@ public class CompatibilityFrameService {
         return CompatibilityResult.builder()
                 .name("Headset & frame diameters")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.frameHeadSetMessage(bicycle)))
+                .message(utils.printMessage(isCompatible, frameHeadSetMessage(bicycle)))
                 .build();
     }
 
@@ -73,7 +87,7 @@ public class CompatibilityFrameService {
         return CompatibilityResult.builder()
                 .name("Headset & frame diameters")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.forkHeadSetCheckMessage(bicycle)))
+                .message(utils.printMessage(isCompatible, forkHeadSetCheckMessage(bicycle)))
                 .build();
     }
 
@@ -83,7 +97,7 @@ public class CompatibilityFrameService {
         return CompatibilityResult.builder()
                 .name("Headset check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.totalHeadSetMessage(bicycle)))
+                .message(utils.printMessage(isCompatible, TOTAL_HEADSET_MESSAGE))
                 .build();
     }
 
@@ -93,7 +107,27 @@ public class CompatibilityFrameService {
         return CompatibilityResult.builder()
                 .name("Tapered check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.forkTaperMessage(bicycle)))
+                .message(utils.printMessage(isCompatible, forkTaperMessage(bicycle)))
                 .build();
+    }
+
+    private static String forkHeadSetCheckMessage(Bicycle bicycle) {
+        return ": headset inner top " + bicycle.getHeadSet().getTopHeadTubeDiameter() +
+                " fork top " + bicycle.getFork().getHeadTubeTopDiameter() + " | " +
+                " headset inner bottom " + bicycle.getHeadSet().getBottomHeadTubeDiameter() +
+                " fork bottom " + bicycle.getFork().getHeadTubeBottomDiameter();
+    }
+
+
+    private static String frameHeadSetMessage(Bicycle bicycle) {
+        return ": frame top " + bicycle.getFrame().getTopHeadSetDiameter() +
+                " headset outer top " + bicycle.getHeadSet().getTopFrameDiameter() + " | " +
+                "frame bottom " + (bicycle.getFrame().getBottomHeadSetDiameter() +
+                " headset outer bottom " + bicycle.getHeadSet().getBottomFrameDiameter());
+    }
+
+    private static String forkTaperMessage(Bicycle bicycle) {
+        return ": frame tapered " + bicycle.getFrame().getForkTubeType() +
+                " | fork tapered " + bicycle.getFork().getForkTubeType();
     }
 }

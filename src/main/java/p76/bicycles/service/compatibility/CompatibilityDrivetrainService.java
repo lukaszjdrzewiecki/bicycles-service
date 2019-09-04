@@ -2,19 +2,19 @@ package p76.bicycles.service.compatibility;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import p76.bicycles.db.dto.CompatibilityResult;
 import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.db.utils.Utils;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
-import static p76.bicycles.service.compatibility.Messages.*;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class CompatibilityDrivetrainService {
 
-    private final DataService dataService;
-    private final Messages messages;
+    private final Utils utils;
 
     static private int drivetrainCapacity(Bicycle bicycle) {
         return (bicycle.getCassette().getBiggest() - bicycle.getCassette().getSmallest())
@@ -26,7 +26,7 @@ public class CompatibilityDrivetrainService {
     }
 
     Boolean areAllTheComponentsSameSpeeds(Bicycle bicycle) {
-        return dataService.allEqual(
+        return allEqual(
                 bicycle.getCassette().getSpeeds(),
                 bicycle.getRearDerailleur().getSpeeds(),
                 bicycle.getChain().getSpeeds(),
@@ -42,11 +42,17 @@ public class CompatibilityDrivetrainService {
         );
     }
 
+    private boolean allEqual(int... integers) {
+        return Arrays.stream(integers)
+                .boxed()
+                .collect(Collectors.toSet()).size() == 1;
+    }
+
     private CompatibilityResult maxCassetteCheck(Bicycle bicycle) {
         return CompatibilityResult.builder()
                 .name("Max cassette available for this bicycle")
                 .value(null)
-                .message(messages.printMessage(false, maxCassetteMessage(bicycle)))
+                .message(utils.printMessage(false, maxCassetteMessage(bicycle)))
                 .build();
     }
 
@@ -56,7 +62,7 @@ public class CompatibilityDrivetrainService {
         return CompatibilityResult.builder()
                 .name("Front wheel rim and tyre diameter check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, drivetrainCapacityMessage(bicycle)))
+                .message(utils.printMessage(isCompatible, drivetrainCapacityMessage(bicycle)))
                 .build();
     }
 
@@ -66,13 +72,13 @@ public class CompatibilityDrivetrainService {
         return CompatibilityResult.builder()
                 .name("Front wheel rim and tyre diameter check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, speedsMessage(bicycle)))
+                .message(utils.printMessage(isCompatible, speedsMessage(bicycle)))
                 .build();
     }
 
     //messages
 
-    final public String maxCassetteMessage(Bicycle bicycle) {
+    private static String maxCassetteMessage(Bicycle bicycle) {
         try {
             return " Biggest possible gear in your cassette is " + ((bicycle.getRearDerailleur().getCapacity() - drivetrainCapacity(bicycle) + bicycle.getCassette().getBiggest()));
         } catch (Exception e) {
@@ -80,7 +86,7 @@ public class CompatibilityDrivetrainService {
         }
     }
 
-    final public String drivetrainCapacityMessage(Bicycle bicycle) {
+    private static String drivetrainCapacityMessage(Bicycle bicycle) {
         try {
             return " Rear derailleur capacity: " + ((bicycle.getRearDerailleur().getCapacity() +
                     " | drivetrain requires: " + drivetrainCapacity(bicycle)));
@@ -89,4 +95,14 @@ public class CompatibilityDrivetrainService {
         }
     }
 
+    private static String speedsMessage(Bicycle bicycle) {
+        try {
+            return " Cassette speeds: " + bicycle.getCassette().getSpeeds() +
+                    " | Rear Derailleur speeds: " + bicycle.getRearDerailleur().getSpeeds() +
+                    " | Crank Speeds " + bicycle.getCrank().getSpeeds() +
+                    " | Front Derailleur speeds " + bicycle.getFrontDerailleur().getSpeeds();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

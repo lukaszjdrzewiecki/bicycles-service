@@ -3,6 +3,7 @@ package p76.bicycles;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -38,16 +39,11 @@ import java.util.List;
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class ApplicationListener {
 
-    @Autowired
-    BicycleService service;
-
-    @Autowired
-    CompatibilityService compatibility;
-
-    @Autowired
-    EntityManager em;
+    private final BicycleService service;
+    private final EntityManager em;
 
     @Transactional
     @EventListener

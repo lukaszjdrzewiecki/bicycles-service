@@ -1,4 +1,4 @@
-package p76.bicycles.service.compatibility;
+package p76.bicycles.db.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

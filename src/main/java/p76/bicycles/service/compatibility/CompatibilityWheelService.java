@@ -2,7 +2,9 @@ package p76.bicycles.service.compatibility;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import p76.bicycles.db.dto.CompatibilityResult;
 import p76.bicycles.db.entity.Bicycle;
+import p76.bicycles.db.utils.Utils;
 
 import java.util.*;
 
@@ -10,7 +12,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class CompatibilityWheelService {
 
-    private final Messages messages;
+    private final Utils utils;
 
     private static Boolean isFrontRimToTyreDiameterCompatible(Bicycle bicycle) {
         return bicycle.getRimFront().getDiameter() == bicycle.getTyreFront().getDiameter();
@@ -38,7 +40,9 @@ public class CompatibilityWheelService {
         return CompatibilityResult.builder()
                 .name("Front wheel rim and tyre diameter check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.wheelDiameterMessageFront(bicycle)))
+                .message(utils.printMessage(isCompatible,
+                        RIM_DIAMETER_MESSAGE + bicycle.getRimFront().getDiameter() +
+                                TYRE_DIAMETER_MESSAGE + bicycle.getTyreFront().getDiameter()))
                 .build();
     }
 
@@ -50,7 +54,7 @@ public class CompatibilityWheelService {
         return CompatibilityResult.builder()
                 .name("Front wheel rim and tyre width check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, rimTyreMessageFront(bicycle)))
+                .message(utils.printMessage(isCompatible, rimTyreMessage(bicycle.getRimFront().getInnerWidth())))
                 .build();
     }
 
@@ -60,7 +64,9 @@ public class CompatibilityWheelService {
         return CompatibilityResult.builder()
                 .name("Front wheel number of holes check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.wheelHolesMessageFront(bicycle)))
+                .message(utils.printMessage(isCompatible,
+                        NUMBER_OF_HOLES_RIM_MESSAGE + bicycle.getRimFront().getHoles() +
+                        NUMBER_OF_HOLES_HUB_MESSAGE + bicycle.getRimFront().getHoles()))
                 .build();
     }
 
@@ -94,7 +100,9 @@ public class CompatibilityWheelService {
         return CompatibilityResult.builder()
                 .name("Rear wheel rim and tyre diameter check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.wheelDiameterMessageRear(bicycle)))
+                .message(utils.printMessage(isCompatible,
+                        RIM_DIAMETER_MESSAGE + bicycle.getRimRear().getDiameter() +
+                        TYRE_DIAMETER_MESSAGE + bicycle.getRimRear().getDiameter()))
                 .build();
     }
 
@@ -106,7 +114,7 @@ public class CompatibilityWheelService {
         return CompatibilityResult.builder()
                 .name("Rear wheel rim and tyre width check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, rimTyreMessageRear(bicycle)))
+                .message(utils.printMessage(isCompatible, rimTyreMessage(bicycle.getRimRear().getInnerWidth())))
                 .build();
     }
 
@@ -116,7 +124,9 @@ public class CompatibilityWheelService {
         return CompatibilityResult.builder()
                 .name("Rear wheel number of holes check")
                 .value(isCompatible)
-                .message(messages.printMessage(isCompatible, messages.wheelHolesMessageRear(bicycle)))
+                .message(utils.printMessage(isCompatible,
+                        NUMBER_OF_HOLES_RIM_MESSAGE + bicycle.getRimRear().getHoles() +
+                        NUMBER_OF_HOLES_HUB_MESSAGE + bicycle.getHubRear().getHoles()))
                 .build();
     }
 
@@ -124,13 +134,13 @@ public class CompatibilityWheelService {
 
     private static Boolean isRimToTyreWidthCompatible(int tyreWidth, double rimWidth) {
         int tyre = tyreWidth;
-        List<Integer> rangeList = tyreRimRangeFront(rimWidth);
+        List<Integer> rangeList = tyreRimRange(rimWidth);
         int min = rangeList.get(0);
         int max = rangeList.get(1);
         return (tyre >= min && tyre <= max);
     }
 
-    public static List<Integer> tyreRimRangeFront(double rimWidth) {
+    public static List<Integer> tyreRimRange(double rimWidth) {
         double rim = rimWidth;
         double temp = 0;
         for (double key : DIAMETERS_MAP.keySet()) {
@@ -158,32 +168,20 @@ public class CompatibilityWheelService {
             Map.entry(45.0, List.of(70, 75))
     ));
 
-    //messages
+    private static final String NUMBER_OF_HOLES_RIM_MESSAGE = ": number of holes in your rim equals ";
+    private static final String NUMBER_OF_HOLES_HUB_MESSAGE = " and number of holes in your hub equals ";
 
-    final String rimTyreMessageRear(Bicycle bicycle) {
-        double width = bicycle.getRimRear().getInnerWidth();
+    private static final String RIM_DIAMETER_MESSAGE = ": your rim diameter equals ";
+    private static final String TYRE_DIAMETER_MESSAGE = " and your tyre diameter equals ";
 
+    private static String rimTyreMessage(double rimWidth) {
         try {
-            return ": your rim width equals " + width +
+            return ": your rim width equals " + rimWidth +
                     " mm and thus recommended size of a tyre is " +
-                    tyreRimRangeFront(width).get(0) + " - " +
-                    tyreRimRangeFront(width).get(1) + " mm";
+                    tyreRimRange(rimWidth).get(0) + " - " +
+                    tyreRimRange(rimWidth).get(1) + " mm";
         } catch (Exception e) {
             return null;
         }
     }
-
-    final String rimTyreMessageFront(Bicycle bicycle) {
-        double width = bicycle.getRimFront().getInnerWidth();
-
-        try {
-            return ": your rim width equals " + width +
-                    " mm and thus recommended size of a tyre is " +
-                    tyreRimRangeFront(width).get(0) + " - " +
-                    tyreRimRangeFront(width).get(1) + " mm";
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
 }

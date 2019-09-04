@@ -28,206 +28,206 @@ public class Bicycle {
     private String name;
 
     // ------ brakes -------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brake_hydraulic_front_id")
     private BrakeHydraulic brakeHydraulicFront;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brake_hydraulic_rear_id")
     private BrakeHydraulic brakeHydraulicRear;
     // ------ brakes -------
 
     // ------- drivetrain --------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "crank_id")
     private Crank crank;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cassette_id")
     private Cassette cassette;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "front_derailleur_id")
     private FrontDerailleur frontDerailleur;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rear_derailleur_id")
     private RearDerailleur rearDerailleur;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shifter_left_id")
     private ShifterLeft shifterLeft;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shifter_right_id")
     private ShifterRight shifterRight;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chain_id")
     private Chain chain;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bottom_bracket_id")
     private BottomBracket bottomBracket;
     // ------- drivetrain --------
 
     //--------- seatpost ------------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seatpost_id")
     private Seatpost seatpost;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "saddle_id")
     private Saddle saddle;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seat_post_clamp_id")
     private SeatpostClamp seatPostClamp;
     //--------- seatpost ------------
 
     // -------- cockpit ---------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "head_set_id")
     private HeadSet headSet;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "handlebar_id")
     private Handlebar handlebar;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "stem_id")
     private Stem stem;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "grips_id")
     private Grips grips;
     // -------- cockpit ---------
 
     // --------- suspension ---------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fork_id")
     private Fork fork;
 
     // --------- suspension ---------
 
     //---------- wheels ----------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tyre_front_id")
     private Tyre tyreFront;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "disc_front_id")
     private Disc discFront;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rim_front_id")
     private Rim rimFront;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hub_front_id")
     private Hub hubFront;
     //--Front--
     //--Rear--
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rim_rear_id")
     private Rim rimRear;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "disc_rear_id")
     private Disc discRear;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hub_rear_id")
     private Hub hubRear;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tyre_rear_id")
     private Tyre tyreRear;
     //---------- wheels ----------
 
     //----------- frame -----------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "frame_id")
     private Frame frame;
     //----------- frame -----------
 
     //----------- frame -----------
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedals_id")
     private Pedals pedals;
     //----------- frame -----------
 
 
     // ------ brakes -------
-    @Column
     private String brakeFrontInfo;
 
-    @Column
     private String brakeRearInfo;
     // ------ brakes -------
 
     // ------- drivetrain --------
-    @Column
     private String frontDerailleurInfo;
 
-    @Column
     private String rearDerailleurInfo;
 
-    @Column
     private String cassetteInfo;
 
-    @Column
     private String chainInfo;
 
-    @Column
     private String crankInfo;
 
-    @Column
     private String shifterLeftInfo;
 
-    @Column
     private String shifterRightInfo;
 
-    @Column
     private String bottomBracketIntegratedInfo;
     // ------- drivetrain --------
 
     //--------- seatpost ------------
-    @Column
     private String seatpostInfo;
 
-    @Column
     private String seatpostClampInfo;
 
-    @Column
     private String saddleInfo;
     //--------- seatpost ------------
 
     // -------- cockpit ---------
-    @Column
     private String handlebarInfo;
 
-    @Column
     private String stemInfo;
 
-    @Column
     private String gripsInfo;
 
-    @Column
     private String headSetInfo;
     // -------- cockpit ---------
 
     // --------- suspension ---------
-    @Column
     private String forkInfo;
     // --------- suspension ---------
 
     //---------- wheels ----------
-    @Column
     private String tyreFrontInfo;
 
-    @Column
     private String discFrontInfo;
 
-    @Column
     private String rimFrontInfo;
 
-    @Column
     private String hubFrontInfo;
     //--Front--
     //--Rear--
-    @Column
     private String rimRearInfo;
 
-    @Column
     private String discRearInfo;
 
-    @Column
     private String hubRearInfo;
 
-    @Column
     private String tyreRearInfo;
     //---------- wheels ----------
 
     //----------- frame -----------
-    @Column
     private String frameInfo;
     //----------- frame -----------
 
     //----------- pedals -----------
-    @Column
     private String pedalsInfo;
     //----------- pedals -----------
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.repository.BicycleRepository;
 import p76.bicycles.service.BicycleService;
-import p76.bicycles.service.compatibility.InfoResult;
+import p76.bicycles.db.dto.InfoResult;
 import p76.bicycles.service.compatibility.InfoService;
 
 import java.util.List;

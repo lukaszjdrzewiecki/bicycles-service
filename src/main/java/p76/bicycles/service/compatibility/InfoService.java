@@ -2,6 +2,7 @@ package p76.bicycles.service.compatibility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import p76.bicycles.db.dto.InfoResult;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.service.BicycleService;
 
@@ -42,7 +43,7 @@ public class InfoService {
             weight += bicycle.getBrakeHydraulicFront().getWeight();
             weight += bicycle.getBrakeHydraulicRear().getWeight();
 
-            weight += bicycle.getHandlebar().getWeight();
+            //weight += bicycle.getHandlebar().getWeight();
             weight += bicycle.getStem().getWeight();
             weight += bicycle.getGrips().getWeight();
             weight += bicycle.getHeadSet().getWeight();

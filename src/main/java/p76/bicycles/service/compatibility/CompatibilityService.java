@@ -2,6 +2,7 @@ package p76.bicycles.service.compatibility;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import p76.bicycles.db.dto.CompatibilityResult;
 import p76.bicycles.db.entity.Bicycle;
 import p76.bicycles.db.repository.BicycleRepository;
 
