@@ -96,7 +96,7 @@ public class CsvPersistanceService {
         insertCassetteToDb();
         insertHydraulicBrakeToDb();
         insertPedalsToDb();
-        loadParts();
+        insertCrankToDb();
         loadBicycles();
 
     }
@@ -108,12 +108,6 @@ public class CsvPersistanceService {
         }
     }
 
-    private void loadParts() {
-        List<Crank> list = loadObjectList(Crank.class);
-        for (Crank part : list) {
-            service.addCrank(part);
-        }
-    }
 
     private void insertCrankToDb() {
         List<Crank> listFromCSV = loadObjectList(Crank.class);
