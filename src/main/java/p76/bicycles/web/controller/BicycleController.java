@@ -5,9 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import p76.bicycles.db.entity.Bicycle;
-import p76.bicycles.db.entity.drivetrain.Crank;
 import p76.bicycles.db.repository.BicycleRepository;
-import p76.bicycles.db.repository.CrankRestRepository;
+import p76.bicycles.db.repository.CrankRepository;
 import p76.bicycles.service.BicycleService;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public class BicycleController {
     private BicycleRepository repository;
 
     @Autowired
-    private CrankRestRepository crankRepository;
+    private CrankRepository crankRepository;
 
     @GetMapping
     public List<Bicycle> getAllBicycles() {

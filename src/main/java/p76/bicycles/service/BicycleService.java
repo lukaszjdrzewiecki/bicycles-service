@@ -27,7 +27,7 @@ import p76.bicycles.db.entity.wheels.Hub;
 import p76.bicycles.db.entity.wheels.Rim;
 import p76.bicycles.db.entity.wheels.Tyre;
 import p76.bicycles.db.repository.BicycleRepository;
-import p76.bicycles.db.repository.CrankRestRepository;
+import p76.bicycles.db.repository.CrankRepository;
 
 @Data
 @Component
@@ -37,7 +37,7 @@ public class BicycleService {
     BicycleRepository repository;
 
     @Autowired
-    CrankRestRepository crankRepository;
+    CrankRepository crankRepository;
 
     @Autowired
     PartsService partsService;

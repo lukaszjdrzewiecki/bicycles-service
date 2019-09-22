@@ -8,8 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 import p76.bicycles.db.entity.seatpost.Seatpost;
-import p76.bicycles.db.repository.SeatpostRestRepository;
-import org.springframework.boot.test.context.SpringBootTest;
+import p76.bicycles.db.repository.SeatpostRepository;
 
 
 @RunWith(SpringRunner.class)
@@ -20,7 +19,7 @@ public class SeatpostIntegrationTest {
     private TestEntityManager entityManager;
 
     @Autowired
-    private SeatpostRestRepository seatpostRestRepository;
+    private SeatpostRepository seatpostRepository;
 
     @Test
     public void whenFindByName_thenReturnSeatpost() {
@@ -29,7 +28,7 @@ public class SeatpostIntegrationTest {
         entityManager.persist(seatpost);
         entityManager.flush();
 
-        Seatpost found = seatpostRestRepository.findOneByName(seatpost.getName());
+        Seatpost found = seatpostRepository.findOneByName(seatpost.getName());
 
         assertThat(found.getName()).isEqualTo(seatpost.getName());
     }
