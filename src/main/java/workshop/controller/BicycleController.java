@@ -1,22 +1,16 @@
 package workshop.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import workshop.db.dto.BicycleDto;
 import workshop.db.entity.Bicycle;
-import workshop.db.repository.BicycleRepository;
-import workshop.db.repository.CrankRepository;
 import workshop.service.BicycleService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/bicycles")
+@RequestMapping("/{userName}/bicycles")
 public class BicycleController {
 
     private final BicycleService service;
@@ -26,14 +20,24 @@ public class BicycleController {
         return service.findAllBicycles();
     }
 
-    @GetMapping("/{bicycleUid}")
-    public List<BicycleDto> getAllBicycles(@PathVariable String bicycleUid) {
-        return service.findAllBicycles();
+    @GetMapping("/{bicycleName}")
+    public Bicycle getBicycle(@PathVariable String bicycleName) {
+        return service.getBicycleByName(bicycleName);
     }
 
     @PostMapping
     public Bicycle addBicycle(@RequestBody Bicycle bicycle) {
         return service.addBicycle(bicycle);
+    }
+
+    @PutMapping("/{bicycleName}")
+    public Bicycle updateBicycle(@PathVariable String bicycleName, @RequestBody Bicycle bicycle) {
+        return service.updateBicycle(bicycleName, bicycle);
+    }
+
+    @DeleteMapping("/{bicycleName}")
+    public void updateBicycle(@PathVariable String bicycleName) {
+        service.deleteBicycle(bicycleName);
     }
 
 }

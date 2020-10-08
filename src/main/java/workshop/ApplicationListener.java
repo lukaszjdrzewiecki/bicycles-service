@@ -77,45 +77,45 @@ public class ApplicationListener {
 //    }
 
 
-
-    public <T> void insertPartsToDb(Class<T> type) {
-        List<T> list = loadObjectList(type);
-        for(T entity : list) {
-            em.persist(entity);
-        }
-    }
-
-    public <T> void insertRearDerailleurToDb(Class<T> type) {
-        List<T> list = loadObjectList(type);
-        for(T entity : list) {
-            em.persist(entity);
-        }
-    }
-
-    public <T> List<T> loadObjectList(Class<T> type) {
-        String fileName = type.getSimpleName() + ".csv";
-        try {
-            CsvSchema bootstrapSchema = CsvSchema.emptySchema().withHeader().withColumnSeparator(';');
-            CsvMapper mapper = new CsvMapper();
-
-            File file = new ClassPathResource(fileName).getFile();
-            MappingIterator<T> readValues =
-                    mapper.readerFor(type).with(bootstrapSchema).readValues(file);
-            return readValues.readAll();
-        } catch (Exception e) {
-            log.error("Error occurred while loading object list from file " + fileName, e);
-            return Collections.emptyList();
-        }
-    }
-
-
-    public void insertPedalsToDb() {
-        List<Pedals> pedals = loadObjectList(Pedals.class);
-        for(Pedals pedal : pedals ) {
-            if(!pedalsRepository.existsByProductId(pedal.getProductId())) {
-                em.persist(pedal);
-            }
-        }
-    }
+//
+//    public <T> void insertPartsToDb(Class<T> type) {
+//        List<T> list = loadObjectList(type);
+//        for(T entity : list) {
+//            em.persist(entity);
+//        }
+//    }
+//
+//    public <T> void insertRearDerailleurToDb(Class<T> type) {
+//        List<T> list = loadObjectList(type);
+//        for(T entity : list) {
+//            em.persist(entity);
+//        }
+//    }
+//
+//    public <T> List<T> loadObjectList(Class<T> type) {
+//        String fileName = type.getSimpleName() + ".csv";
+//        try {
+//            CsvSchema bootstrapSchema = CsvSchema.emptySchema().withHeader().withColumnSeparator(';');
+//            CsvMapper mapper = new CsvMapper();
+//
+//            File file = new ClassPathResource(fileName).getFile();
+//            MappingIterator<T> readValues =
+//                    mapper.readerFor(type).with(bootstrapSchema).readValues(file);
+//            return readValues.readAll();
+//        } catch (Exception e) {
+//            log.error("Error occurred while loading object list from file " + fileName, e);
+//            return Collections.emptyList();
+//        }
+//    }
+//
+//
+//    public void insertPedalsToDb() {
+//        List<Pedals> pedals = loadObjectList(Pedals.class);
+//        for(Pedals pedal : pedals ) {
+//            if(!pedalsRepository.existsByProductId(pedal.getProductId())) {
+//                em.persist(pedal);
+//            }
+//        }
+//    }
 
 }
