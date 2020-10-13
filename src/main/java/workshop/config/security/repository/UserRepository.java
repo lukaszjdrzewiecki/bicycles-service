@@ -12,5 +12,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from User u left join fetch u.roles where upper(u.userName) = upper(:userName)")
     Optional<User> findByUser(@Param("userName") String userName);
 
-    Optional<User> findByUserName(String userName);
+    boolean existsByUserName(String userName);
 }
