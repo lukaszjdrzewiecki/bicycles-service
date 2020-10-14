@@ -31,7 +31,6 @@ public class AuthenticationBuilder {
 
         return UserAuthentication.builder()
                 .authorities(authorities)
-                .employeeUid(user.getUserName())
                 .token(token)
                 .userIP(httpRequestComponent.getClientIpAddress())
                 .user(user)

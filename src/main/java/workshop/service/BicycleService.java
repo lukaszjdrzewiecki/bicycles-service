@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import workshop.config.security.entity.User;
 import workshop.db.dto.BicycleDto;
 import workshop.db.entity.Bicycle;
 
@@ -21,32 +22,42 @@ import javax.persistence.EntityNotFoundException;
 @RequiredArgsConstructor
 public class BicycleService {
 
+    private final UserService userService;
     private final BicycleRepository repository;
 
-    public Bicycle addBicycle(Bicycle bicycle) {
+
+    public List<BicycleDto> getAllBicycles(String userName) {
+        User user = userService.getUserByUserName(userName);
+        List<Bicycle> bicycles = repository.findAllByUser(user);
+        return mapToDto(bicycles);
+    }
+
+    public Bicycle getBicycle(String userName, String name) {
+        User user = userService.getUserByUserName(userName);
+
+        return repository.findByNameAndUser(StringUtils.trimAllWhitespace(name), user)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Couldn't find the bicycle of name %s", name)));
+    }
+
+    public Bicycle addBicycle(String userName, Bicycle bicycle) {
+        User user = userService.getUserByUserName(userName);
+        if (repository.existsByNameAndUser(bicycle.getName(), user)) {
+            throw new IllegalArgumentException("User has already bicycle with that name");
+        }
+        bicycle.setUser(user);
         return repository.save(bicycle);
     }
 
-    public Bicycle updateBicycle(String name, Bicycle update) {
-        Bicycle bicycle = getBicycleByName(name);
+    public Bicycle updateBicycle(String userName, String name, Bicycle update) {
+        Bicycle bicycle = getBicycle(userName, name);
         Bicycle updatedBicycle = updateBicycleFields(bicycle, update);
         return repository.save(updatedBicycle);
     }
 
-    public void deleteBicycle(String name) {
-        Bicycle bicycle = getBicycleByName(name);
+    public void deleteBicycle(String userName, String name) {
+        Bicycle bicycle = getBicycle(userName, name);
         repository.deleteById(bicycle.getId());
         log.info("Deleted bicycle with name {}", name);
-    }
-
-    public Bicycle getBicycleByName(String name) {
-        return repository.findByName(StringUtils.trimAllWhitespace(name))
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Couldn't find the bicycle of name %s", name)));
-    }
-
-    public List<BicycleDto> findAllBicycles() {
-        List<Bicycle> bicycles = repository.findAll();
-        return mapToDto(bicycles);
     }
 
     private List<BicycleDto> mapToDto(List<Bicycle> bicycles) {
@@ -77,7 +88,6 @@ public class BicycleService {
                 .year(updated.getYear())
                 .build();
     }
-
 }
 
 

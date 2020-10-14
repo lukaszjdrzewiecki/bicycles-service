@@ -10,6 +10,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import workshop.config.security.entity.Role;
+import workshop.config.security.repository.RoleRepository;
 import workshop.db.entity.*;
 import workshop.db.entity.drivetrain.*;
 import workshop.db.repository.PedalsRepository;
@@ -22,6 +24,8 @@ import javax.persistence.EntityManager;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @Component
@@ -31,10 +35,20 @@ public class ApplicationListener {
     private final BicycleService service;
     private final EntityManager em;
     private final PedalsRepository pedalsRepository;
+    private final RoleRepository roleRepository;
 
     @Transactional
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {
+        Optional<Role> admin = roleRepository.findByRoleName("ADMIN");
+        if (admin.isEmpty()) {
+            roleRepository.save(new Role("ADMIN"));
+        }
+        Optional<Role> customer = roleRepository.findByRoleName("CUSTOMER");
+        if (admin.isEmpty()) {
+            roleRepository.save(new Role("CUSTOMER"));
+        }
+
 //        insertPartsToDb(RearDerailleur.class);
 //        insertPartsToDb(FrontDerailleur.class);
 //        insertPartsToDb(Chainring.class);

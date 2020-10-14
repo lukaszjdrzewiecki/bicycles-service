@@ -3,6 +3,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import workshop.config.security.entity.User;
 import workshop.enums.BicycleType;
 
 import javax.persistence.*;
@@ -31,4 +32,8 @@ public class Bicycle {
     private Double countedWeight;
 
     private long year;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

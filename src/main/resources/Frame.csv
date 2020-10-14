@@ -1,5 +1,0 @@
-productId;product;brand;name;series;purpose;size;weight;year;topHeadSetDiameter;bottomHeadSetDiameter;bottomBracketSize;bottomBracketType;rearWheelAxleSize;seatpostSize;seatpostCaliperDiameter;discBrakeMount;brakeType;forkTubeType;headsetType;comment
-FR-SPEC-CHISEL-2019;frame;Specialized;Chisel Expert;XC;XC hardtail;S (17);2.2;2019;44.00;56;68x33.6;BSA;148x12;27.2;31.8;post;disc;tapered;semi-integrated;null
-FR-SCOTT-SCALE-2015;frame;Scott;Scale;XC;XC hardtail;L (21);2.3;2019;44.00;56;86.5x41.0;Press-fit;135x9;31.6;34.9;post;disc;tapered;semi-integrated;null
-600-06-28_ACC;frame;Accent;Apex;road;road;520';1.52;2015;44.00;44.00;68x33.6;BSA;130x9;27.2;31.8;road;road;regular;semi-integrated;null
-BIANCHI-SPRINT-FRAME-2019;frame;Bianchi;Sprint;road;road;530';null;2019;41.80;47;86.5x41.0;Press-fit;130x9;27.2;null;road;road;tapered road;integrated;null

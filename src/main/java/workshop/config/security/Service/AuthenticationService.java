@@ -1,7 +1,6 @@
 package workshop.config.security.Service;
 
 import workshop.config.security.component.JwtTokenBuilder;
-import workshop.config.security.component.UserAuthentication;
 import workshop.config.security.dto.LoginForm;
 import workshop.config.security.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -27,13 +26,5 @@ public class AuthenticationService {
         log.info("Token successfully generated for user {}", loginForm.getLogin());
         String token = jwtTokenBuilder.createToken(user);
         return Map.of("userName", user.getUserName(), "token", token);
-    }
-
-    public Long getUserId() {
-        return null;
-    }
-
-    public boolean hasAuthGivenPartnerUid(UserAuthentication authentication, String partnerUid) {
-        return authentication.getEmployeeUid().equals(partnerUid);
     }
 }

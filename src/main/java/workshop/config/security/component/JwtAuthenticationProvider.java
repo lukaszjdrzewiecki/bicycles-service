@@ -41,7 +41,6 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
 
     private void logUserInteraction(UserAuthentication authentication) {
         MDC.put("username", authentication.getName());
-        MDC.put("employee", authentication.getEmployeeUid());
         MDC.put("ip", authentication.getUserIP());
     }
 

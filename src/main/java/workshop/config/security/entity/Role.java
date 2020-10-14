@@ -24,4 +24,8 @@ public class Role {
 
     @NotBlank
     private String roleName;
+
+    public Role(@NotBlank String roleName) {
+        this.roleName = roleName;
+    }
 }

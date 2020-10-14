@@ -1,6 +1,8 @@
 package workshop.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import workshop.db.dto.BicycleDto;
 import workshop.db.entity.Bicycle;
@@ -16,28 +18,34 @@ public class BicycleController {
     private final BicycleService service;
 
     @GetMapping
-    public List<BicycleDto> getAllBicycles() {
-        return service.findAllBicycles();
+    @PreAuthorize("@userAuthorizationService.isUserAuthorized(#userName, authentication)")
+    public List<BicycleDto> getAllBicycles(@PathVariable String userName) {
+        return service.getAllBicycles(userName);
     }
 
     @GetMapping("/{bicycleName}")
-    public Bicycle getBicycle(@PathVariable String bicycleName) {
-        return service.getBicycleByName(bicycleName);
+    @PreAuthorize("@userAuthorizationService.isUserAuthorized(#userName, authentication)")
+    public Bicycle getBicycle(@PathVariable String userName, @PathVariable String bicycleName) {
+        return service.getBicycle(userName, bicycleName);
     }
 
     @PostMapping
-    public Bicycle addBicycle(@RequestBody Bicycle bicycle) {
-        return service.addBicycle(bicycle);
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("@userAuthorizationService.isUserAuthorized(#userName, authentication)")
+    public Bicycle addBicycle(@PathVariable String userName, @RequestBody Bicycle bicycle) {
+        return service.addBicycle(userName, bicycle);
     }
 
     @PutMapping("/{bicycleName}")
-    public Bicycle updateBicycle(@PathVariable String bicycleName, @RequestBody Bicycle bicycle) {
-        return service.updateBicycle(bicycleName, bicycle);
+    @PreAuthorize("@userAuthorizationService.isUserAuthorized(#userName, authentication)")
+    public Bicycle updateBicycle(@PathVariable String userName, @PathVariable String bicycleName, @RequestBody Bicycle bicycle) {
+        return service.updateBicycle(userName, bicycleName, bicycle);
     }
 
     @DeleteMapping("/{bicycleName}")
-    public void updateBicycle(@PathVariable String bicycleName) {
-        service.deleteBicycle(bicycleName);
+    @PreAuthorize("@userAuthorizationService.isUserAuthorized(#userName, authentication)")
+    public void updateBicycle(@PathVariable String userName, @PathVariable String bicycleName) {
+        service.deleteBicycle(userName, bicycleName);
     }
 
 }

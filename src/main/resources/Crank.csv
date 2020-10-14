@@ -1,7 +1,0 @@
-productId;product;brand;name;series;purpose;numberOfGears;speeds;armLength;defaultChainrings;defaultChainringsId;pcdBig;pcdSmall;armsAndType;qfactor;chainline;weight;axleDiameter;comment;bigGearInfo
-FC-M8000-1;Crank;Shimano;XT;M8000;Mountain;1;11;165/170/175/180;30/32/34;SM-CRM81-34/SM-CRM81-32/SM-CRM81-30;96;0;4 assymetric;176;50.4;0.610;24.0;weight without chainring;SM-CRM81-30
-FC-M8000-2-38-28;Crank;Shimano;XT;M8000;Mountain;2;11;165/170/175/180;38-28;null;96;64;4 assymetric;176;48.8;0.739;24.0;null;
-FC-M8000-2-36-26;Crank;Shimano;XT;M8000;Mountain;2;11;165/170/175/180;36-26;null;96;64;4 assymetric;176;48.8;0.718;24.0;null;
-FC-M8000-2-34-24;Crank;Shimano;XT;M8000;Mountain;2;11;165/170/175/180;34-24;null;96;64;4 assymetric;176;48.8;0.695;24.0;null;
-FC-M8000-3;Crank;Shimano;XT;M8000;Mountain;3;11;165/170/175/180;40-30-22;null;96;64;4 assymetric;176;50.0;0.774;24.0;null;
-CR-NX-12-32;Crank;Sram;NX;NX-Eagle;Mountain;1;12;165/170/175 ;32;null;0;0;spiderless;0;0.0;0.705;28.99;DUB system;SM-CRM81-30

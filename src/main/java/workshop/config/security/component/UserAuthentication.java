@@ -11,7 +11,6 @@ import java.util.Collection;
 @Builder
 public class UserAuthentication implements Authentication {
     private Long userId;
-    private String employeeUid;
     private String token;
     private boolean isAuthenticated;
     private Collection<? extends GrantedAuthority> authorities;
@@ -56,9 +55,6 @@ public class UserAuthentication implements Authentication {
         return userName;
     }
 
-    public String getEmployeeUid() {
-        return employeeUid;
-    }
 
     public String getUserIP() {
         return userIP;
