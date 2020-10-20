@@ -17,13 +17,16 @@ public class Frame extends BicyclePart{
     private Long id;
 
     private String size;
-    private double topHeadSetDiameter;
-    private double bottomHeadSetDiameter;
+
+    private Double topHeadSetDiameter;
+    private Double bottomHeadSetDiameter;
+
     private String bottomBracketSize;
     private String bottomBracketType;
+
     private String rearWheelAxleSize;
-    private double seatpostSize;
-    private double seatpostCaliperDiameter;
+    private Double seatpostSize;
+    private Double seatpostCaliperDiameter;
     private String discBrakeMount;
     private String brakeType;
 

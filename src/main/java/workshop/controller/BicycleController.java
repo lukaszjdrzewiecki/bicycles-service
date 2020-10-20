@@ -3,9 +3,11 @@ package workshop.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import workshop.db.dto.BicycleDto;
 import workshop.db.entity.Bicycle;
+import workshop.enums.PartType;
 import workshop.service.BicycleService;
 
 import java.util.List;
@@ -16,6 +18,12 @@ import java.util.List;
 public class BicycleController {
 
     private final BicycleService service;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder)
+    {
+        binder.registerCustomEditor(PartType.class, new BicycleTypePropertyEditor(PartType.class));
+    }
 
     @GetMapping
     @PreAuthorize("@userAuthorizationService.isUserAuthorized(#userName, authentication)")

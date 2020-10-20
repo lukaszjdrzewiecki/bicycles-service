@@ -33,6 +33,10 @@ public class Bicycle {
 
     private long year;
 
+    @OneToOne
+    @JoinColumn(name = "frame_id")
+    private Frame frame;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

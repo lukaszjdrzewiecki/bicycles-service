@@ -19,7 +19,7 @@ public abstract class BicyclePart {
     protected String name;
     protected String series;
     protected String purpose;
-    protected double weight;
+    protected Double weight;
     protected String comment;
 
 

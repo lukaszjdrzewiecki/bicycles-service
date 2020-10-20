@@ -32,11 +32,11 @@ public class BicycleService {
         return mapToDto(bicycles);
     }
 
-    public Bicycle getBicycle(String userName, String name) {
+    public Bicycle getBicycle(String userName, String bicycleName) {
         User user = userService.getUserByUserName(userName);
 
-        return repository.findByNameAndUser(StringUtils.trimAllWhitespace(name), user)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Couldn't find the bicycle of name %s", name)));
+        return repository.findByNameAndUser(StringUtils.trimAllWhitespace(bicycleName), user)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Couldn't find the bicycle of name %s", bicycleName)));
     }
 
     public Bicycle addBicycle(String userName, Bicycle bicycle) {
@@ -52,6 +52,10 @@ public class BicycleService {
         Bicycle bicycle = getBicycle(userName, name);
         Bicycle updatedBicycle = updateBicycleFields(bicycle, update);
         return repository.save(updatedBicycle);
+    }
+
+    public Bicycle updateBicycle(Bicycle bicycle) {
+        return repository.save(bicycle);
     }
 
     public void deleteBicycle(String userName, String name) {
