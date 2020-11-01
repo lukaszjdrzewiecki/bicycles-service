@@ -16,11 +16,12 @@ public abstract class BicyclePart {
 
     protected String product;
     protected String brand;
-    protected String name;
+    protected String model;
     protected String series;
     protected String purpose;
     protected Double weight;
     protected String comment;
+    protected Boolean isOfficial;
 
 
 }

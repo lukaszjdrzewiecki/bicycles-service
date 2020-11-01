@@ -11,8 +11,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "rim", path = "rim")
 public interface RimRepository extends PagingAndSortingRepository<Rim, Long> {
 
-    List<Rim> findByName(@Param("material") String material);
-
     boolean existsByProductId (String productId);
 
     Optional<Rim> findByProductId (String productId);

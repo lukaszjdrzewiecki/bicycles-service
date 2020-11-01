@@ -11,8 +11,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "frontHub", path = "frontHub")
 public interface HubRepository extends PagingAndSortingRepository<Hub, Long> {
 
-    List<Hub> findByName(@Param("discType") String discType);
-
     boolean existsByProductId (String productId);
 
     Optional<Hub> findByProductId (String productId);

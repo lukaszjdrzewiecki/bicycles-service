@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "saddle", path = "saddle")
 public interface SaddleRepository extends PagingAndSortingRepository<Saddle, Long> {
 
-    List<Saddle> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<Saddle> findByProductId (String productId);

@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "grips", path = "grips")
 public interface GripsRepository extends PagingAndSortingRepository<Grips, Long> {
 
-    List<Grips> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<Grips> findByProductId (String productId);

@@ -11,8 +11,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "cassette", path = "cassette")
 public interface CassetteRepository extends PagingAndSortingRepository<Cassette, Long> {
 
-    List<Cassette> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<Cassette> findByProductId (String productId);

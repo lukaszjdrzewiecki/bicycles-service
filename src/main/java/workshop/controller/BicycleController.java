@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import workshop.component.BicycleTypePropertyEditor;
 import workshop.db.dto.BicycleDto;
 import workshop.db.entity.Bicycle;
 import workshop.enums.PartType;

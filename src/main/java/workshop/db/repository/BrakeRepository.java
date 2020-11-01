@@ -11,8 +11,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "brakeHydraulic", path = "brakeHydraulic")
 public interface BrakeRepository extends PagingAndSortingRepository<BrakeHydraulic, Long> {
 
-    List<BrakeHydraulic> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<BrakeHydraulic> findByProductId (String productId);

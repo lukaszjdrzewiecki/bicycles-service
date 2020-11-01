@@ -13,6 +13,8 @@ import java.util.List;
 public class PartRepository {
 
     private final EntityManager em;
+    private final ForkRepository forkRepository;
+    private final FrameRepository frameRepository;
 
     public <T> T findByProductId(Class<T> type, String info) {
         String queryString = "select x from " + type.getSimpleName() + "  x where x.productId=:info";

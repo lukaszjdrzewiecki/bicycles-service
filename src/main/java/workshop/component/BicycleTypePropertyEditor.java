@@ -1,4 +1,4 @@
-package workshop.controller;
+package workshop.component;
 
 import java.beans.PropertyEditorSupport;
 

@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "bottomBracket", path = "bottomBracket")
 public interface BottomBracketRepository extends PagingAndSortingRepository<BottomBracket, Long> {
 
-    List<BottomBracket> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<BottomBracket> findByProductId (String productId);

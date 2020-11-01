@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "disc", path = "disc")
 public interface DiscRepository extends PagingAndSortingRepository<Disc, Long> {
 
-    List<Disc> findByName(@Param("type") String type);
-
     boolean existsByProductId (String productId);
 
     Optional<Disc> findByProductId (String productId);

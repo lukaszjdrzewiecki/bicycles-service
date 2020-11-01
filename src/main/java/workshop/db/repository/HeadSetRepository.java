@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "headSet", path = "headSet")
 public interface HeadSetRepository extends PagingAndSortingRepository<HeadSet, Long> {
 
-    List<HeadSet> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<HeadSet> findByProductId (String productId);

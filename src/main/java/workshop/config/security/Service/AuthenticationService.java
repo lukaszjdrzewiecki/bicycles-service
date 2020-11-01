@@ -2,6 +2,7 @@ package workshop.config.security.Service;
 
 import workshop.config.security.component.JwtTokenBuilder;
 import workshop.config.security.dto.LoginForm;
+import workshop.config.security.entity.Role;
 import workshop.config.security.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import workshop.service.UserService;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -25,6 +28,7 @@ public class AuthenticationService {
 
         log.info("Token successfully generated for user {}", loginForm.getLogin());
         String token = jwtTokenBuilder.createToken(user);
-        return Map.of("userName", user.getUserName(), "token", token);
+        Set<String> roles = user.getRoles().stream().map(Role::getRoleName).collect(Collectors.toSet());
+        return Map.of("userName", user.getUserName(), "token", token, "roles", roles);
     }
 }

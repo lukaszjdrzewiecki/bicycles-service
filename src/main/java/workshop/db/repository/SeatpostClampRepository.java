@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "seatpostClamp", path = "seatpostClamp")
 public interface SeatpostClampRepository extends PagingAndSortingRepository<SeatpostClamp, Long> {
 
-    List<SeatpostClamp> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<SeatpostClamp> findByProductId (String productId);

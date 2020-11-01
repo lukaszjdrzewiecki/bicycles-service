@@ -11,10 +11,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "seatpost", path = "seatpost")
 public interface SeatpostRepository extends PagingAndSortingRepository<Seatpost, Long> {
 
-    List<Seatpost> findByName(@Param("name") String name);
-
-    public Seatpost findOneByName(String name);
-
     boolean existsByProductId (String productId);
 
     Optional<Seatpost> findByProductId (String productId);

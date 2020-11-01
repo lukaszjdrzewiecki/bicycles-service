@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "chainring", path = "chainring")
 public interface ChainringRepository extends PagingAndSortingRepository<Chainring, Long> {
 
-    List<Chainring> findByName(@Param("type") String type);
-
     Optional<Chainring> findByProductId (String productId);
 
 }

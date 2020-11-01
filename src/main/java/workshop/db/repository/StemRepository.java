@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "stem", path = "stem")
 public interface StemRepository extends PagingAndSortingRepository<Stem, Long> {
 
-    List<Stem> findByName(@Param("name") String name);
-
     boolean existsByProductId(String productId);
 
     Optional<Stem> findByProductId(String productId);

@@ -12,8 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "chain", path = "chain")
 public interface ChainRepository extends PagingAndSortingRepository<Chain, Long> {
 
-    List<Chain> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<Chain> findByProductId (String productId);

@@ -11,8 +11,6 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "crank", path = "crank")
 public interface CrankRepository extends PagingAndSortingRepository<Crank, Long> {
 
-    List<Crank> findByName(@Param("name") String name);
-
     boolean existsByProductId (String productId);
 
     Optional<Crank> findByProductId (String productId);
