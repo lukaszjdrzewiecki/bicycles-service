@@ -3,6 +3,7 @@ package workshop.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import workshop.db.entity.Bicycle;
@@ -11,8 +12,11 @@ import workshop.db.repository.ForkRepository;
 import workshop.db.repository.FrameRepository;
 import workshop.enums.PartType;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
+
+import static workshop.db.specification.FrameSpecification.buildFrameSpecification;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +26,7 @@ public class PartsService {
     private final ObjectMapper mapper;
     private final FrameRepository frameRepository;
     private final ForkRepository forkRepository;
+    private final EntityManager em;
 
     @SneakyThrows
     @Transactional
@@ -45,9 +50,12 @@ public class PartsService {
         throw new IllegalArgumentException("Not recognized part");
     }
 
-    public Object getParts(PartType type) {
+    public Object getParts(PartType type, String brand) {
+        Specification<Frame> spec = buildFrameSpecification(brand);
+
         if (type == PartType.FRAME) {
-            return frameRepository.findAllByIsOfficialTrue();
+
+            return frameRepository.findAll(spec);
         }
         if (type == PartType.FORK) {
             return forkRepository.findAllByIsOfficialTrue();

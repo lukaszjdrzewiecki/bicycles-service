@@ -2,10 +2,8 @@ package workshop.config.security.component;
 
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -16,14 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
 @WebFilter
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
 public class LoggingFilter extends OncePerRequestFilter {
-    //@Value("${logging.get_request_logging.enabled}")
-    private boolean isGetRequestLoggingEnabled = true;
 
     private final static Set<String> NOT_SUPPORTED_URLS = Set.of("swagger", "css", "csrf");
 
@@ -38,13 +35,18 @@ public class LoggingFilter extends OncePerRequestFilter {
         }
     }
 
-    private void logRequest(long start, HttpServletRequest request, HttpServletResponse response) {
-        final boolean isRequestedMethodLoggingSupported = isGetRequestLoggingEnabled || !request.getMethod().equals(HttpMethod.GET.name());
-        if (isRequestedUrlLoggingSupported(request.getRequestURI()) && isRequestedMethodLoggingSupported) {
+    private void logRequest(long start, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (isRequestedUrlLoggingSupported(request.getRequestURI())) {
             long timeElapsed = System.currentTimeMillis() - start;
-            log.info("Request: {}, Params: {}, Method: {}, Response status: {}, User: {}, Partner: {}, IP: {}, Lasted: {}ms",
-                    request.getRequestURI(), request.getQueryString(), request.getMethod(), response.getStatus(),
-                    MDC.get("username"), MDC.get("partner"), MDC.get("ip"), timeElapsed);
+            log.info("Request: {}, Params: {}, Method: {}, Body: {}, Response status: {}, User: {}, IP: {}, Lasted: {} ms",
+                    request.getRequestURI(),
+                    request.getQueryString(),
+                    request.getMethod(),
+                    request.getReader().lines().collect(Collectors.joining(System.lineSeparator())),
+                    response.getStatus(),
+                    MDC.get("username"),
+                    MDC.get("ip"),
+                    timeElapsed);
         }
     }
 
