@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -35,18 +34,12 @@ public class LoggingFilter extends OncePerRequestFilter {
         }
     }
 
-    private void logRequest(long start, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void logRequest(long start, HttpServletRequest request, HttpServletResponse response) {
         if (isRequestedUrlLoggingSupported(request.getRequestURI())) {
             long timeElapsed = System.currentTimeMillis() - start;
-            log.info("Request: {}, Params: {}, Method: {}, Body: {}, Response status: {}, User: {}, IP: {}, Lasted: {} ms",
-                    request.getRequestURI(),
-                    request.getQueryString(),
-                    request.getMethod(),
-                    request.getReader().lines().collect(Collectors.joining(System.lineSeparator())),
-                    response.getStatus(),
-                    MDC.get("username"),
-                    MDC.get("ip"),
-                    timeElapsed);
+            log.info("Request: {}, Params: {}, Method: {}, Response status: {}, User: {}, IP: {}, Lasted: {}ms",
+                    request.getRequestURI(), request.getQueryString(), request.getMethod(), response.getStatus(),
+                    MDC.get("username"), MDC.get("ip"), timeElapsed);
         }
     }
 

@@ -3,6 +3,8 @@ package workshop.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,16 +52,17 @@ public class PartsService {
         throw new IllegalArgumentException("Not recognized part");
     }
 
-    public Object getParts(PartType type, String brand) {
+    public Object getParts(PartType type, Pageable pageable, String brand) {
+
         Specification<Frame> spec = buildFrameSpecification(brand);
 
         if (type == PartType.FRAME) {
 
-            return frameRepository.findAll(spec);
+            return frameRepository.findAll(spec, pageable);
         }
-        if (type == PartType.FORK) {
-            return forkRepository.findAllByIsOfficialTrue();
-        }
+//        if (type == PartType.FORK) {
+//            return forkRepository.findAllByIsOfficialTrue();
+//        }
         throw new IllegalArgumentException("Not recognized part");
     }
 

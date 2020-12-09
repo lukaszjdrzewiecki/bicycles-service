@@ -1,6 +1,9 @@
 package workshop.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import workshop.component.BicycleTypePropertyEditor;
 import workshop.enums.PartType;
 import workshop.service.PartsService;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -36,8 +40,8 @@ public class PartController {
     }
 
     @GetMapping("/parts/{partType}")
-    public Object fetchParts(@PathVariable PartType partType, @RequestParam(required = false) String brand) {
-        return service.getParts(partType, brand);
+    public Object fetchParts(@PageableDefault(size = 20) Pageable pageable, @PathVariable PartType partType, @RequestParam(required = false) String brand) {
+        return service.getParts(partType, pageable, brand);
     }
 
     @PostMapping("/parts/{partType}")
