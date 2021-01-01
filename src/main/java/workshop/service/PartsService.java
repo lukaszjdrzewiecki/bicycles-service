@@ -11,14 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 import workshop.db.entity.Bicycle;
 import workshop.db.entity.Frame;
 import workshop.db.repository.ForkRepository;
+
 import workshop.db.repository.FrameRepository;
+import workshop.db.specification.GenericSpecification;
+import workshop.db.specification.SpecificationUtils;
 import workshop.enums.PartType;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 
-import static workshop.db.specification.FrameSpecification.buildFrameSpecification;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +29,6 @@ public class PartsService {
     private final ObjectMapper mapper;
     private final FrameRepository frameRepository;
     private final ForkRepository forkRepository;
-    private final EntityManager em;
 
     @SneakyThrows
     @Transactional
@@ -52,17 +52,15 @@ public class PartsService {
         throw new IllegalArgumentException("Not recognized part");
     }
 
-    public Object getParts(PartType type, Pageable pageable, String brand) {
-
-        Specification<Frame> spec = buildFrameSpecification(brand);
+    public Page getParts(PartType type, Pageable pageable, GenericSpecification genericSpec) {
+        Specification specification = SpecificationUtils.prepareSpecification(type, genericSpec);
 
         if (type == PartType.FRAME) {
-
-            return frameRepository.findAll(spec, pageable);
+            return frameRepository.findAll(specification, pageable);
         }
-//        if (type == PartType.FORK) {
-//            return forkRepository.findAllByIsOfficialTrue();
-//        }
+        if (type == PartType.FORK) {
+            return forkRepository.findAll(specification, pageable);
+        }
         throw new IllegalArgumentException("Not recognized part");
     }
 

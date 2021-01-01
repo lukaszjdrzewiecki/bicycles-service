@@ -1,7 +1,7 @@
 package workshop.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import workshop.component.BicycleTypePropertyEditor;
+import workshop.db.specification.GenericSpecification;
 import workshop.enums.PartType;
 import workshop.service.PartsService;
 
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
@@ -40,8 +42,21 @@ public class PartController {
     }
 
     @GetMapping("/parts/{partType}")
-    public Object fetchParts(@PageableDefault(size = 20) Pageable pageable, @PathVariable PartType partType, @RequestParam(required = false) String brand) {
-        return service.getParts(partType, pageable, brand);
+    public Object fetchParts(
+            @PageableDefault(size = 20) Pageable pageable,
+            @PathVariable PartType partType,
+            @RequestParam(required = false) String brand,
+            @RequestParam(required = false) String model,
+            @RequestParam(required = false) String year
+
+    ) {
+        log.info("brand: {}, model: {}, year: {}", brand, model, year);
+        GenericSpecification spec = GenericSpecification.builder()
+                .brand(brand)
+                .model(model)
+                .year(year)
+                .build();
+        return service.getParts(partType, pageable, spec);
     }
 
     @PostMapping("/parts/{partType}")

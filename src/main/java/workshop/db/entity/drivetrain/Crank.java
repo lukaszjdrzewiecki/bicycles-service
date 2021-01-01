@@ -36,8 +36,8 @@ public class Crank extends BicyclePart {
     //1, 2, 3
     private int numberOfGears;
     private int speeds;
-    private int qfactor;
-    private double chainline;
+    private int qFactor;
+    private double chainLine;
 
     //only in integrated systems
     private double axleDiameter;

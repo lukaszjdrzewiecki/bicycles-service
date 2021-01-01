@@ -11,11 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Frame extends BicyclePart{
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
-
+    
     private String size;
 
     private Double topHeadSetDiameter;

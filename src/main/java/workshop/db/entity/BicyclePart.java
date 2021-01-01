@@ -11,6 +11,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public abstract class BicyclePart {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
     @NaturalId
     protected String productId;
 
