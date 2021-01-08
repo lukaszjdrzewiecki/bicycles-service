@@ -1,6 +1,6 @@
 package workshop.enums;
 
-public enum LenghtUnit {
+public enum SizeUnit {
     INCH,
     MILIMETER,
     CENTIMETER

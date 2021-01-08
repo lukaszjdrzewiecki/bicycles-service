@@ -31,7 +31,10 @@ public class SpecificationUtils {
 
             addIfSet(predicates, root, criteriaBuilder, "brand", spec.getBrand());
             addIfSet(predicates, root, criteriaBuilder, "model", spec.getModel());
+            addIfSet(predicates, root, criteriaBuilder, "series", spec.getSeries());
             addIfSet(predicates, root, criteriaBuilder, "year", spec.getYear());
+            addIfSet(predicates, root, criteriaBuilder, "size", spec.getSize());
+            addIfSet(predicates, root, criteriaBuilder, "wheelSize", spec.getWheelSize());
             addIfSet(predicates, root, criteriaBuilder, "isOfficial", true);
 
 

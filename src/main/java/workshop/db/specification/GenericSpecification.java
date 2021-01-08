@@ -13,5 +13,8 @@ public class GenericSpecification {
 
     private String brand;
     private String model;
+    private String series;
     private String year;
+    private String size;
+    private String wheelSize;
 }

@@ -3,7 +3,6 @@ package workshop.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -19,6 +18,11 @@ import workshop.enums.PartType;
 
 import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.Map;
+
+import static workshop.service.PartNamingUtils.PART_SPECIALIZATIONS;
+import static workshop.service.PartNamingUtils.createProductId;
 
 
 @Service
@@ -29,6 +33,12 @@ public class PartsService {
     private final ObjectMapper mapper;
     private final FrameRepository frameRepository;
     private final ForkRepository forkRepository;
+
+    private Map<Object, Object> getRepositoryInstance() {
+        return  Map.ofEntries(
+                Map.entry(PartType.FRAME, frameRepository),
+                Map.entry(PartType.FORK, forkRepository));
+    }
 
     @SneakyThrows
     @Transactional
@@ -52,18 +62,19 @@ public class PartsService {
         throw new IllegalArgumentException("Not recognized part");
     }
 
-    public Page getParts(PartType type, Pageable pageable, GenericSpecification genericSpec) {
+    @SneakyThrows
+    public Object getParts(PartType type, Pageable pageable, GenericSpecification genericSpec) {
         Specification specification = SpecificationUtils.prepareSpecification(type, genericSpec);
 
-        if (type == PartType.FRAME) {
-            return frameRepository.findAll(specification, pageable);
-        }
-        if (type == PartType.FORK) {
-            return forkRepository.findAll(specification, pageable);
-        }
-        throw new IllegalArgumentException("Not recognized part");
-    }
+        Object[] parameters = {specification, pageable};
+        Object repositoryInstance = getRepositoryInstance().get(type);
 
+        Class<?> clazz = repositoryInstance.getClass();
+
+        Method method = clazz.getMethod("findAll", Specification.class, Pageable.class);
+        return method.invoke(repositoryInstance, parameters);
+    }
+    
     @SneakyThrows
     @Transactional
     public Object addPartToBicycle(String userName, String bicycleName, PartType type, String partJson) {
@@ -105,8 +116,11 @@ public class PartsService {
 
     private Frame addFrame(String frameJson) throws IOException {
         Frame frame = mapper.readValue(frameJson, Frame.class);
+        String product = PART_SPECIALIZATIONS.get(PartType.FRAME).getName();
+        String productId = createProductId(PartType.FRAME, frame.getBrand(), frame.getModel(), frame.getSeries(), frame.getWheelSize(), frame.getSize(), frame.getYear());
+        frame.setProductId(productId);
         frame.setId(null);
-        frame.setProduct("frame");
+        frame.setProduct(product);
         frame.setIsOfficial(true);
         return frameRepository.save(frame);
     }
@@ -115,7 +129,7 @@ public class PartsService {
         Frame frame = bicycle.getFrame();
         bicycle.setFrame(null);
         bicycleService.updateBicycle(bicycle);
-        if(!frame.getIsOfficial()) {
+        if (!frame.getIsOfficial()) {
             frameRepository.delete(frame);
         }
     }

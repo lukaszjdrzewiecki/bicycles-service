@@ -47,14 +47,19 @@ public class PartController {
             @PathVariable PartType partType,
             @RequestParam(required = false) String brand,
             @RequestParam(required = false) String model,
-            @RequestParam(required = false) String year
-
-    ) {
-        log.info("brand: {}, model: {}, year: {}", brand, model, year);
+            @RequestParam(required = false) String series,
+            @RequestParam(required = false) String year,
+            @RequestParam(required = false) String size,
+            @RequestParam(required = false) String wheelSize
+            ) {
+        log.info("brand: {}, model: {}, series: {}, year: {}, size: {}, wheelSize: {}", brand, model, series, year, size, wheelSize);
         GenericSpecification spec = GenericSpecification.builder()
                 .brand(brand)
                 .model(model)
+                .series(series)
                 .year(year)
+                .size(size)
+                .wheelSize(wheelSize)
                 .build();
         return service.getParts(partType, pageable, spec);
     }

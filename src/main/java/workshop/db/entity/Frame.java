@@ -3,6 +3,7 @@ package workshop.db.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import workshop.enums.SizeUnit;
 
 import javax.persistence.*;
 
@@ -13,6 +14,10 @@ import javax.persistence.*;
 public class Frame extends BicyclePart{
     
     private String size;
+    private String sizeValue;
+    private SizeUnit sizeUnit;
+
+    private String wheelSize;
 
     private Double topHeadSetDiameter;
     private Double bottomHeadSetDiameter;
