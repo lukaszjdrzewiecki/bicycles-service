@@ -1,31 +1,19 @@
 package workshop;
 
-import com.fasterxml.jackson.databind.MappingIterator;
-import com.fasterxml.jackson.dataformat.csv.CsvMapper;
-import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import workshop.config.security.entity.Role;
 import workshop.config.security.repository.RoleRepository;
-import workshop.db.entity.*;
-import workshop.db.entity.drivetrain.*;
 import workshop.db.repository.PedalsRepository;
 import workshop.service.BicycleService;
 import workshop.db.entity.Bicycle;
-import workshop.db.entity.Pedals;
-import workshop.db.entity.drivetrain.Crank;
 
 import javax.persistence.EntityManager;
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Slf4j
 @Component

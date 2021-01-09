@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Frame extends BicyclePart{
-    
+
     private String size;
     private String sizeValue;
     private SizeUnit sizeUnit;

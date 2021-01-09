@@ -3,7 +3,7 @@ package workshop.service;
 import lombok.experimental.UtilityClass;
 import org.springframework.util.StringUtils;
 import workshop.db.entity.Frame;
-import workshop.db.entity.suspension.Fork;
+import workshop.db.entity.Fork;
 import workshop.enums.PartSpec;
 import workshop.enums.PartType;
 
