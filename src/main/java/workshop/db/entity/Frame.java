@@ -35,6 +35,4 @@ public class Frame extends BicyclePart{
     
     private String forkTubeType;
 
-    private String year;
-
 }

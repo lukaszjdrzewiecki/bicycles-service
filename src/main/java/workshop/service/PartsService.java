@@ -8,12 +8,15 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import workshop.db.entity.Bicycle;
+import workshop.db.entity.BicyclePart;
 import workshop.db.entity.Frame;
+import workshop.db.repository.BicyclePartRepository;
 import workshop.db.repository.ForkRepository;
 
 import workshop.db.repository.FrameRepository;
 import workshop.db.specification.GenericSpecification;
 import workshop.db.specification.SpecificationUtils;
+import workshop.enums.PartSpec;
 import workshop.enums.PartType;
 
 import javax.persistence.EntityNotFoundException;
@@ -21,8 +24,9 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-import static workshop.service.PartNamingUtils.PART_SPECIALIZATIONS;
-import static workshop.service.PartNamingUtils.createProductId;
+import static workshop.utils.PartNamingUtils.PART_SPECIALIZATIONS;
+import static workshop.utils.PartNamingUtils.createProductId;
+import static workshop.utils.SerializationUtils.deserializeEntity;
 
 
 @Service
@@ -33,33 +37,36 @@ public class PartsService {
     private final ObjectMapper mapper;
     private final FrameRepository frameRepository;
     private final ForkRepository forkRepository;
+    private final BicyclePartRepository partRepository;
 
     private Map<Object, Object> getRepositoryInstance() {
-        return  Map.ofEntries(
+        return Map.ofEntries(
                 Map.entry(PartType.FRAME, frameRepository),
                 Map.entry(PartType.FORK, forkRepository));
     }
 
     @SneakyThrows
     @Transactional
-    public Object addPart(PartType type, String partJson) {
-        if (type == PartType.FRAME) {
-            return addFrame(partJson);
-        }
-        if (type == PartType.FORK) {
-            return addFrame(partJson);
-        }
-        throw new IllegalArgumentException("Not recognized part");
+    public BicyclePart addPart(PartType type, String partJson) {
+
+        PartSpec spec = PART_SPECIALIZATIONS.get(type);
+
+        Class<?> clazz = spec.getClazz();
+        BicyclePart part = (BicyclePart) deserializeEntity(partJson, clazz);
+
+        String productId = createProductId(part);
+        part.setProductId(productId);
+        part.setId(null);
+        part.setProduct(type.getName());
+        part.setIsOfficial(true);
+
+        return partRepository.save(part);
+
     }
 
     public Object getPart(PartType type, String id) {
-        if (type == PartType.FRAME) {
-            return frameRepository.findByProductId(id).orElseThrow(() -> new EntityNotFoundException("Couldn't find part"));
-        }
-        if (type == PartType.FORK) {
-            return forkRepository.findByProductId(id).orElseThrow(() -> new EntityNotFoundException("Couldn't find part"));
-        }
-        throw new IllegalArgumentException("Not recognized part");
+        return partRepository.findByProductId(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Couldn't find part of type %s and if %s", type.getName(), id)));
     }
 
     @SneakyThrows
@@ -74,7 +81,7 @@ public class PartsService {
         Method method = clazz.getMethod("findAll", Specification.class, Pageable.class);
         return method.invoke(repositoryInstance, parameters);
     }
-    
+
     @SneakyThrows
     @Transactional
     public Object addPartToBicycle(String userName, String bicycleName, PartType type, String partJson) {
@@ -112,17 +119,6 @@ public class PartsService {
         bicycle.setFrame(frame);
         bicycleService.updateBicycle(bicycle);
         return frame;
-    }
-
-    private Frame addFrame(String frameJson) throws IOException {
-        Frame frame = mapper.readValue(frameJson, Frame.class);
-        String product = PART_SPECIALIZATIONS.get(PartType.FRAME).getName();
-        String productId = createProductId(PartType.FRAME, frame.getBrand(), frame.getModel(), frame.getSeries(), frame.getWheelSize(), frame.getSize(), frame.getYear());
-        frame.setProductId(productId);
-        frame.setId(null);
-        frame.setProduct(product);
-        frame.setIsOfficial(true);
-        return frameRepository.save(frame);
     }
 
     private void deleteFrameOfBicycle(Bicycle bicycle) throws IOException {

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import workshop.component.BicycleTypePropertyEditor;
+import workshop.db.entity.BicyclePart;
 import workshop.db.specification.GenericSpecification;
 import workshop.enums.PartType;
 import workshop.service.PartsService;
@@ -66,7 +67,7 @@ public class PartController {
 
     @PostMapping("/parts/{partType}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Object addPart(@PathVariable PartType partType, @RequestBody String partJson) {
+    public BicyclePart addPart(@PathVariable PartType partType, @RequestBody String partJson) {
         return service.addPart(partType, partJson);
     }
 

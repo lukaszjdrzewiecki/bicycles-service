@@ -33,6 +33,7 @@ public abstract class BicyclePart {
     protected Double weight;
     protected String comment;
     protected Boolean isOfficial;
+    protected String year;
 
 
 }

@@ -9,8 +9,8 @@ import workshop.db.entity.BicyclePart;
 import workshop.db.entity.Frame;
 import workshop.db.repository.BicyclePartRepository;
 import workshop.db.repository.FrameRepository;
+import workshop.enums.PartType;
 
-import javax.lang.model.type.ReferenceType;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -50,10 +50,9 @@ class DatabaseUtils extends IntegrationTest {
 
     @Test
     void getAllParts() throws Exception {
+        PartType enumz = PartType.valueOfName("frame");
         List<BicyclePart> parts = bicyclePartRepository.findAll();
     }
-
-
 
 
 

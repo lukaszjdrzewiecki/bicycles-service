@@ -1,32 +1,48 @@
 package workshop.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum PartType {
 
-    FRAME,
-    FORK,
-    DAMPER,
-    DISC,
-    HUB,
-    RIM,
-    TYRE,
-    WHEEL,
-    SADDLE,
-    SEATPOST,
-    SEATPOST_CLAMP,
-    REAR_DERAILLEUR,
-    FRONT_DERAILLEUR,
-    CRANK,
-    CHAINRING,
-    CHAIN,
-    CASETTE,
-    BOTTOMBRACKET,
-    SHIFTER_LEFT,
-    SHIFTER_RIGHT,
-    ROAD_SHIFTER_LEFT,
-    ROAD_SHIFTER_RIGHT,
-    GRIPS,
-    HANDLEBAR,
-    HEADSET,
-    STEM
+    FRAME("frame"),
+    FORK("fork"),
+    DAMPER("damper"),
+    DISC("disc"),
+    HUB("hub"),
+    RIM("rim"),
+    TYRE("tyre"),
+    WHEEL("wheel"),
+    SADDLE("saddle"),
+    SEATPOST("seatpost"),
+    SEATPOST_CLAMP("seatpostClamp"),
+    REAR_DERAILLEUR("rearDerailleur"),
+    FRONT_DERAILLEUR("frontDerailleur"),
+    CRANK("crank"),
+    CHAINRING("chainring"),
+    CHAIN("chain"),
+    CASSETTE("cassette"),
+    BOTTOM_BRACKET("bottomBracket"),
+    SHIFTER_LEFT("shifterLeft"),
+    SHIFTER_RIGHT("shifterRight"),
+    ROAD_SHIFTER_LEFT("roadShifterLeft"),
+    ROAD_SHIFTER_RIGHT("roadShifterRight"),
+    GRIPS("grips"),
+    HANDLEBAR("handlebar"),
+    HEADSET("headset"),
+    STEM("stem");
+
+    public final String name;
+
+    public static PartType valueOfName(String name) {
+        for (PartType part : values()) {
+            if (part.name().equalsIgnoreCase(name)) {
+                return part;
+            }
+        }
+        throw new IllegalArgumentException(String.format("No PartType enum constant of name %s", name));
+    }
 }
 
