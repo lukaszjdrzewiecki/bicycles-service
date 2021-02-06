@@ -1,6 +1,8 @@
 package com.workshop.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.workshop.db.repository.PartRepositories;
+import com.workshop.db.specification.Specifications;
 import com.workshop.enums.PartType;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -12,17 +14,14 @@ import com.workshop.db.entity.Bicycle;
 import com.workshop.db.entity.BicyclePart;
 import com.workshop.db.entity.Frame;
 import com.workshop.db.repository.BicyclePartRepository;
-import com.workshop.db.repository.ForkRepository;
 
 import com.workshop.db.repository.FrameRepository;
 import com.workshop.db.specification.GenericSpecification;
-import com.workshop.db.specification.SpecificationUtils;
 import com.workshop.enums.PartSpec;
 
 import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import static com.workshop.utils.PartNamingUtils.PART_SPECIALIZATIONS;
 import static com.workshop.utils.PartNamingUtils.createProductId;
@@ -36,14 +35,9 @@ public class PartsService {
     private final BicycleService bicycleService;
     private final ObjectMapper mapper;
     private final FrameRepository frameRepository;
-    private final ForkRepository forkRepository;
     private final BicyclePartRepository partRepository;
+    private final PartRepositories repositories;
 
-    private Map<Object, Object> getRepositoryInstance() {
-        return Map.ofEntries(
-                Map.entry(PartType.FRAME, frameRepository),
-                Map.entry(PartType.FORK, forkRepository));
-    }
 
     @SneakyThrows
     @Transactional
@@ -71,10 +65,10 @@ public class PartsService {
 
     @SneakyThrows
     public Object getParts(PartType type, Pageable pageable, GenericSpecification genericSpec) {
-        Specification specification = SpecificationUtils.prepareSpecification(type, genericSpec);
+        Specification specification = Specifications.buildSpecification(genericSpec);
 
         Object[] parameters = {specification, pageable};
-        Object repositoryInstance = getRepositoryInstance().get(type);
+        Object repositoryInstance = repositories.getRepositoryInstance().get(type);
 
         Class<?> clazz = repositoryInstance.getClass();
 

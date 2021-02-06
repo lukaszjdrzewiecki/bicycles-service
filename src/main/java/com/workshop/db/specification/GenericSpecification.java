@@ -17,4 +17,6 @@ public class GenericSpecification {
     private String year;
     private String size;
     private String wheelSize;
+    private String product;
+    private String material;
 }

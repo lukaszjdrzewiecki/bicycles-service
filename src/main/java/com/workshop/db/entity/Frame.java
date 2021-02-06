@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Frame extends BicyclePart{
+public class Frame extends BicyclePart {
 
     private String size;
     private String sizeValue;
@@ -19,24 +19,25 @@ public class Frame extends BicyclePart{
     @Enumerated(EnumType.STRING)
     private SizeUnit sizeUnit;
 
-    private String wheelSize;
-
-    private Double topHeadSetDiameter;
-    private Double bottomHeadSetDiameter;
-
     private String bottomBracketSize;
     private String bottomBracketType;
 
-    private String rearWheelAxleSize;
     private Double seatpostSize;
     private Double seatpostCaliperDiameter;
+
+    private String wheelSize;
+    private String rearWheelAxleSize;
+
     private String discBrakeMount;
     private String brakeType;
 
+    private Double topHeadSetDiameter;
+    private Double bottomHeadSetDiameter;
     private String headsetType;
-    
     private String forkTubeType;
 
     private String material;
+
+    private boolean hasDamper;
 
 }

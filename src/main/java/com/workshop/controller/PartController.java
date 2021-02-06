@@ -51,9 +51,10 @@ public class PartController {
             @RequestParam(required = false) String series,
             @RequestParam(required = false) String year,
             @RequestParam(required = false) String size,
-            @RequestParam(required = false) String wheelSize
-            ) {
-        log.info("brand: {}, model: {}, series: {}, year: {}, size: {}, wheelSize: {}", brand, model, series, year, size, wheelSize);
+            @RequestParam(required = false) String wheelSize,
+            @RequestParam(required = false) String material
+    ) {
+        log.info("brand: {}, model: {}, series: {}, year: {}, size: {}, wheelSize: {}, material: {}", brand, model, series, year, size, wheelSize, material);
         GenericSpecification spec = GenericSpecification.builder()
                 .brand(brand)
                 .model(model)
@@ -61,6 +62,8 @@ public class PartController {
                 .year(year)
                 .size(size)
                 .wheelSize(wheelSize)
+                .product(partType.getName())
+                .material(material)
                 .build();
         return service.getParts(partType, pageable, spec);
     }
@@ -96,6 +99,11 @@ public class PartController {
     public Object addExistingPartToBicycle(@PathVariable String userName, @PathVariable String bicycleName,
                                    @PathVariable PartType partType, @PathVariable String partId) {
         return service.addExistingPartToBicycle(userName, bicycleName, partType, partId);
+    }
+
+    @GetMapping("/")
+    public String test() {
+        return "TEST!";
     }
 
 

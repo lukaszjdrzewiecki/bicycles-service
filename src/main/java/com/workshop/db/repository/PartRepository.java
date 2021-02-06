@@ -27,10 +27,10 @@ public class PartRepository {
         return null;
     }
 
-    public List<BicyclePart> findAll(String partType) {
-        String queryString = "select x from " + partType + "  x";
-        TypedQuery<BicyclePart> q = em.createQuery(queryString, BicyclePart.class);
-        List<BicyclePart> result = q.getResultList();
+    public <T> List<T> findAll(Class<T> type) {
+        String queryString = "select x from " + type.getSimpleName() + "  x";
+        TypedQuery<T> q = em.createQuery(queryString, type);
+        List<T> result = q.getResultList();
         return result;
     }
 }
